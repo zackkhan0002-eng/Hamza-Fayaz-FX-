@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,7 @@
     <title>Hamza Fayaz FX | Institutional Grade Trading</title>
     
     <style>
+        /* Global Styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -17,13 +18,13 @@
         }
 
         .brand-header {
-            width: 100%; padding: 20px; text-align: left; font-weight: bold;
+            width: 100%; max-width: 1100px; padding: 20px; text-align: left; font-weight: bold;
             color: #ffd700; letter-spacing: 3px; font-size: 0.8rem;
             text-transform: uppercase; border-bottom: 1px solid rgba(255,215,0,0.1);
         }
 
         /* Hero Section */
-        .hero { height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         .profile-card {
             background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px);
             padding: 40px; border-radius: 50px; border: 1px solid rgba(255, 215, 0, 0.2);
@@ -34,69 +35,78 @@
         h1 { font-size: 2.5rem; margin-bottom: 10px; }
         .premium-tag { color: #ffd700; letter-spacing: 4px; font-size: 0.8rem; }
 
-        /* General Container */
-        .section-container { width: 100%; max-width: 1100px; padding: 40px 0; text-align: center; }
-        .section-title { font-size: 1.8rem; color: #ffd700; margin-bottom: 30px; letter-spacing: 3px; text-transform: uppercase; }
+        /* General Containers */
+        .section-container { width: 100%; max-width: 1100px; padding: 50px 0; text-align: center; }
+        .section-title { font-size: 1.8rem; color: #ffd700; margin-bottom: 40px; letter-spacing: 3px; text-transform: uppercase; }
 
         /* About Section */
         .about-section {
-            max-width: 800px; text-align: center; padding: 50px 20px;
+            max-width: 850px; text-align: center; padding: 60px 30px;
             background: rgba(255, 255, 255, 0.03); border-radius: 30px;
-            border: 1px solid rgba(255, 215, 0, 0.1); margin: 20px 0;
+            border: 1px solid rgba(255, 215, 0, 0.1); margin: 0 auto 40px auto;
         }
-        .about-section p { line-height: 1.8; color: #ccc; font-size: 1.05rem; }
+        .about-section h2 { color: #ffd700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .about-section p { line-height: 1.8; color: #ccc; font-size: 1.1rem; }
 
-        /* YouTube Box (Same as Course Card) */
+        /* YouTube Academy Box */
         .youtube-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 0, 0, 0.3);
-            padding: 40px; border-radius: 30px; max-width: 710px;
-            margin: 20px auto; transition: 0.4s; text-align: center;
-            position: relative; overflow: hidden;
+            padding: 50px 30px; border-radius: 30px; max-width: 850px;
+            margin: 0 auto 50px auto; transition: 0.4s; position: relative; overflow: hidden;
         }
         .youtube-card:hover { transform: translateY(-10px); background: rgba(255, 0, 0, 0.05); border-color: #ff0000; }
-        .youtube-card h3 { color: #ff0000; font-size: 1.8rem; margin-bottom: 15px; letter-spacing: 2px; }
-        .youtube-card p { color: #ddd; margin-bottom: 25px; font-size: 0.95rem; }
+        .youtube-card h3 { color: #ff0000; font-size: 2rem; margin-bottom: 15px; }
+        .youtube-card p { color: #ddd; margin-bottom: 25px; font-size: 1rem; line-height: 1.6; }
         .yt-btn {
             display: inline-block; background: #ff0000; color: #fff;
-            padding: 15px 40px; border-radius: 50px; text-decoration: none;
-            font-weight: bold; transition: 0.3s; box-shadow: 0 5px 15px rgba(255,0,0,0.2);
+            padding: 16px 45px; border-radius: 50px; text-decoration: none;
+            font-weight: bold; transition: 0.3s; box-shadow: 0 10px 20px rgba(255,0,0,0.2);
         }
-        .yt-btn:hover { background: #fff; color: #ff0000; box-shadow: 0 0 25px rgba(255,0,0,0.5); }
+        .yt-btn:hover { background: #fff; color: #ff0000; box-shadow: 0 0 30px rgba(255,0,0,0.5); }
 
         /* Course Grid */
-        .course-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
+        .course-grid { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; }
         .course-card {
             background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 215, 0, 0.2);
-            padding: 30px; border-radius: 20px; width: 340px; transition: 0.4s; position: relative; overflow: hidden;
+            padding: 40px 30px; border-radius: 25px; width: 380px; transition: 0.4s; position: relative; overflow: hidden;
         }
-        .course-card:hover { transform: translateY(-10px); border-color: #ffd700; }
-        .course-card h3 { color: #ffd700; margin-bottom: 15px; font-size: 1.5rem; }
-        .price { font-size: 2.2rem; font-weight: bold; margin-bottom: 15px; display: block; color: #fff; }
-        .course-features { list-style: none; text-align: left; color: #ccc; font-size: 0.85rem; }
-        .course-features li { margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
+        .course-card:hover { transform: translateY(-12px); border-color: #ffd700; background: rgba(255, 215, 0, 0.03); }
+        .course-card h3 { color: #ffd700; margin-bottom: 20px; font-size: 1.6rem; }
+        .price { font-size: 2.5rem; font-weight: bold; margin-bottom: 20px; display: block; color: #fff; }
+        .course-features { list-style: none; text-align: left; color: #ccc; font-size: 0.9rem; }
+        .course-features li { margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
         .course-features li::before { content: "◈ "; color: #ffd700; }
 
         /* Specialist Bar */
-        .ict-special { background: #111; padding: 50px 20px; border-radius: 30px; margin: 40px 0; border: 1px dashed rgba(255,215,0,0.4); }
+        .ict-special { background: #111; padding: 60px 20px; border-radius: 40px; margin: 50px 0; border: 1px dashed rgba(255,215,0,0.3); }
         .ict-list { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; list-style: none; }
-        .ict-item { background: #000; padding: 12px 25px; border-radius: 50px; border: 1px solid #333; font-size: 0.8rem; color: #ffd700; font-weight: bold; }
+        .ict-item { background: #000; padding: 14px 28px; border-radius: 50px; border: 1px solid #333; font-size: 0.85rem; color: #ffd700; font-weight: bold; letter-spacing: 1px; }
 
         /* Gallery */
-        .trading-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .trading-gallery img { width: 100%; border-radius: 20px; border: 1px solid rgba(255,215,0,0.1); transition: 0.5s; }
+        .trading-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 20px; }
+        .trading-gallery img { width: 100%; border-radius: 20px; border: 1px solid rgba(255,215,0,0.1); transition: 0.5s; cursor: pointer; }
+        .trading-gallery img:hover { transform: scale(1.03); border-color: #ffd700; }
 
         /* Contact Section */
-        .contact-card { background: linear-gradient(135deg, #ffd700, #b8860b); color: #000; padding: 50px 20px; border-radius: 40px; text-align: center; margin-bottom: 50px; }
-        .contact-btn { display: inline-block; margin-top: 25px; padding: 18px 45px; background: #000; color: #ffd700; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1rem; }
+        .contact-card { background: linear-gradient(135deg, #ffd700, #b8860b); color: #000; padding: 60px 20px; border-radius: 40px; text-align: center; margin: 60px 0; width: 100%; max-width: 900px; }
+        .contact-btn { display: inline-block; margin-top: 30px; padding: 20px 50px; background: #000; color: #ffd700; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.1rem; transition: 0.3s; }
+        .contact-btn:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        footer { padding: 40px; color: #555; font-size: 0.8rem; }
+        footer { padding: 50px; color: #666; font-size: 0.85rem; letter-spacing: 1px; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .course-card { width: 100%; }
+            .about-section, .youtube-card { padding: 30px 20px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="brand-header">ICT FOREX TRADER</div>
+    <div class="brand-header">HAMZA FAYAZ FX | INSTITUTIONAL ANALYST</div>
 
     <section class="hero">
         <div class="profile-card">
@@ -107,20 +117,22 @@
     </section>
 
     <section class="section-container">
-        <div class="about-section" style="margin: 0 auto;">
-            <h2 class="section-title">Strategic Overview</h2>
+        <div class="about-section">
+            <h2>About the Founder</h2>
             <p>
-                Operating at the intersection of <strong>Institutional Algorithms</strong> and <strong>Price Action Theory</strong>, Hamza Fayaz FX has spent 4 years mastering the delivery of price through the Interbank Price Delivery Algorithm (IPDA).
+                Operating at the intersection of <strong>Institutional Algorithms</strong> and <strong>Price Action Theory</strong>, Hamza Fayaz FX has spent 4+ years decoding the delivery of price. Through the <strong>HDE Concept</strong>, he provides an elite roadmap for navigating the Interbank Price Delivery Algorithm (IPDA) with absolute precision.
             </p>
         </div>
     </section>
 
     <section class="section-container">
         <div class="youtube-card">
-            <div style="position:absolute; top:10px; right:-30px; background:#ff0000; color:#fff; padding:5px 40px; transform:rotate(45deg); font-size:0.7rem; font-weight:bold;">LIVE</div>
-            <h3>YouTube Academy</h3>
-            <p>Unlock <strong>Free Institutional Grade</strong> content. I breakdown complex MMXM models and weekly market bias every session.</p>
-            <a href="https://www.youtube.com/@HamzaFayazFX" target="_blank" class="yt-btn">VISIT FREE CHANNEL</a>
+            <div style="position:absolute; top:12px; right:-35px; background:#ff0000; color:#fff; padding:5px 40px; transform:rotate(45deg); font-size:0.7rem; font-weight:bold; box-shadow: 0 0 10px rgba(0,0,0,0.5);">FREE ACCESS</div>
+            <h3>YouTube Trading Academy</h3>
+            <p>
+                Unlock <strong>Institutional Grade</strong> content for free. I believe high-level market knowledge should be accessible to all. Subscribe to watch weekly market breakdowns, MMXM execution logs, and live psychology sessions.
+            </p>
+            <a href="https://www.youtube.com/@HamzaFayazFX" target="_blank" class="yt-btn">SUBSCRIBE FOR FREE LEARNING</a>
         </div>
     </section>
 
@@ -153,7 +165,7 @@
 
     <section class="section-container">
         <div class="ict-special">
-            <h2 style="color:#ffd700; margin-bottom:30px;">Core Algorithmic Specialities</h2>
+            <h2 style="color:#ffd700; margin-bottom:30px; letter-spacing: 2px;">CORE ALGORITHMIC SPECIALITIES</h2>
             <div class="ict-list">
                 <div class="ict-item">Premium/Discount Arrays</div>
                 <div class="ict-item">Macro Timing Windows</div>
@@ -167,21 +179,21 @@
     <section class="section-container">
         <h2 class="section-title">Execution Logs</h2>
         <div class="trading-gallery">
-            <img src="trade1.jpg" alt="Analysis">
-            <img src="trade2.jpg" alt="Analysis">
+            <img src="trade1.jpg" alt="Institutional Analysis 1">
+            <img src="trade2.jpg" alt="Institutional Analysis 2">
+            <img src="trade3.jpg" alt="Institutional Analysis 3">
         </div>
     </section>
 
-    <section class="section-container">
+    <section class="section-container" style="display: flex; justify-content: center;">
         <div class="contact-card">
-            <h2>Bridge the Gap</h2>
-            <p>Access the Interbank Liquidity Mentorship Today.</p>
-            <a href="https://wa.me/923235957001?text=Hello%20Hamza%20Fayaz%20FX,%20I%20am%20ready%20to%20master%20the%20Institutional%20Order%20Flow." class="contact-btn">ENROLL IN MENTORSHIP</a>
+            <h2 style="font-size: 2rem;">Bridge the Gap</h2>
+            <p style="margin-top: 10px; font-weight: bold;">Directly contact for Elite Mentorship & Course Enrollment.</p>
+            <a href="https://wa.me/923235957001?text=Hello%20Hamza%20Fayaz%20FX,%20I%20am%20ready%20to%20master%20the%20Institutional%20Order%20Flow." target="_blank" class="contact-btn">WHATSAPP ENROLLMENT</a>
         </div>
     </section>
 
-    <footer>&copy; 2026 HAMZA FAYAZ FX | ALGORITHMIC PRECISION</footer>
+    <footer>&copy; 2026 HAMZA FAYAZ FX | ENGINEERED FOR PRECISION</footer>
 
 </body>
-                        </html>
-    
+</html>
