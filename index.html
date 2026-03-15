@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,35 +34,53 @@
         h1 { font-size: 2.5rem; margin-bottom: 10px; }
         .premium-tag { color: #ffd700; letter-spacing: 4px; font-size: 0.8rem; }
 
+        /* General Container */
+        .section-container { width: 100%; max-width: 1100px; padding: 40px 0; text-align: center; }
+        .section-title { font-size: 1.8rem; color: #ffd700; margin-bottom: 30px; letter-spacing: 3px; text-transform: uppercase; }
+
         /* About Section */
         .about-section {
-            max-width: 800px; text-align: center; padding: 60px 20px;
+            max-width: 800px; text-align: center; padding: 50px 20px;
             background: rgba(255, 255, 255, 0.03); border-radius: 30px;
-            border: 1px solid rgba(255, 215, 0, 0.1); margin: 40px 0;
+            border: 1px solid rgba(255, 215, 0, 0.1); margin: 20px 0;
         }
-        .about-section h2 { color: #ffd700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
         .about-section p { line-height: 1.8; color: #ccc; font-size: 1.05rem; }
 
-        /* Course Section */
-        .section-container { width: 100%; max-width: 1100px; padding: 60px 0; text-align: center; }
-        .section-title { font-size: 1.8rem; color: #ffd700; margin-bottom: 40px; letter-spacing: 3px; text-transform: uppercase; }
+        /* YouTube Box (Same as Course Card) */
+        .youtube-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            padding: 40px; border-radius: 30px; max-width: 710px;
+            margin: 20px auto; transition: 0.4s; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .youtube-card:hover { transform: translateY(-10px); background: rgba(255, 0, 0, 0.05); border-color: #ff0000; }
+        .youtube-card h3 { color: #ff0000; font-size: 1.8rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .youtube-card p { color: #ddd; margin-bottom: 25px; font-size: 0.95rem; }
+        .yt-btn {
+            display: inline-block; background: #ff0000; color: #fff;
+            padding: 15px 40px; border-radius: 50px; text-decoration: none;
+            font-weight: bold; transition: 0.3s; box-shadow: 0 5px 15px rgba(255,0,0,0.2);
+        }
+        .yt-btn:hover { background: #fff; color: #ff0000; box-shadow: 0 0 25px rgba(255,0,0,0.5); }
+
+        /* Course Grid */
         .course-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
-        
         .course-card {
             background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 215, 0, 0.2);
             padding: 30px; border-radius: 20px; width: 340px; transition: 0.4s; position: relative; overflow: hidden;
         }
-        .course-card:hover { transform: translateY(-10px); background: rgba(255, 215, 0, 0.08); border-color: #ffd700; }
+        .course-card:hover { transform: translateY(-10px); border-color: #ffd700; }
         .course-card h3 { color: #ffd700; margin-bottom: 15px; font-size: 1.5rem; }
         .price { font-size: 2.2rem; font-weight: bold; margin-bottom: 15px; display: block; color: #fff; }
         .course-features { list-style: none; text-align: left; color: #ccc; font-size: 0.85rem; }
         .course-features li { margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
         .course-features li::before { content: "◈ "; color: #ffd700; }
 
-        /* Advanced Specialist Bar */
+        /* Specialist Bar */
         .ict-special { background: #111; padding: 50px 20px; border-radius: 30px; margin: 40px 0; border: 1px dashed rgba(255,215,0,0.4); }
         .ict-list { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; list-style: none; }
-        .ict-item { background: #000; padding: 12px 25px; border-radius: 50px; border: 1px solid #333; font-size: 0.8rem; color: #ffd700; font-weight: bold; letter-spacing: 1px; }
+        .ict-item { background: #000; padding: 12px 25px; border-radius: 50px; border: 1px solid #333; font-size: 0.8rem; color: #ffd700; font-weight: bold; }
 
         /* Gallery */
         .trading-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
@@ -88,11 +106,22 @@
         </div>
     </section>
 
-    <section class="about-section">
-        <h2>Strategic Overview</h2>
-        <p>
-            Operating at the intersection of <strong>Institutional Algorithms</strong> and <strong>Price Action Theory</strong>, Hamza Fayaz FX has spent 4 years mastering the delivery of price. Through the <strong>HDE Concept</strong>, he provides a high-fidelity roadmap for navigating the Interbank Price Delivery Algorithm (IPDA).
-        </p>
+    <section class="section-container">
+        <div class="about-section" style="margin: 0 auto;">
+            <h2 class="section-title">Strategic Overview</h2>
+            <p>
+                Operating at the intersection of <strong>Institutional Algorithms</strong> and <strong>Price Action Theory</strong>, Hamza Fayaz FX has spent 4 years mastering the delivery of price through the Interbank Price Delivery Algorithm (IPDA).
+            </p>
+        </div>
+    </section>
+
+    <section class="section-container">
+        <div class="youtube-card">
+            <div style="position:absolute; top:10px; right:-30px; background:#ff0000; color:#fff; padding:5px 40px; transform:rotate(45deg); font-size:0.7rem; font-weight:bold;">LIVE</div>
+            <h3>YouTube Academy</h3>
+            <p>Unlock <strong>Free Institutional Grade</strong> content. I breakdown complex MMXM models and weekly market bias every session.</p>
+            <a href="https://www.youtube.com/@HamzaFayazFX" target="_blank" class="yt-btn">VISIT FREE CHANNEL</a>
+        </div>
     </section>
 
     <section class="section-container">
@@ -154,4 +183,5 @@
     <footer>&copy; 2026 HAMZA FAYAZ FX | ALGORITHMIC PRECISION</footer>
 
 </body>
-</html>
+                        </html>
+    
