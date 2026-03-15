@@ -20,131 +20,63 @@
             scroll-behavior: smooth;
         }
 
-        /* Brand Header */
         .brand-header {
-            width: 100%;
-            padding: 20px;
-            text-align: left;
-            font-weight: bold;
-            color: #ffd700;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            border-bottom: 1px solid rgba(255,215,0,0.1);
+            width: 100%; padding: 20px; text-align: left; font-weight: bold;
+            color: #ffd700; letter-spacing: 3px; font-size: 0.8rem;
+            text-transform: uppercase; border-bottom: 1px solid rgba(255,215,0,0.1);
         }
 
         /* Hero Section */
         .hero {
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            height: 80vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
         }
 
         .profile-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(15px);
-            padding: 40px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            max-width: 450px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px);
+            padding: 40px; border-radius: 50px; border: 1px solid rgba(255, 215, 0, 0.1);
+            max-width: 450px; box-shadow: 0 30px 60px rgba(0,0,0,0.8);
         }
 
-        .profile-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 2px solid #ffd700;
-            padding: 8px;
-            margin-bottom: 20px;
-            object-fit: cover;
-        }
-
+        .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 2px solid #ffd700; padding: 8px; margin-bottom: 20px; object-fit: cover; }
         h1 { font-size: 2.5rem; margin-bottom: 10px; }
         .premium-tag { color: #ffd700; letter-spacing: 4px; font-size: 0.8rem; }
 
-        /* Stats Section */
-        .stats-container {
-            display: flex;
-            gap: 30px;
-            margin: 50px 0;
-            flex-wrap: wrap;
-            justify-content: center;
+        /* Course Section */
+        .section-container { width: 100%; max-width: 1100px; padding: 60px 0; text-align: center; }
+        .section-title { font-size: 1.8rem; color: #ffd700; margin-bottom: 40px; letter-spacing: 3px; text-transform: uppercase; }
+
+        .course-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
+        
+        .course-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 30px; border-radius: 20px; width: 320px;
+            transition: 0.3s; position: relative; overflow: hidden;
         }
 
-        .stat-box {
-            background: rgba(255,215,0,0.05);
-            padding: 20px 40px;
-            border-radius: 15px;
-            border-left: 3px solid #ffd700;
-            text-align: center;
-        }
+        .course-card:hover { transform: translateY(-10px); background: rgba(255, 215, 0, 0.05); border-color: #ffd700; }
+        .course-card h3 { color: #ffd700; margin-bottom: 15px; font-size: 1.5rem; }
+        .price { font-size: 2rem; font-weight: bold; margin-bottom: 15px; display: block; }
+        .course-features { list-style: none; text-align: left; color: #ccc; font-size: 0.9rem; }
+        .course-features li { margin-bottom: 8px; }
+        .course-features li::before { content: "✓ "; color: #ffd700; }
 
-        .stat-box h2 { color: #ffd700; font-size: 1.8rem; }
-        .stat-box p { font-size: 0.8rem; color: #aaa; text-transform: uppercase; }
+        /* ICT Specialist Section */
+        .ict-special { background: linear-gradient(45deg, #111, #222); padding: 40px; border-radius: 30px; margin: 40px 0; border: 1px dashed #ffd700; }
+        .ict-special h2 { color: #ffd700; margin-bottom: 20px; }
+        .ict-list { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; list-style: none; }
+        .ict-item { background: #000; padding: 10px 20px; border-radius: 50px; border: 1px solid #333; font-size: 0.8rem; color: #ffd700; font-weight: bold; }
 
-        /* Gallery Section */
-        .section-container {
-            width: 100%;
-            max-width: 1100px;
-            padding: 80px 0;
-            text-align: center;
-        }
+        /* Gallery */
+        .trading-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .trading-gallery img { width: 100%; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.5s; }
 
-        .section-title {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .trading-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-        }
-
-        .trading-gallery img {
-            width: 100%;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.5s;
-        }
-
-        .trading-gallery img:hover { transform: scale(1.02); border-color: #ffd700; }
-
-        /* Contact Section */
-        .contact-card {
-            background: #ffd700;
-            color: #000;
-            padding: 40px;
-            border-radius: 30px;
-            text-align: center;
-            max-width: 600px;
-            width: 100%;
-            margin-bottom: 100px;
-        }
-
-        .contact-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 35px;
-            background: #000;
-            color: #ffd700;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .contact-btn:hover { transform: scale(1.1); background: #222; }
+        /* Footer & Contact */
+        .contact-card { background: #ffd700; color: #000; padding: 40px; border-radius: 30px; text-align: center; margin-bottom: 50px; }
+        .contact-btn { display: inline-block; margin-top: 20px; padding: 15px 35px; background: #000; color: #ffd700; text-decoration: none; border-radius: 50px; font-weight: bold; }
 
         footer { padding: 40px; color: #444; font-size: 0.8rem; }
-
     </style>
 </head>
 <body>
@@ -157,21 +89,65 @@
             <h1>Hamza Fayaz FX</h1>
             <div class="premium-tag">HDE CONCEPT ANALYST</div>
         </div>
-        
-        <div class="stats-container">
-            <div class="stat-box"><h2>85%</h2><p>Accuracy</p></div>
-            <div class="stat-box"><h2>24/7</h2><p>Market Analysis</p></div>
-            <div class="stat-box"><h2>ICT</h2><p>Methodology</p></div>
+    </section>
+
+    <section class="section-container">
+        <h2 class="section-title">Mastery Courses</h2>
+        <div class="course-grid">
+            <div class="course-card">
+                <h3>ICT Course</h3>
+                <span class="price">$300</span>
+                <ul class="course-features">
+                    <li>Market Structure Shift (MSS)</li>
+                    <li>Order Blocks & FVG</li>
+                    <li>Power of 3 (Accumulation)</li>
+                    <li>London/NY Killzones</li>
+                </ul>
+            </div>
+            <div class="course-card" style="border-width: 2px;">
+                <div style="position:absolute; top:10px; right:-30px; background:#ffd700; color:#000; padding:5px 40px; transform:rotate(45deg); font-size:0.7rem; font-weight:bold;">ELITE</div>
+                <h3>HDE Concept</h3>
+                <span class="price">$400</span>
+                <ul class="course-features">
+                    <li>Advanced HDE Strategy</li>
+                    <li>Liquidity Engineering</li>
+                    <li>High-Frequency Execution</li>
+                    <li>Personalized Mentorship</li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <section class="section-container">
-        <h2 class="section-title">Market Analysis Portfolio</h2>
+        <div class="ict-special">
+            <h2>ICT Core Specialities</h2>
+            <div class="ict-list">
+                <div class="ict-item">Daily Bias</div>
+                <div class="ict-item">IPDA Data Ranges</div>
+                <div class="ict-item">Turtle Soup</div>
+                <div class="ict-item">Judas Swing</div>
+                <div class="ict-item">Smt Divergence</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-container">
+        <h2 class="section-title">Technical Analysis</h2>
         <div class="trading-gallery">
             <img src="trade1.jpg" alt="Gold Analysis">
             <img src="trade2.jpg" alt="Silver Analysis">
         </div>
     </section>
 
-    <section class="section-
-        
+    <section class="section-container">
+        <div class="contact-card">
+            <h2>Ready to Master the Markets?</h2>
+            <p>Directly contact me for Course Enrollment and Mentorship.</p>
+            <a href="#" class="contact-btn">WHATSAPP ENROLLMENT</a>
+        </div>
+    </section>
+
+    <footer>&copy; 2026 HAMZA FAYAZ FX | TRADING WITH PRECISION</footer>
+
+</body>
+</html>
