@@ -12,12 +12,8 @@
             background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
             color: #fff;
             font-family: 'Segoe UI', Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            scroll-behavior: smooth;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh; padding: 20px; scroll-behavior: smooth;
         }
 
         .brand-header {
@@ -27,17 +23,13 @@
         }
 
         /* Hero Section */
-        .hero {
-            height: 80vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-        }
-
+        .hero { height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         .profile-card {
             background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px);
-            padding: 40px; border-radius: 50px; border: 1px solid rgba(255, 215, 0, 0.1);
+            padding: 40px; border-radius: 50px; border: 1px solid rgba(255, 215, 0, 0.2);
             max-width: 450px; box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            animation: fadeIn 1.5s ease;
         }
-
         .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 2px solid #ffd700; padding: 8px; margin-bottom: 20px; object-fit: cover; }
         h1 { font-size: 2.5rem; margin-bottom: 10px; }
         .premium-tag { color: #ffd700; letter-spacing: 4px; font-size: 0.8rem; }
@@ -45,38 +37,34 @@
         /* Course Section */
         .section-container { width: 100%; max-width: 1100px; padding: 60px 0; text-align: center; }
         .section-title { font-size: 1.8rem; color: #ffd700; margin-bottom: 40px; letter-spacing: 3px; text-transform: uppercase; }
-
         .course-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
         
         .course-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            padding: 30px; border-radius: 20px; width: 320px;
-            transition: 0.3s; position: relative; overflow: hidden;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 30px; border-radius: 20px; width: 340px; transition: 0.4s; position: relative; overflow: hidden;
         }
-
-        .course-card:hover { transform: translateY(-10px); background: rgba(255, 215, 0, 0.05); border-color: #ffd700; }
+        .course-card:hover { transform: translateY(-10px); background: rgba(255, 215, 0, 0.08); border-color: #ffd700; }
         .course-card h3 { color: #ffd700; margin-bottom: 15px; font-size: 1.5rem; }
-        .price { font-size: 2rem; font-weight: bold; margin-bottom: 15px; display: block; }
+        .price { font-size: 2.2rem; font-weight: bold; margin-bottom: 15px; display: block; color: #fff; }
         .course-features { list-style: none; text-align: left; color: #ccc; font-size: 0.9rem; }
-        .course-features li { margin-bottom: 8px; }
-        .course-features li::before { content: "✓ "; color: #ffd700; }
+        .course-features li { margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
+        .course-features li::before { content: "⚡ "; color: #ffd700; }
 
-        /* ICT Specialist Section */
-        .ict-special { background: linear-gradient(45deg, #111, #222); padding: 40px; border-radius: 30px; margin: 40px 0; border: 1px dashed #ffd700; }
-        .ict-special h2 { color: #ffd700; margin-bottom: 20px; }
+        /* ICT Specialist Bar */
+        .ict-special { background: #111; padding: 50px 20px; border-radius: 30px; margin: 40px 0; border: 1px dashed rgba(255,215,0,0.4); }
         .ict-list { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; list-style: none; }
-        .ict-item { background: #000; padding: 10px 20px; border-radius: 50px; border: 1px solid #333; font-size: 0.8rem; color: #ffd700; font-weight: bold; }
+        .ict-item { background: #000; padding: 12px 25px; border-radius: 50px; border: 1px solid #333; font-size: 0.85rem; color: #ffd700; font-weight: bold; }
 
         /* Gallery */
-        .trading-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-        .trading-gallery img { width: 100%; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.5s; }
+        .trading-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .trading-gallery img { width: 100%; border-radius: 20px; border: 1px solid rgba(255,215,0,0.1); transition: 0.5s; }
 
-        /* Footer & Contact */
-        .contact-card { background: #ffd700; color: #000; padding: 40px; border-radius: 30px; text-align: center; margin-bottom: 50px; }
-        .contact-btn { display: inline-block; margin-top: 20px; padding: 15px 35px; background: #000; color: #ffd700; text-decoration: none; border-radius: 50px; font-weight: bold; }
+        /* Contact Section */
+        .contact-card { background: linear-gradient(135deg, #ffd700, #b8860b); color: #000; padding: 50px 20px; border-radius: 40px; text-align: center; margin-bottom: 50px; }
+        .contact-btn { display: inline-block; margin-top: 25px; padding: 18px 45px; background: #000; color: #ffd700; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1rem; }
 
-        footer { padding: 40px; color: #444; font-size: 0.8rem; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        footer { padding: 40px; color: #555; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -95,24 +83,24 @@
         <h2 class="section-title">Mastery Courses</h2>
         <div class="course-grid">
             <div class="course-card">
-                <h3>ICT Course</h3>
+                <h3>ICT Advanced</h3>
                 <span class="price">$300</span>
                 <ul class="course-features">
-                    <li>Market Structure Shift (MSS)</li>
-                    <li>Order Blocks & FVG</li>
-                    <li>Power of 3 (Accumulation)</li>
-                    <li>London/NY Killzones</li>
+                    <li>Internal Range Liquidity (IRL)</li>
+                    <li>External Range Liquidity (ERL)</li>
+                    <li>MMXM (Market Maker Models)</li>
+                    <li>Rejection Blocks & Breakers</li>
                 </ul>
             </div>
-            <div class="course-card" style="border-width: 2px;">
-                <div style="position:absolute; top:10px; right:-30px; background:#ffd700; color:#000; padding:5px 40px; transform:rotate(45deg); font-size:0.7rem; font-weight:bold;">ELITE</div>
+            <div class="course-card" style="border: 2px solid #ffd700;">
+                <div style="position:absolute; top:12px; right:-35px; background:#000; color:#ffd700; padding:5px 40px; transform:rotate(45deg); font-size:0.7rem; font-weight:bold; border: 1px solid #ffd700;">ELITE</div>
                 <h3>HDE Concept</h3>
                 <span class="price">$400</span>
                 <ul class="course-features">
-                    <li>Advanced HDE Strategy</li>
-                    <li>Liquidity Engineering</li>
-                    <li>High-Frequency Execution</li>
-                    <li>Personalized Mentorship</li>
+                    <li>Proprietary Liquidity Engine</li>
+                    <li>Institutional Order Flow (IOF)</li>
+                    <li>High-Frequency Precision</li>
+                    <li>Private 1-on-1 Sessions</li>
                 </ul>
             </div>
         </div>
@@ -120,13 +108,13 @@
 
     <section class="section-container">
         <div class="ict-special">
-            <h2>ICT Core Specialities</h2>
+            <h2 style="color:#ffd700; margin-bottom:30px;">ICT Core Specialities</h2>
             <div class="ict-list">
-                <div class="ict-item">Daily Bias</div>
+                <div class="ict-item">SMT Divergence</div>
                 <div class="ict-item">IPDA Data Ranges</div>
                 <div class="ict-item">Turtle Soup</div>
-                <div class="ict-item">Judas Swing</div>
-                <div class="ict-item">Smt Divergence</div>
+                <div class="ict-item">London Killzones</div>
+                <div class="ict-item">Judas Swings</div>
             </div>
         </div>
     </section>
@@ -134,16 +122,16 @@
     <section class="section-container">
         <h2 class="section-title">Technical Analysis</h2>
         <div class="trading-gallery">
-            <img src="trade1.jpg" alt="Gold Analysis">
-            <img src="trade2.jpg" alt="Silver Analysis">
+            <img src="trade1.jpg" alt="Analysis">
+            <img src="trade2.jpg" alt="Analysis">
         </div>
     </section>
 
     <section class="section-container">
         <div class="contact-card">
-            <h2>Ready to Master the Markets?</h2>
+            <h2>Start Your Journey</h2>
             <p>Directly contact me for Course Enrollment and Mentorship.</p>
-            <a href="#" class="contact-btn">WHATSAPP ENROLLMENT</a>
+            <a href="https://wa.me/923235957001?text=Hello%20Hamza%20Fayaz%20FX,%20I%20want%20to%20enroll%20in%20your%20course." class="contact-btn">WHATSAPP ENROLLMENT</a>
         </div>
     </section>
 
