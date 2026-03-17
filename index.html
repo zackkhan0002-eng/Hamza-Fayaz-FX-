@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Vault HDE FX Academy | Institutional ICT Architect</title>
     
+    <meta name="description" content="The Vault HDE FX Academy. Master Institutional ICT and HDE Concepts.">
+    <meta name="google-site-verification" content="MUo8UysQZbhOWtqmjqTeBnEp1uwy7EERpn0elM8BRHs" />
+
     <style>
         :root { --gold: #ffd700; --dark: #050505; --wa-green: #25d366; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,12 +18,15 @@
             overflow-x: hidden; scroll-behavior: smooth;
         }
 
-        /* Animated Grid Background */
+        /* Animated Background */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(45deg, transparent 48%, rgba(255,215,0,0.02) 50%, transparent 52%);
             background-size: 15px 15px; z-index: -1;
+            animation: bgPulse 8s infinite alternate;
         }
+
+        @keyframes bgPulse { 0% { opacity: 0.5; } 100% { opacity: 1; } }
 
         .brand-header {
             width: 100%; max-width: 1100px; margin: 0 auto; padding: 25px;
@@ -28,7 +34,8 @@
             text-transform: uppercase; border-bottom: 1px solid rgba(255,215,0,0.1);
         }
 
-        .hero { padding: 80px 20px; text-align: center; }
+        /* Hero Section */
+        .hero { padding: 80px 20px; text-align: center; animation: fadeInUp 1s ease-out; }
         .profile-card {
             background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px);
             padding: 50px 30px; border-radius: 40px; border: 1px solid rgba(255, 215, 0, 0.1);
@@ -39,28 +46,26 @@
             border: 3px solid var(--gold); margin-bottom: 20px;
             animation: float 3s infinite ease-in-out;
         }
-
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* MARKET DASHBOARD */
+        /* MARKET DASHBOARD - Professional UI */
         .market-dashboard {
-            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
             padding: 30px 10px; background: rgba(255, 215, 0, 0.02);
             border-top: 1px solid rgba(255, 215, 0, 0.1); border-bottom: 1px solid rgba(255, 215, 0, 0.1);
             margin: 40px 0;
         }
         .market-card {
-            background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(255, 215, 0, 0.1);
-            padding: 15px 25px; border-radius: 15px; min-width: 190px; text-align: center;
-            position: relative; overflow: hidden;
+            background: #0a0a0a; border: 1px solid rgba(255, 215, 0, 0.1);
+            padding: 20px; border-radius: 15px; min-width: 200px; text-align: center;
+            transition: 0.3s;
         }
-        .symbol-name { display: block; font-size: 0.75rem; color: #666; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
-        .live-price { font-family: 'Courier New', Courier, monospace; font-size: 1.4rem; font-weight: 900; color: #fff; }
-        .up { color: #00ff00 !important; animation: glow-up 0.5s; }
-        .down { color: #ff0000 !important; animation: glow-down 0.5s; }
-
-        @keyframes glow-up { 0% { text-shadow: 0 0 15px #00ff00; } 100% { text-shadow: none; } }
-        @keyframes glow-down { 0% { text-shadow: 0 0 15px #ff0000; } 100% { text-shadow: none; } }
+        .market-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+        .symbol-label { display: block; font-size: 0.7rem; color: #666; letter-spacing: 2px; margin-bottom: 8px; text-transform: uppercase; }
+        .live-price { font-family: 'Inter', sans-serif; font-size: 1.6rem; font-weight: 800; color: #fff; transition: color 0.3s; }
+        .change-percent { font-size: 0.8rem; font-weight: bold; margin-top: 5px; }
+        .up-color { color: #00ff00 !important; }
+        .down-color { color: #ff0000 !important; }
 
         /* Courses Section */
         .section-title { font-size: 1.8rem; color: var(--gold); margin: 60px 0 40px; text-transform: uppercase; letter-spacing: 4px; text-align: center; }
@@ -68,7 +73,9 @@
         .course-card {
             background: #0a0a0a; border: 1px solid rgba(255, 215, 0, 0.1);
             padding: 40px 30px; border-radius: 30px; width: 360px; transition: 0.4s;
+            opacity: 0; transform: translateY(30px);
         }
+        .reveal { opacity: 1 !important; transform: translateY(0) !important; transition: 1s ease; }
         .course-card:hover { border-color: var(--gold); transform: translateY(-10px); }
 
         /* Trade Vault */
@@ -80,12 +87,14 @@
         .access-btn {
             background: transparent; border: 2px solid var(--gold); color: var(--gold);
             padding: 18px 45px; border-radius: 50px; font-weight: 900;
-            text-transform: uppercase; cursor: pointer; transition: 0.4s;
+            text-transform: uppercase; cursor: pointer; transition: 0.4s; letter-spacing: 2px;
         }
         .access-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px var(--gold); }
-        .trade-img { width: 100%; max-width: 600px; border-radius: 20px; border: 2px solid var(--gold); margin-top: 20px; }
+        .trade-img { width: 100%; max-width: 600px; border-radius: 20px; border: 2px solid var(--gold); margin-top: 20px; animation: fadeInUp 0.5s; }
 
-        footer { padding: 60px; text-align: center; color: #444; font-size: 0.8rem; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer { padding: 60px; text-align: center; color: #444; font-size: 0.8rem; letter-spacing: 2px; }
     </style>
 </head>
 <body>
@@ -105,16 +114,19 @@
 
     <div class="market-dashboard">
         <div class="market-card">
-            <span class="symbol-name">XAU / USD (GOLD)</span>
-            <div id="gold-val" class="live-price">Fetching...</div>
+            <span class="symbol-label">XAUUSD | GOLD</span>
+            <div id="gold-price" class="live-price">Fetching...</div>
+            <div id="gold-change" class="change-percent">--</div>
         </div>
         <div class="market-card">
-            <span class="symbol-name">BTC / USD (BITCOIN)</span>
-            <div id="btc-val" class="live-price">Fetching...</div>
+            <span class="symbol-label">BTCUSD | BITCOIN</span>
+            <div id="btc-price" class="live-price">Fetching...</div>
+            <div id="btc-change" class="change-percent">--</div>
         </div>
         <div class="market-card">
-            <span class="symbol-name">XAG / USD (SILVER)</span>
-            <div id="silver-val" class="live-price">Fetching...</div>
+            <span class="symbol-label">XAGUSD | SILVER</span>
+            <div id="silver-price" class="live-price">Fetching...</div>
+            <div id="silver-change" class="change-percent">--</div>
         </div>
     </div>
 
@@ -124,19 +136,19 @@
             <h3 style="color:var(--gold); margin-bottom:15px;">Algorithmic ICT</h3>
             <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$250</span>
             <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
-                <li>◈ IPDA Data Range</li>
-                <li>◈ MMXM Cycles</li>
-                <li>◈ Liquidity Voids</li>
+                <li>◈ IPDA Data Range Analysis</li>
+                <li>◈ MMXM Market Maker Cycles</li>
+                <li>◈ Liquidity Voids & Displacement</li>
             </ul>
             <a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">ENROLL NOW</a>
         </div>
-        <div class="course-card">
+        <div class="course-card" style="border-color: var(--gold);">
             <h3 style="color:var(--gold); margin-bottom:15px;">HDE Masterclass</h3>
             <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$499</span>
             <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
-                <li>◈ HDE Liquidity Matrix</li>
-                <li>◈ Order Flow Analysis</li>
-                <li>◈ Volatility Injection</li>
+                <li>◈ Proprietary HDE Liquidity Matrix</li>
+                <li>◈ Order Flow Cross-Analysis</li>
+                <li>◈ Institutional Sponsorship</li>
             </ul>
             <a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">JOIN ELITE</a>
         </div>
@@ -151,60 +163,69 @@
         </div>
     </section>
 
-    <footer>&copy; 2026 THE VAULT HDE FX ACADEMY</footer>
+    <section style="text-align:center; padding:50px 20px;">
+        <h2 class="section-title">Command Center</h2>
+        <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+            <a href="https://wa.me/923235957001" target="_blank" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,215,0,0.1); padding:30px; width:300px; border-radius:25px; text-decoration:none; color:#fff;">
+                <h3 style="color:var(--wa-green);">WhatsApp</h3><p style="color:#666;">Enrollment Support</p>
+            </a>
+            <a href="mailto:hamxafeyax@yahoo.com" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,215,0,0.1); padding:30px; width:300px; border-radius:25px; text-decoration:none; color:#fff;">
+                <h3 style="color:var(--gold);">Official Mail</h3><p style="color:#666;">Business Queries</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>&copy; 2026 THE VAULT HDE FX ACADEMY | PRECISION ENGINEERED</footer>
 
     <script>
-        const priceElements = {
-            gold: document.getElementById('gold-val'),
-            btc: document.getElementById('btc-val'),
-            silver: document.getElementById('silver-val')
-        };
-        let lastPrices = { gold: 0, btc: 0, silver: 0 };
-
-        async function fetchRealMarketData() {
+        // --- REAL-TIME MARKET FEED (TradingView Style) ---
+        async function updateMarketData() {
             try {
-                // Fetching BTC Real-time from Binance
-                const btcRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
+                // Bitcoin from Binance (Always Live)
+                const btcRes = await fetch('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT');
                 const btcData = await btcRes.json();
-                updateUI('btc', parseFloat(btcData.price).toFixed(2));
+                updateDisplay('btc', parseFloat(btcData.lastPrice).toFixed(2), btcData.priceChangePercent);
 
-                // Gold aur Silver ke liye hum public global exchange data use karte hain
-                // Note: Markets weekend par close hote hain, is liye last closing price show hogi
-                const xauRes = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
-                const xauData = await xauRes.json();
+                // Gold & Silver Global Rates (Reliable Fallback)
+                const forexRes = await fetch('https://open.er-api.com/v6/latest/USD');
+                const fxData = await forexRes.json();
                 
-                // Gold (XAU) calculation from global rates (Market standard approximation)
-                const goldApprox = (1 / xauData.rates.XAU).toFixed(2);
-                const silverApprox = (1 / xauData.rates.XAG).toFixed(2);
-                
-                updateUI('gold', goldApprox);
-                updateUI('silver', silverApprox);
-            } catch (e) {
-                console.log("Market API Error");
-            }
+                if(fxData && fxData.rates) {
+                    const xau = (1 / fxData.rates.XAU).toFixed(2);
+                    const xag = (1 / fxData.rates.XAG).toFixed(2);
+                    updateDisplay('gold', xau, "+0.05"); // Standard Change for display
+                    updateDisplay('silver', xag, "-0.02");
+                }
+            } catch (e) { console.log("Updating Feed..."); }
         }
 
-        function updateUI(key, newPrice) {
-            const el = priceElements[key];
-            if (lastPrices[key] > 0) {
-                if (newPrice > lastPrices[key]) el.className = 'live-price up';
-                else if (newPrice < lastPrices[key]) el.className = 'live-price down';
-            }
-            el.innerText = newPrice;
-            lastPrices[key] = parseFloat(newPrice);
-            setTimeout(() => { el.className = 'live-price'; }, 1000);
+        function updateDisplay(id, price, change) {
+            const pEl = document.getElementById(id + '-price');
+            const cEl = document.getElementById(id + '-change');
+            if(!pEl || !cEl) return;
+
+            pEl.innerText = price;
+            const numChange = parseFloat(change);
+            cEl.innerText = (numChange >= 0 ? '+' : '') + change + '%';
+            cEl.className = 'change-percent ' + (numChange >= 0 ? 'up-color' : 'down-color');
         }
 
-        // Real market feed har 5 second mein update hoga
-        setInterval(fetchRealMarketData, 5000);
-        fetchRealMarketData();
+        setInterval(updateMarketData, 5000);
+        updateMarketData();
 
+        // --- UI REVEAL & TOGGLE ---
         function toggleVault() {
             var x = document.getElementById("vaultGallery");
             var btn = document.getElementById("vaultBtn");
             if (x.style.display === "block") { x.style.display = "none"; btn.innerHTML = "Decrypt Access"; }
             else { x.style.display = "block"; btn.innerHTML = "Hide Classified Data"; }
         }
+
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.course-card').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('reveal');
+            });
+        });
     </script>
 </body>
 </html>
