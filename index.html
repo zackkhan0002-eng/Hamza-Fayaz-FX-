@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Vault HDE FX Academy | Institutional ICT Architect</title>
-
-<style>
+<title>The Vault HDE FX Academy | Institutional ICT Architect</title><style>
 :root{
 --gold:#ffd700;
 --dark:#050505;
@@ -37,7 +34,7 @@ z-index:-2; /* Bilkul peeche */
 pointer-events:none; /* Cards, buttons interact karein */
 }
 
-/* animated header */
+/* header */
 .brand-header{
 width:100%;
 max-width:1100px;
@@ -214,16 +211,10 @@ z-index:1;
 50%{box-shadow:0 0 25px rgba(255,215,0,0.7)}
 100%{box-shadow:0 0 5px rgba(255,215,0,0.2)}
 }
-</style>
-</head>
-<body>
+</style></head>
+<body><canvas id="candlestickCanvas"></canvas>
 
-<!-- Candlestick Canvas -->
-<canvas id="candlestickCanvas"></canvas>
-
-<div class="brand-header">THE VAULT HDE FX ACADEMY</div>
-
-<section class="hero">
+<div class="brand-header">THE VAULT HDE FX ACADEMY</div><section class="hero">
 <div class="profile-card">
 <img src="hamza.jpg" alt="Hamza Fayaz" class="profile-img">
 <div style="color:var(--gold); letter-spacing:3px; font-weight:bold; text-transform:uppercase;">
@@ -234,13 +225,7 @@ Institutional ICT Architect
 Operating at the intersection of <strong>Institutional Algorithms</strong> and <strong>Price Action Theory</strong>. Master of the <strong>ICT Framework</strong> and the proprietary <strong>HDE Concept</strong>.
 </p>
 </div>
-</section>
-
-<div class="ticker-wrap"></div>
-
-<h2 class="section-title">Institutional Curriculums</h2>
-
-<section class="course-grid">
+</section><div class="ticker-wrap"></div><h2 class="section-title">Institutional Curriculums</h2><section class="course-grid">
 <div class="course-card">
 <h3 style="color:var(--gold); margin-bottom:15px;">Algorithmic ICT</h3>
 <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$250</span>
@@ -252,9 +237,7 @@ Operating at the intersection of <strong>Institutional Algorithms</strong> and <
 <a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">
 ENROLL NOW
 </a>
-</div>
-
-<div class="course-card" style="border-color:var(--gold);">
+</div><div class="course-card" style="border-color:var(--gold);">
 <h3 style="color:var(--gold); margin-bottom:15px;">HDE Masterclass</h3>
 <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$499</span>
 <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
@@ -265,9 +248,7 @@ ENROLL NOW
 <a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">
 JOIN ELITE
 </a>
-</div>
-
-<div class="course-card yt-card">
+</div><div class="course-card yt-card">
 <h3 style="color:#ff0000; margin-bottom:15px;">Free Academy</h3>
 <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">FREE</span>
 <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
@@ -279,18 +260,13 @@ JOIN ELITE
 SUBSCRIBE
 </a>
 </div>
-</section>
-
-<section class="trade-vault-card">
+</section><section class="trade-vault-card">
 <h2 style="color:var(--gold); letter-spacing:5px; margin-bottom:20px;">THE EXECUTION VAULT</h2>
 <button class="access-btn" id="vaultBtn">Decrypt Access</button>
 <div id="vaultGallery" style="display:none;margin-top:40px;">
 <img src="trade1.jpg" alt="Trade" style="width:100%;border-radius:20px;border:1px solid var(--gold);">
 </div>
-</section>
-
-<h2 class="section-title">Command Center</h2>
-
+</section><h2 class="section-title">Command Center</h2>
 <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding-bottom:50px;">
 <a href="https://wa.me/923235957001" class="contact-card">
 <h3 style="color:var(--wa-green); margin-bottom:10px;">WhatsApp</h3>
@@ -300,11 +276,7 @@ SUBSCRIBE
 <h3 style="color:var(--gold); margin-bottom:10px;">Email</h3>
 <p style="color:#ccc;">Institutional Queries</p>
 </a>
-</div>
-
-<footer>© 2026 THE VAULT HDE FX ACADEMY</footer>
-
-<script>
+</div><footer>© 2026 THE VAULT HDE FX ACADEMY</footer><script>
 // Toggle Vault Picture
 document.getElementById("vaultBtn").addEventListener("click",function(){
 let g=document.getElementById("vaultGallery");
@@ -312,49 +284,42 @@ if(g.style.display==="block"){ g.style.display="none"; this.innerText="Decrypt A
 else{ g.style.display="block"; this.innerText="Hide Classified Data"; }
 });
 
-// Candlestick Background Animation
+// Professional Candlestick Background
 const canvas=document.getElementById("candlestickCanvas");
 const ctx=canvas.getContext("2d");
 let width=canvas.width=window.innerWidth;
 let height=canvas.height=window.innerHeight;
 
-window.addEventListener("resize",()=>{width=canvas.width=window.innerWidth;height=canvas.height=window.innerHeight;})
+window.addEventListener("resize",()=>{width=canvas.width=window.innerWidth;height=canvas.height=window.innerHeight;initCandles();});
 
 let candles=[];
-const candleCount=Math.floor(width/20);
+let candleWidth=12;
+let candleGap=8;
 
-for(let i=0;i<candleCount;i++){
-let x=i*20;
-let high=Math.random()*150+50;
-let low=Math.random()*50;
-let open=Math.random()*(high-low)+low;
-let close=Math.random()*(high-low)+low;
-let color=open<close?"rgba(0,200,0,0.2)":"rgba(200,0,0,0.2)";
-candles.push({x,high,low,open,close,color});
+function initCandles(){
+candles=[];
+let count=Math.floor(width/(candleWidth+candleGap));
+for(let i=0;i<count;i++){
+let x=i*(candleWidth+candleGap);
+let baseHeight=Math.random()*150+50;
+candles.push({x,height:baseHeight,delta:(Math.random()*2-1)*0.5,color:Math.random()>0.5?"rgba(0,200,0,0.2)":"rgba(200,0,0,0.2)"});
 }
+}
+initCandles();
 
 function drawCandles(){
 ctx.clearRect(0,0,width,height);
 candles.forEach(c=>{
-ctx.strokeStyle=c.color;
-ctx.beginPath();
-ctx.moveTo(c.x,height-c.low);
-ctx.lineTo(c.x,height-c.high);
-ctx.stroke();
-
 ctx.fillStyle=c.color;
-ctx.fillRect(c.x-4,height-c.open,8,height-(height-c.close)-(height-c.open));
+ctx.fillRect(c.x,height-c.height,candleWidth,c.height);
 });
 }
 
 function updateCandles(){
 candles.forEach(c=>{
-let delta=Math.random()*4-2;
-c.open+=delta;c.close+=delta;c.high+=delta;c.low+=delta;
-if(c.high>height*0.9)c.high=height*0.9;
-if(c.low<10)c.low=10;
-if(c.open>height*0.9)c.open=height*0.9;
-if(c.close>height*0.9)c.close=height*0.9;
+c.height+=c.delta;
+if(c.height>200)c.delta=-Math.abs(c.delta);
+if(c.height<30)c.delta=Math.abs(c.delta);
 });
 }
 
@@ -364,7 +329,5 @@ drawCandles();
 requestAnimationFrame(animate);
 }
 animate();
-</script>
-
-</body>
+</script></body>
 </html>
