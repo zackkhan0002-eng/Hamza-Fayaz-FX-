@@ -33,73 +33,61 @@
             border-bottom: 1px solid rgba(255,215,0,0.1);
         }
 
-        /* Animations */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .hero { padding: 100px 20px; text-align: center; animation: fadeInUp 1s ease-out; }
-        
+        /* Hero Section */
+        .hero { padding: 80px 20px; text-align: center; animation: fadeInUp 1s ease-out; }
         .profile-card {
             background: var(--card-bg); backdrop-filter: blur(20px);
-            padding: 50px 30px; border-radius: 40px; border: 1px solid rgba(255, 215, 0, 0.15);
+            padding: 40px 30px; border-radius: 40px; border: 1px solid rgba(255, 215, 0, 0.15);
             max-width: 600px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
-        
-        .profile-img { width: 170px; height: 170px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 25px; transition: 0.5s; }
-        .profile-img:hover { transform: scale(1.05); }
-
-        .premium-tag { color: var(--gold); letter-spacing: 5px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; }
-        h1 { font-size: 2.8rem; margin-bottom: 10px; }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 20px; }
+        .premium-tag { color: var(--gold); letter-spacing: 5px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
 
         /* Courses Section */
         .section-title { font-size: 1.8rem; color: var(--gold); margin: 60px 0 40px; text-transform: uppercase; letter-spacing: 4px; text-align: center; }
-        
-        .course-grid { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .course-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
         .course-card {
             background: #0a0a0a; border: 1px solid rgba(255, 215, 0, 0.1);
-            padding: 45px 35px; border-radius: 30px; width: 480px; transition: 0.4s;
-            animation: fadeInUp 1.2s ease;
+            padding: 40px 30px; border-radius: 30px; width: 360px; transition: 0.4s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .course-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 10px 30px rgba(255,215,0,0.05); }
-        .course-card h3 { color: var(--gold); margin-bottom: 15px; font-size: 1.6rem; }
-        .price { font-size: 3.2rem; font-weight: 900; margin-bottom: 25px; display: block; }
+        .course-card:hover { transform: translateY(-10px); border-color: var(--gold); }
+        .course-card h3 { color: var(--gold); margin-bottom: 15px; font-size: 1.4rem; text-transform: uppercase; }
+        .price { font-size: 2.8rem; font-weight: 900; margin-bottom: 20px; display: block; }
 
-        .course-features { list-style: none; text-align: left; }
-        .course-features li { margin-bottom: 15px; color: #ccc; font-size: 1.05rem; }
-        .course-features li::before { content: "◈"; color: var(--gold); margin-right: 12px; }
+        .course-features { list-style: none; text-align: left; margin-bottom: 25px; }
+        .course-features li { margin-bottom: 12px; color: #ccc; font-size: 0.95rem; }
+        .course-features li::before { content: "◈"; color: var(--gold); margin-right: 10px; }
 
-        /* YouTube Section */
-        .youtube-box { margin: 60px auto; max-width: 800px; text-align: center; padding: 40px; border-radius: 30px; background: rgba(255, 0, 0, 0.05); border: 1px solid rgba(255,0,0,0.1); }
-        .yt-btn { display: inline-block; background: #ff0000; color: #fff; padding: 15px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 15px; transition: 0.3s; }
-        .yt-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,0,0,0.3); }
+        /* Custom Course Buttons */
+        .card-btn { display: block; padding: 15px; text-align: center; text-decoration: none; border-radius: 10px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        .yt-card-btn { background: #ff0000; color: #fff; }
+        .enroll-card-btn { background: var(--gold); color: #000; }
+        .card-btn:hover { opacity: 0.8; transform: scale(1.02); }
 
-        /* Trade Gallery (Professional Look at Bottom) */
+        /* Trade Gallery */
         .trade-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; padding: 40px 20px; }
-        .trade-img { 
-            width: 500px; height: 300px; object-fit: cover; border-radius: 20px; 
-            border: 1px solid rgba(255,215,0,0.1); transition: 0.5s; 
-        }
-        .trade-img:hover { transform: scale(1.03); border-color: var(--gold); }
+        .trade-img { width: 480px; height: 280px; object-fit: cover; border-radius: 20px; border: 1px solid rgba(255,215,0,0.1); }
 
         /* Contact Section */
-        .contact-section { background: var(--gold); color: #000; padding: 80px 20px; text-align: center; width: 100%; }
-        .btn-group { display: flex; flex-direction: column; gap: 15px; align-items: center; margin-top: 25px; }
-        .contact-btn { 
-            width: 300px; padding: 18px; text-decoration: none; border-radius: 50px; 
-            font-weight: 800; text-transform: uppercase; transition: 0.3s;
-        }
+        .contact-section { background: var(--gold); color: #000; padding: 80px 20px; text-align: center; width: 100%; margin-top: 60px; }
+        .btn-group { display: flex; flex-direction: row; gap: 20px; justify-content: center; margin-top: 30px; }
+        .contact-btn { padding: 18px 40px; text-decoration: none; border-radius: 50px; font-weight: 900; text-transform: uppercase; transition: 0.3s; font-size: 1rem; }
         .wa-btn { background: #000; color: var(--gold); }
         .mail-btn { background: transparent; border: 2px solid #000; color: #000; }
-        .contact-btn:hover { transform: translateY(-3px); opacity: 0.9; }
+        .contact-btn:hover { transform: scale(1.05); }
 
-        /* Mobile Adjustments */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
         @media (max-width: 768px) {
             .course-card, .trade-img { width: 100%; }
-            h1 { font-size: 2.2rem; }
-            .price { font-size: 2.6rem; }
+            .btn-group { flex-direction: column; }
+            .contact-btn { width: 100%; }
         }
 
-        footer { padding: 50px; text-align: center; color: #444; font-size: 0.8rem; }
+        footer { padding: 50px; text-align: center; color: #444; font-size: 0.8rem; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -111,12 +99,24 @@
             <img src="hamza.jpg" alt="Hamza Fayaz" class="profile-img">
             <div class="premium-tag">Institutional Analyst</div>
             <h1>Hamza Fayaz</h1>
-            <p style="color: #888; line-height: 1.6;">Merging Institutional Algorithms with Price Action Theory via the HDE Concept.</p>
+            <p style="color: #888; line-height: 1.6;">Precision engineered through the HDE Concept and Institutional Algorithms.</p>
         </div>
     </section>
 
-    <h2 class="section-title">Programs</h2>
+    <h2 class="section-title">Institutional Curriculums</h2>
     <section class="course-grid">
+        <div class="course-card" style="border-color: rgba(255,0,0,0.3);">
+            <h3>Free Academy</h3>
+            <span class="price">FREE</span>
+            <ul class="course-features">
+                <li>Weekly Market Breakdowns</li>
+                <li>MMXM Execution Logs</li>
+                <li>Live Psychology Sessions</li>
+                <li>Core ICT Basics</li>
+            </ul>
+            <a href="https://youtube.com/@HamzaFayazFX" target="_blank" class="card-btn yt-card-btn">Start Free Classes</a>
+        </div>
+
         <div class="course-card">
             <h3>Algorithmic ICT</h3>
             <span class="price">$250</span>
@@ -124,27 +124,23 @@
                 <li>IPDA Data Range Analysis</li>
                 <li>MMXM Market Maker Cycles</li>
                 <li>Liquidity Voids & Displacement</li>
-                <li>Internal-to-External Range Expansion</li>
+                <li>Internal-to-External Range</li>
             </ul>
+            <a href="https://wa.me/923235957001" target="_blank" class="card-btn enroll-card-btn">Enroll Now</a>
         </div>
 
-        <div class="course-card">
+        <div class="course-card" style="border-color: var(--gold);">
             <h3>HDE Masterclass</h3>
             <span class="price">$499</span>
             <ul class="course-features">
                 <li>Proprietary HDE Liquidity Matrix</li>
-                <li>Order Flow Cross-Fractional Analysis</li>
+                <li>Order Flow Cross-Analysis</li>
                 <li>Volatility Injection Points</li>
-                <li>Institutional Sponsorship Decoding</li>
+                <li>Institutional Sponsorship</li>
             </ul>
+            <a href="https://wa.me/923235957001" target="_blank" class="card-btn enroll-card-btn">Join Elite</a>
         </div>
     </section>
-
-    <div class="youtube-box">
-        <h3 style="color: #fff; text-transform: uppercase;">Free Trading Vault</h3>
-        <p style="color: #888;">Weekly Analysis & Execution Logs</p>
-        <a href="https://youtube.com/@HamzaFayazFX" target="_blank" class="yt-btn">SUBSCRIBE NOW</a>
-    </div>
 
     <h2 class="section-title">Institutional Execution</h2>
     <section class="trade-grid">
@@ -153,15 +149,15 @@
     </section>
 
     <section class="contact-section">
-        <h2 style="text-transform: uppercase; font-weight: 900;">Enter the Vault</h2>
+        <h2 style="text-transform: uppercase; font-weight: 900;">Direct Access</h2>
         <div class="btn-group">
-            <a href="https://wa.me/923235957001" target="_blank" class="contact-btn wa-btn">WhatsApp Enrollment</a>
-            <a href="mailto:hamxafeyax@yahoo.com" class="contact-btn mail-btn">Email Inquiry</a>
+            <a href="https://wa.me/923235957001" target="_blank" class="contact-btn wa-btn">WhatsApp</a>
+            <a href="mailto:hamxafeyax@yahoo.com" class="contact-btn mail-btn">Email</a>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 THE VAULT HDE FX ACADEMY | ENGINEERED FOR PRECISION
+        &copy; 2026 THE VAULT HDE FX ACADEMY | ALL RIGHTS RESERVED
     </footer>
 
 </body>
