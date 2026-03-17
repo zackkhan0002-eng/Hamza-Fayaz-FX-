@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Vault HDE FX Academy | Institutional ICT Architect</title>
     
-    <meta name="description" content="The Vault HDE FX Academy. Master Institutional ICT and HDE Concepts.">
-    <meta name="google-site-verification" content="MUo8UysQZbhOWtqmjqTeBnEp1uwy7EERpn0elM8BRHs" />
-
     <style>
         :root { --gold: #ffd700; --dark: #050505; --wa-green: #25d366; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,10 +20,7 @@
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(45deg, transparent 48%, rgba(255,215,0,0.02) 50%, transparent 52%);
             background-size: 15px 15px; z-index: -1;
-            animation: bgPulse 8s infinite alternate;
         }
-
-        @keyframes bgPulse { 0% { opacity: 0.5; } 100% { opacity: 1; } }
 
         .brand-header {
             width: 100%; max-width: 1100px; margin: 0 auto; padding: 25px;
@@ -34,12 +28,11 @@
             text-transform: uppercase; border-bottom: 1px solid rgba(255,215,0,0.1);
         }
 
-        /* Hero Section */
-        .hero { padding: 80px 20px; text-align: center; animation: fadeInUp 1s ease-out; }
+        .hero { padding: 60px 20px; text-align: center; }
         .profile-card {
             background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px);
             padding: 50px 30px; border-radius: 40px; border: 1px solid rgba(255, 215, 0, 0.1);
-            max-width: 650px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            max-width: 650px; margin: 0 auto;
         }
         .profile-img { 
             width: 150px; height: 150px; border-radius: 50%; 
@@ -48,53 +41,38 @@
         }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* MARKET DASHBOARD - Professional UI */
-        .market-dashboard {
-            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
-            padding: 30px 10px; background: rgba(255, 215, 0, 0.02);
-            border-top: 1px solid rgba(255, 215, 0, 0.1); border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-            margin: 40px 0;
+        /* REAL TRADINGVIEW TICKER */
+        .ticker-container {
+            width: 100%;
+            background: #000;
+            border-top: 1px solid rgba(255,215,0,0.1);
+            border-bottom: 1px solid rgba(255,215,0,0.1);
+            margin: 20px 0;
         }
-        .market-card {
-            background: #0a0a0a; border: 1px solid rgba(255, 215, 0, 0.1);
-            padding: 20px; border-radius: 15px; min-width: 200px; text-align: center;
-            transition: 0.3s;
-        }
-        .market-card:hover { border-color: var(--gold); transform: translateY(-3px); }
-        .symbol-label { display: block; font-size: 0.7rem; color: #666; letter-spacing: 2px; margin-bottom: 8px; text-transform: uppercase; }
-        .live-price { font-family: 'Inter', sans-serif; font-size: 1.6rem; font-weight: 800; color: #fff; transition: color 0.3s; }
-        .change-percent { font-size: 0.8rem; font-weight: bold; margin-top: 5px; }
-        .up-color { color: #00ff00 !important; }
-        .down-color { color: #ff0000 !important; }
 
-        /* Courses Section */
+        /* Courses & YouTube Grid */
         .section-title { font-size: 1.8rem; color: var(--gold); margin: 60px 0 40px; text-transform: uppercase; letter-spacing: 4px; text-align: center; }
         .course-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .course-card {
             background: #0a0a0a; border: 1px solid rgba(255, 215, 0, 0.1);
             padding: 40px 30px; border-radius: 30px; width: 360px; transition: 0.4s;
-            opacity: 0; transform: translateY(30px);
         }
-        .reveal { opacity: 1 !important; transform: translateY(0) !important; transition: 1s ease; }
         .course-card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .yt-card { border-color: #ff0000; }
 
-        /* Trade Vault */
         .trade-vault-card {
-            max-width: 800px; margin: 80px auto; background: #050505;
+            max-width: 800px; margin: 60px auto; background: #050505;
             border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 35px; padding: 50px;
-            text-align: center; position: relative;
+            text-align: center;
         }
         .access-btn {
             background: transparent; border: 2px solid var(--gold); color: var(--gold);
             padding: 18px 45px; border-radius: 50px; font-weight: 900;
-            text-transform: uppercase; cursor: pointer; transition: 0.4s; letter-spacing: 2px;
+            text-transform: uppercase; cursor: pointer; transition: 0.4s;
         }
-        .access-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px var(--gold); }
-        .trade-img { width: 100%; max-width: 600px; border-radius: 20px; border: 2px solid var(--gold); margin-top: 20px; animation: fadeInUp 0.5s; }
+        .access-btn:hover { background: var(--gold); color: #000; }
 
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        footer { padding: 60px; text-align: center; color: #444; font-size: 0.8rem; letter-spacing: 2px; }
+        footer { padding: 60px; text-align: center; color: #444; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -112,45 +90,58 @@
         </div>
     </section>
 
-    <div class="market-dashboard">
-        <div class="market-card">
-            <span class="symbol-label">XAUUSD | GOLD</span>
-            <div id="gold-price" class="live-price">Fetching...</div>
-            <div id="gold-change" class="change-percent">--</div>
+    <div class="ticker-container">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+            {
+            "symbols": [
+                { "proName": "FOREXCOM:XAUUSD", "title": "Gold" },
+                { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
+                { "proName": "FOREXCOM:XAGUSD", "title": "Silver" }
+            ],
+            "colorTheme": "dark",
+            "isTransparent": true,
+            "showSymbolLogo": true,
+            "locale": "en"
+            }
+            </script>
         </div>
-        <div class="market-card">
-            <span class="symbol-label">BTCUSD | BITCOIN</span>
-            <div id="btc-price" class="live-price">Fetching...</div>
-            <div id="btc-change" class="change-percent">--</div>
         </div>
-        <div class="market-card">
-            <span class="symbol-label">XAGUSD | SILVER</span>
-            <div id="silver-price" class="live-price">Fetching...</div>
-            <div id="silver-change" class="change-percent">--</div>
-        </div>
-    </div>
 
     <h2 class="section-title">Institutional Curriculums</h2>
     <section class="course-grid">
         <div class="course-card">
             <h3 style="color:var(--gold); margin-bottom:15px;">Algorithmic ICT</h3>
             <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$250</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
-                <li>◈ IPDA Data Range Analysis</li>
-                <li>◈ MMXM Market Maker Cycles</li>
-                <li>◈ Liquidity Voids & Displacement</li>
+            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:15px;">
+                <li>◈ IPDA Data Range</li>
+                <li>◈ MMXM Cycles</li>
+                <li>◈ Liquidity Voids</li>
             </ul>
             <a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">ENROLL NOW</a>
         </div>
-        <div class="course-card" style="border-color: var(--gold);">
+
+        <div class="course-card">
             <h3 style="color:var(--gold); margin-bottom:15px;">HDE Masterclass</h3>
             <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$499</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
-                <li>◈ Proprietary HDE Liquidity Matrix</li>
-                <li>◈ Order Flow Cross-Analysis</li>
-                <li>◈ Institutional Sponsorship</li>
+            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:15px;">
+                <li>◈ HDE Liquidity Matrix</li>
+                <li>◈ Order Flow Analysis</li>
+                <li>◈ Volatility Injection</li>
             </ul>
             <a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">JOIN ELITE</a>
+        </div>
+
+        <div class="course-card yt-card">
+            <h3 style="color:#ff0000; margin-bottom:15px;">Free Academy</h3>
+            <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">FREE</span>
+            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:15px;">
+                <li>◈ Weekly Breakdowns</li>
+                <li>◈ Execution Logs</li>
+                <li>◈ Live Psychology</li>
+            </ul>
+            <a href="https://youtube.com/@HamzaFayazFX" style="display:block; background:#ff0000; color:#fff; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">SUBSCRIBE</a>
         </div>
     </section>
 
@@ -158,74 +149,19 @@
         <h2 style="color: var(--gold); letter-spacing: 5px; margin-bottom: 20px;">THE EXECUTION VAULT</h2>
         <button class="access-btn" onclick="toggleVault()" id="vaultBtn">Decrypt Access</button>
         <div id="vaultGallery" style="display:none; margin-top:40px;">
-            <img src="trade1.jpg" alt="Trade 1" class="trade-img">
-            <img src="trade2.jpg" alt="Trade 2" class="trade-img">
+            <img src="trade1.jpg" alt="Trade 1" class="trade-img" style="width:100%; border-radius:20px;">
         </div>
     </section>
 
-    <section style="text-align:center; padding:50px 20px;">
-        <h2 class="section-title">Command Center</h2>
-        <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-            <a href="https://wa.me/923235957001" target="_blank" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,215,0,0.1); padding:30px; width:300px; border-radius:25px; text-decoration:none; color:#fff;">
-                <h3 style="color:var(--wa-green);">WhatsApp</h3><p style="color:#666;">Enrollment Support</p>
-            </a>
-            <a href="mailto:hamxafeyax@yahoo.com" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,215,0,0.1); padding:30px; width:300px; border-radius:25px; text-decoration:none; color:#fff;">
-                <h3 style="color:var(--gold);">Official Mail</h3><p style="color:#666;">Business Queries</p>
-            </a>
-        </div>
-    </section>
-
-    <footer>&copy; 2026 THE VAULT HDE FX ACADEMY | PRECISION ENGINEERED</footer>
+    <footer>&copy; 2026 THE VAULT HDE FX ACADEMY</footer>
 
     <script>
-        // --- REAL-TIME MARKET FEED (TradingView Style) ---
-        async function updateMarketData() {
-            try {
-                // Bitcoin from Binance (Always Live)
-                const btcRes = await fetch('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT');
-                const btcData = await btcRes.json();
-                updateDisplay('btc', parseFloat(btcData.lastPrice).toFixed(2), btcData.priceChangePercent);
-
-                // Gold & Silver Global Rates (Reliable Fallback)
-                const forexRes = await fetch('https://open.er-api.com/v6/latest/USD');
-                const fxData = await forexRes.json();
-                
-                if(fxData && fxData.rates) {
-                    const xau = (1 / fxData.rates.XAU).toFixed(2);
-                    const xag = (1 / fxData.rates.XAG).toFixed(2);
-                    updateDisplay('gold', xau, "+0.05"); // Standard Change for display
-                    updateDisplay('silver', xag, "-0.02");
-                }
-            } catch (e) { console.log("Updating Feed..."); }
-        }
-
-        function updateDisplay(id, price, change) {
-            const pEl = document.getElementById(id + '-price');
-            const cEl = document.getElementById(id + '-change');
-            if(!pEl || !cEl) return;
-
-            pEl.innerText = price;
-            const numChange = parseFloat(change);
-            cEl.innerText = (numChange >= 0 ? '+' : '') + change + '%';
-            cEl.className = 'change-percent ' + (numChange >= 0 ? 'up-color' : 'down-color');
-        }
-
-        setInterval(updateMarketData, 5000);
-        updateMarketData();
-
-        // --- UI REVEAL & TOGGLE ---
         function toggleVault() {
             var x = document.getElementById("vaultGallery");
             var btn = document.getElementById("vaultBtn");
             if (x.style.display === "block") { x.style.display = "none"; btn.innerHTML = "Decrypt Access"; }
             else { x.style.display = "block"; btn.innerHTML = "Hide Classified Data"; }
         }
-
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.course-card').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('reveal');
-            });
-        });
     </script>
 </body>
 </html>
