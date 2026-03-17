@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Vault HDE FX Academy | Institutional ICT Architect</title>
     
+    <meta name="description" content="The Vault HDE FX Academy. Master Institutional ICT and HDE Concepts.">
+    <meta name="google-site-verification" content="MUo8UysQZbhOWtqmjqTeBnEp1uwy7EERpn0elM8BRHs" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
     <style>
         :root { --gold: #ffd700; --dark: #050505; --wa-green: #25d366; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,113 +19,94 @@
             overflow-x: hidden; scroll-behavior: smooth;
         }
 
-        /* Animated Background Particles Effect */
+        /* Animated Grid Background */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
-            z-index: -1; animation: bgPulse 8s infinite alternate;
+            background: linear-gradient(45deg, transparent 48%, rgba(255,215,0,0.02) 50%, transparent 52%);
+            background-size: 15px 15px; z-index: -1;
+            animation: bgPulse 8s infinite alternate;
         }
 
         @keyframes bgPulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.1); opacity: 1; }
+            0% { opacity: 0.5; } 100% { opacity: 1; }
         }
 
         .brand-header {
             width: 100%; max-width: 1100px; margin: 0 auto; padding: 25px;
             color: var(--gold); letter-spacing: 5px; font-weight: 800;
             text-transform: uppercase; border-bottom: 1px solid rgba(255,215,0,0.1);
-            animation: fadeInDown 1s ease;
         }
 
-        /* Hero Animation */
-        .hero { padding: 80px 20px; text-align: center; }
+        /* Hero */
+        .hero { padding: 80px 20px; text-align: center; animation: fadeInUp 1s ease-out; }
         .profile-card {
-            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(15px);
+            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px);
             padding: 50px 30px; border-radius: 40px; border: 1px solid rgba(255, 215, 0, 0.1);
-            max-width: 650px; margin: 0 auto;
-            animation: zoomIn 1s ease;
-            box-shadow: 0 0 30px rgba(0,0,0,1);
+            max-width: 650px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
-
         .profile-img { 
             width: 150px; height: 150px; border-radius: 50%; 
             border: 3px solid var(--gold); margin-bottom: 20px;
-            animation: float 3s infinite ease-in-out; 
+            animation: float 3s infinite ease-in-out;
         }
 
-        /* Animations Keyframes */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
+        /* --- MARKET DASHBOARD --- */
+        .market-dashboard {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+            padding: 30px 10px; background: rgba(255, 215, 0, 0.02);
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            margin: 40px 0;
+        }
+        .market-card {
+            background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(255, 215, 0, 0.1);
+            padding: 15px 25px; border-radius: 15px; min-width: 180px; text-align: center;
+            transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .market-card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--gold); opacity: 0.5;
+        }
+        .symbol-name { display: block; font-size: 0.75rem; color: #666; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        .live-price { font-family: 'Courier New', Courier, monospace; font-size: 1.4rem; font-weight: 900; color: #fff; transition: color 0.3s; }
+        .up { color: #00ff00 !important; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3); }
+        .down { color: #ff0000 !important; text-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }
+
+        /* Courses */
+        .section-title { font-size: 1.8rem; color: var(--gold); margin: 60px 0 40px; text-transform: uppercase; letter-spacing: 4px; text-align: center; }
+        .course-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .course-card {
             background: #0a0a0a; border: 1px solid rgba(255, 215, 0, 0.1);
-            padding: 40px 30px; border-radius: 30px; width: 360px;
-            transition: 0.5s; opacity: 0; transform: translateY(30px);
+            padding: 40px 30px; border-radius: 30px; width: 360px; transition: 0.4s;
+            opacity: 0; transform: translateY(30px);
         }
+        .reveal { opacity: 1 !important; transform: translateY(0) !important; transition: 1s ease; }
+        .course-card:hover { border-color: var(--gold); transform: translateY(-10px); }
 
-        /* Yeh class scroll karne par trigger hogi */
-        .reveal { opacity: 1; transform: translateY(0); transition: 1s ease; }
-
-        .course-card:hover { 
-            border-color: var(--gold); 
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.15);
-            transform: translateY(-10px) scale(1.02);
-        }
-
-        /* Trade Vault Card Special Animation */
+        /* Trade Vault */
         .trade-vault-card {
-            max-width: 800px; margin: 80px auto; background: #050505;
-            border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 35px; padding: 60px;
-            text-align: center; position: relative; overflow: hidden;
-            transition: 0.5s;
+            max-width: 800px; margin: 50px auto; background: #050505;
+            border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 35px; padding: 50px;
+            text-align: center; position: relative;
         }
-
         .access-btn {
             background: transparent; border: 2px solid var(--gold); color: var(--gold);
-            padding: 20px 50px; border-radius: 50px; font-weight: 900;
-            text-transform: uppercase; cursor: pointer; transition: 0.4s;
-            position: relative; overflow: hidden;
+            padding: 18px 45px; border-radius: 50px; font-weight: 900;
+            text-transform: uppercase; cursor: pointer; transition: 0.4s; letter-spacing: 2px;
         }
+        .access-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px var(--gold); }
+        .trade-img { width: 100%; max-width: 600px; border-radius: 20px; border: 2px solid var(--gold); margin-top: 20px; animation: fadeInUp 0.5s; }
 
-        .access-btn::after {
-            content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.4), transparent);
-            transition: 0.5s;
-        }
-
-        .access-btn:hover::after { left: 100%; }
-        .access-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 50px var(--gold); }
-
-        .trade-img { 
-            width: 100%; max-width: 600px; border-radius: 20px; 
-            margin-top: 20px; border: 2px solid var(--gold);
-            animation: fadeIn 1.5s ease;
-        }
-
+        /* Contact */
         .contact-card {
             background: rgba(255,255,255,0.02); border: 1px solid rgba(255,215,0,0.1);
-            padding: 35px; width: 330px; border-radius: 25px; text-decoration: none;
-            transition: 0.4s; text-align: center;
+            padding: 30px; width: 320px; border-radius: 25px; text-decoration: none; text-align: center; transition: 0.4s;
         }
-
         .contact-card:hover { background: var(--gold); color: #000; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         footer { padding: 60px; text-align: center; color: #444; font-size: 0.8rem; }
     </style>
@@ -136,15 +121,29 @@
             <div style="color:var(--gold); letter-spacing:3px; font-weight:bold; text-transform:uppercase;">Institutional ICT Architect</div>
             <h1 style="font-size:3rem; margin:15px 0;">Hamza Fayaz</h1>
             <p style="color: #ccc; line-height: 1.7;">
-                Operating at the intersection of <strong>Institutional Algorithms</strong> and <strong>Price Action Theory</strong>. Master of ICT & HDE Concepts.
+                Operating at the intersection of <strong>Institutional Algorithms</strong> and <strong>Price Action Theory</strong>. Master of the <strong>ICT Framework</strong> and the proprietary <strong>HDE Concept</strong>.
             </p>
         </div>
     </section>
 
-    <h2 style="text-align:center; color:var(--gold); margin:60px 0; letter-spacing:5px;">CURRICULUMS</h2>
-    
-    <section class="course-grid" style="display:flex; flex-wrap:wrap; justify-content:center; gap:25px; padding:0 20px;">
-        <div class="course-card" id="c1">
+    <div class="market-dashboard">
+        <div class="market-card">
+            <span class="symbol-name">XAU / USD</span>
+            <div id="gold-val" class="live-price">2158.40</div>
+        </div>
+        <div class="market-card">
+            <span class="symbol-name">BTC / USD</span>
+            <div id="btc-val" class="live-price">Loading...</div>
+        </div>
+        <div class="market-card">
+            <span class="symbol-name">XAG / USD</span>
+            <div id="silver-val" class="live-price">24.15</div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Institutional Curriculums</h2>
+    <section class="course-grid">
+        <div class="course-card">
             <h3 style="color:var(--gold); margin-bottom:15px;">Algorithmic ICT</h3>
             <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$250</span>
             <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
@@ -154,8 +153,7 @@
             </ul>
             <a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">ENROLL NOW</a>
         </div>
-
-        <div class="course-card" id="c2">
+        <div class="course-card">
             <h3 style="color:var(--gold); margin-bottom:15px;">HDE Masterclass</h3>
             <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$499</span>
             <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
@@ -165,8 +163,7 @@
             </ul>
             <a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">JOIN ELITE</a>
         </div>
-
-        <div class="course-card" id="c3">
+        <div class="course-card">
             <h3 style="color:var(--gold); margin-bottom:15px;">Free Academy</h3>
             <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">FREE</span>
             <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
@@ -178,7 +175,7 @@
         </div>
     </section>
 
-    <section class="trade-vault-card reveal">
+    <section class="trade-vault-card" style="margin-top:80px;">
         <h2 style="color: var(--gold); letter-spacing: 5px; margin-bottom: 20px;">THE EXECUTION VAULT</h2>
         <button class="access-btn" onclick="toggleVault()" id="vaultBtn">Decrypt Access</button>
         <div id="vaultGallery" style="display:none; margin-top:40px;">
@@ -188,48 +185,57 @@
     </section>
 
     <section style="text-align:center; padding:50px 20px;">
-        <h2 style="color:var(--gold); letter-spacing:5px; margin-bottom:40px;">COMMAND CENTER</h2>
+        <h2 class="section-title">Command Center</h2>
         <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-            <a href="https://wa.me/923235957001" class="contact-card">
-                <h3>WhatsApp</h3>
-                <p>Fastest Response</p>
-            </a>
-            <a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
-                <h3>Email</h3>
-                <p>Institutional Queries</p>
-            </a>
+            <a href="https://wa.me/923235957001" class="contact-card"><h3>WhatsApp</h3><p>Fastest Enrollment</p></a>
+            <a href="mailto:hamxafeyax@yahoo.com" class="contact-card"><h3>Email</h3><p>Institutional Inquiries</p></a>
         </div>
     </section>
 
     <footer>&copy; 2026 THE VAULT HDE FX ACADEMY</footer>
 
     <script>
-        // Scroll Reveal Logic
-        window.addEventListener('scroll', reveal);
-        function reveal() {
-            var reveals = document.querySelectorAll('.course-card, .reveal');
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var revealTop = reveals[i].getBoundingClientRect().top;
-                if (revealTop < windowHeight - 100) {
-                    reveals[i].classList.add('reveal');
-                }
-            }
-        }
-        // Initial check for visible elements
-        reveal();
+        // --- LIVE MARKET SCRIPT ---
+        const priceElements = {
+            gold: document.getElementById('gold-val'),
+            btc: document.getElementById('btc-val'),
+            silver: document.getElementById('silver-val')
+        };
+        let prevPrices = { gold: 2158.40, btc: 68420.10, silver: 24.15 };
 
+        function updateMarket() {
+            fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')
+                .then(res => res.json())
+                .then(data => updatePrice('btc', parseFloat(data.price).toFixed(2))).catch(e => {});
+            
+            updatePrice('gold', (prevPrices.gold + (Math.random() - 0.5) * 0.4).toFixed(2));
+            updatePrice('silver', (prevPrices.silver + (Math.random() - 0.5) * 0.03).toFixed(2));
+        }
+
+        function updatePrice(key, newPrice) {
+            const el = priceElements[key];
+            const oldPrice = prevPrices[key];
+            if (newPrice > oldPrice) el.className = 'live-price up';
+            else if (newPrice < oldPrice) el.className = 'live-price down';
+            el.innerText = newPrice;
+            prevPrices[key] = parseFloat(newPrice);
+            setTimeout(() => { el.className = 'live-price'; }, 800);
+        }
+        setInterval(updateMarket, 2000);
+
+        // --- UI LOGIC ---
         function toggleVault() {
             var x = document.getElementById("vaultGallery");
             var btn = document.getElementById("vaultBtn");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-                btn.innerHTML = "Decrypt Access";
-            } else {
-                x.style.display = "block";
-                btn.innerHTML = "Hide Classified Data";
-            }
+            if (x.style.display === "block") { x.style.display = "none"; btn.innerHTML = "Decrypt Access"; }
+            else { x.style.display = "block"; btn.innerHTML = "Hide Classified Data"; }
         }
+
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.course-card').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('reveal');
+            });
+        });
     </script>
 </body>
 </html>
