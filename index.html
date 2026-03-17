@@ -29,7 +29,6 @@ overflow-x:hidden;
 }
 
 /* animated background grid */
-
 body::before{
 content:"";
 position:fixed;
@@ -51,7 +50,6 @@ animation:gridmove 25s linear infinite;
 }
 
 /* header */
-
 .brand-header{
 width:100%;
 max-width:1100px;
@@ -65,7 +63,6 @@ border-bottom:1px solid rgba(255,215,0,0.2);
 }
 
 /* hero */
-
 .hero{
 padding:80px 20px;
 text-align:center;
@@ -91,7 +88,6 @@ animation:float 5s ease-in-out infinite;
 }
 
 /* ticker */
-
 .ticker-wrap{
 width:100%;
 border-top:1px solid rgba(255,215,0,0.2);
@@ -100,7 +96,6 @@ margin:40px 0;
 }
 
 /* section title */
-
 .section-title{
 font-size:1.8rem;
 color:var(--gold);
@@ -111,7 +106,6 @@ text-align:center;
 }
 
 /* course cards */
-
 .course-grid{
 display:flex;
 gap:25px;
@@ -148,7 +142,6 @@ border-color:#ff0000;
 }
 
 /* trade vault */
-
 .trade-vault-card{
 max-width:800px;
 margin:80px auto;
@@ -176,8 +169,16 @@ transition:transform 0.3s ease;
 transform:translateY(-5px) scale(1.05);
 }
 
-/* contact */
+/* vault gallery */
+#vaultGallery{
+display:none;
+margin-top:40px;
+border-radius:20px;
+border:1px solid var(--gold);
+overflow:hidden;
+}
 
+/* contact */
 .contact-card{
 background:rgba(255,255,255,0.08);
 border:1px solid rgba(255,215,0,0.3);
@@ -198,7 +199,6 @@ transform:translateY(-6px) scale(1.03);
 }
 
 /* footer */
-
 footer{
 padding:60px;
 text-align:center;
@@ -206,7 +206,6 @@ color:#555;
 }
 
 /* animations */
-
 @keyframes float{
 0%{transform:translateY(0)}
 50%{transform:translateY(-15px)}
@@ -329,9 +328,13 @@ SUBSCRIBE
 THE EXECUTION VAULT
 </h2>
 
-<button class="access-btn">
+<button class="access-btn" onclick="toggleVault()" id="vaultBtn">
 Decrypt Access
 </button>
+
+<div id="vaultGallery">
+<img src="trade1.jpg" alt="Trade" style="width:100%;">
+</div>
 
 </section>
 
@@ -356,6 +359,21 @@ Decrypt Access
 © 2026 THE VAULT HDE FX ACADEMY
 
 </footer>
+
+<script>
+// Execution Vault toggle
+function toggleVault(){
+  var x=document.getElementById("vaultGallery");
+  var btn=document.getElementById("vaultBtn");
+  if(x.style.display==="block"){
+    x.style.display="none";
+    btn.innerHTML="Decrypt Access";
+  }else{
+    x.style.display="block";
+    btn.innerHTML="Hide Classified Data";
+  }
+}
+</script>
 
 </body>
 </html>
