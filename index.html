@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Vault HDE FX Academy | Institutional ICT Architect</title>
     
-    <meta name="description" content="The Vault HDE FX Academy. Master Institutional ICT and HDE Concepts.">
-    <meta name="google-site-verification" content="MUo8UysQZbhOWtqmjqTeBnEp1uwy7EERpn0elM8BRHs" />
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-
     <style>
         :root { --gold: #ffd700; --dark: #050505; --wa-green: #25d366; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,11 +20,6 @@
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(45deg, transparent 48%, rgba(255,215,0,0.02) 50%, transparent 52%);
             background-size: 15px 15px; z-index: -1;
-            animation: bgPulse 8s infinite alternate;
-        }
-
-        @keyframes bgPulse {
-            0% { opacity: 0.5; } 100% { opacity: 1; }
         }
 
         .brand-header {
@@ -37,8 +28,7 @@
             text-transform: uppercase; border-bottom: 1px solid rgba(255,215,0,0.1);
         }
 
-        /* Hero */
-        .hero { padding: 80px 20px; text-align: center; animation: fadeInUp 1s ease-out; }
+        .hero { padding: 80px 20px; text-align: center; }
         .profile-card {
             background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px);
             padding: 50px 30px; border-radius: 40px; border: 1px solid rgba(255, 215, 0, 0.1);
@@ -52,61 +42,48 @@
 
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* --- MARKET DASHBOARD --- */
+        /* MARKET DASHBOARD */
         .market-dashboard {
             display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
             padding: 30px 10px; background: rgba(255, 215, 0, 0.02);
-            border-top: 1px solid rgba(255, 215, 0, 0.1);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            border-top: 1px solid rgba(255, 215, 0, 0.1); border-bottom: 1px solid rgba(255, 215, 0, 0.1);
             margin: 40px 0;
         }
         .market-card {
             background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(255, 215, 0, 0.1);
-            padding: 15px 25px; border-radius: 15px; min-width: 180px; text-align: center;
-            transition: 0.4s; position: relative; overflow: hidden;
-        }
-        .market-card::before {
-            content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--gold); opacity: 0.5;
+            padding: 15px 25px; border-radius: 15px; min-width: 190px; text-align: center;
+            position: relative; overflow: hidden;
         }
         .symbol-name { display: block; font-size: 0.75rem; color: #666; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
-        .live-price { font-family: 'Courier New', Courier, monospace; font-size: 1.4rem; font-weight: 900; color: #fff; transition: color 0.3s; }
-        .up { color: #00ff00 !important; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3); }
-        .down { color: #ff0000 !important; text-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }
+        .live-price { font-family: 'Courier New', Courier, monospace; font-size: 1.4rem; font-weight: 900; color: #fff; }
+        .up { color: #00ff00 !important; animation: glow-up 0.5s; }
+        .down { color: #ff0000 !important; animation: glow-down 0.5s; }
 
-        /* Courses */
+        @keyframes glow-up { 0% { text-shadow: 0 0 15px #00ff00; } 100% { text-shadow: none; } }
+        @keyframes glow-down { 0% { text-shadow: 0 0 15px #ff0000; } 100% { text-shadow: none; } }
+
+        /* Courses Section */
         .section-title { font-size: 1.8rem; color: var(--gold); margin: 60px 0 40px; text-transform: uppercase; letter-spacing: 4px; text-align: center; }
         .course-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .course-card {
             background: #0a0a0a; border: 1px solid rgba(255, 215, 0, 0.1);
             padding: 40px 30px; border-radius: 30px; width: 360px; transition: 0.4s;
-            opacity: 0; transform: translateY(30px);
         }
-        .reveal { opacity: 1 !important; transform: translateY(0) !important; transition: 1s ease; }
         .course-card:hover { border-color: var(--gold); transform: translateY(-10px); }
 
         /* Trade Vault */
         .trade-vault-card {
-            max-width: 800px; margin: 50px auto; background: #050505;
+            max-width: 800px; margin: 80px auto; background: #050505;
             border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 35px; padding: 50px;
             text-align: center; position: relative;
         }
         .access-btn {
             background: transparent; border: 2px solid var(--gold); color: var(--gold);
             padding: 18px 45px; border-radius: 50px; font-weight: 900;
-            text-transform: uppercase; cursor: pointer; transition: 0.4s; letter-spacing: 2px;
+            text-transform: uppercase; cursor: pointer; transition: 0.4s;
         }
         .access-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px var(--gold); }
-        .trade-img { width: 100%; max-width: 600px; border-radius: 20px; border: 2px solid var(--gold); margin-top: 20px; animation: fadeInUp 0.5s; }
-
-        /* Contact */
-        .contact-card {
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,215,0,0.1);
-            padding: 30px; width: 320px; border-radius: 25px; text-decoration: none; text-align: center; transition: 0.4s;
-        }
-        .contact-card:hover { background: var(--gold); color: #000; }
-
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .trade-img { width: 100%; max-width: 600px; border-radius: 20px; border: 2px solid var(--gold); margin-top: 20px; }
 
         footer { padding: 60px; text-align: center; color: #444; font-size: 0.8rem; }
     </style>
@@ -128,16 +105,16 @@
 
     <div class="market-dashboard">
         <div class="market-card">
-            <span class="symbol-name">XAU / USD</span>
-            <div id="gold-val" class="live-price">2158.40</div>
+            <span class="symbol-name">XAU / USD (GOLD)</span>
+            <div id="gold-val" class="live-price">Fetching...</div>
         </div>
         <div class="market-card">
-            <span class="symbol-name">BTC / USD</span>
-            <div id="btc-val" class="live-price">Loading...</div>
+            <span class="symbol-name">BTC / USD (BITCOIN)</span>
+            <div id="btc-val" class="live-price">Fetching...</div>
         </div>
         <div class="market-card">
-            <span class="symbol-name">XAG / USD</span>
-            <div id="silver-val" class="live-price">24.15</div>
+            <span class="symbol-name">XAG / USD (SILVER)</span>
+            <div id="silver-val" class="live-price">Fetching...</div>
         </div>
     </div>
 
@@ -163,19 +140,9 @@
             </ul>
             <a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">JOIN ELITE</a>
         </div>
-        <div class="course-card">
-            <h3 style="color:var(--gold); margin-bottom:15px;">Free Academy</h3>
-            <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">FREE</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
-                <li>◈ Market Breakdowns</li>
-                <li>◈ Execution Logs</li>
-                <li>◈ Psychology Sessions</li>
-            </ul>
-            <a href="https://youtube.com/@HamzaFayazFX" style="display:block; background:#ff0000; color:#fff; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">SUBSCRIBE</a>
-        </div>
     </section>
 
-    <section class="trade-vault-card" style="margin-top:80px;">
+    <section class="trade-vault-card">
         <h2 style="color: var(--gold); letter-spacing: 5px; margin-bottom: 20px;">THE EXECUTION VAULT</h2>
         <button class="access-btn" onclick="toggleVault()" id="vaultBtn">Decrypt Access</button>
         <div id="vaultGallery" style="display:none; margin-top:40px;">
@@ -184,59 +151,60 @@
         </div>
     </section>
 
-    <section style="text-align:center; padding:50px 20px;">
-        <h2 class="section-title">Command Center</h2>
-        <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-            <a href="https://wa.me/923235957001" class="contact-card"><h3>WhatsApp</h3><p>Fastest Enrollment</p></a>
-            <a href="mailto:hamxafeyax@yahoo.com" class="contact-card"><h3>Email</h3><p>Institutional Inquiries</p></a>
-        </div>
-    </section>
-
     <footer>&copy; 2026 THE VAULT HDE FX ACADEMY</footer>
 
     <script>
-        // --- LIVE MARKET SCRIPT ---
         const priceElements = {
             gold: document.getElementById('gold-val'),
             btc: document.getElementById('btc-val'),
             silver: document.getElementById('silver-val')
         };
-        let prevPrices = { gold: 2158.40, btc: 68420.10, silver: 24.15 };
+        let lastPrices = { gold: 0, btc: 0, silver: 0 };
 
-        function updateMarket() {
-            fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')
-                .then(res => res.json())
-                .then(data => updatePrice('btc', parseFloat(data.price).toFixed(2))).catch(e => {});
-            
-            updatePrice('gold', (prevPrices.gold + (Math.random() - 0.5) * 0.4).toFixed(2));
-            updatePrice('silver', (prevPrices.silver + (Math.random() - 0.5) * 0.03).toFixed(2));
+        async function fetchRealMarketData() {
+            try {
+                // Fetching BTC Real-time from Binance
+                const btcRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
+                const btcData = await btcRes.json();
+                updateUI('btc', parseFloat(btcData.price).toFixed(2));
+
+                // Gold aur Silver ke liye hum public global exchange data use karte hain
+                // Note: Markets weekend par close hote hain, is liye last closing price show hogi
+                const xauRes = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+                const xauData = await xauRes.json();
+                
+                // Gold (XAU) calculation from global rates (Market standard approximation)
+                const goldApprox = (1 / xauData.rates.XAU).toFixed(2);
+                const silverApprox = (1 / xauData.rates.XAG).toFixed(2);
+                
+                updateUI('gold', goldApprox);
+                updateUI('silver', silverApprox);
+            } catch (e) {
+                console.log("Market API Error");
+            }
         }
 
-        function updatePrice(key, newPrice) {
+        function updateUI(key, newPrice) {
             const el = priceElements[key];
-            const oldPrice = prevPrices[key];
-            if (newPrice > oldPrice) el.className = 'live-price up';
-            else if (newPrice < oldPrice) el.className = 'live-price down';
+            if (lastPrices[key] > 0) {
+                if (newPrice > lastPrices[key]) el.className = 'live-price up';
+                else if (newPrice < lastPrices[key]) el.className = 'live-price down';
+            }
             el.innerText = newPrice;
-            prevPrices[key] = parseFloat(newPrice);
-            setTimeout(() => { el.className = 'live-price'; }, 800);
+            lastPrices[key] = parseFloat(newPrice);
+            setTimeout(() => { el.className = 'live-price'; }, 1000);
         }
-        setInterval(updateMarket, 2000);
 
-        // --- UI LOGIC ---
+        // Real market feed har 5 second mein update hoga
+        setInterval(fetchRealMarketData, 5000);
+        fetchRealMarketData();
+
         function toggleVault() {
             var x = document.getElementById("vaultGallery");
             var btn = document.getElementById("vaultBtn");
             if (x.style.display === "block") { x.style.display = "none"; btn.innerHTML = "Decrypt Access"; }
             else { x.style.display = "block"; btn.innerHTML = "Hide Classified Data"; }
         }
-
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.course-card').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('reveal');
-            });
-        });
     </script>
 </body>
-                    </html>
-                    
+</html>
