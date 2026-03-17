@@ -5,8 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Vault HDE FX Academy | Institutional ICT Architect</title>
 
-<!-- Favicon -->
-<link rel="icon" href="hamza.jpg" type="image/png">
+<link rel="icon" href="hamza.jpg" type="image/jpeg">
+<link rel="apple-touch-icon" href="hamza.jpg">
+
+<meta property="og:title" content="Hamza Fayaz FX | Institutional ICT Architect">
+<meta property="og:description" content="Operating at the intersection of Institutional Algorithms and Price Action Theory. Master the ICT Framework and HDE Concept.">
+<meta property="og:image" content="hamza.jpg">
+<meta property="og:url" content="https://hamza-fayaz-fx.vercel.app">
+<meta property="og:type" content="website">
 
 <style>
 :root{
@@ -44,7 +50,7 @@ animation:gridmove 25s linear infinite;
 /* Candles behind cards and sections */
 .candle-bg{
 position:absolute;
-top:180px; /* below Academy header */
+top:180px; 
 left:0;
 width:100%;
 height:calc(100% - 180px);
@@ -76,6 +82,7 @@ letter-spacing:5px;
 font-weight:800;
 text-transform:uppercase;
 border-bottom:2px solid var(--gold);
+text-align: center;
 position:relative;
 z-index:1;
 }
@@ -104,17 +111,8 @@ height:150px;
 border-radius:50%;
 border:3px solid var(--gold);
 margin-bottom:20px;
+object-fit: cover;
 animation:float 5s ease-in-out infinite;
-}
-
-/* Ticker */
-.ticker-wrap{
-width:100%;
-border-top:1px solid rgba(255,215,0,0.2);
-border-bottom:1px solid rgba(255,215,0,0.2);
-margin:40px 0;
-position:relative;
-z-index:1;
 }
 
 /* Section title */
@@ -249,8 +247,6 @@ Operating at the intersection of <strong>Institutional Algorithms</strong> and <
 </div>
 </section>
 
-<div class="ticker-wrap"></div>
-
 <h2 class="section-title">Institutional Curriculums</h2>
 
 <section class="course-grid">
@@ -310,11 +306,9 @@ Operating at the intersection of <strong>Institutional Algorithms</strong> and <
 
 <footer>© 2026 THE VAULT HDE FX ACADEMY</footer>
 
-<!-- Candles behind cards -->
 <div class="candle-bg" id="candleContainer"></div>
 
 <script>
-// Execution Vault toggle
 function toggleVault(){
 var x=document.getElementById("vaultGallery");
 var btn=document.getElementById("vaultBtn");
@@ -322,7 +316,6 @@ if(x.style.display==="block"){ x.style.display="none"; btn.innerHTML="Decrypt Ac
 else{ x.style.display="block"; btn.innerHTML="Hide Classified Data"; }
 }
 
-// Generate moving candles
 const candleContainer = document.getElementById("candleContainer");
 const candleColors = ["rgba(255,215,0,0.2)","rgba(255,215,0,0.3)","rgba(255,215,0,0.4)"];
 for(let i=0;i<80;i++){
@@ -337,4 +330,5 @@ candleContainer.appendChild(candle);
 </script>
 
 </body>
-</html>
+  </html>
+  
