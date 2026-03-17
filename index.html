@@ -1,184 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Vault HDE FX Academy | Institutional ICT Architect</title>
-    
-    <style>
-        :root { --gold: #ffd700; --dark: #050505; --wa-green: #25d366; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background: #000;
-            color: #fff; font-family: 'Inter', sans-serif;
-            overflow-x: hidden; scroll-behavior: smooth;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vault HDE FX Academy | Institutional ICT Architect</title>
 
-        /* Animated Grid Background */
-        body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(45deg, transparent 48%, rgba(255,215,0,0.02) 50%, transparent 52%);
-            background-size: 15px 15px; z-index: -1;
-        }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-        .brand-header {
-            width: 100%; max-width: 1100px; margin: 0 auto; padding: 25px;
-            color: var(--gold); letter-spacing: 5px; font-weight: 800;
-            text-transform: uppercase; border-bottom: 1px solid rgba(255,215,0,0.1);
-        }
+<style>
+:root { --gold: #ffd700; --dark: #050505; --wa-green: #25d366; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* Hero */
-        .hero { padding: 80px 20px; text-align: center; }
-        .profile-card {
-            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px);
-            padding: 50px 30px; border-radius: 40px; border: 1px solid rgba(255, 215, 0, 0.1);
-            max-width: 650px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-        }
-        .profile-img { 
-            width: 150px; height: 150px; border-radius: 50%; 
-            border: 3px solid var(--gold); margin-bottom: 20px;
-        }
+body{
+background:#000;
+color:#fff;
+font-family:'Inter',sans-serif;
+overflow-x:hidden;
+scroll-behavior:smooth;
+}
 
-        /* TICKER SECTION */
-        .ticker-wrap {
-            width: 100%; border-top: 1px solid rgba(255,215,0,0.1);
-            border-bottom: 1px solid rgba(255,215,0,0.1);
-            margin: 40px 0; background: #000;
-        }
+/* GRID BACKGROUND */
 
-        /* Courses Grid */
-        .section-title { font-size: 1.8rem; color: var(--gold); margin: 60px 0 40px; text-transform: uppercase; letter-spacing: 4px; text-align: center; }
-        .course-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .course-card {
-            background: #0a0a0a; border: 1px solid rgba(255, 215, 0, 0.1);
-            padding: 40px 30px; border-radius: 30px; width: 360px; transition: 0.4s;
-        }
-        .course-card:hover { border-color: var(--gold); transform: translateY(-10px); }
-        .yt-card { border-color: #ff0000; }
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(45deg,transparent 48%,rgba(255,215,0,0.02) 50%,transparent 52%);
+background-size:15px 15px;
+z-index:-1;
+}
 
-        /* Trade Vault */
-        .trade-vault-card {
-            max-width: 800px; margin: 80px auto; background: #050505;
-            border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 35px; padding: 50px;
-            text-align: center;
-        }
-        .access-btn {
-            background: transparent; border: 2px solid var(--gold); color: var(--gold);
-            padding: 18px 45px; border-radius: 50px; font-weight: 900;
-            text-transform: uppercase; cursor: pointer; transition: 0.4s;
-        }
-        .access-btn:hover { background: var(--gold); color: #000; }
+/* HEADER */
 
-        /* Command Center (WhatsApp & Email) */
-        .contact-card {
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,215,0,0.1);
-            padding: 30px; width: 300px; border-radius: 25px; text-decoration: none; transition: 0.4s;
-        }
-        .contact-card:hover { border-color: var(--gold); background: rgba(255,215,0,0.05); }
+.brand-header{
+width:100%;
+max-width:1100px;
+margin:0 auto;
+padding:25px;
+color:var(--gold);
+letter-spacing:5px;
+font-weight:800;
+text-transform:uppercase;
+border-bottom:1px solid rgba(255,215,0,0.1);
+}
 
-        footer { padding: 60px; text-align: center; color: #444; font-size: 0.8rem; }
-    </style>
+/* HERO */
+
+.hero{padding:80px 20px;text-align:center;}
+
+.profile-card{
+background:rgba(10,10,10,0.8);
+backdrop-filter:blur(20px);
+padding:50px 30px;
+border-radius:40px;
+border:1px solid rgba(255,215,0,0.1);
+max-width:650px;
+margin:0 auto;
+box-shadow:0 30px 60px rgba(0,0,0,0.5);
+animation:goldGlow 4s infinite;
+}
+
+.profile-img{
+width:150px;
+height:150px;
+border-radius:50%;
+border:3px solid var(--gold);
+margin-bottom:20px;
+animation:float 4s ease-in-out infinite;
+}
+
+/* TICKER */
+
+.ticker-wrap{
+width:100%;
+border-top:1px solid rgba(255,215,0,0.1);
+border-bottom:1px solid rgba(255,215,0,0.1);
+margin:40px 0;
+background:#000;
+}
+
+/* SECTION TITLE */
+
+.section-title{
+font-size:1.8rem;
+color:var(--gold);
+margin:60px 0 40px;
+text-transform:uppercase;
+letter-spacing:4px;
+text-align:center;
+}
+
+/* COURSE GRID */
+
+.course-grid{
+display:flex;
+gap:25px;
+flex-wrap:wrap;
+justify-content:center;
+max-width:1200px;
+margin:0 auto;
+padding:0 20px;
+}
+
+.course-card{
+background:#0a0a0a;
+border:1px solid rgba(255,215,0,0.1);
+padding:40px 30px;
+border-radius:30px;
+width:360px;
+transition:0.4s;
+}
+
+.course-card:hover{
+border-color:var(--gold);
+transform:translateY(-10px);
+box-shadow:0 15px 40px rgba(255,215,0,0.4);
+}
+
+.yt-card{border-color:#ff0000;}
+
+/* TRADE VAULT */
+
+.trade-vault-card{
+max-width:800px;
+margin:80px auto;
+background:#050505;
+border:1px solid rgba(255,215,0,0.2);
+border-radius:35px;
+padding:50px;
+text-align:center;
+animation:goldGlow 5s infinite;
+}
+
+.access-btn{
+background:transparent;
+border:2px solid var(--gold);
+color:var(--gold);
+padding:18px 45px;
+border-radius:50px;
+font-weight:900;
+text-transform:uppercase;
+cursor:pointer;
+transition:0.4s;
+animation:pulse 3s infinite;
+}
+
+.access-btn:hover{
+background:var(--gold);
+color:#000;
+}
+
+/* CONTACT */
+
+.contact-card{
+background:rgba(255,255,255,0.02);
+border:1px solid rgba(255,215,0,0.1);
+padding:30px;
+width:300px;
+border-radius:25px;
+text-decoration:none;
+transition:0.4s;
+}
+
+.contact-card:hover{
+border-color:var(--gold);
+background:rgba(255,215,0,0.05);
+box-shadow:0 10px 30px rgba(255,215,0,0.4);
+}
+
+/* FOOTER */
+
+footer{
+padding:60px;
+text-align:center;
+color:#444;
+font-size:0.8rem;
+}
+
+/* ANIMATIONS */
+
+@keyframes goldGlow{
+0%{box-shadow:0 0 5px rgba(255,215,0,0.2);}
+50%{box-shadow:0 0 25px rgba(255,215,0,0.6);}
+100%{box-shadow:0 0 5px rgba(255,215,0,0.2);}
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0);}
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
+}
+</style>
 </head>
+
 <body>
 
-    <div class="brand-header">THE VAULT HDE FX ACADEMY</div>
+<div class="brand-header">THE VAULT HDE FX ACADEMY</div>
 
-    <section class="hero">
-        <div class="profile-card">
-            <img src="hamza.jpg" alt="Hamza Fayaz" class="profile-img">
-            <div style="color:var(--gold); letter-spacing:3px; font-weight:bold; text-transform:uppercase;">Institutional ICT Architect</div>
-            <h1 style="font-size:3rem; margin:15px 0;">Hamza Fayaz</h1>
-            <p style="color: #ccc; line-height: 1.7;">
-                Operating at the intersection of <strong>Institutional Algorithms</strong> and <strong>Price Action Theory</strong>. Master of the <strong>ICT Framework</strong> and the proprietary <strong>HDE Concept</strong>.
-            </p>
-        </div>
-    </section>
+<section class="hero">
+<div class="profile-card">
 
-    <div class="ticker-wrap">
-        <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
-            {
-            "symbols": [
-                { "proName": "FOREXCOM:XAUUSD", "title": "Gold" },
-                { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
-                { "proName": "FOREXCOM:XAGUSD", "title": "Silver" }
-            ],
-            "colorTheme": "dark",
-            "isTransparent": true,
-            "showSymbolLogo": true,
-            "locale": "en"
-            }
-            </script>
-        </div>
-    </div>
+<img src="hamza.jpg" alt="Hamza Fayaz" class="profile-img">
 
-    <h2 class="section-title">Institutional Curriculums</h2>
-    <section class="course-grid">
-        <div class="course-card">
-            <h3 style="color:var(--gold); margin-bottom:15px;">Algorithmic ICT</h3>
-            <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$250</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
-                <li>◈ IPDA Data Range</li>
-                <li>◈ MMXM Cycles</li>
-                <li>◈ Liquidity Voids</li>
-            </ul>
-            <a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">ENROLL NOW</a>
-        </div>
+<div style="color:var(--gold); letter-spacing:3px; font-weight:bold; text-transform:uppercase;">
+Institutional ICT Architect
+</div>
 
-        <div class="course-card" style="border-color: var(--gold);">
-            <h3 style="color:var(--gold); margin-bottom:15px;">HDE Masterclass</h3>
-            <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$499</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
-                <li>◈ HDE Liquidity Matrix</li>
-                <li>◈ Order Flow Analysis</li>
-                <li>◈ Institutional Sponsorship</li>
-            </ul>
-            <a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">JOIN ELITE</a>
-        </div>
+<h1 style="font-size:3rem; margin:15px 0;">Hamza Fayaz</h1>
 
-        <div class="course-card yt-card">
-            <h3 style="color:#ff0000; margin-bottom:15px;">Free Academy</h3>
-            <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">FREE</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
-                <li>◈ Weekly Breakdowns</li>
-                <li>◈ Execution Logs</li>
-                <li>◈ Live Psychology</li>
-            </ul>
-            <a href="https://youtube.com/@HamzaFayazFX" style="display:block; background:#ff0000; color:#fff; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">SUBSCRIBE</a>
-        </div>
-    </section>
+<p style="color:#ccc; line-height:1.7;">
+Operating at the intersection of <strong>Institutional Algorithms</strong> and <strong>Price Action Theory</strong>.
+Master of the <strong>ICT Framework</strong> and the proprietary <strong>HDE Concept</strong>.
+</p>
 
-    <section class="trade-vault-card">
-        <h2 style="color: var(--gold); letter-spacing: 5px; margin-bottom: 20px;">THE EXECUTION VAULT</h2>
-        <button class="access-btn" onclick="toggleVault()" id="vaultBtn">Decrypt Access</button>
-        <div id="vaultGallery" style="display:none; margin-top:40px;">
-            <img src="trade1.jpg" alt="Trade" style="width:100%; border-radius:20px; border:1px solid var(--gold);">
-        </div>
-    </section>
+</div>
+</section>
 
-    <h2 class="section-title">Command Center</h2>
-    <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; padding-bottom:50px;">
-        <a href="https://wa.me/923235957001" class="contact-card">
-            <h3 style="color:var(--wa-green); margin-bottom:10px;">WhatsApp</h3>
-            <p style="color:#666;">Fastest Enrollment</p>
-        </a>
-        <a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
-            <h3 style="color:var(--gold); margin-bottom:10px;">Email</h3>
-            <p style="color:#666;">Institutional Queries</p>
-        </a>
-    </div>
+<div class="ticker-wrap">
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
 
-    <footer>&copy; 2026 THE VAULT HDE FX ACADEMY</footer>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+{
+"symbols":[
+{"proName":"FOREXCOM:XAUUSD","title":"Gold"},
+{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},
+{"proName":"FOREXCOM:XAGUSD","title":"Silver"}
+],
+"colorTheme":"dark",
+"isTransparent":true,
+"showSymbolLogo":true,
+"locale":"en"
+}
+</script>
 
-    <script>
-        function toggleVault() {
-            var x = document.getElementById("vaultGallery");
-            var btn = document.getElementById("vaultBtn");
-            if (x.style.display === "block") { x.style.display = "none"; btn.innerHTML = "Decrypt Access"; }
-            else { x.style.display = "block"; btn.innerHTML = "Hide Classified Data"; }
-        }
-    </script>
+</div>
+</div>
+
+<h2 class="section-title">Institutional Curriculums</h2>
+
+<section class="course-grid">
+
+<div class="course-card">
+<h3 style="color:var(--gold); margin-bottom:15px;">Algorithmic ICT</h3>
+<span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$250</span>
+
+<ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
+<li>◈ IPDA Data Range</li>
+<li>◈ MMXM Cycles</li>
+<li>◈ Liquidity Voids</li>
+</ul>
+
+<a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">
+ENROLL NOW
+</a>
+</div>
+
+<div class="course-card" style="border-color:var(--gold);">
+
+<h3 style="color:var(--gold); margin-bottom:15px;">HDE Masterclass</h3>
+<span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$499</span>
+
+<ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
+<li>◈ HDE Liquidity Matrix</li>
+<li>◈ Order Flow Analysis</li>
+<li>◈ Institutional Sponsorship</li>
+</ul>
+
+<a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">
+JOIN ELITE
+</a>
+
+</div>
+
+<div class="course-card yt-card">
+
+<h3 style="color:#ff0000; margin-bottom:15px;">Free Academy</h3>
+<span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">FREE</span>
+
+<ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
+<li>◈ Weekly Breakdowns</li>
+<li>◈ Execution Logs</li>
+<li>◈ Live Psychology</li>
+</ul>
+
+<a href="https://youtube.com/@HamzaFayazFX" style="display:block; background:#ff0000; color:#fff; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">
+SUBSCRIBE
+</a>
+
+</div>
+
+</section>
+
+<section class="trade-vault-card">
+
+<h2 style="color:var(--gold); letter-spacing:5px; margin-bottom:20px;">
+THE EXECUTION VAULT
+</h2>
+
+<button class="access-btn" onclick="toggleVault()" id="vaultBtn">
+Decrypt Access
+</button>
+
+<div id="vaultGallery" style="display:none; margin-top:40px;">
+<img src="trade1.jpg" alt="Trade" style="width:100%; border-radius:20px; border:1px solid var(--gold);">
+</div>
+
+</section>
+
+<h2 class="section-title">Command Center</h2>
+
+<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; padding-bottom:50px;">
+
+<a href="https://wa.me/923235957001" class="contact-card">
+<h3 style="color:var(--wa-green); margin-bottom:10px;">WhatsApp</h3>
+<p style="color:#666;">Fastest Enrollment</p>
+</a>
+
+<a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
+<h3 style="color:var(--gold); margin-bottom:10px;">Email</h3>
+<p style="color:#666;">Institutional Queries</p>
+</a>
+
+</div>
+
+<footer>© 2026 THE VAULT HDE FX ACADEMY</footer>
+
+<script>
+
+function toggleVault(){
+var x=document.getElementById("vaultGallery");
+var btn=document.getElementById("vaultBtn");
+
+if(x.style.display==="block"){
+x.style.display="none";
+btn.innerHTML="Decrypt Access";
+}else{
+x.style.display="block";
+btn.innerHTML="Hide Classified Data";
+}
+}
+
+/* GSAP PAGE ANIMATION */
+
+gsap.from(".brand-header",{y:-80,opacity:0,duration:1.2,ease:"power4.out"})
+
+gsap.from(".profile-card",{scale:0.8,opacity:0,duration:1.4,delay:0.3,ease:"power4.out"})
+
+gsap.from(".ticker-wrap",{opacity:0,y:50,duration:1,delay:0.6})
+
+gsap.from(".course-card",{opacity:0,y:100,stagger:0.3,duration:1.2,delay:0.8})
+
+gsap.from(".trade-vault-card",{opacity:0,scale:0.8,duration:1.2,delay:1})
+
+gsap.from(".contact-card",{opacity:0,y:60,stagger:0.2,duration:1.2,delay:1.2})
+
+</script>
+
 </body>
 </html>
