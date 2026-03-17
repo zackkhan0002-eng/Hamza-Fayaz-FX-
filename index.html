@@ -36,7 +36,7 @@
         .profile-card {
             background: var(--card-bg); backdrop-filter: blur(20px);
             padding: 40px 30px; border-radius: 40px; border: 1px solid rgba(255, 215, 0, 0.15);
-            max-width: 600px; margin: 0 auto;
+            max-width: 650px; margin: 0 auto;
         }
         .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 20px; }
         .premium-tag { color: var(--gold); letter-spacing: 5px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
@@ -59,39 +59,42 @@
         .course-features li { margin-bottom: 12px; color: #ccc; font-size: 0.95rem; }
         .course-features li::before { content: "◈"; color: var(--gold); margin-right: 10px; }
 
-        .card-btn { display: block; padding: 15px; text-align: center; text-decoration: none; border-radius: 10px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        .card-btn { display: block; padding: 15px; text-align: center; text-decoration: none; border-radius: 10px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; cursor: pointer; border: none; }
         .yt-card-btn { background: #ff0000; color: #fff; }
         .enroll-card-btn { background: var(--gold); color: #000; }
 
-        /* Highlighted WhatsApp Card */
+        /* Toggle Button for Trades */
+        .toggle-btn-container { text-align: center; margin: 40px 0; }
+        .toggle-btn {
+            background: transparent; border: 2px solid var(--gold); color: var(--gold);
+            padding: 15px 40px; border-radius: 50px; font-weight: 900;
+            text-transform: uppercase; cursor: pointer; transition: 0.3s; letter-spacing: 2px;
+        }
+        .toggle-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+
+        /* Trade Gallery Hidden by Default */
+        .trade-gallery { display: none; animation: fadeIn 0.8s ease-in-out; }
+        .trade-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; padding: 20px; }
+        .trade-img { width: 480px; height: 280px; object-fit: cover; border-radius: 20px; border: 1px solid rgba(255,215,0,0.1); }
+
+        /* Contact Grid */
         .contact-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 50px; padding: 0 20px; }
         .contact-card-premium {
             background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 215, 0, 0.1);
             padding: 40px; width: 340px; border-radius: 25px; text-decoration: none;
             transition: 0.4s; text-align: center;
         }
-        .wa-highlight { 
-            border: 2px solid var(--wa-green); 
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.1);
-            background: rgba(37, 211, 102, 0.02);
-        }
-        .wa-highlight:hover { background: rgba(37, 211, 102, 0.05); transform: scale(1.05); }
-        
-        .contact-card-premium h4 { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
-        .contact-card-premium p { color: #888; font-size: 0.9rem; margin-bottom: 15px; }
-        .glow-text { font-weight: 900; color: #fff; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
-
-        /* Trade Gallery */
-        .trade-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; padding: 40px 20px; }
-        .trade-img { width: 480px; height: 280px; object-fit: cover; border-radius: 20px; border: 1px solid rgba(255,215,0,0.1); }
+        .wa-highlight { border: 2px solid var(--wa-green); background: rgba(37, 211, 102, 0.02); }
+        .wa-highlight:hover { transform: scale(1.05); }
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         @media (max-width: 768px) {
             .course-card, .trade-img, .contact-card-premium { width: 100%; }
         }
 
-        footer { padding: 60px; text-align: center; color: #444; font-size: 0.75rem; letter-spacing: 2px; }
+        footer { padding: 60px; text-align: center; color: #444; font-size: 0.75rem; }
     </style>
 </head>
 <body>
@@ -101,9 +104,13 @@
     <section class="hero">
         <div class="profile-card">
             <img src="hamza.jpg" alt="Hamza Fayaz" class="profile-img">
-            <div class="premium-tag">Institutional Analyst</div>
+            <div class="premium-tag">Institutional ICT Architect</div>
             <h1>Hamza Fayaz</h1>
-            <p style="color: #888; line-height: 1.6;">Precision engineered through the HDE Concept and Institutional Algorithms.</p>
+            <p style="color: #ccc; line-height: 1.6; font-size: 1rem;">
+                Operating at the intersection of <strong>Institutional Algorithms</strong> and <strong>Price Action Theory</strong>. 
+                With 4+ years of mastering the delivery of price, I specialize in the <strong>ICT Framework</strong> (Inner Circle Trader) and the proprietary <strong>HDE Concept</strong>. 
+                Engineering precision for navigating the Interbank Price Delivery Algorithm (IPDA) with absolute authority.
+            </p>
         </div>
     </section>
 
@@ -146,10 +153,16 @@
         </div>
     </section>
 
-    <h2 class="section-title">Institutional Execution</h2>
-    <section class="trade-grid">
-        <img src="trade1.jpg" alt="Setup 1" class="trade-img">
-        <img src="trade2.jpg" alt="Setup 2" class="trade-img">
+    <div class="toggle-btn-container">
+        <h2 class="section-title">Execution Logs</h2>
+        <button class="toggle-btn" onclick="toggleTrades()" id="tradeBtn">Access Trade Proofs</button>
+    </div>
+
+    <section class="trade-gallery" id="tradeGallery">
+        <div class="trade-grid">
+            <img src="trade1.jpg" alt="Setup 1" class="trade-img">
+            <img src="trade2.jpg" alt="Setup 2" class="trade-img">
+        </div>
     </section>
 
     <section style="margin-top: 50px;">
@@ -160,7 +173,6 @@
                 <p>Fastest way to secure your slot in the next mentorship batch.</p>
                 <span class="glow-text" style="color: var(--wa-green);">Contact Now →</span>
             </a>
-            
             <a href="mailto:hamxafeyax@yahoo.com" class="contact-card-premium">
                 <h4>Official Mail</h4>
                 <p>For corporate queries and institutional partnerships.</p>
@@ -172,6 +184,20 @@
     <footer>
         &copy; 2026 THE VAULT HDE FX ACADEMY | ALL RIGHTS RESERVED
     </footer>
+
+    <script>
+        function toggleTrades() {
+            var x = document.getElementById("tradeGallery");
+            var btn = document.getElementById("tradeBtn");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+                btn.innerHTML = "Access Trade Proofs";
+            } else {
+                x.style.display = "block";
+                btn.innerHTML = "Hide Trade Proofs";
+            }
+        }
+    </script>
 
 </body>
 </html>
