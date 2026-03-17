@@ -15,7 +15,7 @@
             overflow-x: hidden; scroll-behavior: smooth;
         }
 
-        /* Animated Background */
+        /* Animated Grid Background */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(45deg, transparent 48%, rgba(255,215,0,0.02) 50%, transparent 52%);
@@ -28,29 +28,26 @@
             text-transform: uppercase; border-bottom: 1px solid rgba(255,215,0,0.1);
         }
 
-        .hero { padding: 60px 20px; text-align: center; }
+        /* Hero */
+        .hero { padding: 80px 20px; text-align: center; }
         .profile-card {
             background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px);
             padding: 50px 30px; border-radius: 40px; border: 1px solid rgba(255, 215, 0, 0.1);
-            max-width: 650px; margin: 0 auto;
+            max-width: 650px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
         .profile-img { 
             width: 150px; height: 150px; border-radius: 50%; 
             border: 3px solid var(--gold); margin-bottom: 20px;
-            animation: float 3s infinite ease-in-out;
         }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* REAL TRADINGVIEW TICKER */
-        .ticker-container {
-            width: 100%;
-            background: #000;
-            border-top: 1px solid rgba(255,215,0,0.1);
+        /* TICKER SECTION */
+        .ticker-wrap {
+            width: 100%; border-top: 1px solid rgba(255,215,0,0.1);
             border-bottom: 1px solid rgba(255,215,0,0.1);
-            margin: 20px 0;
+            margin: 40px 0; background: #000;
         }
 
-        /* Courses & YouTube Grid */
+        /* Courses Grid */
         .section-title { font-size: 1.8rem; color: var(--gold); margin: 60px 0 40px; text-transform: uppercase; letter-spacing: 4px; text-align: center; }
         .course-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .course-card {
@@ -60,8 +57,9 @@
         .course-card:hover { border-color: var(--gold); transform: translateY(-10px); }
         .yt-card { border-color: #ff0000; }
 
+        /* Trade Vault */
         .trade-vault-card {
-            max-width: 800px; margin: 60px auto; background: #050505;
+            max-width: 800px; margin: 80px auto; background: #050505;
             border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 35px; padding: 50px;
             text-align: center;
         }
@@ -71,6 +69,13 @@
             text-transform: uppercase; cursor: pointer; transition: 0.4s;
         }
         .access-btn:hover { background: var(--gold); color: #000; }
+
+        /* Command Center (WhatsApp & Email) */
+        .contact-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,215,0,0.1);
+            padding: 30px; width: 300px; border-radius: 25px; text-decoration: none; transition: 0.4s;
+        }
+        .contact-card:hover { border-color: var(--gold); background: rgba(255,215,0,0.05); }
 
         footer { padding: 60px; text-align: center; color: #444; font-size: 0.8rem; }
     </style>
@@ -90,7 +95,7 @@
         </div>
     </section>
 
-    <div class="ticker-container">
+    <div class="ticker-wrap">
         <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
@@ -107,14 +112,14 @@
             }
             </script>
         </div>
-        </div>
+    </div>
 
     <h2 class="section-title">Institutional Curriculums</h2>
     <section class="course-grid">
         <div class="course-card">
             <h3 style="color:var(--gold); margin-bottom:15px;">Algorithmic ICT</h3>
             <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$250</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:15px;">
+            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
                 <li>◈ IPDA Data Range</li>
                 <li>◈ MMXM Cycles</li>
                 <li>◈ Liquidity Voids</li>
@@ -122,13 +127,13 @@
             <a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">ENROLL NOW</a>
         </div>
 
-        <div class="course-card">
+        <div class="course-card" style="border-color: var(--gold);">
             <h3 style="color:var(--gold); margin-bottom:15px;">HDE Masterclass</h3>
             <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$499</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:15px;">
+            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
                 <li>◈ HDE Liquidity Matrix</li>
                 <li>◈ Order Flow Analysis</li>
-                <li>◈ Volatility Injection</li>
+                <li>◈ Institutional Sponsorship</li>
             </ul>
             <a href="https://wa.me/923235957001" style="display:block; background:var(--gold); color:#000; padding:15px; text-align:center; border-radius:10px; text-decoration:none; font-weight:bold;">JOIN ELITE</a>
         </div>
@@ -136,7 +141,7 @@
         <div class="course-card yt-card">
             <h3 style="color:#ff0000; margin-bottom:15px;">Free Academy</h3>
             <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">FREE</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:15px;">
+            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
                 <li>◈ Weekly Breakdowns</li>
                 <li>◈ Execution Logs</li>
                 <li>◈ Live Psychology</li>
@@ -149,9 +154,21 @@
         <h2 style="color: var(--gold); letter-spacing: 5px; margin-bottom: 20px;">THE EXECUTION VAULT</h2>
         <button class="access-btn" onclick="toggleVault()" id="vaultBtn">Decrypt Access</button>
         <div id="vaultGallery" style="display:none; margin-top:40px;">
-            <img src="trade1.jpg" alt="Trade 1" class="trade-img" style="width:100%; border-radius:20px;">
+            <img src="trade1.jpg" alt="Trade" style="width:100%; border-radius:20px; border:1px solid var(--gold);">
         </div>
     </section>
+
+    <h2 class="section-title">Command Center</h2>
+    <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; padding-bottom:50px;">
+        <a href="https://wa.me/923235957001" class="contact-card">
+            <h3 style="color:var(--wa-green); margin-bottom:10px;">WhatsApp</h3>
+            <p style="color:#666;">Fastest Enrollment</p>
+        </a>
+        <a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
+            <h3 style="color:var(--gold); margin-bottom:10px;">Email</h3>
+            <p style="color:#666;">Institutional Queries</p>
+        </a>
+    </div>
 
     <footer>&copy; 2026 THE VAULT HDE FX ACADEMY</footer>
 
