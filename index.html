@@ -19,7 +19,6 @@
             overflow-x: hidden; scroll-behavior: smooth;
         }
 
-        /* Animated Grid Background */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(45deg, transparent 48%, rgba(255,215,0,0.02) 50%, transparent 52%);
@@ -33,18 +32,17 @@
             border-bottom: 1px solid rgba(255,215,0,0.1);
         }
 
-        /* Hero Animation */
-        .hero { padding: 100px 20px; text-align: center; animation: fadeInUp 1s ease-out; }
+        .hero { padding: 80px 20px; text-align: center; animation: fadeInUp 1s ease-out; }
         .profile-card {
             background: var(--card-bg); backdrop-filter: blur(20px);
-            padding: 50px 30px; border-radius: 40px; border: 1px solid rgba(255, 215, 0, 0.15);
-            max-width: 600px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            padding: 40px 30px; border-radius: 40px; border: 1px solid rgba(255, 215, 0, 0.15);
+            max-width: 600px; margin: 0 auto;
         }
-        .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 25px; }
-        .premium-tag { color: var(--gold); letter-spacing: 5px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; }
-        h1 { font-size: 2.8rem; margin-bottom: 10px; }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 20px; }
+        .premium-tag { color: var(--gold); letter-spacing: 5px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+        h1 { font-size: 2.5rem; margin: 10px 0; }
 
-        .section-title { font-size: 1.8rem; color: var(--gold); margin: 80px 0 40px; text-transform: uppercase; letter-spacing: 4px; text-align: center; }
+        .section-title { font-size: 1.8rem; color: var(--gold); margin: 60px 0 40px; text-transform: uppercase; letter-spacing: 4px; text-align: center; }
 
         /* Courses Grid */
         .course-grid { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
@@ -55,7 +53,8 @@
         }
         .course-card:hover { transform: translateY(-10px); border-color: var(--gold); }
         .course-card h3 { color: var(--gold); margin-bottom: 15px; font-size: 1.4rem; text-transform: uppercase; }
-        .price { font-size: 3rem; font-weight: 900; margin-bottom: 25px; display: block; }
+        .price { font-size: 2.8rem; font-weight: 900; margin-bottom: 25px; display: block; }
+
         .course-features { list-style: none; text-align: left; margin-bottom: 25px; }
         .course-features li { margin-bottom: 12px; color: #ccc; font-size: 0.95rem; }
         .course-features li::before { content: "◈"; color: var(--gold); margin-right: 10px; }
@@ -64,30 +63,32 @@
         .yt-card-btn { background: #ff0000; color: #fff; }
         .enroll-card-btn { background: var(--gold); color: #000; }
 
-        /* Trade Gallery */
-        .trade-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; padding: 40px 20px; }
-        .trade-img { width: 480px; height: 280px; object-fit: cover; border-radius: 20px; border: 1px solid rgba(255,215,0,0.1); }
-
-        /* Premium Contact Center */
-        .vault-contact-container { padding: 100px 20px; background: #000; text-align: center; margin-top: 50px; }
-        .contact-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 50px; }
+        /* Highlighted WhatsApp Card */
+        .contact-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 50px; padding: 0 20px; }
         .contact-card-premium {
             background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 215, 0, 0.1);
             padding: 40px; width: 340px; border-radius: 25px; text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.4s; text-align: center;
         }
-        .contact-card-premium:hover { transform: translateY(-10px); border-color: var(--gold); background: rgba(255, 215, 0, 0.02); }
+        .wa-highlight { 
+            border: 2px solid var(--wa-green); 
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.1);
+            background: rgba(37, 211, 102, 0.02);
+        }
+        .wa-highlight:hover { background: rgba(37, 211, 102, 0.05); transform: scale(1.05); }
+        
         .contact-card-premium h4 { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
-        .contact-card-premium p { color: #666; font-size: 0.9rem; margin-bottom: 15px; }
-        .wa-premium { border-bottom: 4px solid var(--wa-green); }
-        .mail-premium { border-bottom: 4px solid var(--gold); }
+        .contact-card-premium p { color: #888; font-size: 0.9rem; margin-bottom: 15px; }
         .glow-text { font-weight: 900; color: #fff; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+
+        /* Trade Gallery */
+        .trade-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; padding: 40px 20px; }
+        .trade-img { width: 480px; height: 280px; object-fit: cover; border-radius: 20px; border: 1px solid rgba(255,215,0,0.1); }
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 768px) {
             .course-card, .trade-img, .contact-card-premium { width: 100%; }
-            h1 { font-size: 2.2rem; }
         }
 
         footer { padding: 60px; text-align: center; color: #444; font-size: 0.75rem; letter-spacing: 2px; }
@@ -108,18 +109,6 @@
 
     <h2 class="section-title">Institutional Curriculums</h2>
     <section class="course-grid">
-        <div class="course-card" style="border-color: rgba(255,0,0,0.3);">
-            <h3>Free Academy</h3>
-            <span class="price">FREE</span>
-            <ul class="course-features">
-                <li>Weekly Market Breakdowns</li>
-                <li>MMXM Execution Logs</li>
-                <li>Live Psychology Sessions</li>
-                <li>Core ICT Basics</li>
-            </ul>
-            <a href="https://youtube.com/@HamzaFayazFX" target="_blank" class="card-btn yt-card-btn">Start Free Classes</a>
-        </div>
-
         <div class="course-card">
             <h3>Algorithmic ICT</h3>
             <span class="price">$250</span>
@@ -143,6 +132,18 @@
             </ul>
             <a href="https://wa.me/923235957001" target="_blank" class="card-btn enroll-card-btn">Join Elite</a>
         </div>
+
+        <div class="course-card" style="border-color: rgba(255,0,0,0.3);">
+            <h3>Free Academy</h3>
+            <span class="price">FREE</span>
+            <ul class="course-features">
+                <li>Weekly Market Breakdowns</li>
+                <li>MMXM Execution Logs</li>
+                <li>Live Psychology Sessions</li>
+                <li>Core ICT Basics</li>
+            </ul>
+            <a href="https://youtube.com/@HamzaFayazFX" target="_blank" class="card-btn yt-card-btn">Start Free Classes</a>
+        </div>
     </section>
 
     <h2 class="section-title">Institutional Execution</h2>
@@ -151,16 +152,16 @@
         <img src="trade2.jpg" alt="Setup 2" class="trade-img">
     </section>
 
-    <section class="vault-contact-container">
+    <section style="margin-top: 50px;">
         <h2 class="section-title">Direct Command Center</h2>
-        <p style="color: #444; letter-spacing: 2px;">SECURE CHANNELS FOR ENROLLMENT</p>
         <div class="contact-grid">
-            <a href="https://wa.me/923235957001" target="_blank" class="contact-card-premium wa-premium">
-                <h4>WhatsApp</h4>
-                <p>Direct access to Hamza Fayaz for mentorship inquiries.</p>
-                <span class="glow-text">Send Message →</span>
+            <a href="https://wa.me/923235957001" target="_blank" class="contact-card-premium wa-highlight">
+                <h4>WhatsApp Enrollment</h4>
+                <p>Fastest way to secure your slot in the next mentorship batch.</p>
+                <span class="glow-text" style="color: var(--wa-green);">Contact Now →</span>
             </a>
-            <a href="mailto:hamxafeyax@yahoo.com" class="contact-card-premium mail-premium">
+            
+            <a href="mailto:hamxafeyax@yahoo.com" class="contact-card-premium">
                 <h4>Official Mail</h4>
                 <p>For corporate queries and institutional partnerships.</p>
                 <span class="glow-text">Compose Email →</span>
@@ -169,7 +170,7 @@
     </section>
 
     <footer>
-        &copy; 2026 THE VAULT HDE FX ACADEMY | ALL RIGHTS RESERVED | ENGINEERED BY HAMZA FAYAZ
+        &copy; 2026 THE VAULT HDE FX ACADEMY | ALL RIGHTS RESERVED
     </footer>
 
 </body>
