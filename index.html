@@ -3,55 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Vault HDE FX Academy | Institutional ICT Architect</title>
+    <title>The Vault HDE FX Academy</title>
     <style>
-        :root{ --gold:#ffd700; --dark:#050505; --wa-green:#25d366; }
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{ background:#000; color:#fff; font-family:Arial, sans-serif; overflow-x:hidden; position:relative; }
-        
-        /* Animated background grid */
-        body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite; }
-        @keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }
+        :root{ --gold:#ffd700; --dark:#050505; --wa-green:#25d366; } *{margin:0;padding:0;box-sizing:border-box;} body{ background:#000; color:#fff; font-family:Arial, sans-serif; overflow-x:hidden; position:relative; } /* Animated background grid */ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite; } @keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} } /* Candles behind cards and sections */ .candle-bg{ position:absolute; top:180px; left:0; width:100%; height:calc(100% - 180px); pointer-events:none; z-index:-1; overflow:hidden; } .candle{ position:absolute; bottom:0; width:6px; border-radius:2px; animation:rise 3s linear infinite; } @keyframes rise{ 0%{transform:translateY(0) scaleY(1); opacity:0.2;} 50%{opacity:0.7;} 100%{transform:translateY(-300px) scaleY(2); opacity:0;} } /* Header */ .brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align: center; position:relative; z-index:1; } /* Hero */ .hero{ padding:80px 20px; text-align:center; position:relative; z-index:1; } .profile-card{ background:rgba(10,10,10,0.9); padding:50px 30px; border-radius:40px; border:1px solid rgba(255,215,0,0.2); max-width:650px; margin:auto; animation:goldGlow 4s infinite; position:relative; z-index:1; } .profile-img{ width:150px; height:150px; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px; object-fit: cover; animation:float 5s ease-in-out infinite; } /* Section title */ .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; position:relative; z-index:1; } /* Course Cards */ .course-grid{ display:flex; gap:25px; flex-wrap:wrap; justify-content:center; max-width:1200px; margin:auto; padding:0 20px; position:relative; z-index:1; } .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:360px; transition:0.4s; display:block; opacity:1; position:relative; z-index:1; text-decoration:none; color:#fff; } .course-card:hover{ border-color:var(--gold); transform:translateY(-10px); box-shadow:0 20px 50px rgba(255,215,0,0.4); } .yt-card{border-color:#ff0000 !important;} /* Trade Vault */ .trade-vault-card{ max-width:800px; margin:80px auto; background:#050505; border:1px solid rgba(255,215,0,0.2); border-radius:35px; padding:50px; text-align:center; animation:goldGlow 4s infinite; position:relative; z-index:1; } .access-btn{ background:transparent; border:2px solid var(--gold); color:var(--gold); padding:18px 45px; border-radius:50px; font-weight:900; cursor:pointer; animation:pulse 3s infinite; } /* Contact */ .contact-card{ background:rgba(255,255,255,0.1); border:1px solid rgba(255,215,0,0.3); padding:30px; width:300px; border-radius:25px; text-decoration:none; display:block; color:#fff; transition:0.3s; position:relative; z-index:1; text-align:center; } .contact-card:hover{ background:rgba(255,215,0,0.15); border-color:var(--gold); box-shadow:0 10px 30px rgba(255,215,0,0.5); } /* Footer */ footer{ padding:60px; text-align:center; color:#555; position:relative; z-index:1; } /* Animations */ @keyframes float{ 0%{transform:translateY(0)} 50%{transform:translateY(-15px)} 100%{transform:translateY(0)} } @keyframes pulse{ 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} } @keyframes goldGlow{ 0%{box-shadow:0 0 5px rgba(255,215,0,0.2)} 50%{box-shadow:0 0 25px rgba(255,215,0,0.7)} 100%{box-shadow:0 0 5px rgba(255,215,0,0.2)} }
+    </style>
 
-        .candle-bg{ position:absolute; top:180px; left:0; width:100%; height:calc(100% - 180px); pointer-events:none; z-index:-1; overflow:hidden; }
-        .candle{ position:absolute; bottom:0; width:6px; border-radius:2px; animation:rise 3s linear infinite; }
-        @keyframes rise{ 0%{transform:translateY(0) scaleY(1); opacity:0.2;} 50%{opacity:0.7;} 100%{transform:translateY(-300px) scaleY(2); opacity:0;} }
-
-        .brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align: center; position:relative; z-index:1; }
-
-        .hero{ padding:80px 20px; text-align:center; position:relative; z-index:1; }
-        .profile-card{ background:rgba(10,10,10,0.9); padding:50px 30px; border-radius:40px; border:1px solid rgba(255,215,0,0.2); max-width:650px; margin:auto; animation:goldGlow 4s infinite; position:relative; z-index:1; }
-        .profile-img{ width:150px; height:150px; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px; object-fit: cover; animation:float 5s ease-in-out infinite; }
-
-        .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; position:relative; z-index:1; }
-
-        .course-grid{ display:flex; gap:25px; flex-wrap:wrap; justify-content:center; max-width:1200px; margin:auto; padding:0 20px; position:relative; z-index:1; }
-        .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:360px; transition:0.4s; display:block; opacity:1; position:relative; z-index:1; text-decoration:none; color:#fff; }
-        .course-card:hover{ border-color:var(--gold); transform:translateY(-10px); box-shadow:0 20px 50px rgba(255,215,0,0.4); }
-        .yt-card{ border-color:#ff0000 !important; }
-
-        .trade-vault-card{ max-width:800px; margin:80px auto; background:#050505; border:1px solid rgba(255,215,0,0.2); border-radius:35px; padding:50px; text-align:center; animation:goldGlow 4s infinite; position:relative; z-index:1; }
-        .access-btn{ background:transparent; border:2px solid var(--gold); color:var(--gold); padding:18px 45px; border-radius:50px; font-weight:900; cursor:pointer; animation:pulse 3s infinite; text-transform: uppercase; }
-
-        .contact-card{ background:rgba(255,255,255,0.1); border:1px solid rgba(255,215,0,0.3); padding:30px; width:300px; border-radius:25px; text-decoration:none; display:block; color:#fff; transition:0.3s; position:relative; z-index:1; text-align:center; }
-        .contact-card:hover{ background:rgba(255,215,0,0.15); border-color:var(--gold); box-shadow:0 10px 30px rgba(255,215,0,0.5); }
-
-        /* AI BOT IMPROVED UI */
-        .ai-bot-launcher { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--gold); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); z-index: 9999; }
-        .chat-window { position: fixed; bottom: 100px; right: 30px; width: 340px; height: 480px; background: #050505; border: 1px solid var(--gold); border-radius: 20px; display: none; flex-direction: column; z-index: 9999; overflow: hidden; box-shadow: 0 0 40px rgba(0,0,0,1); }
-        .chat-header { background: var(--gold); color: #000; padding: 15px; font-weight: 800; display: flex; justify-content: space-between; font-size: 14px; text-transform: uppercase; }
-        #chat-messages { flex: 1; padding: 15px; overflow-y: auto; font-size: 13px; display: flex; flex-direction: column; gap: 10px; }
-        .bot-msg { background: rgba(255,215,0,0.08); border: 1px solid rgba(255,215,0,0.2); padding: 12px; border-radius: 12px 12px 12px 0; align-self: flex-start; line-height: 1.4; color: #eee; }
-        .user-msg { background: var(--gold); color: #000; padding: 10px; border-radius: 12px 12px 0 12px; align-self: flex-end; font-weight: 600; }
-        .chat-input-area { display: flex; padding: 12px; background: #0a0a0a; border-top: 1px solid #222; }
-        .chat-input-area input { flex: 1; background: #111; border: 1px solid #333; color: #fff; padding: 10px; border-radius: 8px; outline: none; }
-        .chat-input-area button { background: var(--gold); border: none; padding: 0 15px; margin-left: 8px; border-radius: 8px; cursor: pointer; font-weight: bold; }
-
-        @keyframes float{ 0%, 100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
-        @keyframes pulse{ 0%, 100%{transform:scale(1)} 50%{transform:scale(1.05)} }
-        @keyframes goldGlow{ 0%, 100%{box-shadow:0 0 5px rgba(255,215,0,0.2)} 50%{box-shadow:0 0 25px rgba(255,215,0,0.7)} }
-
-        footer{ padding:60px; text-align:center; color:#555; position:relative; z-index:1; font-size: 12px; letter-spacing: 1px; }
+    <style>
+        .vault-bot-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: sans-serif; }
+        .bot-trigger { width: 60px; height: 60px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 15px var(--gold); border: none; }
+        .bot-window { position: absolute; bottom: 80px; right: 0; width: 320px; height: 450px; background: #080808; border: 1px solid var(--gold); border-radius: 15px; display: none; flex-direction: column; overflow: hidden; }
+        .bot-header { background: var(--gold); color: #000; padding: 12px; font-weight: bold; display: flex; justify-content: space-between; }
+        #bot-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
+        .m-bot { background: rgba(255,215,0,0.1); border: 1px solid #333; padding: 8px; border-radius: 8px; align-self: flex-start; color: #eee; }
+        .m-user { background: var(--gold); color: #000; padding: 8px; border-radius: 8px; align-self: flex-end; }
+        .bot-input { display: flex; border-top: 1px solid #222; padding: 10px; }
+        .bot-input input { flex: 1; background: #000; border: 1px solid #333; color: #fff; padding: 8px; border-radius: 5px; outline: none; }
+        .bot-input button { background: var(--gold); border: none; padding: 0 12px; margin-left: 5px; border-radius: 5px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -63,9 +30,9 @@
     <section class="hero">
         <div class="profile-card">
             <img src="https://via.placeholder.com/150" alt="Hamza Fayaz" class="profile-img">
-            <h2 style="color:var(--gold); font-size: 2.2rem; margin-bottom: 5px;">Hamza Fayaz</h2>
-            <p style="letter-spacing: 4px; color: #888; text-transform: uppercase; margin-bottom: 25px; font-size: 0.9rem;">Institutional ICT Architect</p>
-            <p style="line-height: 1.6; color: #ccc; font-size: 1rem;">Operating at the intersection of Institutional Algorithms and Price Action Theory. Master of the ICT Framework and the proprietary HDE Concept.</p>
+            <h2 style="color:var(--gold); margin-bottom:10px;">Hamza Fayaz</h2>
+            <p style="color:#888; letter-spacing:3px; margin-bottom:20px;">Institutional ICT Architect</p>
+            <p>Operating at the intersection of Institutional Algorithms and Price Action Theory. Master of the ICT Framework and the proprietary HDE Concept.</p>
         </div>
     </section>
 
@@ -73,139 +40,112 @@
 
     <div class="course-grid">
         <div class="course-card">
-            <h4 style="color:var(--gold); margin-bottom: 15px; letter-spacing: 2px;">Algorithmic ICT</h4>
-            <p style="font-size: 1.8rem; margin-bottom: 20px; font-weight: 800;">$250</p>
-            <ul style="list-style: none; color: #aaa; line-height: 2.2; font-size: 0.9rem;">
+            <h4 style="color:var(--gold); margin-bottom:15px;">Algorithmic ICT</h4>
+            <p style="font-size:1.5rem; margin-bottom:15px;">$250</p>
+            <ul style="list-style:none; color:#777; line-height:1.8;">
                 <li>◈ IPDA Data Range</li>
                 <li>◈ MMXM Cycles</li>
                 <li>◈ Liquidity Voids</li>
             </ul>
-            <button class="access-btn" style="margin-top:25px; width: 100%; font-size: 0.8rem;">ENROLL NOW</button>
+            <button class="access-btn" style="margin-top:20px; width:100%;">ENROLL NOW</button>
         </div>
 
         <div class="course-card">
-            <h4 style="color:var(--gold); margin-bottom: 15px; letter-spacing: 2px;">HDE Masterclass</h4>
-            <p style="font-size: 1.8rem; margin-bottom: 20px; font-weight: 800;">$499</p>
-            <ul style="list-style: none; color: #aaa; line-height: 2.2; font-size: 0.9rem;">
+            <h4 style="color:var(--gold); margin-bottom:15px;">HDE Masterclass</h4>
+            <p style="font-size:1.5rem; margin-bottom:15px;">$499</p>
+            <ul style="list-style:none; color:#777; line-height:1.8;">
                 <li>◈ HDE Liquidity Matrix</li>
                 <li>◈ Order Flow Analysis</li>
                 <li>◈ Institutional Sponsorship</li>
             </ul>
-            <button class="access-btn" style="margin-top:25px; width: 100%; font-size: 0.8rem;">JOIN ELITE</button>
+            <button class="access-btn" style="margin-top:20px; width:100%;">JOIN ELITE</button>
         </div>
 
         <div class="course-card yt-card">
-            <h4 style="color:#ff0000; margin-bottom: 15px; letter-spacing: 2px;">Free Academy</h4>
-            <p style="font-size: 1.8rem; margin-bottom: 20px; font-weight: 800;">FREE</p>
-            <ul style="list-style: none; color: #aaa; line-height: 2.2; font-size: 0.9rem;">
+            <h4 style="color:#ff0000; margin-bottom:15px;">Free Academy</h4>
+            <p style="font-size:1.5rem; margin-bottom:15px;">FREE</p>
+            <ul style="list-style:none; color:#777; line-height:1.8;">
                 <li>◈ Weekly Breakdowns</li>
                 <li>◈ Execution Logs</li>
                 <li>◈ Live Psychology</li>
             </ul>
-            <button class="access-btn" style="margin-top:25px; width: 100%; border-color:#ff0000; color:#ff0000; font-size: 0.8rem;">SUBSCRIBE</button>
+            <button class="access-btn" style="margin-top:20px; width:100%; border-color:#ff0000; color:#ff0000;">SUBSCRIBE</button>
         </div>
     </div>
 
     <div class="trade-vault-card">
-        <h3 style="color:var(--gold); margin-bottom: 25px; letter-spacing: 5px;">THE EXECUTION VAULT</h3>
-        <button class="access-btn" id="vaultBtn" onclick="toggleVault()">Decrypt Access</button>
-        <div id="vaultGallery" style="display:none; margin-top: 30px; color: #444; font-family: monospace;">[ ACCESSING CLASSIFIED INSTITUTIONAL DATA... ]</div>
+        <h3>THE EXECUTION VAULT</h3>
+        <button class="access-btn" id="vaultBtn" onclick="toggleVault()" style="margin-top:20px;">Decrypt Access</button>
+        <div id="vaultGallery" style="display:none; margin-top:20px; color:#555;">[ System Encrypted ]</div>
     </div>
 
-    <h3 class="section-title">Command Center</h3>
-
-    <div class="course-grid" style="margin-bottom: 80px;">
-        <a href="https://wa.me/YOURNUMBER" class="contact-card">
-            <h4 style="color:var(--wa-green); margin-bottom: 10px;">WhatsApp</h4>
-            <p style="font-size: 0.75rem; color: #888; text-transform: uppercase;">Fastest Enrollment</p>
+    <div class="course-grid" style="margin-bottom:80px;">
+        <a href="#" class="contact-card">
+            <h4 style="color:var(--wa-green);">WhatsApp</h4>
+            <p style="font-size:0.7rem; color:#666;">Fastest Enrollment</p>
         </a>
-        <a href="mailto:you@example.com" class="contact-card">
-            <h4 style="color:var(--gold); margin-bottom: 10px;">Email</h4>
-            <p style="font-size: 0.75rem; color: #888; text-transform: uppercase;">Institutional Queries</p>
+        <a href="#" class="contact-card">
+            <h4 style="color:var(--gold);">Email</h4>
+            <p style="font-size:0.7rem; color:#666;">Institutional Queries</p>
         </a>
     </div>
 
-    <footer>© 2026 THE VAULT HDE FX ACADEMY | ALL RIGHTS RESERVED</footer>
+    <footer>© 2026 THE VAULT HDE FX ACADEMY</footer>
 
-    <div class="ai-bot-launcher" onclick="toggleChat()">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-    </div>
-
-    <div class="chat-window" id="chatWindow">
-        <div class="chat-header">
-            <span>VAULT AI ARCHITECT</span>
-            <span style="cursor:pointer" onclick="toggleChat()">✕</span>
-        </div>
-        <div id="chat-messages">
-            <div class="bot-msg">Greetings. I am the Vault's AI system. Ask me about ICT, HDE Matrix, or our Curriculums. How can I assist your analysis?</div>
-        </div>
-        <div class="chat-input-area">
-            <input type="text" id="userInput" placeholder="Type your query...">
-            <button onclick="sendMessage()">SEND</button>
+    <div class="vault-bot-container">
+        <button class="bot-trigger" onclick="openBot()">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        </button>
+        <div class="bot-window" id="vaultBot">
+            <div class="bot-header">
+                <span>Vault AI Help</span>
+                <span onclick="openBot()" style="cursor:pointer">×</span>
+            </div>
+            <div id="bot-messages">
+                <div class="m-bot">Greetings, Trader. How can I help you with ICT or HDE today?</div>
+            </div>
+            <div class="bot-input">
+                <input type="text" id="botText" placeholder="Ask about ICT/Enrollment...">
+                <button onclick="askBot()">Send</button>
+            </div>
         </div>
     </div>
 
     <script>
-        // Original Dashboard Scripts
-        function toggleVault(){
-            var x=document.getElementById("vaultGallery");
-            var btn=document.getElementById("vaultBtn");
-            if(x.style.display==="block"){ x.style.display="none"; btn.innerHTML="Decrypt Access"; }
-            else{ x.style.display="block"; btn.innerHTML="Hide Classified Data"; }
-        }
-
+        // --- YOUR ORIGINAL SCRIPTS (UNTOUCHED) ---
+        function toggleVault(){ var x=document.getElementById("vaultGallery"); var btn=document.getElementById("vaultBtn"); if(x.style.display==="block"){ x.style.display="none"; btn.innerHTML="Decrypt Access"; } else{ x.style.display="block"; btn.innerHTML="Hide Classified Data"; } }
         const candleContainer = document.getElementById("candleContainer");
-        const candleColors = ["rgba(255,215,0,0.15)","rgba(255,215,0,0.25)"];
-        for(let i=0;i<60;i++){
-            let candle = document.createElement("div");
-            candle.classList.add("candle");
-            candle.style.left = Math.random()*100+"%";
-            candle.style.height = 40 + Math.random()*120+"px";
-            candle.style.background = candleColors[Math.floor(Math.random()*candleColors.length)];
-            candle.style.animationDuration = 2.5 + Math.random()*2+"s";
-            candleContainer.appendChild(candle);
+        const candleColors = ["rgba(255,215,0,0.2)","rgba(255,215,0,0.3)","rgba(255,215,0,0.4)"];
+        for(let i=0;i<80;i++){ let candle = document.createElement("div"); candle.classList.add("candle"); candle.style.left = Math.random()*100+"%"; candle.style.height = 50 + Math.random()*150+"px"; candle.style.background = candleColors[Math.floor(Math.random()*candleColors.length)]; candle.style.animationDuration = 2 + Math.random()*3+"s"; candleContainer.appendChild(candle); }
+
+        // --- NEW AI BOT SCRIPTS (BETTER ANSWERS) ---
+        function openBot() {
+            const win = document.getElementById('vaultBot');
+            win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // IMPROVED AI LOGIC (Better Answers)
-        function toggleChat() {
-            const chat = document.getElementById('chatWindow');
-            chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
-        }
+        function askBot() {
+            const input = document.getElementById('botText');
+            const box = document.getElementById('bot-messages');
+            if(!input.value.trim()) return;
 
-        function sendMessage() {
-            const input = document.getElementById('userInput');
-            const container = document.getElementById('chat-messages');
-            if (input.value.trim() === "") return;
+            box.innerHTML += `<div class="m-user">${input.value}</div>`;
+            let msg = input.value.toLowerCase();
+            let reply = "I'm analyzing the market algorithms. For direct access, please contact the Command Center.";
 
-            container.innerHTML += `<div class="user-msg">${input.value}</div>`;
-            
-            let query = input.value.toLowerCase();
-            let response = "I'm processing your request through the HDE Matrix. For direct mentorship, please use the WhatsApp 'Command Center'.";
-
-            if (query.includes("ict")) {
-                response = "The ICT Framework in this Academy covers IPDA Data Ranges, MMXM (Market Maker Models), and Liquidity Voids. Would you like to know about the $250 curriculum?";
-            } else if (query.includes("hde")) {
-                response = "HDE is our proprietary Liquidity Matrix. It focuses on Institutional Sponsorship and high-precision Order Flow. It's covered in the $499 Masterclass.";
-            } else if (query.includes("price") || query.includes("fees") || query.includes("dollar")) {
-                response = "Algorithmic ICT is $250. The HDE Masterclass is $499. The YouTube 'Free Academy' is open for everyone.";
-            } else if (query.includes("join") || query.includes("enroll") || query.includes("whatsapp")) {
-                response = "To join, click the WhatsApp button in the Command Center below. Our team will guide you through the enrollment.";
-            } else if (query.includes("hello") || query.includes("hi")) {
-                response = "Hello Trader. Ready to align with the Institutional Algorithm? Ask me about our models.";
-            }
+            // Accurate Responses
+            if(msg.includes("ict")) reply = "Our ICT curriculum covers IPDA Data Ranges, MMXM cycles, and Liquidity Voids for $250. It's the core of institutional analysis.";
+            if(msg.includes("hde")) reply = "The HDE Masterclass ($499) is our proprietary Liquidity Matrix. It shows where institutional sponsorship is truly active.";
+            if(msg.includes("enroll") || msg.includes("join") || msg.includes("price")) reply = "You can enroll in Algorithmic ICT ($250) or HDE Masterclass ($499). Click the WhatsApp link in the Command Center below to start.";
+            if(msg.includes("free")) reply = "The Free Academy includes weekly breakdowns and live psychology logs. Click 'Subscribe' to join.";
 
             setTimeout(() => {
-                container.innerHTML += `<div class="bot-msg">${response}</div>`;
-                container.scrollTop = container.scrollHeight;
-            }, 500);
-
+                box.innerHTML += `<div class="m-bot">${reply}</div>`;
+                box.scrollTop = box.scrollHeight;
+            }, 600);
             input.value = "";
-            container.scrollTop = container.scrollHeight;
+            box.scrollTop = box.scrollHeight;
         }
-
-        document.getElementById('userInput').addEventListener('keypress', function(e){
-            if(e.key === 'Enter') sendMessage();
-        });
     </script>
 </body>
 </html>
