@@ -184,23 +184,29 @@
             inp.value = '';
             
             let tid = "b-" + Date.now();
-            addMsg("Analyzing...", 'b', tid);
+            addMsg("Typing...", 'b', tid);
 
-            const systemPrompt = "You are the Official AI for The Vault HDE FX Academy. Founder: Hamza Fayaz. Expert in ICT and Institutional Trading. Only answer trading/academy questions. Courses: $250 and $499. WhatsApp: +923235957001.";
+            const systemPrompt = "You are the AI for 'The Vault HDE FX Academy'. Founder: Hamza Fayaz. Prices: ICT $250, HDE $499. WhatsApp: +923235957001. YouTube: @HamzaFayazFX. Provide short, professional answers in Roman Urdu/English.";
 
             try {
                 const res = await fetch(API_URL, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        contents: [{ role: "user", parts: [{ text: `${systemPrompt} \n\n User Question: ${txt}` }] }]
+                        contents: [{ role: "user", parts: [{ text: `${systemPrompt} \n\nUser: ${txt}` }] }]
                     })
                 });
+                
                 const d = await res.json();
-                let reply = d.candidates[0].content.parts[0].text;
-                document.getElementById(tid).innerText = reply;
+                
+                if (d.candidates && d.candidates[0].content.parts[0].text) {
+                    let reply = d.candidates[0].content.parts[0].text;
+                    document.getElementById(tid).innerText = reply;
+                } else {
+                    document.getElementById(tid).innerText = "The Vault Academy ki details ke liye WhatsApp (+923235957001) par message karein.";
+                }
             } catch(e) {
-                document.getElementById(tid).innerText = "Main abhi busy hoon. Please WhatsApp (+923235957001) par rabta karein.";
+                document.getElementById(tid).innerText = "Technical error. Please contact on WhatsApp (+923235957001).";
             }
         }
 
@@ -215,4 +221,5 @@
         }
     </script>
 </body>
-</html>
+            </html>
+            
