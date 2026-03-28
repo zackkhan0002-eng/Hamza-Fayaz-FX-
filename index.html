@@ -11,47 +11,48 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{ background:#000; color:#fff; font-family:Arial, sans-serif; overflow-x:hidden; position:relative; }
         
-        /* Background Animations */
+        /* Grid Animation Background */
         body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite; }
         @keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }
-        .candle-bg{ position:absolute; top:180px; left:0; width:100%; height:calc(100% - 180px); pointer-events:none; z-index:-1; overflow:hidden; }
-        .candle{ position:absolute; bottom:0; width:6px; border-radius:2px; animation:rise 3s linear infinite; }
-        @keyframes rise{ 0%{transform:translateY(0) scaleY(1); opacity:0.2;} 50%{opacity:0.7;} 100%{transform:translateY(-300px) scaleY(2); opacity:0;} }
 
-        /* Original UI Styles */
+        /* UI Styling */
         .brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align: center; position:relative; z-index:1; }
         .hero{ padding:80px 20px; text-align:center; position:relative; z-index:1; }
         .profile-card{ background:rgba(10,10,10,0.9); padding:50px 30px; border-radius:40px; border:1px solid rgba(255,215,0,0.2); max-width:650px; margin:auto; animation:goldGlow 4s infinite; position:relative; z-index:1; }
-        .profile-img{ width:150px; height:150px; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px; object-fit: cover; animation:float 5s ease-in-out infinite; }
+        .profile-img{ width:150px; height:150px; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px; object-fit: cover; }
         .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; position:relative; z-index:1; }
+
+        /* Course Grid & Cards */
         .course-grid{ display:flex; gap:25px; flex-wrap:wrap; justify-content:center; max-width:1200px; margin:auto; padding:0 20px; position:relative; z-index:1; }
-        .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:360px; transition:0.4s; display:block; position:relative; z-index:1; text-decoration: none; color: white; }
+        .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:360px; transition:0.4s; display:block; text-decoration: none; color: white; }
         .course-card:hover{ border-color:var(--gold); transform:translateY(-10px); box-shadow:0 20px 50px rgba(255,215,0,0.4); }
-        .yt-card{border-color:#ff0000;}
+        .yt-card{ border-color:#ff0000; }
+
+        /* Vault Section */
         .trade-vault-card{ max-width:800px; margin:80px auto; background:#050505; border:1px solid rgba(255,215,0,0.2); border-radius:35px; padding:50px; text-align:center; animation:goldGlow 4s infinite; position:relative; z-index:1; }
-        .access-btn{ background:transparent; border:2px solid var(--gold); color:var(--gold); padding:18px 45px; border-radius:50px; font-weight:900; cursor:pointer; animation:pulse 3s infinite; }
-        .contact-card{ background:rgba(255,255,255,0.1); border:1px solid rgba(255,215,0,0.3); padding:30px; width:300px; border-radius:25px; text-decoration:none; display:block; color:#fff; transition:0.3s; position:relative; z-index:1; }
-        .contact-card:hover{ background:rgba(255,215,0,0.15); border-color:var(--gold); box-shadow:0 10px 30px rgba(255,215,0,0.5); }
-        footer{ padding:60px; text-align:center; color:#555; position:relative; z-index:1; }
+        .access-btn{ background:transparent; border:2px solid var(--gold); color:var(--gold); padding:18px 45px; border-radius:50px; font-weight:900; cursor:pointer; }
 
-        /* Animations */
-        @keyframes float{ 0%{transform:translateY(0)} 50%{transform:translateY(-15px)} 100%{transform:translateY(0)} }
-        @keyframes pulse{ 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
-        @keyframes goldGlow{ 0%{box-shadow:0 0 5px rgba(255,215,0,0.2)} 50%{box-shadow:0 0 25px rgba(255,215,0,0.7)} 100%{box-shadow:0 0 5px rgba(255,215,0,0.2)} }
+        /* Command Centre */
+        .contact-card{ background:rgba(255,255,255,0.1); border:1px solid rgba(255,215,0,0.3); padding:30px; width:300px; border-radius:25px; text-decoration:none; display:block; color:#fff; transition:0.3s; text-align: center; }
+        .contact-card:hover{ background:rgba(255,215,0,0.15); border-color:var(--gold); }
 
-        /* AI BOT STYLES (NO CHANGES TO WEBSITE) */
-        #ai-bubble { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--gold); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; box-shadow: 0 5px 20px rgba(255,215,0,0.4); transition: 0.3s; }
-        #chat-window { position: fixed; bottom: 100px; right: 30px; width: 350px; height: 500px; background: #111; border: 1px solid var(--gold); border-radius: 20px; display: none; flex-direction: column; z-index: 1000; overflow: hidden; box-shadow: 0 10px 50px rgba(0,0,0,0.9); }
-        #chat-header { background: var(--gold); color: #000; padding: 15px; font-weight: bold; text-align: center; }
-        #chat-msgs { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
-        .m { padding: 10px; border-radius: 10px; font-size: 13px; max-width: 80%; line-height: 1.4; }
+        /* AI BOT UI - RESPONSIBLE & PROFESSIONAL */
+        #ai-bubble { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--gold); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 2000; box-shadow: 0 5px 20px rgba(255,215,0,0.4); font-size: 24px; }
+        #chat-window { position: fixed; bottom: 20px; right: 20px; width: 90%; max-width: 360px; height: 75vh; background: #0a0a0a; border: 2px solid var(--gold); border-radius: 25px; display: none; flex-direction: column; z-index: 2001; overflow: hidden; box-shadow: 0 15px 60px rgba(0,0,0,1); }
+        #chat-header { background: var(--gold); color: #000; padding: 15px; font-weight: bold; text-align: center; position: relative; }
+        #close-chat { position: absolute; right: 15px; top: 12px; cursor: pointer; font-size: 18px; font-weight: bold; }
+        #chat-msgs { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #050505; }
+        .m { padding: 12px; border-radius: 15px; font-size: 13px; max-width: 85%; }
         .u { align-self: flex-end; background: var(--gold); color: #000; }
-        .b { align-self: flex-start; background: #222; color: #fff; border: 1px solid #333; }
+        .b { align-self: flex-start; background: #1a1a1a; color: #fff; border: 1px solid #333; }
+        .quick-btns { display: flex; flex-wrap: wrap; gap: 5px; padding: 10px; background: #000; }
+        .q-btn { background: #111; border: 1px solid var(--gold); color: var(--gold); font-size: 10px; padding: 5px 10px; border-radius: 20px; cursor: pointer; }
         #chat-input { display: flex; padding: 10px; background: #000; gap: 5px; }
-        #chat-input input { flex: 1; background: #111; border: 1px solid #333; color: #fff; padding: 10px; border-radius: 5px; outline: none; }
-        #chat-input button { background: var(--gold); border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        .quick-btns { display: flex; flex-wrap: wrap; gap: 5px; padding: 5px 10px; background: #000; }
-        .q-btn { background: #222; border: 1px solid var(--gold); color: var(--gold); font-size: 11px; padding: 5px 8px; border-radius: 20px; cursor: pointer; }
+        #chat-input input { flex: 1; background: #111; border: 1px solid #333; color: #fff; padding: 10px; border-radius: 20px; outline: none; }
+        #chat-input button { background: var(--gold); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
+
+        @keyframes goldGlow{ 0%{box-shadow:0 0 5px rgba(255,215,0,0.2)} 50%{box-shadow:0 0 25px rgba(255,215,0,0.6)} 100%{box-shadow:0 0 5px rgba(255,215,0,0.2)} }
+        footer{ padding:40px; text-align:center; color:#444; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -61,9 +62,8 @@
     <section class="hero">
         <div class="profile-card">
             <img src="hamza.jpg" alt="Hamza Fayaz" class="profile-img">
-            <div style="color:var(--gold); letter-spacing:3px; font-weight:bold; text-transform:uppercase;">Institutional ICT Architect</div>
-            <h1 style="font-size:3rem; margin:15px 0;">Hamza Fayaz</h1>
-            <p style="color:#ccc; line-height:1.7;">Operating at the intersection of <strong>Institutional Algorithms</strong> and <strong>Price Action Theory</strong>. Master of the <strong>ICT Framework</strong> and the proprietary <strong>HDE Concept</strong>.</p>
+            <h1 style="font-size:2.5rem; margin:10px 0; color:var(--gold);">Hamza Fayaz</h1>
+            <p style="color:#ccc;">Institutional ICT Architect | Founder of HDE Concept</p>
         </div>
     </section>
 
@@ -71,8 +71,8 @@
     <section class="course-grid">
         <div class="course-card">
             <h3 style="color:var(--gold); margin-bottom:15px;">Algorithmic ICT</h3>
-            <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$250</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
+            <span style="font-size:2rem; font-weight:900; display:block; margin-bottom:20px;">$250</span>
+            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px; font-size: 13px;">
                 <li>◈ IPDA Data Range</li>
                 <li>◈ MMXM Cycles</li>
                 <li>◈ Liquidity Voids</li>
@@ -82,8 +82,8 @@
 
         <div class="course-card" style="border-color:var(--gold);">
             <h3 style="color:var(--gold); margin-bottom:15px;">HDE Masterclass</h3>
-            <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">$499</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
+            <span style="font-size:2rem; font-weight:900; display:block; margin-bottom:20px;">$499</span>
+            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px; font-size: 13px;">
                 <li>◈ HDE Liquidity Matrix</li>
                 <li>◈ Order Flow Analysis</li>
                 <li>◈ Institutional Sponsorship</li>
@@ -93,8 +93,8 @@
 
         <div class="course-card yt-card">
             <h3 style="color:#ff0000; margin-bottom:15px;">Free Academy</h3>
-            <span style="font-size:2.5rem; font-weight:900; display:block; margin-bottom:20px;">FREE</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px;">
+            <span style="font-size:2rem; font-weight:900; display:block; margin-bottom:20px;">FREE</span>
+            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px; font-size: 13px;">
                 <li>◈ Weekly Breakdowns</li>
                 <li>◈ Execution Logs</li>
                 <li>◈ Live Psychology</li>
@@ -115,36 +115,38 @@
     <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding-bottom:50px;">
         <a href="https://wa.me/923235957001" class="contact-card">
             <h3 style="color:var(--wa-green); margin-bottom:10px;">WhatsApp</h3>
-            <p style="color:#ccc;">Fastest Enrollment</p>
+            <p style="color:#ccc; font-size: 12px;">Fastest Enrollment</p>
         </a>
         <a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
             <h3 style="color:var(--gold); margin-bottom:10px;">Email</h3>
-            <p style="color:#ccc;">Institutional Queries</p>
+            <p style="color:#ccc; font-size: 12px;">Institutional Queries</p>
         </a>
     </div>
 
     <div id="ai-bubble" onclick="toggleChat()">💬</div>
     <div id="chat-window">
-        <div id="chat-header">HDE FX AI ASSISTANT</div>
+        <div id="chat-header">
+            HDE FX AI ASSISTANT
+            <span id="close-chat" onclick="toggleChat()">✕</span>
+        </div>
         <div id="chat-msgs">
-            <div class="m b">Assalam-o-Alaikum! Main Hamza Fayaz FX ka AI assistant hoon. Main trading aur courses mein aapki help kar sakta hoon.</div>
+            <div class="m b">Assalam-o-Alaikum! Main Hamza Fayaz FX ka official AI hoon. Main sirf trading aur courses ke mutalika help kar sakta hoon.</div>
         </div>
         <div class="quick-btns">
             <button class="q-btn" onclick="quickSend('Course Fees?')">Fees?</button>
             <button class="q-btn" onclick="quickSend('How to join?')">How to Join?</button>
-            <button class="q-btn" onclick="quickSend('YouTube Academy?')">YouTube Academy</button>
+            <button class="q-btn" onclick="quickSend('YouTube Channel?')">YouTube</button>
         </div>
         <div id="chat-input">
-            <input type="text" id="uInp" placeholder="Ask me..." onkeypress="if(event.key==='Enter') sendMsg()">
+            <input type="text" id="uInp" placeholder="Ask about trading..." onkeypress="if(event.key==='Enter') sendMsg()">
             <button onclick="sendMsg()">➤</button>
         </div>
     </div>
 
     <footer>© 2026 THE VAULT HDE FX ACADEMY</footer>
-    <div class="candle-bg" id="candleContainer"></div>
 
     <script>
-        // Original Website Scripts (UNTOUCHED)
+        // Original Vault Script
         function toggleVault(){
             var x=document.getElementById("vaultGallery");
             var btn=document.getElementById("vaultBtn");
@@ -152,25 +154,20 @@
             else{ x.style.display="block"; btn.innerHTML="Hide Classified Data"; }
         }
 
-        const candleContainer = document.getElementById("candleContainer");
-        const candleColors = ["rgba(255,215,0,0.2)","rgba(255,215,0,0.3)","rgba(255,215,0,0.4)"];
-        for(let i=0;i<80;i++){
-            let candle = document.createElement("div");
-            candle.classList.add("candle");
-            candle.style.left = Math.random()*100+"%";
-            candle.style.height = 50 + Math.random()*150+"px";
-            candle.style.background = candleColors[Math.floor(Math.random()*candleColors.length)];
-            candle.style.animationDuration = 2 + Math.random()*3+"s";
-            candleContainer.appendChild(candle);
-        }
-
-        // AI Bot Logic (Upgraded with Knowledge Base)
+        // Responsible AI Logic
         const API_KEY = "AIzaSyAZKaibH21pHTH6p8KnHihY2Gbpv8t-hfw";
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
         function toggleChat() {
             let win = document.getElementById('chat-window');
-            win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+            let bubble = document.getElementById('ai-bubble');
+            if(win.style.display === 'flex') {
+                win.style.display = 'none';
+                bubble.style.display = 'flex';
+            } else {
+                win.style.display = 'flex';
+                bubble.style.display = 'none';
+            }
         }
 
         function quickSend(txt) {
@@ -182,33 +179,29 @@
             let inp = document.getElementById('uInp');
             let txt = inp.value.trim();
             if(!txt) return;
+
             addMsg(txt, 'u');
             inp.value = '';
             
-            let tempId = "bot-" + Date.now();
-            addMsg("Typing...", 'b', tempId);
+            let tid = "b-" + Date.now();
+            addMsg("Analyzing...", 'b', tid);
 
-            const systemKnowledge = `
-            Context: Official AI for 'The Vault HDE FX Academy'. Founder: Hamza Fayaz.
-            Courses: Algorithmic ICT ($250), HDE Masterclass ($499).
-            Free Education: YouTube (@HamzaFayazFX).
-            Contact: WhatsApp +923235957001.
-            Tone: Mix Roman Urdu/English, Professional, Institutional Trading Expert.
-            Rules: If asked about fees or joining, give clear details and point to WhatsApp.
-            `;
+            const systemPrompt = "You are the Official AI for The Vault HDE FX Academy. Founder: Hamza Fayaz. Expert in ICT and Institutional Trading. Only answer trading/academy questions. Courses: $250 and $499. WhatsApp: +923235957001.";
 
             try {
                 const res = await fetch(API_URL, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        contents: [{ role: "user", parts: [{ text: `${systemKnowledge} \nUser Question: ${txt}` }] }]
+                        contents: [{ role: "user", parts: [{ text: `${systemPrompt} \n\n User Question: ${txt}` }] }]
                     })
                 });
                 const d = await res.json();
                 let reply = d.candidates[0].content.parts[0].text;
-                document.getElementById(tempId).innerText = reply;
-            } catch(e) { document.getElementById(tempId).innerText = "Server busy. Please WhatsApp +923235957001 for instant reply."; }
+                document.getElementById(tid).innerText = reply;
+            } catch(e) {
+                document.getElementById(tid).innerText = "Main abhi busy hoon. Please WhatsApp (+923235957001) par rabta karein.";
+            }
         }
 
         function addMsg(t, s, id) {
@@ -222,4 +215,5 @@
         }
     </script>
 </body>
-</html>
+                </html>
+                
