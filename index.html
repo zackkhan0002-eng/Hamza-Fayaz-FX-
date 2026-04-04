@@ -9,255 +9,221 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <style>
-:root{--gold:#ffd700;--dark:#050505;--wa-green:#25d366;}
+:root{ --gold:#ffd700; --dark:#050505; --wa-green:#25d366; }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#000;color:#fff;font-family:Arial,sans-serif;overflow-x:hidden;position:relative;}
-
-/* Grid Animation Background */
-body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite;}
-@keyframes gridmove{0%{transform:translateY(0)}100%{transform:translateY(40px)}}
-
-/* UI Styling */
-.brand-header{width:100%;max-width:1100px;margin:auto;padding:25px;color:var(--gold);letter-spacing:5px;font-weight:800;text-transform:uppercase;border-bottom:2px solid var(--gold);text-align:center;}
-.hero{padding:80px 20px;text-align:center;}
-.profile-card{background:rgba(10,10,10,0.9);padding:50px 30px;border-radius:40px;border:1px solid rgba(255,215,0,0.2);max-width:650px;margin:auto;}
-.profile-img{width:150px;height:150px;border-radius:50%;border:3px solid var(--gold);margin-bottom:20px;object-fit:cover;}
-.section-title{font-size:1.8rem;color:var(--gold);margin:60px 0 40px;text-transform:uppercase;letter-spacing:4px;text-align:center;}
-
-/* Course Grid */
-.course-grid{display:flex;gap:25px;flex-wrap:wrap;justify-content:center;max-width:1200px;margin:auto;padding:0 20px;}
-.course-card{background:#0a0a0a;border:1px solid rgba(255,215,0,0.2);padding:40px 30px;border-radius:30px;width:360px;transition:0.4s;display:block;text-decoration:none;color:white;}
-.course-card:hover{border-color:var(--gold);transform:translateY(-10px);box-shadow:0 20px 50px rgba(255,215,0,0.4);}
-.yt-card{border-color:#ff0000}
-
-/* Vault */
-.trade-vault-card{max-width:800px;margin:80px auto;background:#050505;border:1px solid rgba(255,215,0,0.2);border-radius:35px;padding:50px;text-align:center;}
-.access-btn{background:transparent;border:2px solid var(--gold);color:var(--gold);padding:18px 45px;border-radius:50px;font-weight:900;cursor:pointer;}
-
-/* Contact */
-.contact-card{background:rgba(255,255,255,0.1);border:1px solid rgba(255,215,0,0.3);padding:30px;width:300px;border-radius:25px;text-decoration:none;display:block;color:#fff;transition:0.3s;text-align:center;}
-.contact-card:hover{background:rgba(255,215,0,0.15);border-color:var(--gold);}
-
-footer{padding:40px;text-align:center;color:#444;font-size:12px;}
-
-/* Discipline Hub Glass Cards */
-.glass-card{background:rgba(22,27,34,0.8);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);transition:transform 0.3s ease, border-color 0.3s ease;}
-.glass-card:hover{border-color:#38bdf8;transform:translateY(-5px);}
-.checkbox-wrapper input[type="checkbox"]{appearance:none;width:24px;height:24px;border:2px solid #30363d;border-radius:6px;cursor:pointer;position:relative;transition:all 0.2s ease;}
-.checkbox-wrapper input[type="checkbox"]:checked{background-color:#38bdf8;border-color:#38bdf8;}
-.checkbox-wrapper input[type="checkbox"]:checked::after{content:"\f00c";font-family:"Font Awesome 5 Free";font-weight:900;color:white;font-size:14px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
-.risk-pulse{animation:pulse 2s infinite;}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,0.4);}70%{box-shadow:0 0 0 10px rgba(239,68,68,0);}100%{box-shadow:0 0 0 0 rgba(239,68,68,0);}}
-.glow-text{text-shadow:0 0 10px rgba(56,189,248,0.5);}
+body{ background:#000; color:#fff; font-family:Arial, sans-serif; overflow-x:hidden; position:relative; }  
+body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite; }  
+@keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }  
+.brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align:center; }  
+.hero{padding:80px 20px;text-align:center;}  
+.profile-card{ background:rgba(10,10,10,0.9); padding:50px 30px; border-radius:40px; border:1px solid rgba(255,215,0,0.2); max-width:650px; margin:auto; }  
+.profile-img{ width:150px; height:150px; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px; object-fit:cover; }  
+.section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }  
+.course-grid{ display:flex; gap:25px; flex-wrap:wrap; justify-content:center; max-width:1200px; margin:auto; padding:0 20px; }  
+.course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:360px; transition:0.4s; display:block; text-decoration:none; color:white; }  
+.course-card:hover{ border-color:var(--gold); transform:translateY(-10px); box-shadow:0 20px 50px rgba(255,215,0,0.4); }  
+.yt-card{border-color:#ff0000}  
+.trade-vault-card{ max-width:800px; margin:80px auto; background:#050505; border:1px solid rgba(255,215,0,0.2); border-radius:35px; padding:50px; text-align:center; }  
+.access-btn{ background:transparent; border:2px solid var(--gold); color:var(--gold); padding:18px 45px; border-radius:50px; font-weight:900; cursor:pointer; }  
+.contact-card{ background:rgba(255,255,255,0.1); border:1px solid rgba(255,215,0,0.3); padding:30px; width:300px; border-radius:25px; text-decoration:none; display:block; color:#fff; transition:0.3s; text-align:center; }  
+.contact-card:hover{ background:rgba(255,215,0,0.15); border-color:var(--gold); }  
+footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 </style>
 </head>
-<body>
 
+<body>
 <div class="brand-header">THE VAULT HDE FX ACADEMY</div>
 
 <section class="hero">
-<div class="profile-card">
-<img src="hamza.jpg" class="profile-img">
-<h1 style="font-size:2.5rem;color:var(--gold);">Hamza Fayaz</h1>
-<p style="color:#ccc;">Institutional ICT Architect | Founder of HDE Concept</p>
-</div>
+    <div class="profile-card">
+        <img src="hamza.jpg" class="profile-img">
+        <h1 style="font-size:2.5rem;color:var(--gold);">Hamza Fayaz</h1>
+        <p style="color:#ccc;">Institutional ICT Architect | Founder of HDE Concept</p>
+    </div>
 </section>
 
 <h2 class="section-title">Institutional Curriculums</h2>
 <section class="course-grid">
-<div class="course-card">
-<h3 style="color:var(--gold);margin-bottom:15px;">Algorithmic ICT</h3>
-<span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$250</span>
-<ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
-<li>◈ IPDA Data Range</li>
-<li>◈ MMXM Cycles</li>
-<li>◈ Liquidity Voids</li>
-</ul>
-<a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">ENROLL NOW</a>
-</div>
+    <div class="course-card">
+        <h3 style="color:var(--gold);margin-bottom:15px;">Algorithmic ICT</h3>
+        <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$250</span>
+        <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+            <li>◈ IPDA Data Range</li>
+            <li>◈ MMXM Cycles</li>
+            <li>◈ Liquidity Voids</li>
+        </ul>
+        <a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> ENROLL NOW </a>
+    </div>
 
-<div class="course-card">
-<h3 style="color:var(--gold);margin-bottom:15px;">HDE Masterclass</h3>
-<span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$499</span>
-<ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
-<li>◈ HDE Liquidity Matrix</li>
-<li>◈ Order Flow Analysis</li>
-<li>◈ Institutional Sponsorship</li>
-</ul>
-<a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">JOIN ELITE</a>
-</div>
+    <div class="course-card">
+        <h3 style="color:var(--gold);margin-bottom:15px;">HDE Masterclass</h3>
+        <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$499</span>
+        <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+            <li>◈ HDE Liquidity Matrix</li>
+            <li>◈ Order Flow Analysis</li>
+            <li>◈ Institutional Sponsorship</li>
+        </ul>
+        <a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> JOIN ELITE </a>
+    </div>
 
-<div class="course-card yt-card">
-<h3 style="color:#ff0000;margin-bottom:15px;">Free Academy</h3>
-<span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">FREE</span>
-<ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
-<li>◈ Weekly Breakdowns</li>
-<li>◈ Execution Logs</li>
-<li>◈ Live Psychology</li>
-</ul>
-<a href="https://youtube.com/@HamzaFayazFX" style="display:block;background:#ff0000;color:#fff;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">SUBSCRIBE</a>
-</div>
+    <div class="course-card yt-card">
+        <h3 style="color:#ff0000;margin-bottom:15px;">Free Academy</h3>
+        <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">FREE</span>
+        <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+            <li>◈ Weekly Breakdowns</li>
+            <li>◈ Execution Logs</li>
+            <li>◈ Live Psychology</li>
+        </ul>
+        <a href="https://youtube.com/@HamzaFayazFX" style="display:block;background:#ff0000;color:#fff;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> SUBSCRIBE </a>
+    </div>
 </section>
 
 <section class="trade-vault-card">
-<h2 style="color:var(--gold);letter-spacing:5px;margin-bottom:20px;">THE EXECUTION VAULT</h2>
-<button class="access-btn" onclick="toggleVault()" id="vaultBtn">Decrypt Access</button>
-<div id="vaultGallery" style="display:none; margin-top:40px;">
-<img src="trade1.jpg" alt="Trade" style="width:100%; border-radius:20px; border:1px solid var(--gold);">
-</div>
+    <h2 style="color:var(--gold);letter-spacing:5px;margin-bottom:20px;"> THE EXECUTION VAULT </h2>
+    <button class="access-btn">Decrypt Access</button>
 </section>
 
 <!-- DISCIPLINE HUB SECTION -->
 <section style="max-width:1200px;margin:auto;padding:60px 20px;">
-<h2 class="section-title">Trading Discipline Hub</h2>
-<div class="flex justify-between mb-4">
-<input type="date" id="discipline-date" class="p-2 rounded text-black"/>
-<button onclick="saveDiscipline()" class="bg-gold text-black font-bold px-4 py-2 rounded ml-4">Save</button>
-</div>
+    <h2 class="section-title">Trading Discipline Hub</h2>
+    
+    <!-- Date Input -->
+    <div style="text-align:center;margin-bottom:20px;">
+        <label for="disc-date" style="color:#ffd700;font-weight:bold;">Select Date: </label>
+        <input type="date" id="disc-date" style="padding:8px 12px;border-radius:8px;border:1px solid #ffd700;background:#0a0a0a;color:#fff;">
+    </div>
 
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6" id="discipline-hub">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 glass-card p-6 rounded-2xl">
+            <h3 class="text-lg font-bold mb-4" style="color:#ffd700;">
+                <i class="fas fa-layer-group text-sky-500"></i> Execution Models
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+                    <span>CME Open</span>
+                    <input type="checkbox" id="chk-cme">
+                </div>
+                <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+                    <span>Equity Open</span>
+                    <input type="checkbox" id="chk-equity">
+                </div>
+                <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+                    <span>London Silver Bullet</span>
+                    <input type="checkbox" id="chk-london">
+                </div>
+                <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+                    <span>NY AM Silver Bullet</span>
+                    <input type="checkbox" id="chk-nyam">
+                </div>
+                <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+                    <span>NY PM Silver Bullet</span>
+                    <input type="checkbox" id="chk-nypm">
+                </div>
+            </div>
+        </div>
 
-<!-- Left Column: Execution Models -->
-<div class="lg:col-span-2 glass-card p-6 rounded-2xl">
-<h3 class="text-lg font-bold mb-4"><i class="fas fa-layer-group text-sky-500"></i> Execution Models</h3>
-<div class="grid grid-cols-2 gap-4">
-<div class="flex justify-between bg-[#161b22] p-4 rounded-xl checkbox-wrapper">
-<span>CME Open</span>
-<input type="checkbox" id="cmeOpen">
-</div>
-<div class="flex justify-between bg-[#161b22] p-4 rounded-xl checkbox-wrapper">
-<span>Equity Open</span>
-<input type="checkbox" id="equityOpen">
-</div>
-<div class="flex justify-between bg-[#161b22] p-4 rounded-xl checkbox-wrapper">
-<span>London Silver Bullet</span>
-<input type="checkbox" id="londonSB">
-</div>
-<div class="flex justify-between bg-[#161b22] p-4 rounded-xl checkbox-wrapper">
-<span>NY AM Silver Bullet</span>
-<input type="checkbox" id="nyamSB">
-</div>
-<div class="flex justify-between bg-[#161b22] p-4 rounded-xl checkbox-wrapper">
-<span>NY PM Silver Bullet</span>
-<input type="checkbox" id="nypmSB">
-</div>
-</div>
-</div>
+        <div class="glass-card p-6 rounded-2xl">
+            <h3 class="text-lg font-bold mb-4" style="color:#ffd700;">Core Discipline</h3>
+            <ul class="space-y-4">
+                <li class="flex gap-3">
+                    <input type="checkbox" id="chk-tp">
+                    <div>
+                        <p class="font-semibold text-sm">Target Profit</p>
+                        <p class="text-xs text-gray-500">Defined at HTF level?</p>
+                    </div>
+                </li>
+                <li class="flex gap-3">
+                    <input type="checkbox" id="chk-sl">
+                    <div>
+                        <p class="font-semibold text-sm">Stop Loss</p>
+                        <p class="text-xs text-gray-500">Invalidation set?</p>
+                    </div>
+                </li>
+                <li class="flex gap-3">
+                    <input type="checkbox" id="chk-rules">
+                    <div>
+                        <p class="font-semibold text-sm">Rules Followed</p>
+                        <p class="text-xs text-gray-500">No revenge trading? No FOMO?</p>
+                    </div>
+                </li>
+                <li class="flex gap-3">
+                    <input type="checkbox" id="chk-execution">
+                    <div>
+                        <p class="font-semibold text-sm">Execution Ready</p>
+                        <p class="text-xs text-gray-500">Limit set or Market entry confirmed?</p>
+                    </div>
+                </li>
+            </ul>
 
-<!-- Right Column: Core Discipline -->
-<div class="glass-card p-6 rounded-2xl">
-<h3 class="text-lg font-bold mb-4">Core Discipline</h3>
-<ul class="space-y-4">
-<li class="flex gap-3 checkbox-wrapper">
-<input type="checkbox" id="tp">
-<div>
-<p class="font-semibold text-sm">Target Profit</p>
-<p class="text-xs text-gray-500">Defined at HTF level?</p>
-</div>
-</li>
-<li class="flex gap-3 checkbox-wrapper">
-<input type="checkbox" id="sl">
-<div>
-<p class="font-semibold text-sm">Stop Loss</p>
-<p class="text-xs text-gray-500">Invalidation set?</p>
-</div>
-</li>
-<li class="flex gap-3 checkbox-wrapper">
-<input type="checkbox" id="rules">
-<div>
-<p class="font-semibold text-sm">Rules Followed</p>
-<p class="text-xs text-gray-500">No revenge trading? No FOMO?</p>
-</div>
-</li>
-<li class="flex gap-3 checkbox-wrapper">
-<input type="checkbox" id="execReady">
-<div>
-<p class="font-semibold text-sm">Execution Ready</p>
-<p class="text-xs text-gray-500">Limit set or Market entry confirmed?</p>
-</div>
-</li>
-</ul>
-</div>
-</div>
+            <button id="save-discipline" class="w-full mt-6 bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 rounded-xl transition-all active:scale-95 shadow-lg shadow-sky-900/20">
+                SAVE DISCIPLINE
+            </button>
 
-<!-- Saved Discipline History -->
-<div id="discipline-history" class="glass-card p-4 rounded-2xl mt-6 hidden">
-<h3 class="text-lg font-bold mb-2">Saved Discipline Records</h3>
-<ul id="history-list" class="list-disc pl-5 text-sm text-gray-300"></ul>
-</div>
+            <div id="save-msg" class="hidden mt-4 p-3 rounded-lg text-green-400 text-center border border-green-500">
+                <i class="fas fa-check-circle mr-2"></i> Discipline Saved Successfully!
+            </div>
+        </div>
+    </div>
 </section>
 
 <h2 class="section-title">Command Center</h2>
 <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding-bottom:50px;">
-<a href="https://wa.me/923235957001" class="contact-card">
-<h3 style="color:#25d366;margin-bottom:10px;">WhatsApp</h3>
-<p style="color:#ccc;font-size:12px;">Fastest Enrollment</p>
-</a>
-<a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
-<h3 style="color:var(--gold);margin-bottom:10px;">Email</h3>
-<p style="color:#ccc;font-size:12px;">Institutional Queries</p>
-</a>
+    <a href="https://wa.me/923235957001" class="contact-card">
+        <h3 style="color:#25d366;margin-bottom:10px;">WhatsApp</h3>
+        <p style="color:#ccc;font-size:12px;">Fastest Enrollment</p>
+    </a>
+    <a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
+        <h3 style="color:var(--gold);margin-bottom:10px;">Email</h3>
+        <p style="color:#ccc;font-size:12px;">Institutional Queries</p>
+    </a>
 </div>
 
-<footer>© 2026 THE VAULT HDE FX ACADEMY</footer>
+<footer> © 2026 THE VAULT HDE FX ACADEMY </footer>
 
 <script>
-// Vault Button
-function toggleVault(){
-  var x=document.getElementById("vaultGallery");
-  var btn=document.getElementById("vaultBtn");
-  if(x.style.display==="block"){ x.style.display="none"; btn.innerHTML="Decrypt Access"; }
-  else{ x.style.display="block"; btn.innerHTML="Hide Classified Data"; }
-}
+    const fields = [
+        "chk-cme","chk-equity","chk-london","chk-nyam","chk-nypm",
+        "chk-tp","chk-sl","chk-rules","chk-execution"
+    ];
 
-// Discipline Save & History
-function saveDiscipline(){
-  const date = document.getElementById('discipline-date').value;
-  if(!date){ alert('Please select a date'); return; }
+    const saveBtn = document.getElementById('save-discipline');
+    const msgBox = document.getElementById('save-msg');
+    const dateInput = document.getElementById('disc-date');
 
-  const record = {
-    date: date,
-    cmeOpen: document.getElementById('cmeOpen').checked,
-    equityOpen: document.getElementById('equityOpen').checked,
-    londonSB: document.getElementById('londonSB').checked,
-    nyamSB: document.getElementById('nyamSB').checked,
-    nypmSB: document.getElementById('nypmSB').checked,
-    tp: document.getElementById('tp').checked,
-    sl: document.getElementById('sl').checked,
-    rules: document.getElementById('rules').checked,
-    execReady: document.getElementById('execReady').checked
-  };
+    // Save Discipline Data
+    saveBtn.addEventListener('click', ()=>{
+        const date = dateInput.value;
+        if(!date){ alert("Please select a date!"); return; }
 
-  let history = JSON.parse(localStorage.getItem('disciplineHistory') || '[]');
-  history.push(record);
-  localStorage.setItem('disciplineHistory', JSON.stringify(history));
+        const data = {};
+        fields.forEach(f => {
+            data[f] = document.getElementById(f).checked;
+        });
 
-  alert('Discipline Saved for ' + date);
-  showHistory(date);
-}
+        // Save in localStorage
+        localStorage.setItem("discipline_" + date, JSON.stringify(data));
 
-// Show history for selected date
-function showHistory(date){
-  const historyDiv = document.getElementById('discipline-history');
-  const historyList = document.getElementById('history-list');
-  const history = JSON.parse(localStorage.getItem('disciplineHistory') || '[]');
-
-  historyList.innerHTML = '';
-  let filtered = history.filter(r=>r.date===date);
-  if(filtered.length===0){ historyList.innerHTML='<li>No records found for this date</li>'; }
-  else{
-    filtered.forEach(r=>{
-      let li = document.createElement('li');
-      li.textContent = `CME:${r.cmeOpen}, Equity:${r.equityOpen}, London SB:${r.londonSB}, NY AM:${r.nyamSB}, NY PM:${r.nypmSB}, TP:${r.tp}, SL:${r.sl}, Rules:${r.rules}, Exec Ready:${r.execReady}`;
-      historyList.appendChild(li);
+        // Show success message
+        msgBox.classList.remove('hidden');
+        setTimeout(()=> msgBox.classList.add('hidden'), 3000);
     });
-  }
-  historyDiv.classList.remove('hidden');
-}
 
-// Optional: show last saved automatically on date change
-document.getElementById('discipline-date').addEventListener('change', function(){ showHistory(this.value); });
+    // Load data when date changes
+    dateInput.addEventListener('change', ()=>{
+        const date = dateInput.value;
+        if(!date) return;
+
+        const saved = localStorage.getItem("discipline_" + date);
+        if(saved){
+            const data = JSON.parse(saved);
+            fields.forEach(f => {
+                document.getElementById(f).checked = data[f] || false;
+            });
+        } else {
+            fields.forEach(f => document.getElementById(f).checked = false);
+        }
+    });
 </script>
 
 </body>
-</html>
+  </html>
