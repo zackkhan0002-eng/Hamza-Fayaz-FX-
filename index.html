@@ -9,43 +9,46 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <style>
-:root{ --gold:#ffd700; --dark:#050505; --wa-green:#25d366; }
+:root{--gold:#ffd700;--dark:#050505;--wa-green:#25d366;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{ background:#000; color:#fff; font-family:Arial, sans-serif; overflow-x:hidden; position:relative; }
+body{background:#000;color:#fff;font-family:Arial,sans-serif;overflow-x:hidden;position:relative;}
 
 /* Grid Animation Background */
-body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite; }
-@keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }
+body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite;}
+@keyframes gridmove{0%{transform:translateY(0)}100%{transform:translateY(40px)}}
 
 /* UI Styling */
-.brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align:center; }
+.brand-header{width:100%;max-width:1100px;margin:auto;padding:25px;color:var(--gold);letter-spacing:5px;font-weight:800;text-transform:uppercase;border-bottom:2px solid var(--gold);text-align:center;}
 .hero{padding:80px 20px;text-align:center;}
-.profile-card{ background:rgba(10,10,10,0.9); padding:50px 30px; border-radius:40px; border:1px solid rgba(255,215,0,0.2); max-width:650px; margin:auto; }
-.profile-img{ width:150px; height:150px; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px; object-fit:cover; }
-.section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }
+.profile-card{background:rgba(10,10,10,0.9);padding:50px 30px;border-radius:40px;border:1px solid rgba(255,215,0,0.2);max-width:650px;margin:auto;}
+.profile-img{width:150px;height:150px;border-radius:50%;border:3px solid var(--gold);margin-bottom:20px;object-fit:cover;}
+.section-title{font-size:1.8rem;color:var(--gold);margin:60px 0 40px;text-transform:uppercase;letter-spacing:4px;text-align:center;}
 
 /* Course Grid */
-.course-grid{ display:flex; gap:25px; flex-wrap:wrap; justify-content:center; max-width:1200px; margin:auto; padding:0 20px; }
-.course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:360px; transition:0.4s; display:block; text-decoration:none; color:white; }
-.course-card:hover{ border-color:var(--gold); transform:translateY(-10px); box-shadow:0 20px 50px rgba(255,215,0,0.4); }
+.course-grid{display:flex;gap:25px;flex-wrap:wrap;justify-content:center;max-width:1200px;margin:auto;padding:0 20px;}
+.course-card{background:#0a0a0a;border:1px solid rgba(255,215,0,0.2);padding:40px 30px;border-radius:30px;width:360px;transition:0.4s;display:block;text-decoration:none;color:white;}
+.course-card:hover{border-color:var(--gold);transform:translateY(-10px);box-shadow:0 20px 50px rgba(255,215,0,0.4);}
 .yt-card{border-color:#ff0000}
 
 /* Vault */
-.trade-vault-card{ max-width:800px; margin:80px auto; background:#050505; border:1px solid rgba(255,215,0,0.2); border-radius:35px; padding:50px; text-align:center; }
-.access-btn{ background:transparent; border:2px solid var(--gold); color:var(--gold); padding:18px 45px; border-radius:50px; font-weight:900; cursor:pointer; }
+.trade-vault-card{max-width:800px;margin:80px auto;background:#050505;border:1px solid rgba(255,215,0,0.2);border-radius:35px;padding:50px;text-align:center;}
+.access-btn{background:transparent;border:2px solid var(--gold);color:var(--gold);padding:18px 45px;border-radius:50px;font-weight:900;cursor:pointer;}
 
 /* Contact */
-.contact-card{ background:rgba(255,255,255,0.1); border:1px solid rgba(255,215,0,0.3); padding:30px; width:300px; border-radius:25px; text-decoration:none; display:block; color:#fff; transition:0.3s; text-align:center; }
-.contact-card:hover{ background:rgba(255,215,0,0.15); border-color:var(--gold); }
+.contact-card{background:rgba(255,255,255,0.1);border:1px solid rgba(255,215,0,0.3);padding:30px;width:300px;border-radius:25px;text-decoration:none;display:block;color:#fff;transition:0.3s;text-align:center;}
+.contact-card:hover{background:rgba(255,215,0,0.15);border-color:var(--gold);}
 
-input[type=text]{ width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-top:5px; background:#111; color:#fff; }
+footer{padding:40px;text-align:center;color:#444;font-size:12px;}
 
-footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
-
-/* Discipline Hub Styling */
-.glass-card{ background: rgba(10,10,10,0.9); padding:30px; border-radius:25px; border:1px solid rgba(255,215,0,0.2); margin-bottom:20px;}
-.save-btn{ background:var(--gold); color:#000; font-weight:bold; padding:12px 30px; border-radius:25px; cursor:pointer; margin-top:15px; }
-.history-box{ background:#111; padding:15px; border-radius:15px; margin-top:15px; border:1px solid #ffd700; max-height:200px; overflow:auto; }
+/* Discipline Hub Glass Cards */
+.glass-card{background:rgba(22,27,34,0.8);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);transition:transform 0.3s ease, border-color 0.3s ease;}
+.glass-card:hover{border-color:#38bdf8;transform:translateY(-5px);}
+.checkbox-wrapper input[type="checkbox"]{appearance:none;width:24px;height:24px;border:2px solid #30363d;border-radius:6px;cursor:pointer;position:relative;transition:all 0.2s ease;}
+.checkbox-wrapper input[type="checkbox"]:checked{background-color:#38bdf8;border-color:#38bdf8;}
+.checkbox-wrapper input[type="checkbox"]:checked::after{content:"\f00c";font-family:"Font Awesome 5 Free";font-weight:900;color:white;font-size:14px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+.risk-pulse{animation:pulse 2s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,0.4);}70%{box-shadow:0 0 0 10px rgba(239,68,68,0);}100%{box-shadow:0 0 0 0 rgba(239,68,68,0);}}
+.glow-text{text-shadow:0 0 10px rgba(56,189,248,0.5);}
 </style>
 </head>
 <body>
@@ -53,180 +56,207 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 <div class="brand-header">THE VAULT HDE FX ACADEMY</div>
 
 <section class="hero">
-  <div class="profile-card">
-    <img src="hamza.jpg" class="profile-img">
-    <h1 style="font-size:2.5rem;color:var(--gold);">Hamza Fayaz</h1>
-    <p style="color:#ccc;">Institutional ICT Architect | Founder of HDE Concept</p>
-  </div>
+<div class="profile-card">
+<img src="hamza.jpg" class="profile-img">
+<h1 style="font-size:2.5rem;color:var(--gold);">Hamza Fayaz</h1>
+<p style="color:#ccc;">Institutional ICT Architect | Founder of HDE Concept</p>
+</div>
 </section>
 
 <h2 class="section-title">Institutional Curriculums</h2>
 <section class="course-grid">
-  <div class="course-card">
-    <h3 style="color:var(--gold);margin-bottom:15px;">Algorithmic ICT</h3>
-    <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$250</span>
-    <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
-      <li>◈ IPDA Data Range</li>
-      <li>◈ MMXM Cycles</li>
-      <li>◈ Liquidity Voids</li>
-    </ul>
-    <a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> ENROLL NOW </a>
-  </div>
-  <div class="course-card">
-    <h3 style="color:var(--gold);margin-bottom:15px;">HDE Masterclass</h3>
-    <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$499</span>
-    <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
-      <li>◈ HDE Liquidity Matrix</li>
-      <li>◈ Order Flow Analysis</li>
-      <li>◈ Institutional Sponsorship</li>
-    </ul>
-    <a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> JOIN ELITE </a>
-  </div>
-  <div class="course-card yt-card">
-    <h3 style="color:#ff0000;margin-bottom:15px;">Free Academy</h3>
-    <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">FREE</span>
-    <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
-      <li>◈ Weekly Breakdowns</li>
-      <li>◈ Execution Logs</li>
-      <li>◈ Live Psychology</li>
-    </ul>
-    <a href="https://youtube.com/@HamzaFayazFX" style="display:block;background:#ff0000;color:#fff;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> SUBSCRIBE </a>
-  </div>
+<div class="course-card">
+<h3 style="color:var(--gold);margin-bottom:15px;">Algorithmic ICT</h3>
+<span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$250</span>
+<ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+<li>◈ IPDA Data Range</li>
+<li>◈ MMXM Cycles</li>
+<li>◈ Liquidity Voids</li>
+</ul>
+<a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">ENROLL NOW</a>
+</div>
+
+<div class="course-card">
+<h3 style="color:var(--gold);margin-bottom:15px;">HDE Masterclass</h3>
+<span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$499</span>
+<ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+<li>◈ HDE Liquidity Matrix</li>
+<li>◈ Order Flow Analysis</li>
+<li>◈ Institutional Sponsorship</li>
+</ul>
+<a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">JOIN ELITE</a>
+</div>
+
+<div class="course-card yt-card">
+<h3 style="color:#ff0000;margin-bottom:15px;">Free Academy</h3>
+<span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">FREE</span>
+<ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+<li>◈ Weekly Breakdowns</li>
+<li>◈ Execution Logs</li>
+<li>◈ Live Psychology</li>
+</ul>
+<a href="https://youtube.com/@HamzaFayazFX" style="display:block;background:#ff0000;color:#fff;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">SUBSCRIBE</a>
+</div>
 </section>
 
 <section class="trade-vault-card">
-  <h2 style="color:var(--gold);letter-spacing:5px;margin-bottom:20px;"> THE EXECUTION VAULT </h2>
-  <button class="access-btn" onclick="alert('Vault Decrypted! 🔓')">Decrypt Access</button>
+<h2 style="color:var(--gold);letter-spacing:5px;margin-bottom:20px;">THE EXECUTION VAULT</h2>
+<button class="access-btn" onclick="toggleVault()" id="vaultBtn">Decrypt Access</button>
+<div id="vaultGallery" style="display:none; margin-top:40px;">
+<img src="trade1.jpg" alt="Trade" style="width:100%; border-radius:20px; border:1px solid var(--gold);">
+</div>
 </section>
 
 <!-- DISCIPLINE HUB SECTION -->
 <section style="max-width:1200px;margin:auto;padding:60px 20px;">
 <h2 class="section-title">Trading Discipline Hub</h2>
-
-<label for="logDate">Select Date:</label>
-<input type="date" id="logDate" style="margin-bottom:20px;">
-
-<div class="glass-card">
-  <h3 style="margin-bottom:10px;">Execution Models / Silver Bullets</h3>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-      <label>London Silver Bullet Notes</label>
-      <input type="text" id="londonSB" placeholder="Write execution notes">
-    </div>
-    <div>
-      <label>NY AM Silver Bullet Notes</label>
-      <input type="text" id="nyamSB" placeholder="Write execution notes">
-    </div>
-    <div>
-      <label>NY PM Silver Bullet Notes</label>
-      <input type="text" id="nypmSB" placeholder="Write execution notes">
-    </div>
-  </div>
+<div class="flex justify-between mb-4">
+<input type="date" id="discipline-date" class="p-2 rounded text-black"/>
+<button onclick="saveDiscipline()" class="bg-gold text-black font-bold px-4 py-2 rounded ml-4">Save</button>
 </div>
 
-<div class="glass-card">
-  <h3 style="margin-bottom:10px;">Core Discipline</h3>
-  <div>
-    <label>Target Profit</label>
-    <input type="text" id="targetProfit" placeholder="TP details">
-  </div>
-  <div>
-    <label>Stop Loss</label>
-    <input type="text" id="stopLoss" placeholder="SL details">
-  </div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6" id="discipline-hub">
+
+<!-- Left Column: Execution Models -->
+<div class="lg:col-span-2 glass-card p-6 rounded-2xl">
+<h3 class="text-lg font-bold mb-4"><i class="fas fa-layer-group text-sky-500"></i> Execution Models</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex justify-between bg-[#161b22] p-4 rounded-xl checkbox-wrapper">
+<span>CME Open</span>
+<input type="checkbox" id="cmeOpen">
+</div>
+<div class="flex justify-between bg-[#161b22] p-4 rounded-xl checkbox-wrapper">
+<span>Equity Open</span>
+<input type="checkbox" id="equityOpen">
+</div>
+<div class="flex justify-between bg-[#161b22] p-4 rounded-xl checkbox-wrapper">
+<span>London Silver Bullet</span>
+<input type="checkbox" id="londonSB">
+</div>
+<div class="flex justify-between bg-[#161b22] p-4 rounded-xl checkbox-wrapper">
+<span>NY AM Silver Bullet</span>
+<input type="checkbox" id="nyamSB">
+</div>
+<div class="flex justify-between bg-[#161b22] p-4 rounded-xl checkbox-wrapper">
+<span>NY PM Silver Bullet</span>
+<input type="checkbox" id="nypmSB">
+</div>
+</div>
 </div>
 
-<button class="save-btn" onclick="saveDiscipline()">SAVE TODAY</button>
+<!-- Right Column: Core Discipline -->
+<div class="glass-card p-6 rounded-2xl">
+<h3 class="text-lg font-bold mb-4">Core Discipline</h3>
+<ul class="space-y-4">
+<li class="flex gap-3 checkbox-wrapper">
+<input type="checkbox" id="tp">
+<div>
+<p class="font-semibold text-sm">Target Profit</p>
+<p class="text-xs text-gray-500">Defined at HTF level?</p>
+</div>
+</li>
+<li class="flex gap-3 checkbox-wrapper">
+<input type="checkbox" id="sl">
+<div>
+<p class="font-semibold text-sm">Stop Loss</p>
+<p class="text-xs text-gray-500">Invalidation set?</p>
+</div>
+</li>
+<li class="flex gap-3 checkbox-wrapper">
+<input type="checkbox" id="rules">
+<div>
+<p class="font-semibold text-sm">Rules Followed</p>
+<p class="text-xs text-gray-500">No revenge trading? No FOMO?</p>
+</div>
+</li>
+<li class="flex gap-3 checkbox-wrapper">
+<input type="checkbox" id="execReady">
+<div>
+<p class="font-semibold text-sm">Execution Ready</p>
+<p class="text-xs text-gray-500">Limit set or Market entry confirmed?</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
 
-<div id="history" class="history-box">
-  <h4 style="color:var(--gold); margin-bottom:10px;">Saved Records</h4>
-  <div id="historyContent"></div>
+<!-- Saved Discipline History -->
+<div id="discipline-history" class="glass-card p-4 rounded-2xl mt-6 hidden">
+<h3 class="text-lg font-bold mb-2">Saved Discipline Records</h3>
+<ul id="history-list" class="list-disc pl-5 text-sm text-gray-300"></ul>
 </div>
 </section>
 
 <h2 class="section-title">Command Center</h2>
 <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding-bottom:50px;">
-  <a href="https://wa.me/923235957001" class="contact-card">
-    <h3 style="color:#25d366;margin-bottom:10px;">WhatsApp</h3>
-    <p style="color:#ccc;font-size:12px;">Fastest Enrollment</p>
-  </a>
-  <a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
-    <h3 style="color:var(--gold);margin-bottom:10px;">Email</h3>
-    <p style="color:#ccc;font-size:12px;">Institutional Queries</p>
-  </a>
+<a href="https://wa.me/923235957001" class="contact-card">
+<h3 style="color:#25d366;margin-bottom:10px;">WhatsApp</h3>
+<p style="color:#ccc;font-size:12px;">Fastest Enrollment</p>
+</a>
+<a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
+<h3 style="color:var(--gold);margin-bottom:10px;">Email</h3>
+<p style="color:#ccc;font-size:12px;">Institutional Queries</p>
+</a>
 </div>
 
 <footer>© 2026 THE VAULT HDE FX ACADEMY</footer>
 
 <script>
-// Save & Load Discipline
-function saveDiscipline(){
-  const date = document.getElementById('logDate').value;
-  if(!date){ alert("Select a date first!"); return; }
+// Vault Button
+function toggleVault(){
+  var x=document.getElementById("vaultGallery");
+  var btn=document.getElementById("vaultBtn");
+  if(x.style.display==="block"){ x.style.display="none"; btn.innerHTML="Decrypt Access"; }
+  else{ x.style.display="block"; btn.innerHTML="Hide Classified Data"; }
+}
 
-  const data = {
-    londonSB: document.getElementById('londonSB').value,
-    nyamSB: document.getElementById('nyamSB').value,
-    nypmSB: document.getElementById('nypmSB').value,
-    targetProfit: document.getElementById('targetProfit').value,
-    stopLoss: document.getElementById('stopLoss').value
+// Discipline Save & History
+function saveDiscipline(){
+  const date = document.getElementById('discipline-date').value;
+  if(!date){ alert('Please select a date'); return; }
+
+  const record = {
+    date: date,
+    cmeOpen: document.getElementById('cmeOpen').checked,
+    equityOpen: document.getElementById('equityOpen').checked,
+    londonSB: document.getElementById('londonSB').checked,
+    nyamSB: document.getElementById('nyamSB').checked,
+    nypmSB: document.getElementById('nypmSB').checked,
+    tp: document.getElementById('tp').checked,
+    sl: document.getElementById('sl').checked,
+    rules: document.getElementById('rules').checked,
+    execReady: document.getElementById('execReady').checked
   };
 
-  let allData = JSON.parse(localStorage.getItem('disciplineLogs')||'{}');
-  allData[date] = data;
-  localStorage.setItem('disciplineLogs', JSON.stringify(allData));
-  alert('Discipline saved for '+date+' ✅');
-  loadHistory(date);
+  let history = JSON.parse(localStorage.getItem('disciplineHistory') || '[]');
+  history.push(record);
+  localStorage.setItem('disciplineHistory', JSON.stringify(history));
+
+  alert('Discipline Saved for ' + date);
+  showHistory(date);
 }
 
-// Load history for selected date
-function loadHistory(date){
-  const historyDiv = document.getElementById('historyContent');
-  historyDiv.innerHTML = '';
-  if(!date) return;
+// Show history for selected date
+function showHistory(date){
+  const historyDiv = document.getElementById('discipline-history');
+  const historyList = document.getElementById('history-list');
+  const history = JSON.parse(localStorage.getItem('disciplineHistory') || '[]');
 
-  let allData = JSON.parse(localStorage.getItem('disciplineLogs')||'{}');
-  if(allData[date]){
-    const d = allData[date];
-    historyDiv.innerHTML = `
-      <p><strong>London SB:</strong> ${d.londonSB}</p>
-      <p><strong>NY AM SB:</strong> ${d.nyamSB}</p>
-      <p><strong>NY PM SB:</strong> ${d.nypmSB}</p>
-      <p><strong>Target Profit:</strong> ${d.targetProfit}</p>
-      <p><strong>Stop Loss:</strong> ${d.stopLoss}</p>
-    `;
-  } else {
-    historyDiv.innerHTML = `<p>No record for this date.</p>`;
+  historyList.innerHTML = '';
+  let filtered = history.filter(r=>r.date===date);
+  if(filtered.length===0){ historyList.innerHTML='<li>No records found for this date</li>'; }
+  else{
+    filtered.forEach(r=>{
+      let li = document.createElement('li');
+      li.textContent = `CME:${r.cmeOpen}, Equity:${r.equityOpen}, London SB:${r.londonSB}, NY AM:${r.nyamSB}, NY PM:${r.nypmSB}, TP:${r.tp}, SL:${r.sl}, Rules:${r.rules}, Exec Ready:${r.execReady}`;
+      historyList.appendChild(li);
+    });
   }
+  historyDiv.classList.remove('hidden');
 }
 
-// Date change listener
-document.getElementById('logDate').addEventListener('change', (e)=>{
-  loadHistory(e.target.value);
-  const date = e.target.value;
-  if(!date) return;
-  let allData = JSON.parse(localStorage.getItem('disciplineLogs')||'{}');
-  if(allData[date]){
-    document.getElementById('londonSB').value = allData[date].londonSB;
-    document.getElementById('nyamSB').value = allData[date].nyamSB;
-    document.getElementById('nypmSB').value = allData[date].nypmSB;
-    document.getElementById('targetProfit').value = allData[date].targetProfit;
-    document.getElementById('stopLoss').value = allData[date].stopLoss;
-  } else {
-    document.getElementById('londonSB').value='';
-    document.getElementById('nyamSB').value='';
-    document.getElementById('nypmSB').value='';
-    document.getElementById('targetProfit').value='';
-    document.getElementById('stopLoss').value='';
-  }
-});
-
-// Load today by default
-document.addEventListener('DOMContentLoaded', ()=>{
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('logDate').value = today;
-  loadHistory(today);
-});
+// Optional: show last saved automatically on date change
+document.getElementById('discipline-date').addEventListener('change', function(){ showHistory(this.value); });
 </script>
 
 </body>
