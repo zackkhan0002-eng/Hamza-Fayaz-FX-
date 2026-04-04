@@ -24,14 +24,14 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
 .course-card:hover{ border-color:var(--gold); transform:translateY(-10px); box-shadow:0 20px 50px rgba(255,215,0,0.4); }  
 .yt-card{border-color:#ff0000}  
 .trade-vault-card{ max-width:800px; margin:80px auto; background:#050505; border:1px solid rgba(255,215,0,0.2); border-radius:35px; padding:50px; text-align:center; }  
-.access-btn{ background:transparent; border:2px solid var(--gold); color:var(--gold); padding:18px 45px; border-radius:50px; font-weight:900; cursor:pointer; }  
+.access-btn{ background:transparent; border:2px solid var(--gold); color:var(--gold); padding:18px 45px; border-radius:50px; font-weight:900; cursor:pointer; display:inline-flex; align-items:center; }  
 .contact-card{ background:rgba(255,255,255,0.1); border:1px solid rgba(255,215,0,0.3); padding:30px; width:300px; border-radius:25px; text-decoration:none; display:block; color:#fff; transition:0.3s; text-align:center; }  
 .contact-card:hover{ background:rgba(255,215,0,0.15); border-color:var(--gold); }  
 footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 </style>
 </head>
-
 <body>
+
 <div class="brand-header">THE VAULT HDE FX ACADEMY</div>
 
 <section class="hero">
@@ -80,7 +80,9 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 
 <section class="trade-vault-card">
     <h2 style="color:var(--gold);letter-spacing:5px;margin-bottom:20px;"> THE EXECUTION VAULT </h2>
-    <button class="access-btn">Decrypt Access</button>
+    <button class="access-btn">
+        <img src="hamza.jpg" alt="Vault Image" style="width:40px;height:40px;margin-right:10px;vertical-align:middle;"> Decrypt Access
+    </button>
 </section>
 
 <!-- DISCIPLINE HUB SECTION -->
@@ -155,6 +157,7 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
                 </li>
             </ul>
 
+            <!-- Save Discipline Button -->
             <button id="save-discipline" class="w-full mt-6 bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 rounded-xl transition-all active:scale-95 shadow-lg shadow-sky-900/20">
                 SAVE DISCIPLINE
             </button>
@@ -181,49 +184,51 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 <footer> © 2026 THE VAULT HDE FX ACADEMY </footer>
 
 <script>
-    const fields = [
-        "chk-cme","chk-equity","chk-london","chk-nyam","chk-nypm",
-        "chk-tp","chk-sl","chk-rules","chk-execution"
-    ];
+const fields = ["chk-cme","chk-equity","chk-london","chk-nyam","chk-nypm","chk-tp","chk-sl","chk-rules","chk-execution"];
+const saveBtn = document.getElementById('save-discipline');
+const msgBox = document.getElementById('save-msg');
+const dateInput = document.getElementById('disc-date');
 
-    const saveBtn = document.getElementById('save-discipline');
-    const msgBox = document.getElementById('save-msg');
-    const dateInput = document.getElementById('disc-date');
+// Google Apps Script Web App URL (replace with your own)
+const scriptURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
 
-    // Save Discipline Data
-    saveBtn.addEventListener('click', ()=>{
-        const date = dateInput.value;
-        if(!date){ alert("Please select a date!"); return; }
+// Save Discipline Data
+saveBtn.addEventListener('click', ()=>{
+    const date = dateInput.value;
+    if(!date){ alert("Please select a date!"); return; }
 
-        const data = {};
-        fields.forEach(f => {
-            data[f] = document.getElementById(f).checked;
-        });
+    const data = { date: date };
+    fields.forEach(f => { data[f] = document.getElementById(f).checked; });
 
-        // Save in localStorage
-        localStorage.setItem("discipline_" + date, JSON.stringify(data));
-
-        // Show success message
+    // Send to Google Apps Script to save in Gmail/Sheets
+    fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
+    }).then(res => {
         msgBox.classList.remove('hidden');
         setTimeout(()=> msgBox.classList.add('hidden'), 3000);
+    }).catch(err=>{
+        alert("Error saving discipline. Check your script URL.");
     });
 
-    // Load data when date changes
-    dateInput.addEventListener('change', ()=>{
-        const date = dateInput.value;
-        if(!date) return;
+    // Also save locally for preview
+    localStorage.setItem("discipline_" + date, JSON.stringify(data));
+});
 
-        const saved = localStorage.getItem("discipline_" + date);
-        if(saved){
-            const data = JSON.parse(saved);
-            fields.forEach(f => {
-                document.getElementById(f).checked = data[f] || false;
-            });
-        } else {
-            fields.forEach(f => document.getElementById(f).checked = false);
-        }
-    });
+// Load data from localStorage when date changes (local preview)
+dateInput.addEventListener('change', ()=>{
+    const date = dateInput.value;
+    if(!date) return;
+    const saved = localStorage.getItem("discipline_" + date);
+    if(saved){
+        const data = JSON.parse(saved);
+        fields.forEach(f => document.getElementById(f).checked = data[f] || false);
+    } else {
+        fields.forEach(f => document.getElementById(f).checked = false);
+    }
+});
 </script>
 
 </body>
-  </html>
+</html>
