@@ -1,224 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Vault HDE FX Academy | Institutional ICT Architect</title>
-    <link rel="icon" href="hamza.jpg" type="image/jpeg">
-    <link rel="apple-touch-icon" href="hamza.jpg">
-    <style>
-        :root{ --gold:#ffd700; --dark:#050505; --wa-green:#25d366; }
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{ background:#000; color:#fff; font-family:Arial, sans-serif; overflow-x:hidden; position:relative; }
-        
-        /* Grid Animation Background */
-        body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite; }
-        @keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* UI Styling */
-        .brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align: center; position:relative; z-index:1; }
-        .hero{ padding:80px 20px; text-align:center; position:relative; z-index:1; }
-        .profile-card{ background:rgba(10,10,10,0.9); padding:50px 30px; border-radius:40px; border:1px solid rgba(255,215,0,0.2); max-width:650px; margin:auto; animation:goldGlow 4s infinite; position:relative; z-index:1; }
-        .profile-img{ width:150px; height:150px; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px; object-fit: cover; }
-        .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; position:relative; z-index:1; }
+<title>The Vault HDE FX Academy | Institutional ICT Architect</title>
 
-        /* Course Grid & Cards */
-        .course-grid{ display:flex; gap:25px; flex-wrap:wrap; justify-content:center; max-width:1200px; margin:auto; padding:0 20px; position:relative; z-index:1; }
-        .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:360px; transition:0.4s; display:block; text-decoration: none; color: white; }
-        .course-card:hover{ border-color:var(--gold); transform:translateY(-10px); box-shadow:0 20px 50px rgba(255,215,0,0.4); }
-        .yt-card{ border-color:#ff0000; }
+<link rel="icon" href="hamza.jpg" type="image/jpeg">
+<link rel="apple-touch-icon" href="hamza.jpg">
 
-        /* Vault Section */
-        .trade-vault-card{ max-width:800px; margin:80px auto; background:#050505; border:1px solid rgba(255,215,0,0.2); border-radius:35px; padding:50px; text-align:center; animation:goldGlow 4s infinite; position:relative; z-index:1; }
-        .access-btn{ background:transparent; border:2px solid var(--gold); color:var(--gold); padding:18px 45px; border-radius:50px; font-weight:900; cursor:pointer; }
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-        /* Command Centre */
-        .contact-card{ background:rgba(255,255,255,0.1); border:1px solid rgba(255,215,0,0.3); padding:30px; width:300px; border-radius:25px; text-decoration:none; display:block; color:#fff; transition:0.3s; text-align: center; }
-        .contact-card:hover{ background:rgba(255,215,0,0.15); border-color:var(--gold); }
+<style>
+:root{ --gold:#ffd700; --dark:#050505; --wa-green:#25d366; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{ background:#000; color:#fff; font-family:Arial, sans-serif; overflow-x:hidden; position:relative; }
 
-        /* AI BOT UI - RESPONSIBLE & PROFESSIONAL */
-        #ai-bubble { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--gold); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 2000; box-shadow: 0 5px 20px rgba(255,215,0,0.4); font-size: 24px; }
-        #chat-window { position: fixed; bottom: 20px; right: 20px; width: 90%; max-width: 360px; height: 75vh; background: #0a0a0a; border: 2px solid var(--gold); border-radius: 25px; display: none; flex-direction: column; z-index: 2001; overflow: hidden; box-shadow: 0 15px 60px rgba(0,0,0,1); }
-        #chat-header { background: var(--gold); color: #000; padding: 15px; font-weight: bold; text-align: center; position: relative; }
-        #close-chat { position: absolute; right: 15px; top: 12px; cursor: pointer; font-size: 18px; font-weight: bold; }
-        #chat-msgs { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #050505; }
-        .m { padding: 12px; border-radius: 15px; font-size: 13px; max-width: 85%; }
-        .u { align-self: flex-end; background: var(--gold); color: #000; }
-        .b { align-self: flex-start; background: #1a1a1a; color: #fff; border: 1px solid #333; }
-        .quick-btns { display: flex; flex-wrap: wrap; gap: 5px; padding: 10px; background: #000; }
-        .q-btn { background: #111; border: 1px solid var(--gold); color: var(--gold); font-size: 10px; padding: 5px 10px; border-radius: 20px; cursor: pointer; }
-        #chat-input { display: flex; padding: 10px; background: #000; gap: 5px; }
-        #chat-input input { flex: 1; background: #111; border: 1px solid #333; color: #fff; padding: 10px; border-radius: 20px; outline: none; }
-        #chat-input button { background: var(--gold); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
+/* Grid Animation Background */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px);
+background-size:40px 40px;
+z-index:-2;
+animation:gridmove 25s linear infinite;
+}
 
-        @keyframes goldGlow{ 0%{box-shadow:0 0 5px rgba(255,215,0,0.2)} 50%{box-shadow:0 0 25px rgba(255,215,0,0.6)} 100%{box-shadow:0 0 5px rgba(255,215,0,0.2)} }
-        footer{ padding:40px; text-align:center; color:#444; font-size: 12px; }
-    </style>
+@keyframes gridmove{
+0%{transform:translateY(0)}
+100%{transform:translateY(40px)}
+}
+
+/* UI Styling */
+.brand-header{
+width:100%;
+max-width:1100px;
+margin:auto;
+padding:25px;
+color:var(--gold);
+letter-spacing:5px;
+font-weight:800;
+text-transform:uppercase;
+border-bottom:2px solid var(--gold);
+text-align:center;
+}
+
+.hero{padding:80px 20px;text-align:center;}
+
+.profile-card{
+background:rgba(10,10,10,0.9);
+padding:50px 30px;
+border-radius:40px;
+border:1px solid rgba(255,215,0,0.2);
+max-width:650px;
+margin:auto;
+}
+
+.profile-img{
+width:150px;
+height:150px;
+border-radius:50%;
+border:3px solid var(--gold);
+margin-bottom:20px;
+object-fit:cover;
+}
+
+.section-title{
+font-size:1.8rem;
+color:var(--gold);
+margin:60px 0 40px;
+text-transform:uppercase;
+letter-spacing:4px;
+text-align:center;
+}
+
+/* Course Grid */
+.course-grid{
+display:flex;
+gap:25px;
+flex-wrap:wrap;
+justify-content:center;
+max-width:1200px;
+margin:auto;
+padding:0 20px;
+}
+
+.course-card{
+background:#0a0a0a;
+border:1px solid rgba(255,215,0,0.2);
+padding:40px 30px;
+border-radius:30px;
+width:360px;
+transition:0.4s;
+display:block;
+text-decoration:none;
+color:white;
+}
+
+.course-card:hover{
+border-color:var(--gold);
+transform:translateY(-10px);
+box-shadow:0 20px 50px rgba(255,215,0,0.4);
+}
+
+.yt-card{border-color:#ff0000}
+
+/* Vault */
+.trade-vault-card{
+max-width:800px;
+margin:80px auto;
+background:#050505;
+border:1px solid rgba(255,215,0,0.2);
+border-radius:35px;
+padding:50px;
+text-align:center;
+}
+
+.access-btn{
+background:transparent;
+border:2px solid var(--gold);
+color:var(--gold);
+padding:18px 45px;
+border-radius:50px;
+font-weight:900;
+cursor:pointer;
+}
+
+/* Contact */
+.contact-card{
+background:rgba(255,255,255,0.1);
+border:1px solid rgba(255,215,0,0.3);
+padding:30px;
+width:300px;
+border-radius:25px;
+text-decoration:none;
+display:block;
+color:#fff;
+transition:0.3s;
+text-align:center;
+}
+
+.contact-card:hover{
+background:rgba(255,215,0,0.15);
+border-color:var(--gold);
+}
+
+footer{
+padding:40px;
+text-align:center;
+color:#444;
+font-size:12px;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="brand-header">THE VAULT HDE FX ACADEMY</div>
+<div class="brand-header">THE VAULT HDE FX ACADEMY</div>
 
-    <section class="hero">
-        <div class="profile-card">
-            <img src="hamza.jpg" alt="Hamza Fayaz" class="profile-img">
-            <h1 style="font-size:2.5rem; margin:10px 0; color:var(--gold);">Hamza Fayaz</h1>
-            <p style="color:#ccc;">Institutional ICT Architect | Founder of HDE Concept</p>
-        </div>
-    </section>
+<section class="hero">
+<div class="profile-card">
+<img src="hamza.jpg" class="profile-img">
+<h1 style="font-size:2.5rem;color:var(--gold);">Hamza Fayaz</h1>
+<p style="color:#ccc;">Institutional ICT Architect | Founder of HDE Concept</p>
+</div>
+</section>
 
-    <h2 class="section-title">Institutional Curriculums</h2>
-    <section class="course-grid">
-        <div class="course-card">
-            <h3 style="color:var(--gold); margin-bottom:15px;">Algorithmic ICT</h3>
-            <span style="font-size:2rem; font-weight:900; display:block; margin-bottom:20px;">$250</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px; font-size: 13px;">
-                <li>◈ IPDA Data Range</li>
-                <li>◈ MMXM Cycles</li>
-                <li>◈ Liquidity Voids</li>
-            </ul>
-            <a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">ENROLL NOW</a>
-        </div>
+<h2 class="section-title">Institutional Curriculums</h2>
 
-        <div class="course-card" style="border-color:var(--gold);">
-            <h3 style="color:var(--gold); margin-bottom:15px;">HDE Masterclass</h3>
-            <span style="font-size:2rem; font-weight:900; display:block; margin-bottom:20px;">$499</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px; font-size: 13px;">
-                <li>◈ HDE Liquidity Matrix</li>
-                <li>◈ Order Flow Analysis</li>
-                <li>◈ Institutional Sponsorship</li>
-            </ul>
-            <a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">JOIN ELITE</a>
-        </div>
+<section class="course-grid">
 
-        <div class="course-card yt-card">
-            <h3 style="color:#ff0000; margin-bottom:15px;">Free Academy</h3>
-            <span style="font-size:2rem; font-weight:900; display:block; margin-bottom:20px;">FREE</span>
-            <ul style="list-style:none; text-align:left; color:#aaa; margin-bottom:20px; font-size: 13px;">
-                <li>◈ Weekly Breakdowns</li>
-                <li>◈ Execution Logs</li>
-                <li>◈ Live Psychology</li>
-            </ul>
-            <a href="https://youtube.com/@HamzaFayazFX" style="display:block;background:#ff0000;color:#fff;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">SUBSCRIBE</a>
-        </div>
-    </section>
+<div class="course-card">
+<h3 style="color:var(--gold);margin-bottom:15px;">Algorithmic ICT</h3>
+<span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$250</span>
 
-    <section class="trade-vault-card">
-        <h2 style="color:var(--gold); letter-spacing:5px; margin-bottom:20px;">THE EXECUTION VAULT</h2>
-        <button class="access-btn" onclick="toggleVault()" id="vaultBtn">Decrypt Access</button>
-        <div id="vaultGallery" style="display:none; margin-top:40px;">
-            <img src="trade1.jpg" alt="Trade" style="width:100%; border-radius:20px; border:1px solid var(--gold);">
-        </div>
-    </section>
+<ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+<li>◈ IPDA Data Range</li>
+<li>◈ MMXM Cycles</li>
+<li>◈ Liquidity Voids</li>
+</ul>
 
-    <h2 class="section-title">Command Center</h2>
-    <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding-bottom:50px;">
-        <a href="https://wa.me/923235957001" class="contact-card">
-            <h3 style="color:var(--wa-green); margin-bottom:10px;">WhatsApp</h3>
-            <p style="color:#ccc; font-size: 12px;">Fastest Enrollment</p>
-        </a>
-        <a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
-            <h3 style="color:var(--gold); margin-bottom:10px;">Email</h3>
-            <p style="color:#ccc; font-size: 12px;">Institutional Queries</p>
-        </a>
-    </div>
+<a href="https://wa.me/923235957001"
+style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">
+ENROLL NOW
+</a>
 
-    <div id="ai-bubble" onclick="toggleChat()">💬</div>
-    <div id="chat-window">
-        <div id="chat-header">
-            HDE FX AI ASSISTANT
-            <span id="close-chat" onclick="toggleChat()">✕</span>
-        </div>
-        <div id="chat-msgs">
-            <div class="m b">Assalam-o-Alaikum! Main Hamza Fayaz FX ka official AI hoon. Main sirf trading aur courses ke mutalika help kar sakta hoon.</div>
-        </div>
-        <div class="quick-btns">
-            <button class="q-btn" onclick="quickSend('Course Fees?')">Fees?</button>
-            <button class="q-btn" onclick="quickSend('How to join?')">How to Join?</button>
-            <button class="q-btn" onclick="quickSend('YouTube Channel?')">YouTube</button>
-        </div>
-        <div id="chat-input">
-            <input type="text" id="uInp" placeholder="Ask about trading..." onkeypress="if(event.key==='Enter') sendMsg()">
-            <button onclick="sendMsg()">➤</button>
-        </div>
-    </div>
+</div>
 
-    <footer>© 2026 THE VAULT HDE FX ACADEMY</footer>
+<div class="course-card">
 
-    <script>
-        // Original Vault Script
-        function toggleVault(){
-            var x=document.getElementById("vaultGallery");
-            var btn=document.getElementById("vaultBtn");
-            if(x.style.display==="block"){ x.style.display="none"; btn.innerHTML="Decrypt Access"; }
-            else{ x.style.display="block"; btn.innerHTML="Hide Classified Data"; }
-        }
+<h3 style="color:var(--gold);margin-bottom:15px;">HDE Masterclass</h3>
+<span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$499</span>
 
-        // Responsible AI Logic
-        const API_KEY = "AIzaSyAZKaibH21pHTH6p8KnHihY2Gbpv8t-hfw";
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+<ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+<li>◈ HDE Liquidity Matrix</li>
+<li>◈ Order Flow Analysis</li>
+<li>◈ Institutional Sponsorship</li>
+</ul>
 
-        function toggleChat() {
-            let win = document.getElementById('chat-window');
-            let bubble = document.getElementById('ai-bubble');
-            if(win.style.display === 'flex') {
-                win.style.display = 'none';
-                bubble.style.display = 'flex';
-            } else {
-                win.style.display = 'flex';
-                bubble.style.display = 'none';
-            }
-        }
+<a href="https://wa.me/923235957001"
+style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">
+JOIN ELITE
+</a>
 
-        function quickSend(txt) {
-            document.getElementById('uInp').value = txt;
-            sendMsg();
-        }
+</div>
 
-        async function sendMsg() {
-            let inp = document.getElementById('uInp');
-            let txt = inp.value.trim();
-            if(!txt) return;
+<div class="course-card yt-card">
 
-            addMsg(txt, 'u');
-            inp.value = '';
-            
-            let tid = "b-" + Date.now();
-            addMsg("Typing...", 'b', tid);
+<h3 style="color:#ff0000;margin-bottom:15px;">Free Academy</h3>
+<span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">FREE</span>
 
-            const systemPrompt = "You are the AI for 'The Vault HDE FX Academy'. Founder: Hamza Fayaz. Prices: ICT $250, HDE $499. WhatsApp: +923235957001. YouTube: @HamzaFayazFX. Provide short, professional answers in Roman Urdu/English.";
+<ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+<li>◈ Weekly Breakdowns</li>
+<li>◈ Execution Logs</li>
+<li>◈ Live Psychology</li>
+</ul>
 
-            try {
-                const res = await fetch(API_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        contents: [{ role: "user", parts: [{ text: `${systemPrompt} \n\nUser: ${txt}` }] }]
-                    })
-                });
-                
-                const d = await res.json();
-                
-                if (d.candidates && d.candidates[0].content.parts[0].text) {
-                    let reply = d.candidates[0].content.parts[0].text;
-                    document.getElementById(tid).innerText = reply;
-                } else {
-                    document.getElementById(tid).innerText = "The Vault Academy ki details ke liye WhatsApp (+923235957001) par message karein.";
-                }
-            } catch(e) {
-                document.getElementById(tid).innerText = "Technical error. Please contact on WhatsApp (+923235957001).";
-            }
-        }
+<a href="https://youtube.com/@HamzaFayazFX"
+style="display:block;background:#ff0000;color:#fff;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">
+SUBSCRIBE
+</a>
 
-        function addMsg(t, s, id) {
-            let d = document.createElement('div');
-            d.className = `m ${s}`;
-            if(id) d.id = id;
-            d.innerText = t;
-            let box = document.getElementById('chat-msgs');
-            box.appendChild(d);
-            box.scrollTop = box.scrollHeight;
-        }
-    </script>
+</div>
+
+</section>
+
+<section class="trade-vault-card">
+
+<h2 style="color:var(--gold);letter-spacing:5px;margin-bottom:20px;">
+THE EXECUTION VAULT
+</h2>
+
+<button class="access-btn">Decrypt Access</button>
+
+</section>
+
+
+<!-- DISCIPLINE HUB SECTION -->
+
+<section style="max-width:1200px;margin:auto;padding:60px 20px;">
+
+<h2 class="section-title">Trading Discipline Hub</h2>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+<div class="lg:col-span-2 glass-card p-6 rounded-2xl">
+
+<h3 class="text-lg font-bold mb-4">
+<i class="fas fa-layer-group text-sky-500"></i> Execution Models
+</h3>
+
+<div class="grid grid-cols-2 gap-4">
+
+<div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+<span>CME Open</span>
+<input type="checkbox">
+</div>
+
+<div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+<span>Equity Open</span>
+<input type="checkbox">
+</div>
+
+<div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+<span>London Silver Bullet</span>
+<input type="checkbox">
+</div>
+
+<div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+<span>NY AM Silver Bullet</span>
+<input type="checkbox">
+</div>
+
+</div>
+
+</div>
+
+<div class="glass-card p-6 rounded-2xl">
+
+<h3 class="text-lg font-bold mb-4">Core Discipline</h3>
+
+<ul class="space-y-4">
+
+<li class="flex gap-3">
+<input type="checkbox">
+<div>
+<p class="font-semibold text-sm">Target Profit</p>
+<p class="text-xs text-gray-500">Defined at HTF level?</p>
+</div>
+</li>
+
+<li class="flex gap-3">
+<input type="checkbox">
+<div>
+<p class="font-semibold text-sm">Stop Loss</p>
+<p class="text-xs text-gray-500">Invalidation set?</p>
+</div>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<h2 class="section-title">Command Center</h2>
+
+<div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding-bottom:50px;">
+
+<a href="https://wa.me/923235957001" class="contact-card">
+<h3 style="color:#25d366;margin-bottom:10px;">WhatsApp</h3>
+<p style="color:#ccc;font-size:12px;">Fastest Enrollment</p>
+</a>
+
+<a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
+<h3 style="color:var(--gold);margin-bottom:10px;">Email</h3>
+<p style="color:#ccc;font-size:12px;">Institutional Queries</p>
+</a>
+
+</div>
+
+<footer>
+© 2026 THE VAULT HDE FX ACADEMY
+</footer>
+
 </body>
 </html>
