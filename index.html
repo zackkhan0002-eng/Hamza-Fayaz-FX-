@@ -38,11 +38,14 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
 .contact-card{ background:rgba(255,255,255,0.1); border:1px solid rgba(255,215,0,0.3); padding:30px; width:300px; border-radius:25px; text-decoration:none; display:block; color:#fff; transition:0.3s; text-align:center; }
 .contact-card:hover{ background:rgba(255,215,0,0.15); border-color:var(--gold); }
 
-/* Discipline Section */
-.glass-card{background:rgba(10,10,10,0.9); padding:30px; border-radius:20px; border:1px solid rgba(255,215,0,0.2); margin-bottom:20px;}
-button.save-btn{background:var(--gold);color:#000;padding:12px 25px;border:none;border-radius:25px;font-weight:bold;cursor:pointer;margin-top:15px;}
-table{width:100%;border-collapse:collapse;margin-top:15px;}
-th,td{border-bottom:1px solid #444;padding:10px;text-align:center;}
+input[type=text]{ width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-top:5px; background:#111; color:#fff; }
+
+footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
+
+/* Discipline Hub Styling */
+.glass-card{ background: rgba(10,10,10,0.9); padding:30px; border-radius:25px; border:1px solid rgba(255,215,0,0.2); margin-bottom:20px;}
+.save-btn{ background:var(--gold); color:#000; font-weight:bold; padding:12px 30px; border-radius:25px; cursor:pointer; margin-top:15px; }
+.history-box{ background:#111; padding:15px; border-radius:15px; margin-top:15px; border:1px solid #ffd700; max-height:200px; overflow:auto; }
 </style>
 </head>
 <body>
@@ -50,133 +53,180 @@ th,td{border-bottom:1px solid #444;padding:10px;text-align:center;}
 <div class="brand-header">THE VAULT HDE FX ACADEMY</div>
 
 <section class="hero">
-<div class="profile-card">
-<img src="hamza.jpg" class="profile-img">
-<h1 style="font-size:2.5rem;color:var(--gold);">Hamza Fayaz</h1>
-<p style="color:#ccc;">Institutional ICT Architect | Founder of HDE Concept</p>
-</div>
+  <div class="profile-card">
+    <img src="hamza.jpg" class="profile-img">
+    <h1 style="font-size:2.5rem;color:var(--gold);">Hamza Fayaz</h1>
+    <p style="color:#ccc;">Institutional ICT Architect | Founder of HDE Concept</p>
+  </div>
 </section>
 
 <h2 class="section-title">Institutional Curriculums</h2>
 <section class="course-grid">
-<div class="course-card">
-<h3 style="color:var(--gold);margin-bottom:15px;">Algorithmic ICT</h3>
-<span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$250</span>
-<ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
-<li>◈ IPDA Data Range</li>
-<li>◈ MMXM Cycles</li>
-<li>◈ Liquidity Voids</li>
-</ul>
-<a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> ENROLL NOW </a>
-</div>
-
-<div class="course-card">
-<h3 style="color:var(--gold);margin-bottom:15px;">HDE Masterclass</h3>
-<span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$499</span>
-<ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
-<li>◈ HDE Liquidity Matrix</li>
-<li>◈ Order Flow Analysis</li>
-<li>◈ Institutional Sponsorship</li>
-</ul>
-<a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> JOIN ELITE </a>
-</div>
-
-<div class="course-card yt-card">
-<h3 style="color:#ff0000;margin-bottom:15px;">Free Academy</h3>
-<span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">FREE</span>
-<ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
-<li>◈ Weekly Breakdowns</li>
-<li>◈ Execution Logs</li>
-<li>◈ Live Psychology</li>
-</ul>
-<a href="https://youtube.com/@HamzaFayazFX" style="display:block;background:#ff0000;color:#fff;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> SUBSCRIBE </a>
-</div>
+  <div class="course-card">
+    <h3 style="color:var(--gold);margin-bottom:15px;">Algorithmic ICT</h3>
+    <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$250</span>
+    <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+      <li>◈ IPDA Data Range</li>
+      <li>◈ MMXM Cycles</li>
+      <li>◈ Liquidity Voids</li>
+    </ul>
+    <a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> ENROLL NOW </a>
+  </div>
+  <div class="course-card">
+    <h3 style="color:var(--gold);margin-bottom:15px;">HDE Masterclass</h3>
+    <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$499</span>
+    <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+      <li>◈ HDE Liquidity Matrix</li>
+      <li>◈ Order Flow Analysis</li>
+      <li>◈ Institutional Sponsorship</li>
+    </ul>
+    <a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> JOIN ELITE </a>
+  </div>
+  <div class="course-card yt-card">
+    <h3 style="color:#ff0000;margin-bottom:15px;">Free Academy</h3>
+    <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">FREE</span>
+    <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+      <li>◈ Weekly Breakdowns</li>
+      <li>◈ Execution Logs</li>
+      <li>◈ Live Psychology</li>
+    </ul>
+    <a href="https://youtube.com/@HamzaFayazFX" style="display:block;background:#ff0000;color:#fff;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> SUBSCRIBE </a>
+  </div>
 </section>
 
 <section class="trade-vault-card">
-<h2 style="color:var(--gold);letter-spacing:5px;margin-bottom:20px;"> THE EXECUTION VAULT </h2>
-<button class="access-btn">Decrypt Access</button>
+  <h2 style="color:var(--gold);letter-spacing:5px;margin-bottom:20px;"> THE EXECUTION VAULT </h2>
+  <button class="access-btn" onclick="alert('Vault Decrypted! 🔓')">Decrypt Access</button>
 </section>
 
 <!-- DISCIPLINE HUB SECTION -->
 <section style="max-width:1200px;margin:auto;padding:60px 20px;">
 <h2 class="section-title">Trading Discipline Hub</h2>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-<div class="lg:col-span-2 glass-card">
-<h3 class="text-lg font-bold mb-4">Execution Models</h3>
-<div class="grid grid-cols-2 gap-4">
-<div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-<span>CME Open</span> <input type="checkbox" class="disc-check">
-</div>
-<div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-<span>Equity Open</span> <input type="checkbox" class="disc-check">
-</div>
-<div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-<span>London Silver Bullet</span> <input type="checkbox" class="disc-check">
-</div>
-<div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-<span>NY AM Silver Bullet</span> <input type="checkbox" class="disc-check">
-</div>
-</div>
+<label for="logDate">Select Date:</label>
+<input type="date" id="logDate" style="margin-bottom:20px;">
+
+<div class="glass-card">
+  <h3 style="margin-bottom:10px;">Execution Models / Silver Bullets</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <label>London Silver Bullet Notes</label>
+      <input type="text" id="londonSB" placeholder="Write execution notes">
+    </div>
+    <div>
+      <label>NY AM Silver Bullet Notes</label>
+      <input type="text" id="nyamSB" placeholder="Write execution notes">
+    </div>
+    <div>
+      <label>NY PM Silver Bullet Notes</label>
+      <input type="text" id="nypmSB" placeholder="Write execution notes">
+    </div>
+  </div>
 </div>
 
 <div class="glass-card">
-<h3 class="text-lg font-bold mb-4">Core Discipline</h3>
-<ul class="space-y-4">
-<li class="flex gap-3">
-<input type="checkbox" class="disc-check">
-<div>
-<p class="font-semibold text-sm">Target Profit</p>
-<p class="text-xs text-gray-500">Defined at HTF level?</p>
-</div>
-</li>
-<li class="flex gap-3">
-<input type="checkbox" class="disc-check">
-<div>
-<p class="font-semibold text-sm">Stop Loss</p>
-<p class="text-xs text-gray-500">Invalidation set?</p>
-</div>
-</li>
-</ul>
-<button class="save-btn" onclick="saveDiscipline()">Save Discipline</button>
-<table>
-<thead>
-<tr><th>Item</th><th>Status</th></tr>
-</thead>
-<tbody id="discTable"></tbody>
-</table>
+  <h3 style="margin-bottom:10px;">Core Discipline</h3>
+  <div>
+    <label>Target Profit</label>
+    <input type="text" id="targetProfit" placeholder="TP details">
+  </div>
+  <div>
+    <label>Stop Loss</label>
+    <input type="text" id="stopLoss" placeholder="SL details">
+  </div>
 </div>
 
+<button class="save-btn" onclick="saveDiscipline()">SAVE TODAY</button>
+
+<div id="history" class="history-box">
+  <h4 style="color:var(--gold); margin-bottom:10px;">Saved Records</h4>
+  <div id="historyContent"></div>
 </div>
 </section>
 
 <h2 class="section-title">Command Center</h2>
 <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding-bottom:50px;">
-<a href="https://wa.me/923235957001" class="contact-card">
-<h3 style="color:#25d366;margin-bottom:10px;">WhatsApp</h3>
-<p style="color:#ccc;font-size:12px;">Fastest Enrollment</p>
-</a>
-<a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
-<h3 style="color:var(--gold);margin-bottom:10px;">Email</h3>
-<p style="color:#ccc;font-size:12px;">Institutional Queries</p>
-</a>
+  <a href="https://wa.me/923235957001" class="contact-card">
+    <h3 style="color:#25d366;margin-bottom:10px;">WhatsApp</h3>
+    <p style="color:#ccc;font-size:12px;">Fastest Enrollment</p>
+  </a>
+  <a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
+    <h3 style="color:var(--gold);margin-bottom:10px;">Email</h3>
+    <p style="color:#ccc;font-size:12px;">Institutional Queries</p>
+  </a>
 </div>
 
 <footer>© 2026 THE VAULT HDE FX ACADEMY</footer>
 
 <script>
+// Save & Load Discipline
 function saveDiscipline(){
-const checks=document.querySelectorAll(".disc-check");
-let table=document.getElementById("discTable");
-table.innerHTML="";
-checks.forEach((c,i)=>{
-let name=c.parentElement.querySelector("span, div p")?.innerText || "Item "+(i+1);
-let status=c.checked ? "✔" : "✖";
-table.innerHTML+="<tr><td>"+name+"</td><td>"+status+"</td></tr>";
-});
-alert("Discipline Saved ✅");
+  const date = document.getElementById('logDate').value;
+  if(!date){ alert("Select a date first!"); return; }
+
+  const data = {
+    londonSB: document.getElementById('londonSB').value,
+    nyamSB: document.getElementById('nyamSB').value,
+    nypmSB: document.getElementById('nypmSB').value,
+    targetProfit: document.getElementById('targetProfit').value,
+    stopLoss: document.getElementById('stopLoss').value
+  };
+
+  let allData = JSON.parse(localStorage.getItem('disciplineLogs')||'{}');
+  allData[date] = data;
+  localStorage.setItem('disciplineLogs', JSON.stringify(allData));
+  alert('Discipline saved for '+date+' ✅');
+  loadHistory(date);
 }
+
+// Load history for selected date
+function loadHistory(date){
+  const historyDiv = document.getElementById('historyContent');
+  historyDiv.innerHTML = '';
+  if(!date) return;
+
+  let allData = JSON.parse(localStorage.getItem('disciplineLogs')||'{}');
+  if(allData[date]){
+    const d = allData[date];
+    historyDiv.innerHTML = `
+      <p><strong>London SB:</strong> ${d.londonSB}</p>
+      <p><strong>NY AM SB:</strong> ${d.nyamSB}</p>
+      <p><strong>NY PM SB:</strong> ${d.nypmSB}</p>
+      <p><strong>Target Profit:</strong> ${d.targetProfit}</p>
+      <p><strong>Stop Loss:</strong> ${d.stopLoss}</p>
+    `;
+  } else {
+    historyDiv.innerHTML = `<p>No record for this date.</p>`;
+  }
+}
+
+// Date change listener
+document.getElementById('logDate').addEventListener('change', (e)=>{
+  loadHistory(e.target.value);
+  const date = e.target.value;
+  if(!date) return;
+  let allData = JSON.parse(localStorage.getItem('disciplineLogs')||'{}');
+  if(allData[date]){
+    document.getElementById('londonSB').value = allData[date].londonSB;
+    document.getElementById('nyamSB').value = allData[date].nyamSB;
+    document.getElementById('nypmSB').value = allData[date].nypmSB;
+    document.getElementById('targetProfit').value = allData[date].targetProfit;
+    document.getElementById('stopLoss').value = allData[date].stopLoss;
+  } else {
+    document.getElementById('londonSB').value='';
+    document.getElementById('nyamSB').value='';
+    document.getElementById('nypmSB').value='';
+    document.getElementById('targetProfit').value='';
+    document.getElementById('stopLoss').value='';
+  }
+});
+
+// Load today by default
+document.addEventListener('DOMContentLoaded', ()=>{
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('logDate').value = today;
+  loadHistory(today);
+});
 </script>
 
 </body>
