@@ -3,164 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>The Vault HDE FX Academy | Institutional ICT Architect</title>
-
 <link rel="icon" href="hamza.jpg" type="image/jpeg">
 <link rel="apple-touch-icon" href="hamza.jpg">
-
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
 <style>
 :root{ --gold:#ffd700; --dark:#050505; --wa-green:#25d366; }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{ background:#000; color:#fff; font-family:Arial, sans-serif; overflow-x:hidden; position:relative; }
 
 /* Grid Animation Background */
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:
-linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px);
-background-size:40px 40px;
-z-index:-2;
-animation:gridmove 25s linear infinite;
-}
-
-@keyframes gridmove{
-0%{transform:translateY(0)}
-100%{transform:translateY(40px)}
-}
+body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite; }
+@keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }
 
 /* UI Styling */
-.brand-header{
-width:100%;
-max-width:1100px;
-margin:auto;
-padding:25px;
-color:var(--gold);
-letter-spacing:5px;
-font-weight:800;
-text-transform:uppercase;
-border-bottom:2px solid var(--gold);
-text-align:center;
-}
-
+.brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align:center; }
 .hero{padding:80px 20px;text-align:center;}
-
-.profile-card{
-background:rgba(10,10,10,0.9);
-padding:50px 30px;
-border-radius:40px;
-border:1px solid rgba(255,215,0,0.2);
-max-width:650px;
-margin:auto;
-}
-
-.profile-img{
-width:150px;
-height:150px;
-border-radius:50%;
-border:3px solid var(--gold);
-margin-bottom:20px;
-object-fit:cover;
-}
-
-.section-title{
-font-size:1.8rem;
-color:var(--gold);
-margin:60px 0 40px;
-text-transform:uppercase;
-letter-spacing:4px;
-text-align:center;
-}
+.profile-card{ background:rgba(10,10,10,0.9); padding:50px 30px; border-radius:40px; border:1px solid rgba(255,215,0,0.2); max-width:650px; margin:auto; }
+.profile-img{ width:150px; height:150px; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px; object-fit:cover; }
+.section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }
 
 /* Course Grid */
-.course-grid{
-display:flex;
-gap:25px;
-flex-wrap:wrap;
-justify-content:center;
-max-width:1200px;
-margin:auto;
-padding:0 20px;
-}
-
-.course-card{
-background:#0a0a0a;
-border:1px solid rgba(255,215,0,0.2);
-padding:40px 30px;
-border-radius:30px;
-width:360px;
-transition:0.4s;
-display:block;
-text-decoration:none;
-color:white;
-}
-
-.course-card:hover{
-border-color:var(--gold);
-transform:translateY(-10px);
-box-shadow:0 20px 50px rgba(255,215,0,0.4);
-}
-
+.course-grid{ display:flex; gap:25px; flex-wrap:wrap; justify-content:center; max-width:1200px; margin:auto; padding:0 20px; }
+.course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:360px; transition:0.4s; display:block; text-decoration:none; color:white; }
+.course-card:hover{ border-color:var(--gold); transform:translateY(-10px); box-shadow:0 20px 50px rgba(255,215,0,0.4); }
 .yt-card{border-color:#ff0000}
 
 /* Vault */
-.trade-vault-card{
-max-width:800px;
-margin:80px auto;
-background:#050505;
-border:1px solid rgba(255,215,0,0.2);
-border-radius:35px;
-padding:50px;
-text-align:center;
-}
-
-.access-btn{
-background:transparent;
-border:2px solid var(--gold);
-color:var(--gold);
-padding:18px 45px;
-border-radius:50px;
-font-weight:900;
-cursor:pointer;
-}
+.trade-vault-card{ max-width:800px; margin:80px auto; background:#050505; border:1px solid rgba(255,215,0,0.2); border-radius:35px; padding:50px; text-align:center; }
+.access-btn{ background:transparent; border:2px solid var(--gold); color:var(--gold); padding:18px 45px; border-radius:50px; font-weight:900; cursor:pointer; }
 
 /* Contact */
-.contact-card{
-background:rgba(255,255,255,0.1);
-border:1px solid rgba(255,215,0,0.3);
-padding:30px;
-width:300px;
-border-radius:25px;
-text-decoration:none;
-display:block;
-color:#fff;
-transition:0.3s;
-text-align:center;
-}
+.contact-card{ background:rgba(255,255,255,0.1); border:1px solid rgba(255,215,0,0.3); padding:30px; width:300px; border-radius:25px; text-decoration:none; display:block; color:#fff; transition:0.3s; text-align:center; }
+.contact-card:hover{ background:rgba(255,215,0,0.15); border-color:var(--gold); }
 
-.contact-card:hover{
-background:rgba(255,215,0,0.15);
-border-color:var(--gold);
-}
-
-footer{
-padding:40px;
-text-align:center;
-color:#444;
-font-size:12px;
-}
+/* Discipline Section */
+.glass-card{background:rgba(10,10,10,0.9); padding:30px; border-radius:20px; border:1px solid rgba(255,215,0,0.2); margin-bottom:20px;}
+button.save-btn{background:var(--gold);color:#000;padding:12px 25px;border:none;border-radius:25px;font-weight:bold;cursor:pointer;margin-top:15px;}
+table{width:100%;border-collapse:collapse;margin-top:15px;}
+th,td{border-bottom:1px solid #444;padding:10px;text-align:center;}
 </style>
 </head>
-
 <body>
 
 <div class="brand-header">THE VAULT HDE FX ACADEMY</div>
@@ -174,165 +58,126 @@ font-size:12px;
 </section>
 
 <h2 class="section-title">Institutional Curriculums</h2>
-
 <section class="course-grid">
-
 <div class="course-card">
 <h3 style="color:var(--gold);margin-bottom:15px;">Algorithmic ICT</h3>
 <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$250</span>
-
 <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
 <li>◈ IPDA Data Range</li>
 <li>◈ MMXM Cycles</li>
 <li>◈ Liquidity Voids</li>
 </ul>
-
-<a href="https://wa.me/923235957001"
-style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">
-ENROLL NOW
-</a>
-
+<a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> ENROLL NOW </a>
 </div>
 
 <div class="course-card">
-
 <h3 style="color:var(--gold);margin-bottom:15px;">HDE Masterclass</h3>
 <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$499</span>
-
 <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
 <li>◈ HDE Liquidity Matrix</li>
 <li>◈ Order Flow Analysis</li>
 <li>◈ Institutional Sponsorship</li>
 </ul>
-
-<a href="https://wa.me/923235957001"
-style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">
-JOIN ELITE
-</a>
-
+<a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> JOIN ELITE </a>
 </div>
 
 <div class="course-card yt-card">
-
 <h3 style="color:#ff0000;margin-bottom:15px;">Free Academy</h3>
 <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">FREE</span>
-
 <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
 <li>◈ Weekly Breakdowns</li>
 <li>◈ Execution Logs</li>
 <li>◈ Live Psychology</li>
 </ul>
-
-<a href="https://youtube.com/@HamzaFayazFX"
-style="display:block;background:#ff0000;color:#fff;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;">
-SUBSCRIBE
-</a>
-
+<a href="https://youtube.com/@HamzaFayazFX" style="display:block;background:#ff0000;color:#fff;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> SUBSCRIBE </a>
 </div>
-
 </section>
 
 <section class="trade-vault-card">
-
-<h2 style="color:var(--gold);letter-spacing:5px;margin-bottom:20px;">
-THE EXECUTION VAULT
-</h2>
-
+<h2 style="color:var(--gold);letter-spacing:5px;margin-bottom:20px;"> THE EXECUTION VAULT </h2>
 <button class="access-btn">Decrypt Access</button>
-
 </section>
 
-
 <!-- DISCIPLINE HUB SECTION -->
-
 <section style="max-width:1200px;margin:auto;padding:60px 20px;">
-
 <h2 class="section-title">Trading Discipline Hub</h2>
-
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-<div class="lg:col-span-2 glass-card p-6 rounded-2xl">
-
-<h3 class="text-lg font-bold mb-4">
-<i class="fas fa-layer-group text-sky-500"></i> Execution Models
-</h3>
-
+<div class="lg:col-span-2 glass-card">
+<h3 class="text-lg font-bold mb-4">Execution Models</h3>
 <div class="grid grid-cols-2 gap-4">
-
 <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-<span>CME Open</span>
-<input type="checkbox">
+<span>CME Open</span> <input type="checkbox" class="disc-check">
 </div>
-
 <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-<span>Equity Open</span>
-<input type="checkbox">
+<span>Equity Open</span> <input type="checkbox" class="disc-check">
 </div>
-
 <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-<span>London Silver Bullet</span>
-<input type="checkbox">
+<span>London Silver Bullet</span> <input type="checkbox" class="disc-check">
 </div>
-
 <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-<span>NY AM Silver Bullet</span>
-<input type="checkbox">
+<span>NY AM Silver Bullet</span> <input type="checkbox" class="disc-check">
+</div>
+</div>
 </div>
 
-</div>
-
-</div>
-
-<div class="glass-card p-6 rounded-2xl">
-
+<div class="glass-card">
 <h3 class="text-lg font-bold mb-4">Core Discipline</h3>
-
 <ul class="space-y-4">
-
 <li class="flex gap-3">
-<input type="checkbox">
+<input type="checkbox" class="disc-check">
 <div>
 <p class="font-semibold text-sm">Target Profit</p>
 <p class="text-xs text-gray-500">Defined at HTF level?</p>
 </div>
 </li>
-
 <li class="flex gap-3">
-<input type="checkbox">
+<input type="checkbox" class="disc-check">
 <div>
 <p class="font-semibold text-sm">Stop Loss</p>
 <p class="text-xs text-gray-500">Invalidation set?</p>
 </div>
 </li>
-
 </ul>
-
+<button class="save-btn" onclick="saveDiscipline()">Save Discipline</button>
+<table>
+<thead>
+<tr><th>Item</th><th>Status</th></tr>
+</thead>
+<tbody id="discTable"></tbody>
+</table>
 </div>
 
 </div>
-
 </section>
 
-
 <h2 class="section-title">Command Center</h2>
-
 <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding-bottom:50px;">
-
 <a href="https://wa.me/923235957001" class="contact-card">
 <h3 style="color:#25d366;margin-bottom:10px;">WhatsApp</h3>
 <p style="color:#ccc;font-size:12px;">Fastest Enrollment</p>
 </a>
-
 <a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
 <h3 style="color:var(--gold);margin-bottom:10px;">Email</h3>
 <p style="color:#ccc;font-size:12px;">Institutional Queries</p>
 </a>
-
 </div>
 
-<footer>
-© 2026 THE VAULT HDE FX ACADEMY
-</footer>
+<footer>© 2026 THE VAULT HDE FX ACADEMY</footer>
+
+<script>
+function saveDiscipline(){
+const checks=document.querySelectorAll(".disc-check");
+let table=document.getElementById("discTable");
+table.innerHTML="";
+checks.forEach((c,i)=>{
+let name=c.parentElement.querySelector("span, div p")?.innerText || "Item "+(i+1);
+let status=c.checked ? "✔" : "✖";
+table.innerHTML+="<tr><td>"+name+"</td><td>"+status+"</td></tr>";
+});
+alert("Discipline Saved ✅");
+}
+</script>
 
 </body>
 </html>
