@@ -81,8 +81,7 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 <section class="trade-vault-card">
     <h2 style="color:var(--gold);letter-spacing:5px;margin-bottom:20px;"> THE EXECUTION VAULT </h2>
     <button class="access-btn">
-        <img src="hamza.jpg" style="width:100px;height:100px;border-radius:50%;object-fit:cover;">
-        Decrypt Access
+        <img src="trading-pic.jpg" alt="Trading Pic" style="width:50px;height:50px;margin-right:10px;vertical-align:middle;"> Decrypt Access
     </button>
 </section>
 
@@ -175,7 +174,7 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
         <h3 style="color:#25d366;margin-bottom:10px;">WhatsApp</h3>
         <p style="color:#ccc;font-size:12px;">Fastest Enrollment</p>
     </a>
-    <a href="mailto:hamxafeyax@yahoo.com" class="contact-card">
+    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card">
         <h3 style="color:var(--gold);margin-bottom:10px;">Email</h3>
         <p style="color:#ccc;font-size:12px;">Institutional Queries</p>
     </a>
@@ -183,33 +182,6 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 
 <footer> © 2026 THE VAULT HDE FX ACADEMY </footer>
 
-<script>
-const fields = ["chk-cme","chk-equity","chk-london","chk-nyam","chk-nypm","chk-tp","chk-sl","chk-rules","chk-execution"];
-const saveBtn = document.getElementById('save-discipline');
-const msgBox = document.getElementById('save-msg');
-const dateInput = document.getElementById('disc-date');
-
-// **Replace this URL with your deployed Google Apps Script Web App URL**
-const scriptURL = "YOUR_SCRIPT_WEB_APP_URL";
-
-saveBtn.addEventListener('click', ()=>{
-    const date = dateInput.value;
-    if(!date){ alert("Please select a date!"); return; }
-
-    const data = { date };
-    fields.forEach(f => data[f] = document.getElementById(f).checked);
-
-    // Send to Google Apps Script
-    fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors', 
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify(data)
-    }).then(()=>{
-        msgBox.classList.remove('hidden');
-        setTimeout(()=> msgBox.classList.add('hidden'), 3000);
-    }).catch(err => alert("Error saving discipline!"));
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
