@@ -42,8 +42,8 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
 /* Website Elements */
 .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }  
 .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:340px; transition:0.4s; color:white; }  
-.locked-content { filter: blur(12px); pointer-events: none; }
-#hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 30px; }
+.locked-content { filter: blur(15px); pointer-events: none; opacity: 0.3; }
+#hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 30px; border: 1px solid rgba(255,215,0,0.1); }
 .contact-card{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,215,0,0.2); padding:25px; border-radius:20px; text-align:center; width:280px; text-decoration:none; color:white;}
 </style>
 </head>
@@ -99,16 +99,33 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
     <button onclick="decryptVault()" class="border-2 border-yellow-500 text-yellow-500 px-10 py-4 rounded-full font-bold">Decrypt Access</button>
 </section>
 
-<section style="max-width:1100px; margin:auto; padding:60px 20px; position: relative;">
+<section id="discipline-section" style="max-width:1100px; margin:auto; padding:60px 20px; position: relative; min-height: 400px;">
     <h2 class="section-title">Trading Discipline Hub</h2>
+    
     <div id="hub-lock-overlay">
-        <i class="fas fa-lock text-yellow-500 text-4xl mb-5"></i>
-        <input type="text" id="h-u" placeholder="User" class="bg-zinc-900 border border-zinc-800 p-3 mb-3 rounded-lg w-64 text-white">
-        <input type="password" id="h-p" placeholder="Pass" class="bg-zinc-900 border border-zinc-800 p-3 mb-5 rounded-lg w-64 text-white">
-        <button onclick="unlockHub()" class="bg-yellow-500 text-black px-12 py-3 rounded-lg font-bold">UNLOCK</button>
+        <i class="fas fa-user-shield text-yellow-500 text-5xl mb-6"></i>
+        <h3 style="color:var(--gold); margin-bottom: 20px; letter-spacing: 2px; font-weight: bold;">STUDENT ACCESS</h3>
+        <input type="text" id="h-u" placeholder="Username" class="bg-zinc-900 border border-zinc-700 p-3 mb-3 rounded-lg w-72 text-white outline-none focus:border-yellow-500">
+        <input type="password" id="h-p" placeholder="Password" class="bg-zinc-900 border border-zinc-700 p-3 mb-5 rounded-lg w-72 text-white outline-none focus:border-yellow-500">
+        <button onclick="unlockHub()" class="bg-yellow-500 text-black px-16 py-3 rounded-lg font-bold hover:bg-yellow-400 transition-all shadow-lg">UNLOCK HUB</button>
+        <p id="login-msg" style="color:#ff4444; margin-top:15px; font-size:12px; font-weight:bold; display:none;">ACCESS DENIED: WRONG CREDENTIALS</p>
     </div>
+
     <div id="hub-content" class="locked-content">
-        <div class="bg-zinc-900/50 border border-zinc-800 p-10 rounded-3xl text-center"><h3 class="text-yellow-500 font-bold">Journal Active</h3></div>
+        <div class="bg-zinc-900/80 border border-yellow-500/30 p-12 rounded-3xl text-center">
+            <h3 class="text-yellow-500 font-bold text-2xl mb-4">Journal & Discipline Terminal</h3>
+            <p class="text-gray-400 mb-8">Verification Successful. Recording live trading data...</p>
+            <div class="grid grid-cols-2 gap-4 max-w-md mx-auto">
+                <div class="bg-black/50 p-4 rounded-xl border border-zinc-800">
+                    <span class="block text-yellow-500 text-xs mb-2">DAILY TARGET</span>
+                    <span class="text-xl font-bold">+50 PIPS</span>
+                </div>
+                <div class="bg-black/50 p-4 rounded-xl border border-zinc-800">
+                    <span class="block text-red-500 text-xs mb-2">DAILY MAX LOSS</span>
+                    <span class="text-xl font-bold">-20 PIPS</span>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -173,15 +190,24 @@ function updateTime() {
 setInterval(updateTime, 1000); updateTime();
 
 function accessPaid() {
-    const u = prompt("User:"); const p = prompt("Pass:");
+    const u = prompt("Admin User:"); const p = prompt("Admin Pass:");
     if(u==="Hamzafayazfx" && p==="H@mza44332211") { window.location.href="https://wa.me/923235957001"; }
 }
 
 function unlockHub() {
-    if(document.getElementById('h-u').value==="Hamzafayazfx" && document.getElementById('h-p').value==="H@mza443322") {
+    const userVal = document.getElementById('h-u').value;
+    const passVal = document.getElementById('h-p').value;
+    const msg = document.getElementById('login-msg');
+
+    if(userVal === "Hamzafayazfx" && passVal === "H@mza443322") {
         document.getElementById('hub-lock-overlay').style.display='none';
         document.getElementById('hub-content').classList.remove('locked-content');
+        document.getElementById('hub-content').style.filter = "none";
+        document.getElementById('hub-content').style.opacity = "1";
         localStorage.setItem('hub_v', 'true');
+    } else {
+        msg.style.display = 'block';
+        setTimeout(() => { msg.style.display = 'none'; }, 3000);
     }
 }
 
@@ -191,7 +217,15 @@ function decryptVault() {
     setTimeout(()=>{ i.src='trade1.jpg'; i.style.filter='none'; },500);
 }
 
-window.onload = () => { if(localStorage.getItem('hub_v')==='true') unlockHub(); };
+window.onload = () => { 
+    if(localStorage.getItem('hub_v')==='true') {
+        document.getElementById('hub-lock-overlay').style.display='none';
+        document.getElementById('hub-content').classList.remove('locked-content');
+        document.getElementById('hub-content').style.filter = "none";
+        document.getElementById('hub-content').style.opacity = "1";
+    }
+};
 </script>
 </body>
-</html>
+                </html>
+    
