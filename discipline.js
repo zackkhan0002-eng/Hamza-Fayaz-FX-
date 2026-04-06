@@ -3,7 +3,10 @@ document.getElementById('save-discipline').onclick = function() {
     const msg = document.getElementById('save-msg');
     
     // Date pick karna (agar empty ho toh aaj ki date)
-    let dateVal = document.getElementById('disc-date').value;
+    // Note: Agar aapke HTML mein 'disc-date' input nahi hai, toh ye hamesha aaj ki date lega
+    let dateInput = document.getElementById('disc-date');
+    let dateVal = dateInput ? dateInput.value : null;
+    
     if(!dateVal) {
         dateVal = new Date().toLocaleDateString('en-GB'); 
     }
@@ -26,8 +29,8 @@ document.getElementById('save-discipline').onclick = function() {
     btn.innerText = "SAVING TO VAULT...";
     btn.disabled = true;
 
-    // Aapka Latest Web App Link
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbwPuw8Scn4XIpCuOL7gTo9llyed5_qFEIdJLJrM53h3Uzbz2S_xgifA__9yMZpAEmko/exec';
+    // Aapka LATEST Web App Link jo aapne abhi diya
+    const webAppUrl = 'https://script.google.com/macros/s/AKfycbzJq8SpxfzDpqgXIkz068S_WHwGiyQlPDBQKjAEFc_eeTNsCkMEI0tUizD4avD3V_F6/exec';
 
     fetch(webAppUrl, {
         method: 'POST',
@@ -49,7 +52,7 @@ document.getElementById('save-discipline').onclick = function() {
             }, 4000);
         }
         
-        // Form reset (Checkboxes khali karna)
+        // Form reset (Saare checkboxes khali karna)
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(cb => cb.checked = false);
         
