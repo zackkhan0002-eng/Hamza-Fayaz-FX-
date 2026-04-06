@@ -25,12 +25,11 @@
         .n { position: absolute; font-size: 9px; color: var(--gold); font-weight: bold; transform: translate(-50%, -50%); }
         .n12 { top: 12%; left: 50%; } .n3 { top: 50%; left: 88%; } .n6 { top: 88%; left: 50%; } .n9 { top: 50%; left: 12%; }
 
-        /* Clock Hands based on your image */
         .hand { position: absolute; background: var(--gold); left: 50%; bottom: 50%; transform-origin: bottom; border-radius: 4px; }
-        .h-asia { height: 35px; width: 3px; transform: rotate(180deg); } /* 6 o'clock */
-        .h-london { height: 35px; width: 3px; transform: rotate(0deg); }   /* 12 o'clock */
-        .h-nyam { height: 35px; width: 3px; transform: rotate(180deg); }   /* 6 o'clock position in pic */
-        .h-nypm { height: 35px; width: 3px; transform: rotate(0deg); }     /* 12 o'clock position in pic */
+        .h-asia { height: 35px; width: 3px; transform: rotate(180deg); } 
+        .h-london { height: 35px; width: 3px; transform: rotate(0deg); }   
+        .h-nyam { height: 35px; width: 3px; transform: rotate(180deg); }   
+        .h-nypm { height: 35px; width: 3px; transform: rotate(0deg); }     
 
         .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }  
         .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:340px; color:white; transition: 0.3s; }  
@@ -81,7 +80,6 @@
 
 <section id="discipline-section" style="max-width:1100px; margin:80px auto; padding:0 20px; position: relative; min-height: 500px;">
     <h2 class="section-title">Trading Discipline Hub</h2>
-    
     <div id="hub-lock-overlay">
         <i class="fas fa-fingerprint text-yellow-500 text-5xl mb-6"></i>
         <input type="text" id="h-u" placeholder="Username" class="bg-zinc-900 border border-zinc-700 p-3 mb-3 rounded-lg w-72 text-white outline-none focus:border-yellow-500">
@@ -89,31 +87,20 @@
         <button onclick="unlockHub()" class="bg-yellow-500 text-black px-16 py-3 rounded-lg font-bold">UNLOCK HUB</button>
         <p id="login-msg" style="color:#ff4444; margin-top:15px; font-size:12px; display:none;">WRONG CREDENTIALS</p>
     </div>
-
     <div id="hub-content" class="locked-content">
         <div class="mb-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl text-center">
             <span class="text-yellow-500 font-bold">SESSION DATE: </span> <span id="hub-date-display">--/--/----</span>
         </div>
-        
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="lg:col-span-2 bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl">
                 <h3 class="text-yellow-500 font-bold mb-6 text-xl">Daily Execution Models</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
-                        <span>CME ⚡</span> <input type="checkbox" id="chk-cme">
-                    </div>
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
-                        <span>London Silver Bullet</span> <input type="checkbox" id="chk-london">
-                    </div>
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
-                        <span>NY AM Silver Bullet</span> <input type="checkbox" id="chk-nyam">
-                    </div>
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
-                        <span>NY PM Silver Bullet</span> <input type="checkbox" id="chk-nypm">
-                    </div>
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800"><span>CME ⚡</span> <input type="checkbox" id="chk-cme"></div>
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800"><span>London Silver Bullet</span> <input type="checkbox" id="chk-london"></div>
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800"><span>NY AM Silver Bullet</span> <input type="checkbox" id="chk-nyam"></div>
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800"><span>NY PM Silver Bullet</span> <input type="checkbox" id="chk-nypm"></div>
                 </div>
             </div>
-
             <div class="bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl text-center flex flex-col justify-between">
                 <div>
                     <h3 class="text-yellow-500 font-bold mb-4">Core Discipline</h3>
@@ -132,7 +119,7 @@
     </div>
 </section>
 
-<h2 class="section-title">HAMZA SESSION TIMES <span style="font-size: 14px; opacity: 0.7;">(UTC-4/-5)</span></h2>
+<h2 class="section-title">HAMZA SESSION TIMES</h2>
 <div class="session-grid">
     <div class="session-card">
         <div class="analog-clock">
@@ -166,14 +153,8 @@
 
 <h2 class="section-title">COMMAND CENTER</h2>
 <div class="flex flex-wrap justify-center gap-6 pb-20 px-5">
-    <a href="https://wa.me/923235957001" class="contact-card">
-        <h3 style="color:var(--wa-green)">WhatsApp</h3>
-        <p style="font-size:11px; color:#888;">Fast Enrollment</p>
-    </a>
-    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card">
-        <h3 style="color:var(--gold)">Email</h3>
-        <p style="font-size:11px; color:#888;">Official Queries</p>
-    </a>
+    <a href="https://wa.me/923235957001" class="contact-card"><h3 style="color:var(--wa-green)">WhatsApp</h3></a>
+    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card"><h3 style="color:var(--gold)">Email</h3></a>
 </div>
 
 <footer style="text-align:center; padding:40px; color:#444; font-size:12px;">© 2026 THE VAULT HDE FX ACADEMY</footer>
@@ -197,9 +178,7 @@ function unlockHub() {
         document.getElementById('hub-content').style.filter = "none";
         document.getElementById('hub-content').style.opacity = "1";
         localStorage.setItem('hde_auth', 'true');
-    } else { 
-        document.getElementById('login-msg').style.display = 'block'; 
-    }
+    } else { document.getElementById('login-msg').style.display = 'block'; }
 }
 
 document.getElementById('save-discipline').onclick = function() {
@@ -217,28 +196,15 @@ document.getElementById('save-discipline').onclick = function() {
         rules: document.getElementById('chk-rules').checked ? "YES" : "NO",
         execution: document.getElementById('chk-execution').checked ? "YES" : "NO"
     };
-
     btn.innerText = "SENDING...";
     btn.disabled = true;
-
     const webAppUrl = 'https://script.google.com/macros/s/AKfycbzJq8SpxfzDpqgXIkz068S_WHwGiyQlPDBQKjAEFc_eeTNsCkMEI0tUizD4avD3V_F6/exec';
-
-    fetch(webAppUrl, {
-        method: 'POST',
-        mode: 'no-cors', 
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+    fetch(webAppUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
     }).then(() => {
-        btn.innerText = "SAVE LOG";
-        btn.disabled = false;
-        msg.classList.remove('hidden');
-        setTimeout(() => msg.classList.add('hidden'), 4000);
+        btn.innerText = "SAVE LOG"; btn.disabled = false;
+        msg.classList.remove('hidden'); setTimeout(() => msg.classList.add('hidden'), 4000);
         document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-    }).catch(err => {
-        alert("Sync Error!");
-        btn.disabled = false;
-        btn.innerText = "SAVE LOG";
-    });
+    }).catch(err => { alert("Sync Error!"); btn.disabled = false; btn.innerText = "SAVE LOG"; });
 };
 
 window.onload = () => {
