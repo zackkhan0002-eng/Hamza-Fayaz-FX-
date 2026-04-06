@@ -26,7 +26,8 @@
         .n12 { top: 12%; left: 50%; } .n3 { top: 50%; left: 88%; } .n6 { top: 88%; left: 50%; } .n9 { top: 50%; left: 12%; }
 
         .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }  
-        .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:340px; color:white; }  
+        .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:340px; color:white; transition: 0.3s; }  
+        .course-card:hover { border-color: var(--gold); transform: translateY(-5px); }
         
         .locked-content { filter: blur(20px); pointer-events: none; opacity: 0.2; transition: 0.5s; }
         #hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 30px; }
@@ -55,6 +56,28 @@
         <p style="color:#aaa;">Institutional ICT Architect | Founder HDE</p>
     </div>
 </section>
+
+<h2 class="section-title">Institutional Curriculums</h2>
+<div class="flex flex-wrap justify-center gap-6 px-5">
+    <div class="course-card">
+        <h3 style="color:var(--gold)" class="font-bold mb-4">Algorithmic ICT</h3>
+        <p class="text-3xl font-black mb-4">$250</p>
+        <ul class="text-gray-400 text-sm mb-6 space-y-2"><li>◈ IPDA Data Range</li><li>◈ MMXM Cycles</li><li>◈ Liquidity Voids</li></ul>
+        <a href="https://wa.me/923235957001" class="block bg-yellow-500 text-black py-3 rounded-xl font-bold text-center">ENROLL NOW</a>
+    </div>
+    <div class="course-card">
+        <h3 style="color:var(--gold)" class="font-bold mb-4">HDE Elite Masterclass</h3>
+        <p class="text-3xl font-black mb-4">$499</p>
+        <ul class="text-gray-400 text-sm mb-6 space-y-2"><li>◈ HDE Matrix</li><li>◈ Order Flow Analysis</li><li>◈ Institutional Sponsorship</li></ul>
+        <a href="https://wa.me/923235957001" class="block bg-yellow-500 text-black py-3 rounded-xl font-bold text-center">JOIN ELITE</a>
+    </div>
+    <div class="course-card" style="border-color:#ff0000">
+        <h3 class="text-red-600 font-bold mb-4">Free Academy</h3>
+        <p class="text-3xl font-black mb-4">FREE</p>
+        <ul class="text-gray-400 text-sm mb-6 space-y-2"><li>◈ Weekly Breakdowns</li><li>◈ Execution Logs</li><li>◈ Live Psychology</li></ul>
+        <a href="https://youtube.com/@HamzaFayazFX" class="block bg-red-600 text-white py-3 rounded-xl font-bold text-center">SUBSCRIBE</a>
+    </div>
+</div>
 
 <section id="discipline-section" style="max-width:1100px; margin:80px auto; padding:0 20px; position: relative; min-height: 500px;">
     <h2 class="section-title">Trading Discipline Hub</h2>
@@ -134,6 +157,7 @@
 <footer style="text-align:center; padding:40px; color:#444; font-size:12px;">© 2026 THE VAULT HDE FX ACADEMY</footer>
 
 <script>
+// Time Logic
 function updateTime() {
     const now = new Date();
     const dStr = now.toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });
@@ -143,6 +167,7 @@ function updateTime() {
 }
 setInterval(updateTime, 1000); updateTime();
 
+// Hub Authentication
 function unlockHub() {
     const u = document.getElementById('h-u').value;
     const p = document.getElementById('h-p').value;
@@ -157,6 +182,7 @@ function unlockHub() {
     }
 }
 
+// Data Saving Logic
 document.getElementById('save-discipline').onclick = function() {
     const btn = this;
     const msg = document.getElementById('save-msg');
@@ -177,7 +203,7 @@ document.getElementById('save-discipline').onclick = function() {
     btn.innerText = "SENDING...";
     btn.disabled = true;
 
-    // YOUR NEW ACTIVE URL
+    // YOUR NEW ACTIVE URL FIX
     const webAppUrl = 'https://script.google.com/macros/s/AKfycbzJq8SpxfzDpqgXIkz068S_WHwGiyQlPDBQKjAEFc_eeTNsCkMEI0tUizD4avD3V_F6/exec';
 
     fetch(webAppUrl, {
@@ -192,12 +218,13 @@ document.getElementById('save-discipline').onclick = function() {
         setTimeout(() => msg.classList.add('hidden'), 4000);
         document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
     }).catch(err => {
-        alert("Sync Error!");
+        alert("Sync Error! Check Internet.");
         btn.disabled = false;
         btn.innerText = "SAVE LOG";
     });
 };
 
+// Persistence Check on Load
 window.onload = () => {
     if(localStorage.getItem('hde_auth') === 'true') {
         document.getElementById('hub-lock-overlay').style.display='none';
