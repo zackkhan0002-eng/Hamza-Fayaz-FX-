@@ -26,10 +26,10 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
 @keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }  
 .brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align:center; }  
 
-/* --- BADA MARKET WATCH CARD --- */
+/* --- MARKET WATCH CARD --- */
 #market-watch-container {
     max-width: 650px;
-    margin: 30px auto 10px; /* Header ke niche bada aur centered */
+    margin: 30px auto 10px;
     background: rgba(10,10,10,0.9);
     border: 1px solid rgba(255,215,0,0.3);
     border-radius: 20px;
@@ -37,41 +37,28 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
     text-align: center;
     box-shadow: 0 10px 40px rgba(0,0,0,0.7);
     position: relative;
-    overflow: hidden;
+    z-index: 10;
 }
-#market-watch-container::after {
-    content: ""; position: absolute; top:0; left:0; width:100%; height:100%;
-    background: linear-gradient(transparent, rgba(255,215,0,0.02) 50%, transparent), linear-gradient(90deg, transparent, rgba(255,215,0,0.02) 50%, transparent);
-    background-size: 15px 15px; z-index: -1;
-}
-.watch-title {
-    color: var(--gold);
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    position: relative;
-}
-.watch-title i { margin-right: 10px; font-size: 16px; }
+.watch-title { color: var(--gold); text-transform: uppercase; letter-spacing: 5px; font-size: 14px; font-weight: bold; margin-bottom: 20px; }
+#watch-time { font-family: 'Courier New', monospace; font-weight: 900; font-size: 3rem; color: #fff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); line-height: 1.1; margin-bottom: 15px; }
+#watch-date { color: #aaaaaa; text-transform: uppercase; font-size: 11px; letter-spacing: 3px; }
 
-#watch-time {
-    font-family: 'Courier New', monospace;
-    font-weight: 900;
-    font-size: 3rem; /* Sab se bada size */
-    color: #fff;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    line-height: 1.1;
-    margin-bottom: 15px;
-}
-#watch-date {
-    font-family: Arial, sans-serif;
-    color: #aaaaaa;
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 3px;
-    font-weight: bold;
-}
+/* --- SESSION WATCHES STYLE --- */
+.session-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+.session-card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,215,0,0.15); border-radius: 20px; padding: 20px; text-align: center; transition: 0.3s; }
+.session-card:hover { border-color: var(--gold); background: rgba(255,215,0,0.05); }
+.clock-icon { width: 60px; height: 60px; border: 2px solid var(--gold); border-radius: 50%; margin: 0 auto 15px; position: relative; }
+.clock-icon::before, .clock-icon::after { content: ""; position: absolute; background: var(--gold); left: 50%; top: 50%; transform-origin: bottom center; border-radius: 5px; }
+/* Hour Hand */
+.clock-icon::before { width: 2px; height: 18px; transform: translate(-50%, -100%); }
+/* Minute Hand */
+.clock-icon::after { width: 2px; height: 25px; transform: translate(-50%, -100%) rotate(0deg); }
+
+/* Needle Settings */
+.asia .clock-icon::before { transform: translate(-50%, -100%) rotate(180deg); } /* 6 PM */
+.london .clock-icon::before { transform: translate(-50%, -100%) rotate(0deg); } /* 12 AM */
+.nyam .clock-icon::before { transform: translate(-50%, -100%) rotate(180deg); } /* 6 AM */
+.nypm .clock-icon::before { transform: translate(-50%, -100%) rotate(0deg); } /* 12 PM */
 
 .hero{padding:80px 20px 40px;text-align:center;}  
 .profile-card{ background:rgba(10,10,10,0.9); padding:50px 30px; border-radius:40px; border:1px solid rgba(255,215,0,0.2); max-width:650px; margin:auto; }  
@@ -96,15 +83,8 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     border-radius: 30px; border: 1px solid rgba(255,215,0,0.3);
 }
-.lock-input {
-    background: #111; color: #fff; border: 1px solid #333;
-    padding: 12px; margin-bottom: 10px; border-radius: 8px; width: 220px; outline: none;
-}
-.lock-input:focus { border-color: var(--gold); }
-.lock-btn {
-    background: var(--gold); color: #000; font-weight: bold;
-    padding: 12px 40px; border-radius: 8px; cursor: pointer; border: none;
-}
+.lock-input { background: #111; color: #fff; border: 1px solid #333; padding: 12px; margin-bottom: 10px; border-radius: 8px; width: 220px; outline: none; }
+.lock-btn { background: var(--gold); color: #000; font-weight: bold; padding: 12px 40px; border-radius: 8px; cursor: pointer; border: none; }
 </style>
 </head>
 <body>
@@ -180,7 +160,6 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 
 <section style="max-width:1200px;margin:auto;padding:60px 20px; position: relative;">
     <h2 class="section-title">Trading Discipline Hub</h2>
-
     <div id="hub-lock-overlay">
         <i class="fas fa-user-shield" style="color:var(--gold); font-size: 2.5rem; margin-bottom: 20px;"></i>
         <h3 style="color:var(--gold); margin-bottom: 20px; letter-spacing: 2px;">STUDENT LOGIN</h3>
@@ -195,50 +174,52 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
             <label for="disc-date" style="color:#ffd700;font-weight:bold;">Select Date: </label>
             <input type="date" id="disc-date" style="padding:8px 12px;border-radius:8px;border:1px solid #ffd700;background:#0a0a0a;color:#fff;">
         </div>
-
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="lg:col-span-2 glass-card p-6 rounded-2xl">
                 <h3 class="text-lg font-bold mb-4" style="color:#ffd700;"><i class="fas fa-layer-group text-sky-500"></i> Execution Models</h3>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-                        <span>CME Open</span><input type="checkbox" id="chk-cme">
-                    </div>
-                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-                        <span>Equity Open</span><input type="checkbox" id="chk-equity">
-                    </div>
-                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-                        <span>London Silver Bullet</span><input type="checkbox" id="chk-london">
-                    </div>
-                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-                        <span>NY AM Silver Bullet</span><input type="checkbox" id="chk-nyam">
-                    </div>
-                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-                        <span>NY PM Silver Bullet</span><input type="checkbox" id="chk-nypm">
-                    </div>
-                </div>
-                <div class="flex justify-between bg-[#161b22] p-4 rounded-xl mt-4">
-                        <span>OTHER</span><input type="checkbox" id="chk-other">
+                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl"><span>CME Open</span><input type="checkbox" id="chk-cme"></div>
+                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl"><span>Equity Open</span><input type="checkbox" id="chk-equity"></div>
+                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl"><span>London Silver Bullet</span><input type="checkbox" id="chk-london"></div>
+                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl"><span>NY AM Silver Bullet</span><input type="checkbox" id="chk-nyam"></div>
+                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl"><span>NY PM Silver Bullet</span><input type="checkbox" id="chk-nypm"></div>
                 </div>
             </div>
-
             <div class="glass-card p-6 rounded-2xl">
                 <h3 class="text-lg font-bold mb-4" style="color:#ffd700;">Core Discipline</h3>
                 <ul class="space-y-4">
-                    <li class="flex gap-3"><input type="checkbox" id="chk-tp"><div><p class="font-semibold text-sm">Target Profit</p><p class="text-xs text-gray-500">Defined at HTF level?</p></div></li>
-                    <li class="flex gap-3"><input type="checkbox" id="chk-sl"><div><p class="font-semibold text-sm">Stop Loss</p><p class="text-xs text-gray-500">Invalidation set?</p></div></li>
-                    <li class="flex gap-3"><input type="checkbox" id="chk-rules"><div><p class="font-semibold text-sm">Rules Followed</p><p class="text-xs text-gray-500">No revenge trading? No FOMO?</p></div></li>
-                    <li class="flex gap-3"><input type="checkbox" id="chk-execution"><div><p class="font-semibold text-sm">Execution Ready</p><p class="text-xs text-gray-500">Limit set or Market entry confirmed?</p></div></li>
+                    <li class="flex gap-3"><input type="checkbox" id="chk-tp"><div><p class="font-semibold text-sm">Target Profit</p></div></li>
+                    <li class="flex gap-3"><input type="checkbox" id="chk-sl"><div><p class="font-semibold text-sm">Stop Loss</p></div></li>
                 </ul>
-
-                <button id="save-discipline" class="w-full mt-6 bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 rounded-xl transition-all active:scale-95 shadow-lg shadow-sky-900/20">SAVE DISCIPLINE</button>
-
-                <div id="save-msg" class="hidden mt-4 p-3 rounded-lg text-green-400 text-center border border-green-500">
-                    <i class="fas fa-check-circle mr-2"></i> Discipline Saved Successfully!
-                </div>
+                <button id="save-discipline" class="w-full mt-6 bg-sky-600 text-white font-bold py-3 rounded-xl">SAVE DISCIPLINE</button>
             </div>
         </div>
     </div>
 </section>
+
+<h2 class="section-title">Institutional Trading Windows</h2>
+<div class="session-grid">
+    <div class="session-card asia">
+        <div class="clock-icon"></div>
+        <h4 style="color:var(--gold);">ASIA</h4>
+        <p style="font-size:12px; color:#aaa;">6 PM - 12 AM</p>
+    </div>
+    <div class="session-card london">
+        <div class="clock-icon"></div>
+        <h4 style="color:var(--gold);">LONDON</h4>
+        <p style="font-size:12px; color:#aaa;">12 AM - 6 AM</p>
+    </div>
+    <div class="session-card nyam">
+        <div class="clock-icon"></div>
+        <h4 style="color:var(--gold);">NEW YORK AM</h4>
+        <p style="font-size:12px; color:#aaa;">6 AM - 12 PM</p>
+    </div>
+    <div class="session-card nypm">
+        <div class="clock-icon"></div>
+        <h4 style="color:var(--gold);">NEW YORK PM</h4>
+        <p style="font-size:12px; color:#aaa;">12 PM - 6 PM</p>
+    </div>
+</div>
 
 <h2 class="section-title">Command Center</h2>
 <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding-bottom:50px;">
@@ -249,68 +230,41 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 <footer> © 2026 THE VAULT HDE FX ACADEMY </footer>
 
 <script>
-// --- REAL-TIME WATCH LOGIC ---
 function updateWatch() {
     const now = new Date();
-    // Time Format: HH:MM:SS AM/PM (Courier New, BADA)
     const timeString = now.toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    // Date Format: DD MMM YYYY (Chota, centered)
     const dateString = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
-    
     document.getElementById('watch-time').innerHTML = timeString;
-    document.getElementById('watch-date').innerHTML = `[ EST : -5 HRS ] | ${dateString}`; // Adding a trading note
+    document.getElementById('watch-date').innerHTML = `[ NY TIME : UTC -5 ] | ${dateString}`;
 }
 setInterval(updateWatch, 1000);
 updateWatch();
 
-// Paid Courses Access Logic with 5-Minute Auto-Logout
 function accessPaidCourses() {
-    const u = prompt("Enter Username for Paid Courses:");
-    const p = prompt("Enter Password for Paid Courses:");
-
+    const u = prompt("Enter Username:");
+    const p = prompt("Enter Password:");
     if (u === "Hamzafayazfx" && p === "H@mza44332211") {
         alert("Access Granted! Session active for 5 minutes.");
-        setTimeout(() => {
-            alert("Security Timeout! Paid Courses access expired.");
-            location.reload();
-        }, 5 * 60 * 1000);
+        setTimeout(() => { location.reload(); }, 300000);
         window.location.href = "https://wa.me/923235957001?text=I+want+to+access+paid+courses";
-    } else {
-        alert("Invalid Credentials! Access Denied.");
-    }
+    } else { alert("Invalid Credentials!"); }
 }
 
-// Hub Access Logic with 5-Minute Auto-Logout
 function validateHubAccess() {
     const u = document.getElementById('hub-user').value;
     const p = document.getElementById('hub-pass').value;
-    const error = document.getElementById('hub-error');
-    const overlay = document.getElementById('hub-lock-overlay');
-    const content = document.getElementById('hub-actual-content');
-
     if (u === "Hamzafayazfx" && p === "H@mza443322") {
-        overlay.style.display = 'none';
-        content.classList.remove('locked-content');
+        document.getElementById('hub-lock-overlay').style.display = 'none';
+        document.getElementById('hub-actual-content').classList.remove('locked-content');
         localStorage.setItem('hub_unlocked', 'true');
-
-        setTimeout(() => {
-            localStorage.removeItem('hub_unlocked');
-            alert("Session Expired! Discipline Hub has been locked for security.");
-            location.reload();
-        }, 5 * 60 * 1000);
-
-    } else {
-        error.style.display = 'block';
-        setTimeout(() => { error.style.display = 'none'; }, 3000);
+        setTimeout(() => { localStorage.removeItem('hub_unlocked'); location.reload(); }, 300000);
+    } else { 
+        document.getElementById('hub-error').style.display = 'block';
     }
 }
 
 window.onload = function() {
     if(localStorage.getItem('hub_unlocked') === 'true') {
-        setTimeout(() => {
-            localStorage.removeItem('hub_unlocked');
-            location.reload();
-        }, 5 * 60 * 1000);
         document.getElementById('hub-lock-overlay').style.display = 'none';
         document.getElementById('hub-actual-content').classList.remove('locked-content');
     }
@@ -324,12 +278,9 @@ function decryptVault() {
         img.src = 'trade1.jpg';
         img.style.filter = "blur(0px)";
         btn.innerText = "ACCESS GRANTED";
-        btn.style.borderColor = "#25d366";
         btn.style.color = "#25d366";
     }, 500);
 }
 </script>
-<script src="discipline.js"></script>
 </body>
-          </html>
-          
+</html>
