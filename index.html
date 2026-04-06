@@ -14,41 +14,51 @@
 body{ background:#000; color:#fff; font-family:Arial, sans-serif; overflow-x:hidden; position:relative; }  
 body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite; }  
 @keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }  
+
 .brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align:center; }  
 
 /* --- MAIN MARKET WATCH --- */
 #market-watch-container {
     max-width: 650px; margin: 30px auto 10px; background: rgba(10,10,10,0.9);
     border: 1px solid rgba(255,215,0,0.3); border-radius: 20px; padding: 30px; text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
-#watch-time { font-family: 'Courier New', monospace; font-weight: 900; font-size: 3rem; color: #fff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
+#watch-time { font-family: 'Courier New', monospace; font-weight: 900; font-size: 3rem; color: #fff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); line-height:1; margin-bottom:10px;}
 
-/* --- HAMZA SESSION WATCHES (ANALOG + DIGITAL) --- */
+/* --- ANALOG CLOCKS WITH NUMBERS --- */
 .session-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto; padding: 0 20px; }
 .session-card { background: rgba(15,15,15,0.8); border: 1px solid rgba(255,215,0,0.2); border-radius: 25px; padding: 25px; text-align: center; }
 
 .analog-clock {
-    width: 100px; height: 100px; border: 3px solid var(--gold); border-radius: 50%;
+    width: 110px; height: 110px; border: 3px solid var(--gold); border-radius: 50%;
     margin: 0 auto 15px; position: relative; background: #000;
-    box-shadow: 0 0 15px rgba(255,215,0,0.1);
 }
-/* Clock Hands */
+.clock-number { position: absolute; font-size: 8px; color: var(--gold); font-weight: bold; width: 100%; height: 100%; text-align: center; padding: 2px; }
+/* Numbers Positioning */
+.n12 { top: 2px; } .n3 { right: 5px; top: 45%; } .n6 { bottom: 2px; } .n9 { left: 5px; top: 45%; }
+
 .hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom; border-radius: 10px; background: var(--gold); transform: translateX(-50%); }
-.hour-hand { width: 4px; height: 25px; z-index: 3; }
-.min-hand { width: 2px; height: 35px; z-index: 2; opacity: 0.8; }
+.hour-hand { width: 4px; height: 28px; z-index: 3; }
+.min-hand { width: 2px; height: 40px; z-index: 2; opacity: 0.7; }
 .center-dot { position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background: #fff; border-radius: 50%; transform: translate(-50%, -50%); z-index: 4; }
 
-.inner-digital {
-    position: absolute; bottom: 15px; left: 0; width: 100%;
-    font-size: 10px; color: var(--gold); font-family: monospace; font-weight: bold;
-}
-
-/* Base Styles for original elements */
+/* Original Styles */
+.hero{padding:60px 20px; text-align:center;}  
+.profile-card{ background:rgba(10,10,10,0.9); padding:50px 30px; border-radius:40px; border:1px solid rgba(255,215,0,0.2); max-width:650px; margin:auto; }  
+.profile-img{ width:150px; height:150px; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px; object-fit:cover; }  
 .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }  
-.course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; transition:0.4s; display:block; text-decoration:none; color:white; text-align:center;}  
+.course-grid{ display:flex; gap:25px; flex-wrap:wrap; justify-content:center; max-width:1200px; margin:auto; padding:0 20px; }  
+.course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:360px; transition:0.4s; display:block; text-decoration:none; color:white; }  
+.course-card:hover{ border-color:var(--gold); transform:translateY(-10px); box-shadow:0 20px 50px rgba(255,215,0,0.4); }  
+.trade-vault-card{ max-width:800px; margin:80px auto; background:#050505; border:1px solid rgba(255,215,0,0.2); border-radius:35px; padding:50px; text-align:center; }  
+.access-btn{ background:transparent; border:2px solid var(--gold); color:var(--gold); padding:18px 45px; border-radius:50px; font-weight:900; cursor:pointer; }  
 .locked-content { filter: blur(12px); pointer-events: none; }
-#hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 30px; }
-.contact-card{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,215,0,0.2); padding:25px; border-radius:20px; text-align:center; text-decoration:none; color:#fff; width:280px; }
+#hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 30px; border: 1px solid rgba(255,215,0,0.3); }
+.lock-input { background: #111; color: #fff; border: 1px solid #333; padding: 12px; margin-bottom: 10px; border-radius: 8px; width: 220px; outline: none; }
+.lock-btn { background: var(--gold); color: #000; font-weight: bold; padding: 12px 40px; border-radius: 8px; cursor: pointer; border: none; }
+.glass-card{background:rgba(10,10,10,0.8);}
+.contact-card{ background:rgba(255,255,255,0.1); border:1px solid rgba(255,215,0,0.3); padding:30px; width:300px; border-radius:25px; text-decoration:none; display:block; color:#fff; transition:0.3s; text-align:center; }  
+footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 </style>
 </head>
 <body>
@@ -58,102 +68,158 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
 <div id="market-watch-container">
     <div style="color:var(--gold); letter-spacing:3px; font-size:12px; margin-bottom:10px;">LIVE TERMINAL TIME</div>
     <div id="watch-time">00:00:00</div>
-    <div id="watch-date" style="color:#888; font-size:12px; letter-spacing:2px;">LOADING...</div>
+    <div id="watch-date" style="color:#888; font-size:11px; letter-spacing:2px;">LOADING...</div>
 </div>
 
-<section class="hero" style="text-align:center; padding:60px 0;">
-    <div style="background:rgba(10,10,10,0.9); padding:40px; border-radius:40px; border:1px solid rgba(255,215,0,0.1); max-width:500px; margin:auto;">
-        <img src="hamza.jpg" style="width:120px; height:120px; border-radius:50%; border:2px solid var(--gold); margin:0 auto 20px; object-fit:cover;">
-        <h1 style="font-size:2rem; color:var(--gold);">Hamza Fayaz</h1>
-        <p style="color:#888;">Institutional ICT Architect</p>
+<section class="hero">
+    <div class="profile-card">
+        <img src="hamza.jpg" class="profile-img">
+        <h1 style="font-size:2.5rem;color:var(--gold);">Hamza Fayaz</h1>
+        <p style="color:#ccc;">Institutional ICT Architect | Founder of HDE Concept</p>
+    </div>
+</section>
+
+<h2 class="section-title">Institutional Curriculums</h2>
+<section class="course-grid">
+    <div class="course-card">
+        <h3 style="color:var(--gold);margin-bottom:15px;">Algorithmic ICT</h3>
+        <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">$250</span>
+        <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+            <li>◈ IPDA Data Range</li>
+            <li>◈ MMXM Cycles</li>
+            <li>◈ Liquidity Voids</li>
+        </ul>
+        <a href="https://wa.me/923235957001" style="display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> ENROLL NOW </a>
+    </div>
+
+    <div class="course-card yt-card" style="border-color:#ff0000">
+        <h3 style="color:#ff0000;margin-bottom:15px;">Free Academy</h3>
+        <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">FREE</span>
+        <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+            <li>◈ Weekly Breakdowns</li>
+            <li>◈ Execution Logs</li>
+            <li>◈ Live Psychology</li>
+        </ul>
+        <a href="https://youtube.com/@HamzaFayazFX" style="display:block;background:#ff0000;color:#fff;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;"> SUBSCRIBE </a>
+    </div>
+
+    <div class="course-card" style="border-style: dashed; border-color: var(--gold);">
+        <h3 style="color:var(--gold);margin-bottom:15px;">Hamza Paid Courses</h3>
+        <span style="font-size:2rem;font-weight:900;display:block;margin-bottom:20px;">PREMIUM</span>
+        <ul style="list-style:none;color:#aaa;margin-bottom:20px;font-size:13px;">
+            <li>◈ Private Mentorship</li>
+            <li>◈ Live Execution Room</li>
+            <li>◈ PDF Strategy Vault</li>
+        </ul>
+        <button onclick="accessPaidCourses()" style="width:100%; display:block;background:var(--gold);color:#000;padding:15px;text-align:center;border-radius:10px;font-weight:bold; border:none; cursor:pointer;"> ACCESS COURSES </button>
+    </div>
+</section>
+
+<section class="trade-vault-card">
+    <h2 style="color:var(--gold);letter-spacing:5px;margin-bottom:20px;"> THE EXECUTION VAULT </h2>
+    <img id="vault-img" src="trading_image.jpg" alt="Trading Vault" style="max-width:100%; border-radius:20px; margin-bottom:20px;">
+    <button class="access-btn" onclick="decryptVault()">Decrypt Access</button>
+</section>
+
+<section style="max-width:1200px;margin:auto;padding:60px 20px; position: relative;">
+    <h2 class="section-title">Trading Discipline Hub</h2>
+    <div id="hub-lock-overlay">
+        <i class="fas fa-user-shield" style="color:var(--gold); font-size: 2.5rem; margin-bottom: 20px;"></i>
+        <h3 style="color:var(--gold); margin-bottom: 20px; letter-spacing: 2px;">STUDENT LOGIN</h3>
+        <input type="text" id="hub-user" class="lock-input" placeholder="Username">
+        <input type="password" id="hub-pass" class="lock-input" placeholder="Password">
+        <button class="lock-btn" onclick="validateHubAccess()">UNLOCK HUB</button>
+    </div>
+    
+    <div id="hub-actual-content" class="locked-content">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 glass-card p-6 rounded-2xl">
+                <h3 class="text-lg font-bold mb-4" style="color:#ffd700;">Execution Models</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex justify-between bg-[#111] p-4 rounded-xl"><span>CME Open</span><input type="checkbox"></div>
+                    <div class="flex justify-between bg-[#111] p-4 rounded-xl"><span>London SB</span><input type="checkbox"></div>
+                    <div class="flex justify-between bg-[#111] p-4 rounded-xl"><span>NY AM SB</span><input type="checkbox"></div>
+                    <div class="flex justify-between bg-[#111] p-4 rounded-xl"><span>NY PM SB</span><input type="checkbox"></div>
+                </div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="text-lg font-bold mb-4" style="color:#ffd700;">Core Discipline</h3>
+                <button id="save-discipline" class="w-full bg-sky-600 text-white font-bold py-3 rounded-xl">SAVE DISCIPLINE</button>
+            </div>
+        </div>
     </div>
 </section>
 
 <h2 class="section-title">Hamza Session Times <span style="font-size:14px; opacity:0.7;">(UTC-4/-5)</span></h2>
-
 <div class="session-grid">
     <div class="session-card">
-        <div class="analog-clock" id="clock-asia">
-            <div class="hand hour-hand"></div>
-            <div class="hand min-hand"></div>
-            <div class="center-dot"></div>
-            <div class="inner-digital">18:00</div>
+        <div class="analog-clock">
+            <div class="clock-number n12">12</div><div class="clock-number n3">3</div><div class="clock-number n6">6</div><div class="clock-number n9">9</div>
+            <div class="hand hour-hand"></div><div class="hand min-hand"></div><div class="center-dot"></div>
         </div>
-        <h4 style="color:var(--gold); letter-spacing:2px;">ASIA</h4>
-        <p style="font-size:11px; color:#666; margin-top:5px;">6 PM - 12 AM</p>
+        <h4 style="color:var(--gold);">ASIA</h4>
+        <p style="font-size:11px; color:#666;">6 PM - 12 AM</p>
     </div>
-
     <div class="session-card">
-        <div class="analog-clock" id="clock-london">
-            <div class="hand hour-hand"></div>
-            <div class="hand min-hand"></div>
-            <div class="center-dot"></div>
-            <div class="inner-digital">00:00</div>
+        <div class="analog-clock">
+            <div class="clock-number n12">12</div><div class="clock-number n3">3</div><div class="clock-number n6">6</div><div class="clock-number n9">9</div>
+            <div class="hand hour-hand"></div><div class="hand min-hand"></div><div class="center-dot"></div>
         </div>
-        <h4 style="color:var(--gold); letter-spacing:2px;">LONDON</h4>
-        <p style="font-size:11px; color:#666; margin-top:5px;">12 AM - 6 AM</p>
+        <h4 style="color:var(--gold);">LONDON</h4>
+        <p style="font-size:11px; color:#666;">12 AM - 6 AM</p>
     </div>
-
     <div class="session-card">
-        <div class="analog-clock" id="clock-nyam">
-            <div class="hand hour-hand"></div>
-            <div class="hand min-hand"></div>
-            <div class="center-dot"></div>
-            <div class="inner-digital">06:00</div>
+        <div class="analog-clock">
+            <div class="clock-number n12">12</div><div class="clock-number n3">3</div><div class="clock-number n6">6</div><div class="clock-number n9">9</div>
+            <div class="hand hour-hand"></div><div class="hand min-hand"></div><div class="center-dot"></div>
         </div>
-        <h4 style="color:var(--gold); letter-spacing:2px;">NEW YORK AM</h4>
-        <p style="font-size:11px; color:#666; margin-top:5px;">6 AM - 12 PM</p>
+        <h4 style="color:var(--gold);">NEW YORK AM</h4>
+        <p style="font-size:11px; color:#666;">6 AM - 12 PM</p>
     </div>
-
     <div class="session-card">
-        <div class="analog-clock" id="clock-nypm">
-            <div class="hand hour-hand"></div>
-            <div class="hand min-hand"></div>
-            <div class="center-dot"></div>
-            <div class="inner-digital">12:00</div>
+        <div class="analog-clock">
+            <div class="clock-number n12">12</div><div class="clock-number n3">3</div><div class="clock-number n6">6</div><div class="clock-number n9">9</div>
+            <div class="hand hour-hand"></div><div class="hand min-hand"></div><div class="center-dot"></div>
         </div>
-        <h4 style="color:var(--gold); letter-spacing:2px;">NEW YORK PM</h4>
-        <p style="font-size:11px; color:#666; margin-top:5px;">12 PM - 6 PM</p>
+        <h4 style="color:var(--gold);">NEW YORK PM</h4>
+        <p style="font-size:11px; color:#666;">12 PM - 6 PM</p>
     </div>
 </div>
 
 <h2 class="section-title">Command Center</h2>
 <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding-bottom:50px;">
-    <a href="https://wa.me/923235957001" class="contact-card">
-        <h3 style="color:var(--wa-green);">WhatsApp</h3>
-        <p style="color:#888; font-size:12px;">Immediate Response</p>
-    </a>
-    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card">
-        <h3 style="color:var(--gold);">Email</h3>
-        <p style="color:#888; font-size:12px;">Official Correspondence</p>
-    </a>
+    <a href="https://wa.me/923235957001" class="contact-card"><h3 style="color:var(--wa-green);">WhatsApp</h3><p style="color:#888;">Fast Enrollment</p></a>
+    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card"><h3 style="color:var(--gold);">Email</h3><p style="color:#888;">Official Queries</p></a>
 </div>
 
+<footer> © 2026 THE VAULT HDE FX ACADEMY </footer>
+
 <script>
-// --- LIVE ANALOG & DIGITAL CLOCKS LOGIC ---
-function updateAllClocks() {
+function updateClocks() {
     const now = new Date();
-    
-    // Main Watch
-    const timeStr = now.toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    document.getElementById('watch-time').innerText = timeStr;
+    document.getElementById('watch-time').innerText = now.toLocaleTimeString('en-US', { hour12: true, hour:'2-digit', minute:'2-digit', second:'2-digit' });
     document.getElementById('watch-date').innerText = now.toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });
 
-    // Update Session Analog Hands (Live Movement)
     const hours = now.getHours();
     const minutes = now.getMinutes();
+    const hrDeg = (hours % 12) * 30 + (minutes / 2);
+    const minDeg = minutes * 6;
 
-    const hrTotal = (hours % 12) * 30 + (minutes / 2);
-    const minTotal = minutes * 6;
-
-    // Apply rotations to all small clocks to show "Current Local Time" in analog form
     document.querySelectorAll('.analog-clock').forEach(clock => {
-        clock.querySelector('.hour-hand').style.transform = `translateX(-50%) rotate(${hrTotal}deg)`;
-        clock.querySelector('.min-hand').style.transform = `translateX(-50%) rotate(${minTotal}deg)`;
+        clock.querySelector('.hour-hand').style.transform = `translateX(-50%) rotate(${hrDeg}deg)`;
+        clock.querySelector('.min-hand').style.transform = `translateX(-50%) rotate(${minDeg}deg)`;
     });
 }
+setInterval(updateClocks, 1000); updateClocks();
 
-// Logic for session login & security (copy from your previous code)
+function accessPaidCourses() {
+    const u = prompt("User:"); const p = prompt("Pass:");
+    if (u === "Hamzafayazfx" && p === "H@mza44332211") {
+        alert("Access Granted for 5 min"); setTimeout(() => { location.reload(); }, 300000);
+        window.location.href = "https://wa.me/923235957001";
+    }
+}
+
 function validateHubAccess() {
     const u = document.getElementById('hub-user').value;
     const p = document.getElementById('hub-pass').value;
@@ -161,13 +227,22 @@ function validateHubAccess() {
         document.getElementById('hub-lock-overlay').style.display = 'none';
         document.getElementById('hub-actual-content').classList.remove('locked-content');
         localStorage.setItem('hub_unlocked', 'true');
-        setTimeout(() => { location.reload(); }, 300000);
+        setTimeout(() => { localStorage.removeItem('hub_unlocked'); location.reload(); }, 300000);
     }
 }
 
-setInterval(updateAllClocks, 1000);
-updateAllClocks();
-</script>
+function decryptVault() {
+    const img = document.getElementById('vault-img');
+    img.style.filter = "blur(10px)";
+    setTimeout(() => { img.src = 'trade1.jpg'; img.style.filter = "blur(0px)"; }, 500);
+}
 
+window.onload = function() {
+    if(localStorage.getItem('hub_unlocked') === 'true') {
+        document.getElementById('hub-lock-overlay').style.display = 'none';
+        document.getElementById('hub-actual-content').classList.remove('locked-content');
+    }
+}
+</script>
 </body>
 </html>
