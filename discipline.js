@@ -25,8 +25,8 @@ document.getElementById('save-discipline').onclick = function() {
     btn.innerText = "SAVING TO VAULT...";
     btn.disabled = true;
 
-    // Google Sheets ko data bhejna
-    fetch('APNA_WEB_APP_URL_YAHAN_DALEIN', {
+    // Google Sheets ko data bhejna (Aapka provided URL yahan add kar diya hai)
+    fetch('https://script.google.com/macros/s/AKfycbwPXsyjWtj57gug67YDs-q-1AJxjJYA2-0dZMKAWwEIdPAZA3MOTINyHjcd6DeRcJZ4gw/exec', {
         method: 'POST',
         mode: 'no-cors', 
         cache: 'no-cache',
@@ -39,11 +39,11 @@ document.getElementById('save-discipline').onclick = function() {
         msg.classList.remove('hidden');
         setTimeout(() => msg.classList.add('hidden'), 3000);
         
-        // Form reset (Optional)
+        // Checkboxes ko reset karna
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(cb => cb.checked = false);
     }).catch(err => {
-        alert("Connection Error!");
+        alert("Connection Error! Check your internet.");
         btn.disabled = false;
         btn.innerText = "SAVE DISCIPLINE";
     });
