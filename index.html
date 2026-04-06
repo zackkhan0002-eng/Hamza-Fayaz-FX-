@@ -26,19 +26,54 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
 @keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }  
 .brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align:center; }  
 
-/* Clock Style */
-#real-time-clock {
+/* --- BADA MARKET WATCH CARD --- */
+#market-watch-container {
+    max-width: 650px;
+    margin: 30px auto 10px; /* Header ke niche bada aur centered */
+    background: rgba(10,10,10,0.9);
+    border: 1px solid rgba(255,215,0,0.3);
+    border-radius: 20px;
+    padding: 30px;
     text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+    position: relative;
+    overflow: hidden;
+}
+#market-watch-container::after {
+    content: ""; position: absolute; top:0; left:0; width:100%; height:100%;
+    background: linear-gradient(transparent, rgba(255,215,0,0.02) 50%, transparent), linear-gradient(90deg, transparent, rgba(255,215,0,0.02) 50%, transparent);
+    background-size: 15px 15px; z-index: -1;
+}
+.watch-title {
     color: var(--gold);
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
     font-size: 14px;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: relative;
+}
+.watch-title i { margin-right: 10px; font-size: 16px; }
+
+#watch-time {
+    font-family: 'Courier New', monospace;
+    font-weight: 900;
+    font-size: 3rem; /* Sab se bada size */
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+#watch-date {
+    font-family: Arial, sans-serif;
+    color: #aaaaaa;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: bold;
 }
 
-.hero{padding:80px 20px;text-align:center;}  
+.hero{padding:80px 20px 40px;text-align:center;}  
 .profile-card{ background:rgba(10,10,10,0.9); padding:50px 30px; border-radius:40px; border:1px solid rgba(255,215,0,0.2); max-width:650px; margin:auto; }  
 .profile-img{ width:150px; height:150px; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px; object-fit:cover; }  
 .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }  
@@ -75,7 +110,12 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 <body>
 
 <div class="brand-header">THE VAULT HDE FX ACADEMY</div>
-<div id="real-time-clock">LOADING MARKET TIME...</div>
+
+<div id="market-watch-container">
+    <div class="watch-title"><i class="fas fa-radar"></i> Institutional Market Watch</div>
+    <div id="watch-time">LOADING...</div>
+    <div id="watch-date">LOADING DATE...</div>
+</div>
 
 <section class="hero">
     <div class="profile-card">
@@ -209,15 +249,19 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 <footer> © 2026 THE VAULT HDE FX ACADEMY </footer>
 
 <script>
-// REAL-TIME CLOCK LOGIC
-function updateClock() {
+// --- REAL-TIME WATCH LOGIC ---
+function updateWatch() {
     const now = new Date();
+    // Time Format: HH:MM:SS AM/PM (Courier New, BADA)
     const timeString = now.toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    const dateString = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
-    document.getElementById('real-time-clock').innerHTML = `[ ${dateString} | ${timeString} ]`;
+    // Date Format: DD MMM YYYY (Chota, centered)
+    const dateString = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+    
+    document.getElementById('watch-time').innerHTML = timeString;
+    document.getElementById('watch-date').innerHTML = `[ EST : -5 HRS ] | ${dateString}`; // Adding a trading note
 }
-setInterval(updateClock, 1000);
-updateClock();
+setInterval(updateWatch, 1000);
+updateWatch();
 
 // Paid Courses Access Logic with 5-Minute Auto-Logout
 function accessPaidCourses() {
@@ -287,4 +331,5 @@ function decryptVault() {
 </script>
 <script src="discipline.js"></script>
 </body>
-</html>
+          </html>
+          
