@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +40,25 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
 .contact-card:hover{ background:rgba(255,215,0,0.15); border-color:var(--gold); }  
 footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 .glass-card{background:rgba(10,10,10,0.8);}
+
+/* --- PASSWORD LOCK CSS START --- */
+.locked-content { filter: blur(12px); pointer-events: none; user-select: none; }
+#hub-lock-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85); z-index: 100;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border-radius: 30px; border: 1px solid rgba(255,215,0,0.3);
+}
+.lock-input {
+    background: #111; color: #fff; border: 1px solid #333;
+    padding: 12px; margin-bottom: 10px; border-radius: 8px; width: 220px; outline: none;
+}
+.lock-input:focus { border-color: var(--gold); }
+.lock-btn {
+    background: var(--gold); color: #000; font-weight: bold;
+    padding: 12px 40px; border-radius: 8px; cursor: pointer; border: none;
+}
+/* --- PASSWORD LOCK CSS END --- */
 </style>
 </head>
 <body>
@@ -95,57 +115,67 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
     <button class="access-btn" onclick="decryptVault()">Decrypt Access</button>
 </section>
 
-<section style="max-width:1200px;margin:auto;padding:60px 20px;">
+<section style="max-width:1200px;margin:auto;padding:60px 20px; position: relative;">
     <h2 class="section-title">Trading Discipline Hub</h2>
-    
-    <div style="text-align:center;margin-bottom:20px;">
-        <label for="disc-date" style="color:#ffd700;font-weight:bold;">Select Date: </label>
-        <input type="date" id="disc-date" style="padding:8px 12px;border-radius:8px;border:1px solid #ffd700;background:#0a0a0a;color:#fff;">
-    </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="lg:col-span-2 glass-card p-6 rounded-2xl">
-            <h3 class="text-lg font-bold mb-4" style="color:#ffd700;"><i class="fas fa-layer-group text-sky-500"></i> Execution Models</h3>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-                    <span>CME Open</span><input type="checkbox" id="chk-cme">
-                </div>
-                <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-                    <span>Equity Open</span><input type="checkbox" id="chk-equity">
-                </div>
-                <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-                    <span>London Silver Bullet</span><input type="checkbox" id="chk-london">
-                </div>
-                <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-                    <span>NY AM Silver Bullet</span><input type="checkbox" id="chk-nyam">
-                </div>
-                <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
-                    <span>NY PM Silver Bullet</span><input type="checkbox" id="chk-nypm">
-                </div>
-            </div>
-            <div class="flex justify-between bg-[#161b22] p-4 rounded-xl mt-4">
-                    <span>OTHER</span><input type="checkbox" id="chk-other">
-            </div>
+    <div id="hub-lock-overlay">
+        <i class="fas fa-user-shield" style="color:var(--gold); font-size: 2.5rem; margin-bottom: 20px;"></i>
+        <h3 style="color:var(--gold); margin-bottom: 20px; letter-spacing: 2px;">STUDENT LOGIN</h3>
+        <input type="text" id="hub-user" class="lock-input" placeholder="Username">
+        <input type="password" id="hub-pass" class="lock-input" placeholder="Password">
+        <button class="lock-btn" onclick="validateHubAccess()">UNLOCK HUB</button>
+        <p id="hub-error" style="color:#ff4444; margin-top:15px; font-size:12px; display:none; font-weight:bold;">INVALID CREDENTIALS</p>
+    </div>
+    
+    <div id="hub-actual-content" class="locked-content">
+        <div style="text-align:center;margin-bottom:20px;">
+            <label for="disc-date" style="color:#ffd700;font-weight:bold;">Select Date: </label>
+            <input type="date" id="disc-date" style="padding:8px 12px;border-radius:8px;border:1px solid #ffd700;background:#0a0a0a;color:#fff;">
         </div>
 
-        <div class="glass-card p-6 rounded-2xl">
-            <h3 class="text-lg font-bold mb-4" style="color:#ffd700;">Core Discipline</h3>
-            <ul class="space-y-4">
-                <li class="flex gap-3"><input type="checkbox" id="chk-tp"><div><p class="font-semibold text-sm">Target Profit</p><p class="text-xs text-gray-500">Defined at HTF level?</p></div></li>
-                <li class="flex gap-3"><input type="checkbox" id="chk-sl"><div><p class="font-semibold text-sm">Stop Loss</p><p class="text-xs text-gray-500">Invalidation set?</p></div></li>
-                <li class="flex gap-3"><input type="checkbox" id="chk-rules"><div><p class="font-semibold text-sm">Rules Followed</p><p class="text-xs text-gray-500">No revenge trading? No FOMO?</p></div></li>
-                <li class="flex gap-3"><input type="checkbox" id="chk-execution"><div><p class="font-semibold text-sm">Execution Ready</p><p class="text-xs text-gray-500">Limit set or Market entry confirmed?</p></div></li>
-            </ul>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 glass-card p-6 rounded-2xl">
+                <h3 class="text-lg font-bold mb-4" style="color:#ffd700;"><i class="fas fa-layer-group text-sky-500"></i> Execution Models</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+                        <span>CME Open</span><input type="checkbox" id="chk-cme">
+                    </div>
+                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+                        <span>Equity Open</span><input type="checkbox" id="chk-equity">
+                    </div>
+                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+                        <span>London Silver Bullet</span><input type="checkbox" id="chk-london">
+                    </div>
+                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+                        <span>NY AM Silver Bullet</span><input type="checkbox" id="chk-nyam">
+                    </div>
+                    <div class="flex justify-between bg-[#161b22] p-4 rounded-xl">
+                        <span>NY PM Silver Bullet</span><input type="checkbox" id="chk-nypm">
+                    </div>
+                </div>
+                <div class="flex justify-between bg-[#161b22] p-4 rounded-xl mt-4">
+                        <span>OTHER</span><input type="checkbox" id="chk-other">
+                </div>
+            </div>
 
-            <button id="save-discipline" class="w-full mt-6 bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 rounded-xl transition-all active:scale-95 shadow-lg shadow-sky-900/20">SAVE DISCIPLINE</button>
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="text-lg font-bold mb-4" style="color:#ffd700;">Core Discipline</h3>
+                <ul class="space-y-4">
+                    <li class="flex gap-3"><input type="checkbox" id="chk-tp"><div><p class="font-semibold text-sm">Target Profit</p><p class="text-xs text-gray-500">Defined at HTF level?</p></div></li>
+                    <li class="flex gap-3"><input type="checkbox" id="chk-sl"><div><p class="font-semibold text-sm">Stop Loss</p><p class="text-xs text-gray-500">Invalidation set?</p></div></li>
+                    <li class="flex gap-3"><input type="checkbox" id="chk-rules"><div><p class="font-semibold text-sm">Rules Followed</p><p class="text-xs text-gray-500">No revenge trading? No FOMO?</p></div></li>
+                    <li class="flex gap-3"><input type="checkbox" id="chk-execution"><div><p class="font-semibold text-sm">Execution Ready</p><p class="text-xs text-gray-500">Limit set or Market entry confirmed?</p></div></li>
+                </ul>
 
-            <div id="save-msg" class="hidden mt-4 p-3 rounded-lg text-green-400 text-center border border-green-500">
-                <i class="fas fa-check-circle mr-2"></i> Discipline Saved Successfully!
+                <button id="save-discipline" class="w-full mt-6 bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 rounded-xl transition-all active:scale-95 shadow-lg shadow-sky-900/20">SAVE DISCIPLINE</button>
+
+                <div id="save-msg" class="hidden mt-4 p-3 rounded-lg text-green-400 text-center border border-green-500">
+                    <i class="fas fa-check-circle mr-2"></i> Discipline Saved Successfully!
+                </div>
             </div>
         </div>
     </div>
 </section>
-
 <h2 class="section-title">Command Center</h2>
 <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding-bottom:50px;">
     <a href="https://wa.me/923235957001" class="contact-card"><h3 style="color:#25d366;margin-bottom:10px;">WhatsApp</h3><p style="color:#ccc;font-size:12px;">Fastest Enrollment</p></a>
@@ -155,6 +185,32 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 <footer> © 2026 THE VAULT HDE FX ACADEMY </footer>
 
 <script>
+// Password Logic
+function validateHubAccess() {
+    const u = document.getElementById('hub-user').value;
+    const p = document.getElementById('hub-pass').value;
+    const error = document.getElementById('hub-error');
+    const overlay = document.getElementById('hub-lock-overlay');
+    const content = document.getElementById('hub-actual-content');
+
+    if (u === "Hamzafayazfx" && p === "H@mza443322") {
+        overlay.style.display = 'none';
+        content.classList.remove('locked-content');
+        localStorage.setItem('hub_unlocked', 'true'); // Optional: Yaad rakhega ke login ho chuka hai
+    } else {
+        error.style.display = 'block';
+        setTimeout(() => { error.style.display = 'none'; }, 3000);
+    }
+}
+
+// Check if already unlocked on load
+window.onload = function() {
+    if(localStorage.getItem('hub_unlocked') === 'true') {
+        document.getElementById('hub-lock-overlay').style.display = 'none';
+        document.getElementById('hub-actual-content').classList.remove('locked-content');
+    }
+}
+
 function decryptVault() {
     const img = document.getElementById('vault-img');
     const btn = document.querySelector('.access-btn');
@@ -171,3 +227,4 @@ function decryptVault() {
 <script src="discipline.js"></script>
 </body>
 </html>
+
