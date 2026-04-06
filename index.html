@@ -36,7 +36,7 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
 #hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 30px; }
 .contact-card{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,215,0,0.2); padding:25px; border-radius:20px; text-align:center; width:280px; text-decoration:none; color:white; transition: 0.3s;}
 .contact-card:hover { background: rgba(255,215,0,0.1); border-color: var(--gold); }
-input[type="checkbox"] { accent-color: var(--gold); width: 18px; height: 18px; }
+input[type="checkbox"] { accent-color: var(--gold); width: 18px; height: 18px; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -105,16 +105,16 @@ input[type="checkbox"] { accent-color: var(--gold); width: 18px; height: 18px; }
                 <h3 class="text-yellow-500 font-bold mb-6 text-xl">Daily Execution Models</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
-                        <span>CME Open Silver Bullet</span> <input type="checkbox">
+                        <span>CME Open Silver Bullet</span> <input type="checkbox" class="model-check" data-name="CME Silver Bullet">
                     </div>
                     <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
-                        <span>London Silver Bullet</span> <input type="checkbox">
+                        <span>London Silver Bullet</span> <input type="checkbox" class="model-check" data-name="London Silver Bullet">
                     </div>
                     <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
-                        <span>NY AM Silver Bullet</span> <input type="checkbox">
+                        <span>NY AM Silver Bullet</span> <input type="checkbox" class="model-check" data-name="NY AM Silver Bullet">
                     </div>
                     <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
-                        <span>NY PM Silver Bullet</span> <input type="checkbox">
+                        <span>NY PM Silver Bullet</span> <input type="checkbox" class="model-check" data-name="NY PM Silver Bullet">
                     </div>
                 </div>
             </div>
@@ -122,13 +122,13 @@ input[type="checkbox"] { accent-color: var(--gold); width: 18px; height: 18px; }
             <div class="bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl text-center flex flex-col justify-between">
                 <div>
                     <h3 class="text-yellow-500 font-bold mb-4">Core Discipline</h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox"> <span>Market Bias</span></div>
-                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox"> <span>Risk Managed</span></div>
-                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox"> <span>Psychology Check</span></div>
+                    <div class="space-y-3 text-left">
+                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" class="core-check" data-name="Market Bias"> <span>Market Bias</span></div>
+                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" class="core-check" data-name="Risk Managed"> <span>Risk Managed</span></div>
+                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" class="core-check" data-name="Psychology Check"> <span>Psychology Check</span></div>
                     </div>
                 </div>
-                <button onclick="saveLog()" class="w-full bg-yellow-500 text-black font-bold py-4 rounded-xl mt-6">SAVE LOG</button>
+                <button onclick="saveLogToSheet()" id="save-btn" class="w-full bg-yellow-500 text-black font-bold py-4 rounded-xl mt-6">SAVE LOG</button>
             </div>
         </div>
     </div>
@@ -172,14 +172,8 @@ input[type="checkbox"] { accent-color: var(--gold); width: 18px; height: 18px; }
 
 <h2 class="section-title">Command Center</h2>
 <div class="flex flex-wrap justify-center gap-6 pb-20 px-5">
-    <a href="https://wa.me/923235957001" class="contact-card">
-        <i class="fab fa-whatsapp text-2xl mb-2" style="color:var(--wa-green)"></i>
-        <h3>WhatsApp</h3><p style="color:#666; font-size:12px;">Fast Enrollment</p>
-    </a>
-    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card">
-        <i class="fas fa-envelope text-2xl mb-2" style="color:var(--gold)"></i>
-        <h3>Email</h3><p style="color:#666; font-size:12px;">Official Queries</p>
-    </a>
+    <a href="https://wa.me/923235957001" class="contact-card"><i class="fab fa-whatsapp text-2xl mb-2" style="color:var(--wa-green)"></i><h3>WhatsApp</h3></a>
+    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card"><i class="fas fa-envelope text-2xl mb-2" style="color:var(--gold)"></i><h3>Email</h3></a>
 </div>
 
 <footer style="text-align:center; padding:40px; color:#444; font-size:12px;">© 2026 THE VAULT HDE FX ACADEMY</footer>
@@ -187,8 +181,8 @@ input[type="checkbox"] { accent-color: var(--gold); width: 18px; height: 18px; }
 <script>
 function updateTime() {
     const now = new Date();
-    document.getElementById('watch-time').innerText = now.toLocaleTimeString('en-US', { hour12: true, hour:'2-digit', minute:'2-digit', second:'2-digit' });
     const dStr = now.toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });
+    document.getElementById('watch-time').innerText = now.toLocaleTimeString('en-US', { hour12: true, hour:'2-digit', minute:'2-digit', second:'2-digit' });
     document.getElementById('watch-date').innerText = dStr;
     document.getElementById('hub-date-display').innerText = dStr;
 }
@@ -204,8 +198,40 @@ function unlockHub() {
     } else { document.getElementById('login-msg').style.display = 'block'; }
 }
 
-function saveLog() {
-    alert("Discipline Log Saved Locally for " + new Date().toLocaleDateString());
+function saveLogToSheet() {
+    const btn = document.getElementById('save-btn');
+    btn.innerText = "SENDING...";
+    btn.disabled = true;
+
+    // Data collection from checkboxes
+    let models = [];
+    document.querySelectorAll('.model-check:checked').forEach(el => models.push(el.getAttribute('data-name')));
+    let discipline = [];
+    document.querySelectorAll('.core-check:checked').forEach(el => discipline.push(el.getAttribute('data-name')));
+
+    const data = {
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
+        models: models.join(', '),
+        discipline: discipline.join(', ')
+    };
+
+    // Replace URL with your actual Google Apps Script URL
+    fetch('YOUR_GOOGLE_SCRIPT_URL_HERE', {
+        method: 'POST',
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    }).then(() => {
+        alert("Discipline Log Saved to Google Sheet!");
+        btn.innerText = "LOG SAVED ✔";
+        setTimeout(() => { btn.innerText = "SAVE LOG"; btn.disabled = false; }, 3000);
+    }).catch(err => {
+        alert("Error saving log.");
+        btn.innerText = "SAVE LOG";
+        btn.disabled = false;
+    });
 }
 
 function accessPaid() {
@@ -218,5 +244,3 @@ window.onload = () => { if(localStorage.getItem('hub_v')==='true') unlockHub(); 
 </body>
 </html>
 
-Ab check karein, InshAllah ab koi cheez miss nahi hogi! 🎯
-    
