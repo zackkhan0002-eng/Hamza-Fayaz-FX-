@@ -25,15 +25,15 @@ document.getElementById('save-discipline').onclick = function() {
     btn.innerText = "SAVING TO VAULT...";
     btn.disabled = true;
 
-    // Aapka Naya Web App URL yahan apply kar diya hai
-    fetch('https://script.google.com/macros/s/AKfycbwxQrIs66PebC91l1Pb7mQmcPqrYKZlSeyHMR_0mrzOpG6Ph_aYVtOtGrkypciEws6ncg/exec', {
+    // Aapka Latest Web App URL yahan update kar diya hai
+    fetch('https://script.google.com/macros/s/AKfycbwi8npRFpmd_zE8-_ZH-yY1wnohxLqUS901xqLYJDKORpfYHOLu4i2fiZkbOtJy7d1aJw/exec', {
         method: 'POST',
         mode: 'no-cors', 
         cache: 'no-cache',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }).then(() => {
-        // Success message and UI reset
+        // Success message
         btn.innerText = "SAVE DISCIPLINE";
         btn.disabled = false;
         msg.classList.remove('hidden');
@@ -48,3 +48,4 @@ document.getElementById('save-discipline').onclick = function() {
         btn.innerText = "SAVE DISCIPLINE";
     });
 };
+    
