@@ -2,13 +2,13 @@ document.getElementById('save-discipline').onclick = function() {
     const btn = this;
     const msg = document.getElementById('save-msg');
     
-    // Agar date select nahi ki to aaj ki date khud utha le
+    // Date select nahi ki to aaj ki date uthayega
     let dateVal = document.getElementById('disc-date').value;
     if(!dateVal) {
         dateVal = new Date().toLocaleDateString();
     }
 
-    // Data collect karna (HTML IDs ke mutabiq)
+    // Data collect karna
     const data = {
         date: dateVal,
         cme: document.getElementById('chk-cme').checked ? "YES" : "NO",
@@ -25,25 +25,25 @@ document.getElementById('save-discipline').onclick = function() {
     btn.innerText = "SAVING TO VAULT...";
     btn.disabled = true;
 
-    // Google Sheets ko data bhejna (Aapka provided URL yahan add kar diya hai)
-    fetch('https://script.google.com/macros/s/AKfycbwPXsyjWtj57gug67YDs-q-1AJxjJYA2-0dZMKAWwEIdPAZA3MOTINyHjcd6DeRcJZ4gw/exec', {
+    // Aapka Naya Web App URL yahan apply kar diya hai
+    fetch('https://script.google.com/macros/s/AKfycbwxQrIs66PebC91l1Pb7mQmcPqrYKZlSeyHMR_0mrzOpG6Ph_aYVtOtGrkypciEws6ncg/exec', {
         method: 'POST',
         mode: 'no-cors', 
         cache: 'no-cache',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }).then(() => {
-        // Success message
+        // Success message and UI reset
         btn.innerText = "SAVE DISCIPLINE";
         btn.disabled = false;
         msg.classList.remove('hidden');
         setTimeout(() => msg.classList.add('hidden'), 3000);
         
-        // Checkboxes ko reset karna
+        // Checkboxes reset
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(cb => cb.checked = false);
     }).catch(err => {
-        alert("Connection Error! Check your internet.");
+        alert("Connection Error! Check internet.");
         btn.disabled = false;
         btn.innerText = "SAVE DISCIPLINE";
     });
