@@ -25,6 +25,19 @@ body{ background:#000; color:#fff; font-family:Arial, sans-serif; overflow-x:hid
 body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite; }  
 @keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }  
 .brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align:center; }  
+
+/* Clock Style */
+#real-time-clock {
+    text-align: center;
+    color: var(--gold);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    font-size: 14px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
 .hero{padding:80px 20px;text-align:center;}  
 .profile-card{ background:rgba(10,10,10,0.9); padding:50px 30px; border-radius:40px; border:1px solid rgba(255,215,0,0.2); max-width:650px; margin:auto; }  
 .profile-img{ width:150px; height:150px; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px; object-fit:cover; }  
@@ -62,6 +75,7 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 <body>
 
 <div class="brand-header">THE VAULT HDE FX ACADEMY</div>
+<div id="real-time-clock">LOADING MARKET TIME...</div>
 
 <section class="hero">
     <div class="profile-card">
@@ -195,6 +209,16 @@ footer{ padding:40px; text-align:center; color:#444; font-size:12px; }
 <footer> © 2026 THE VAULT HDE FX ACADEMY </footer>
 
 <script>
+// REAL-TIME CLOCK LOGIC
+function updateClock() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    const dateString = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    document.getElementById('real-time-clock').innerHTML = `[ ${dateString} | ${timeString} ]`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
 // Paid Courses Access Logic with 5-Minute Auto-Logout
 function accessPaidCourses() {
     const u = prompt("Enter Username for Paid Courses:");
@@ -202,13 +226,10 @@ function accessPaidCourses() {
 
     if (u === "Hamzafayazfx" && p === "H@mza44332211") {
         alert("Access Granted! Session active for 5 minutes.");
-        
-        // Auto-refresh after 5 minutes
         setTimeout(() => {
             alert("Security Timeout! Paid Courses access expired.");
             location.reload();
         }, 5 * 60 * 1000);
-
         window.location.href = "https://wa.me/923235957001?text=I+want+to+access+paid+courses";
     } else {
         alert("Invalid Credentials! Access Denied.");
@@ -228,7 +249,6 @@ function validateHubAccess() {
         content.classList.remove('locked-content');
         localStorage.setItem('hub_unlocked', 'true');
 
-        // Auto-Logout Timer: 5 Minutes
         setTimeout(() => {
             localStorage.removeItem('hub_unlocked');
             alert("Session Expired! Discipline Hub has been locked for security.");
@@ -242,14 +262,11 @@ function validateHubAccess() {
 }
 
 window.onload = function() {
-    // Purane session clear karein refresh par security ke liye (optional)
     if(localStorage.getItem('hub_unlocked') === 'true') {
-        // Dubara timer start karein agar page refresh ho jaye
         setTimeout(() => {
             localStorage.removeItem('hub_unlocked');
             location.reload();
         }, 5 * 60 * 1000);
-        
         document.getElementById('hub-lock-overlay').style.display = 'none';
         document.getElementById('hub-actual-content').classList.remove('locked-content');
     }
