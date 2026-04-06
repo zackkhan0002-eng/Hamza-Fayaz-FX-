@@ -18,21 +18,16 @@
         #market-watch-container { max-width: 650px; margin: 30px auto 10px; background: rgba(10,10,10,0.9); border: 1px solid rgba(255,215,0,0.3); border-radius: 20px; padding: 30px; text-align: center; }
         #watch-time { font-family: 'Courier New', monospace; font-weight: 900; font-size: 3rem; color: #fff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
 
-        .session-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .session-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         .session-card { background: rgba(15,15,15,0.8); border: 1px solid rgba(255,215,0,0.2); border-radius: 25px; padding: 25px; text-align: center; }
         
         .analog-clock { width: 100px; height: 100px; border: 2px solid var(--gold); border-radius: 50%; margin: 0 auto 15px; position: relative; background: #000; }
         .n { position: absolute; font-size: 9px; color: var(--gold); font-weight: bold; transform: translate(-50%, -50%); }
         .n12 { top: 12%; left: 50%; } .n3 { top: 50%; left: 88%; } .n6 { top: 88%; left: 50%; } .n9 { top: 50%; left: 12%; }
 
-        .hand { position: absolute; background: var(--gold); left: 50%; bottom: 50%; transform-origin: bottom; border-radius: 4px; }
-        .h-asia { height: 35px; width: 3px; transform: rotate(180deg); } 
-        .h-london { height: 35px; width: 3px; transform: rotate(0deg); }   
-        .h-nyam { height: 35px; width: 3px; transform: rotate(180deg); }   
-        .h-nypm { height: 35px; width: 3px; transform: rotate(0deg); }     
-
         .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }  
         .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:340px; color:white; transition: 0.3s; }  
+        .course-card:hover { border-color: var(--gold); transform: translateY(-5px); }
         
         .locked-content { filter: blur(20px); pointer-events: none; opacity: 0.2; transition: 0.5s; }
         #hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 30px; }
@@ -76,10 +71,17 @@
         <ul class="text-gray-400 text-sm mb-6 space-y-2"><li>◈ HDE Matrix</li><li>◈ Order Flow Analysis</li><li>◈ Institutional Sponsorship</li></ul>
         <a href="https://wa.me/923235957001" class="block bg-yellow-500 text-black py-3 rounded-xl font-bold text-center">JOIN ELITE</a>
     </div>
+    <div class="course-card" style="border-color:#ff0000">
+        <h3 class="text-red-600 font-bold mb-4">Free Academy</h3>
+        <p class="text-3xl font-black mb-4">FREE</p>
+        <ul class="text-gray-400 text-sm mb-6 space-y-2"><li>◈ Weekly Breakdowns</li><li>◈ Execution Logs</li><li>◈ Live Psychology</li></ul>
+        <a href="https://youtube.com/@HamzaFayazFX" class="block bg-red-600 text-white py-3 rounded-xl font-bold text-center">SUBSCRIBE</a>
+    </div>
 </div>
 
 <section id="discipline-section" style="max-width:1100px; margin:80px auto; padding:0 20px; position: relative; min-height: 500px;">
     <h2 class="section-title">Trading Discipline Hub</h2>
+    
     <div id="hub-lock-overlay">
         <i class="fas fa-fingerprint text-yellow-500 text-5xl mb-6"></i>
         <input type="text" id="h-u" placeholder="Username" class="bg-zinc-900 border border-zinc-700 p-3 mb-3 rounded-lg w-72 text-white outline-none focus:border-yellow-500">
@@ -87,20 +89,31 @@
         <button onclick="unlockHub()" class="bg-yellow-500 text-black px-16 py-3 rounded-lg font-bold">UNLOCK HUB</button>
         <p id="login-msg" style="color:#ff4444; margin-top:15px; font-size:12px; display:none;">WRONG CREDENTIALS</p>
     </div>
+
     <div id="hub-content" class="locked-content">
         <div class="mb-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl text-center">
             <span class="text-yellow-500 font-bold">SESSION DATE: </span> <span id="hub-date-display">--/--/----</span>
         </div>
+        
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="lg:col-span-2 bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl">
                 <h3 class="text-yellow-500 font-bold mb-6 text-xl">Daily Execution Models</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800"><span>CME ⚡</span> <input type="checkbox" id="chk-cme"></div>
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800"><span>London Silver Bullet</span> <input type="checkbox" id="chk-london"></div>
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800"><span>NY AM Silver Bullet</span> <input type="checkbox" id="chk-nyam"></div>
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800"><span>NY PM Silver Bullet</span> <input type="checkbox" id="chk-nypm"></div>
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
+                        <span>CME ⚡</span> <input type="checkbox" id="chk-cme">
+                    </div>
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
+                        <span>London Silver Bullet</span> <input type="checkbox" id="chk-london">
+                    </div>
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
+                        <span>NY AM Silver Bullet</span> <input type="checkbox" id="chk-nyam">
+                    </div>
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
+                        <span>NY PM Silver Bullet</span> <input type="checkbox" id="chk-nypm">
+                    </div>
                 </div>
             </div>
+
             <div class="bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl text-center flex flex-col justify-between">
                 <div>
                     <h3 class="text-yellow-500 font-bold mb-4">Core Discipline</h3>
@@ -119,47 +132,32 @@
     </div>
 </section>
 
-<h2 class="section-title">HAMZA SESSION TIMES</h2>
+<h2 class="section-title">Institutional Windows</h2>
 <div class="session-grid">
     <div class="session-card">
-        <div class="analog-clock">
-            <div class="n n12">12</div><div class="n n3">3</div><div class="n n6">6</div><div class="n n9">9</div>
-            <div class="hand h-asia"></div>
-        </div>
-        <h4 style="color:var(--gold);">ASIA</h4><p style="font-size:11px; color:#666;">6 PM - 12 AM</p>
+        <div class="analog-clock"><div class="n n12">12</div><div class="n n3">3</div><div class="n n6">6</div><div class="n n9">9</div></div>
+        <h4 style="color:var(--gold);">LONDON</h4><p style="font-size:11px; color:#666;">2:00 AM - 5:00 AM</p>
     </div>
     <div class="session-card">
-        <div class="analog-clock">
-            <div class="n n12">12</div><div class="n n3">3</div><div class="n n6">6</div><div class="n n9">9</div>
-            <div class="hand h-london"></div>
-        </div>
-        <h4 style="color:var(--gold);">LONDON</h4><p style="font-size:11px; color:#666;">12 AM - 6 AM</p>
+        <div class="analog-clock"><div class="n n12">12</div><div class="n n3">3</div><div class="n n6">6</div><div class="n n9">9</div></div>
+        <h4 style="color:var(--gold);">NEW YORK AM</h4><p style="font-size:11px; color:#666;">8:00 AM - 11:00 AM</p>
     </div>
     <div class="session-card">
-        <div class="analog-clock">
-            <div class="n n12">12</div><div class="n n3">3</div><div class="n n6">6</div><div class="n n9">9</div>
-            <div class="hand h-nyam"></div>
-        </div>
-        <h4 style="color:var(--gold);">NEW YORK AM</h4><p style="font-size:11px; color:#666;">6 AM - 12 PM</p>
-    </div>
-    <div class="session-card">
-        <div class="analog-clock">
-            <div class="n n12">12</div><div class="n n3">3</div><div class="n n6">6</div><div class="n n9">9</div>
-            <div class="hand h-nypm"></div>
-        </div>
-        <h4 style="color:var(--gold);">NEW YORK PM</h4><p style="font-size:11px; color:#666;">12 PM - 6 PM</p>
+        <div class="analog-clock"><div class="n n12">12</div><div class="n n3">3</div><div class="n n6">6</div><div class="n n9">9</div></div>
+        <h4 style="color:var(--gold);">NEW YORK PM</h4><p style="font-size:11px; color:#666;">1:00 PM - 4:00 PM</p>
     </div>
 </div>
 
-<h2 class="section-title">COMMAND CENTER</h2>
+<h2 class="section-title">Command Center</h2>
 <div class="flex flex-wrap justify-center gap-6 pb-20 px-5">
-    <a href="https://wa.me/923235957001" class="contact-card"><h3 style="color:var(--wa-green)">WhatsApp</h3></a>
-    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card"><h3 style="color:var(--gold)">Email</h3></a>
+    <a href="https://wa.me/923235957001" class="contact-card"><i class="fab fa-whatsapp text-2xl mb-2" style="color:var(--wa-green)"></i><h3>WhatsApp</h3></a>
+    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card"><i class="fas fa-envelope text-2xl mb-2" style="color:var(--gold)"></i><h3>Email</h3></a>
 </div>
 
 <footer style="text-align:center; padding:40px; color:#444; font-size:12px;">© 2026 THE VAULT HDE FX ACADEMY</footer>
 
 <script>
+// Time Logic
 function updateTime() {
     const now = new Date();
     const dStr = now.toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });
@@ -169,6 +167,7 @@ function updateTime() {
 }
 setInterval(updateTime, 1000); updateTime();
 
+// Hub Authentication
 function unlockHub() {
     const u = document.getElementById('h-u').value;
     const p = document.getElementById('h-p').value;
@@ -178,12 +177,16 @@ function unlockHub() {
         document.getElementById('hub-content').style.filter = "none";
         document.getElementById('hub-content').style.opacity = "1";
         localStorage.setItem('hde_auth', 'true');
-    } else { document.getElementById('login-msg').style.display = 'block'; }
+    } else { 
+        document.getElementById('login-msg').style.display = 'block'; 
+    }
 }
 
+// Data Saving Logic
 document.getElementById('save-discipline').onclick = function() {
     const btn = this;
     const msg = document.getElementById('save-msg');
+    
     const data = {
         date: new Date().toLocaleDateString('en-GB'),
         cme: document.getElementById('chk-cme').checked ? "YES" : "NO",
@@ -196,17 +199,32 @@ document.getElementById('save-discipline').onclick = function() {
         rules: document.getElementById('chk-rules').checked ? "YES" : "NO",
         execution: document.getElementById('chk-execution').checked ? "YES" : "NO"
     };
+
     btn.innerText = "SENDING...";
     btn.disabled = true;
+
+    // YOUR NEW ACTIVE URL FIX
     const webAppUrl = 'https://script.google.com/macros/s/AKfycbzJq8SpxfzDpqgXIkz068S_WHwGiyQlPDBQKjAEFc_eeTNsCkMEI0tUizD4avD3V_F6/exec';
-    fetch(webAppUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+
+    fetch(webAppUrl, {
+        method: 'POST',
+        mode: 'no-cors', 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
     }).then(() => {
-        btn.innerText = "SAVE LOG"; btn.disabled = false;
-        msg.classList.remove('hidden'); setTimeout(() => msg.classList.add('hidden'), 4000);
+        btn.innerText = "SAVE LOG";
+        btn.disabled = false;
+        msg.classList.remove('hidden');
+        setTimeout(() => msg.classList.add('hidden'), 4000);
         document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-    }).catch(err => { alert("Sync Error!"); btn.disabled = false; btn.innerText = "SAVE LOG"; });
+    }).catch(err => {
+        alert("Sync Error! Check Internet.");
+        btn.disabled = false;
+        btn.innerText = "SAVE LOG";
+    });
 };
 
+// Persistence Check on Load
 window.onload = () => {
     if(localStorage.getItem('hde_auth') === 'true') {
         document.getElementById('hub-lock-overlay').style.display='none';
