@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,25 +27,23 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
 /* --- STATIC ANALOG CLOCKS --- */
 .session-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto; padding: 0 20px; }
 .session-card { background: rgba(15,15,15,0.8); border: 1px solid rgba(255,215,0,0.2); border-radius: 25px; padding: 25px; text-align: center; }
-
-.analog-clock {
-    width: 120px; height: 120px; border: 3px solid var(--gold); border-radius: 50%;
-    margin: 0 auto 15px; position: relative; background: #000;
-}
+.analog-clock { width: 120px; height: 120px; border: 3px solid var(--gold); border-radius: 50%; margin: 0 auto 15px; position: relative; background: #000; }
 .n { position: absolute; font-size: 10px; color: var(--gold); font-weight: bold; transform: translate(-50%, -50%); }
 .n12 { top: 12%; left: 50%; } .n3 { top: 50%; left: 90%; } .n6 { top: 88%; left: 50%; } .n9 { top: 50%; left: 10%; }
-
 .hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom; border-radius: 10px; background: var(--gold); transform: translateX(-50%); }
 .hour-hand { width: 4px; height: 30px; z-index: 3; }
 .min-hand { width: 2px; height: 45px; z-index: 2; opacity: 0.7; }
 .center-dot { position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background: #fff; border-radius: 50%; transform: translate(-50%, -50%); z-index: 4; }
 
-/* Website Elements */
+/* UI Elements */
 .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }  
 .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:340px; transition:0.4s; color:white; }  
-.locked-content { filter: blur(15px); pointer-events: none; opacity: 0.3; }
-#hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 30px; border: 1px solid rgba(255,215,0,0.1); }
+.locked-content { filter: blur(20px); pointer-events: none; opacity: 0.2; transition: 0.5s; }
+#hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 30px; }
 .contact-card{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,215,0,0.2); padding:25px; border-radius:20px; text-align:center; width:280px; text-decoration:none; color:white;}
+
+/* Checkbox Style */
+input[type="checkbox"] { accent-color: var(--gold); width: 18px; height: 18px; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -88,42 +87,60 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
     <div class="course-card" style="border-style:dashed; border-color:var(--gold)">
         <h3 style="color:var(--gold)" class="font-bold mb-4">Paid Courses</h3>
         <p class="text-3xl font-black mb-4">PREMIUM</p>
-        <ul class="text-gray-400 text-sm mb-6 space-y-2"><li>◈ Private Mentorship</li><li>◈ Live Execution</li><li>◈ PDF Strategy Vault</li></ul>
+        <ul class="text-gray-400 text-sm mb-6 space-y-2"><li>◈ Private Mentorship</li><li>◈ Live Execution Room</li><li>◈ PDF Strategy Vault</li></ul>
         <button onclick="accessPaid()" class="w-full bg-yellow-500 text-black py-3 rounded-xl font-bold">ACCESS NOW</button>
     </div>
 </div>
 
-<section style="max-width:800px; margin:80px auto; background:#050505; border:1px solid rgba(255,215,0,0.2); border-radius:35px; padding:50px; text-align:center;">
-    <h2 style="color:var(--gold); letter-spacing:5px; margin-bottom:20px;">THE EXECUTION VAULT</h2>
-    <img id="vault-img" src="trading_image.jpg" style="max-width:100%; border-radius:20px; margin-bottom:20px;">
-    <button onclick="decryptVault()" class="border-2 border-yellow-500 text-yellow-500 px-10 py-4 rounded-full font-bold">Decrypt Access</button>
-</section>
-
-<section id="discipline-section" style="max-width:1100px; margin:auto; padding:60px 20px; position: relative; min-height: 400px;">
+<section id="discipline-section" style="max-width:1100px; margin:80px auto; padding:0 20px; position: relative; min-height: 500px;">
     <h2 class="section-title">Trading Discipline Hub</h2>
     
     <div id="hub-lock-overlay">
-        <i class="fas fa-user-shield text-yellow-500 text-5xl mb-6"></i>
-        <h3 style="color:var(--gold); margin-bottom: 20px; letter-spacing: 2px; font-weight: bold;">STUDENT ACCESS</h3>
+        <i class="fas fa-fingerprint text-yellow-500 text-5xl mb-6"></i>
+        <h3 style="color:var(--gold); margin-bottom: 20px; letter-spacing: 2px;">SECURE ACCESS</h3>
         <input type="text" id="h-u" placeholder="Username" class="bg-zinc-900 border border-zinc-700 p-3 mb-3 rounded-lg w-72 text-white outline-none focus:border-yellow-500">
         <input type="password" id="h-p" placeholder="Password" class="bg-zinc-900 border border-zinc-700 p-3 mb-5 rounded-lg w-72 text-white outline-none focus:border-yellow-500">
-        <button onclick="unlockHub()" class="bg-yellow-500 text-black px-16 py-3 rounded-lg font-bold hover:bg-yellow-400 transition-all shadow-lg">UNLOCK HUB</button>
-        <p id="login-msg" style="color:#ff4444; margin-top:15px; font-size:12px; font-weight:bold; display:none;">ACCESS DENIED: WRONG CREDENTIALS</p>
+        <button onclick="unlockHub()" class="bg-yellow-500 text-black px-16 py-3 rounded-lg font-bold hover:bg-yellow-400">UNLOCK HUB</button>
+        <p id="login-msg" style="color:#ff4444; margin-top:15px; font-size:12px; display:none;">WRONG CREDENTIALS</p>
     </div>
 
     <div id="hub-content" class="locked-content">
-        <div class="bg-zinc-900/80 border border-yellow-500/30 p-12 rounded-3xl text-center">
-            <h3 class="text-yellow-500 font-bold text-2xl mb-4">Journal & Discipline Terminal</h3>
-            <p class="text-gray-400 mb-8">Verification Successful. Recording live trading data...</p>
-            <div class="grid grid-cols-2 gap-4 max-w-md mx-auto">
-                <div class="bg-black/50 p-4 rounded-xl border border-zinc-800">
-                    <span class="block text-yellow-500 text-xs mb-2">DAILY TARGET</span>
-                    <span class="text-xl font-bold">+50 PIPS</span>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl">
+                <h3 class="text-yellow-500 font-bold mb-6 text-xl">Daily Execution Models</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
+                        <span>CME Open Silver Bullet</span> <input type="checkbox" id="cme-sb">
+                    </div>
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
+                        <span>London Silver Bullet</span> <input type="checkbox" id="lon-sb">
+                    </div>
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
+                        <span>NY AM Silver Bullet</span> <input type="checkbox" id="nyam-sb">
+                    </div>
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">
+                        <span>NY PM Silver Bullet</span> <input type="checkbox" id="nypm-sb">
+                    </div>
                 </div>
-                <div class="bg-black/50 p-4 rounded-xl border border-zinc-800">
-                    <span class="block text-red-500 text-xs mb-2">DAILY MAX LOSS</span>
-                    <span class="text-xl font-bold">-20 PIPS</span>
+            </div>
+
+            <div class="bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl text-center flex flex-col justify-between">
+                <div>
+                    <h3 class="text-yellow-500 font-bold mb-4">Core Discipline</h3>
+                    <p class="text-xs text-gray-500 mb-6">ALL TASKS MUST BE COMPLETED BEFORE TRADING</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm">
+                            <input type="checkbox"> <span>Market Outlook Done</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm">
+                            <input type="checkbox"> <span>Higher Timeframe Bias</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm">
+                            <input type="checkbox"> <span>Risk 0.5% - 1% Max</span>
+                        </div>
+                    </div>
                 </div>
+                <button class="w-full bg-yellow-500 text-black font-bold py-4 rounded-xl mt-6">SAVE LOG</button>
             </div>
         </div>
     </div>
@@ -138,7 +155,7 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
             <div class="hand min-hand" style="transform: translateX(-50%) rotate(0deg);"></div>
             <div class="center-dot"></div>
         </div>
-        <h4 style="color:var(--gold); letter-spacing:2px;">ASIA</h4>
+        <h4 style="color:var(--gold);">ASIA</h4>
         <p style="font-size:11px; color:#666;">6 PM - 12 AM</p>
     </div>
     <div class="session-card">
@@ -148,7 +165,7 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
             <div class="hand min-hand" style="transform: translateX(-50%) rotate(0deg);"></div>
             <div class="center-dot"></div>
         </div>
-        <h4 style="color:var(--gold); letter-spacing:2px;">LONDON</h4>
+        <h4 style="color:var(--gold);">LONDON</h4>
         <p style="font-size:11px; color:#666;">12 AM - 6 AM</p>
     </div>
     <div class="session-card">
@@ -158,7 +175,7 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
             <div class="hand min-hand" style="transform: translateX(-50%) rotate(0deg);"></div>
             <div class="center-dot"></div>
         </div>
-        <h4 style="color:var(--gold); letter-spacing:2px;">NEW YORK AM</h4>
+        <h4 style="color:var(--gold);">NEW YORK AM</h4>
         <p style="font-size:11px; color:#666;">6 AM - 12 PM</p>
     </div>
     <div class="session-card">
@@ -168,15 +185,9 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%
             <div class="hand min-hand" style="transform: translateX(-50%) rotate(0deg);"></div>
             <div class="center-dot"></div>
         </div>
-        <h4 style="color:var(--gold); letter-spacing:2px;">NEW YORK PM</h4>
+        <h4 style="color:var(--gold);">NEW YORK PM</h4>
         <p style="font-size:11px; color:#666;">12 PM - 6 PM</p>
     </div>
-</div>
-
-<h2 class="section-title">Command Center</h2>
-<div class="flex flex-wrap justify-center gap-6 pb-20">
-    <a href="https://wa.me/923235957001" class="contact-card"><h3 style="color:var(--wa-green)">WhatsApp</h3><p style="color:#666;">Fast Enrollment</p></a>
-    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card"><h3 style="color:var(--gold)">Email</h3><p style="color:#666;">Official Queries</p></a>
 </div>
 
 <footer style="text-align:center; padding:40px; color:#444; font-size:12px;">© 2026 THE VAULT HDE FX ACADEMY</footer>
@@ -189,43 +200,27 @@ function updateTime() {
 }
 setInterval(updateTime, 1000); updateTime();
 
-function accessPaid() {
-    const u = prompt("Admin User:"); const p = prompt("Admin Pass:");
-    if(u==="Hamzafayazfx" && p==="H@mza44332211") { window.location.href="https://wa.me/923235957001"; }
-}
-
 function unlockHub() {
-    const userVal = document.getElementById('h-u').value;
-    const passVal = document.getElementById('h-p').value;
-    const msg = document.getElementById('login-msg');
-
-    if(userVal === "Hamzafayazfx" && passVal === "H@mza443322") {
+    const u = document.getElementById('h-u').value;
+    const p = document.getElementById('h-p').value;
+    if(u === "Hamzafayazfx" && p === "H@mza443322") {
         document.getElementById('hub-lock-overlay').style.display='none';
         document.getElementById('hub-content').classList.remove('locked-content');
         document.getElementById('hub-content').style.filter = "none";
         document.getElementById('hub-content').style.opacity = "1";
         localStorage.setItem('hub_v', 'true');
     } else {
-        msg.style.display = 'block';
-        setTimeout(() => { msg.style.display = 'none'; }, 3000);
+        document.getElementById('login-msg').style.display = 'block';
     }
 }
 
-function decryptVault() {
-    const i = document.getElementById('vault-img');
-    i.style.filter='blur(10px)';
-    setTimeout(()=>{ i.src='trade1.jpg'; i.style.filter='none'; },500);
-}
+window.onload = () => { if(localStorage.getItem('hub_v')==='true') unlockHub(); };
 
-window.onload = () => { 
-    if(localStorage.getItem('hub_v')==='true') {
-        document.getElementById('hub-lock-overlay').style.display='none';
-        document.getElementById('hub-content').classList.remove('locked-content');
-        document.getElementById('hub-content').style.filter = "none";
-        document.getElementById('hub-content').style.opacity = "1";
-    }
-};
+function accessPaid() {
+    const u = prompt("User:"); const p = prompt("Pass:");
+    if(u==="Hamzafayazfx" && p==="H@mza44332211") { window.location.href="https://wa.me/923235957001"; }
+}
 </script>
 </body>
-                </html>
-    
+</html>
+
