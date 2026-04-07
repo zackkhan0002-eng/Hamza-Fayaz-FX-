@@ -1,4 +1,5 @@
-<!DOCTYPE html>  <html lang="en">  
+<!DOCTYPE html>  
+<html lang="en">  
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
@@ -10,44 +11,54 @@
         *{margin:0;padding:0;box-sizing:border-box;}  
         body{ background:#000; color:#fff; font-family:Arial, sans-serif; overflow-x:hidden; position:relative; }    
         body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite; }    
-        @keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }    .brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align:center; }    
+        @keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }    
+        
+        .brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align:center; }    
 
-    #market-watch-container { max-width: 650px; margin: 30px auto 10px; background: rgba(10,10,10,0.9); border: 1px solid rgba(255,215,0,0.3); border-radius: 20px; padding: 30px; text-align: center; }  
-    #watch-time { font-family: 'Courier New', monospace; font-weight: 900; font-size: 3rem; color: #fff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }  
+        #market-watch-container { max-width: 650px; margin: 30px auto 10px; background: rgba(10,10,10,0.9); border: 1px solid rgba(255,215,0,0.3); border-radius: 20px; padding: 30px; text-align: center; }  
+        #watch-time { font-family: 'Courier New', monospace; font-weight: 900; font-size: 3rem; color: #fff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }  
 
-    .session-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto; padding: 0 20px; }  
-    .session-card { background: rgba(15,15,15,0.8); border: 1px solid rgba(255,215,0,0.2); border-radius: 25px; padding: 25px; text-align: center; }  
-      
-    .analog-clock { width: 100px; height: 100px; border: 2px solid var(--gold); border-radius: 50%; margin: 0 auto 15px; position: relative; background: #000; }  
-    .n { position: absolute; font-size: 9px; color: var(--gold); font-weight: bold; transform: translate(-50%, -50%); }  
-    .n12 { top: 12%; left: 50%; } .n3 { top: 50%; left: 88%; } .n6 { top: 88%; left: 50%; } .n9 { top: 50%; left: 12%; }  
+        .session-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto; padding: 0 20px; }  
+        .session-card { background: rgba(15,15,15,0.8); border: 1px solid rgba(255,215,0,0.2); border-radius: 25px; padding: 25px; text-align: center; transition: 0.4s; }  
+        
+        /* Active Glow Effect for Sessions */
+        .session-card.active { border-color: var(--gold); box-shadow: 0 0 30px rgba(255, 215, 0, 0.2); transform: scale(1.03); }
 
-    .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }    
-    .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:340px; color:white; transition: 0.3s; }    
-    .course-card:hover { border-color: var(--gold); transform: translateY(-5px); }  
-      
-    .locked-content { filter: blur(20px); pointer-events: none; opacity: 0.2; transition: 0.5s; }  
-    #hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 30px; }  
-      
-    input[type="checkbox"] { accent-color: var(--gold); width: 18px; height: 18px; cursor: pointer; }  
-    .hidden { display: none; }  
+        .analog-clock { background: #000; border-radius: 50%; margin: 0 auto 15px; display: block; border: 1px solid rgba(255,215,0,0.2); }  
 
-    .contact-card{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,215,0,0.2); padding:25px; border-radius:20px; text-align:center; width:280px; text-decoration:none; color:white; transition: 0.3s;}  
-    .contact-card:hover { background: rgba(255,215,0,0.1); border-color: var(--gold); }  
-</style>
+        .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }    
+        .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:340px; color:white; transition: 0.3s; }    
+        .course-card:hover { border-color: var(--gold); transform: translateY(-5px); }  
+          
+        .locked-content { filter: blur(20px); pointer-events: none; opacity: 0.2; transition: 0.5s; }  
+        #hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 30px; }  
+          
+        input[type="checkbox"] { accent-color: var(--gold); width: 18px; height: 18px; cursor: pointer; }  
+        .hidden { display: none; }  
 
+        .contact-card{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,215,0,0.2); padding:25px; border-radius:20px; text-align:center; width:280px; text-decoration:none; color:white; transition: 0.3s;}  
+        .contact-card:hover { background: rgba(255,215,0,0.1); border-color: var(--gold); }  
+    </style>
 </head>  
-<body>  <div class="brand-header">THE VAULT HDE FX ACADEMY</div>  <div id="market-watch-container">  
+<body>  
+
+<div class="brand-header">THE VAULT HDE FX ACADEMY</div>  
+
+<div id="market-watch-container">  
     <div style="color:var(--gold); letter-spacing:3px; font-size:12px; margin-bottom:10px;">LIVE TERMINAL TIME</div>  
     <div id="watch-time">00:00:00</div>  
     <div id="watch-date" style="color:#888; font-size:11px; letter-spacing:2px;">LOADING...</div>  
-</div>  <section style="text-align:center; padding:60px 20px;">  
+</div>  
+
+<section style="text-align:center; padding:60px 20px;">  
     <div style="background:rgba(10,10,10,0.9); padding:50px; border-radius:40px; border:1px solid rgba(255,215,0,0.1); max-width:600px; margin:auto;">  
         <img src="hamza.jpg" alt="Hamza Fayaz" style="width:140px; height:140px; border-radius:50%; border:3px solid var(--gold); margin:0 auto 20px; object-fit:cover;">  
         <h1 style="font-size:2.2rem; color:var(--gold);">Hamza Fayaz</h1>  
         <p style="color:#aaa;">Institutional ICT Architect | Founder HDE</p>  
     </div>  
-</section>  <h2 class="section-title">Institutional Curriculums</h2>  
+</section>  
+
+<h2 class="section-title">Institutional Curriculums</h2>  
 <div class="flex flex-wrap justify-center gap-6 px-5">  
     <div class="course-card">  
         <h3 style="color:var(--gold)" class="font-bold mb-4">Algorithmic ICT</h3>  
@@ -67,75 +78,89 @@
         <ul class="text-gray-400 text-sm mb-6 space-y-2"><li>◈ Weekly Breakdowns</li><li>◈ Execution Logs</li><li>◈ Live Psychology</li></ul>  
         <a href="https://youtube.com/@HamzaFayazFX" class="block bg-red-600 text-white py-3 rounded-xl font-bold text-center">SUBSCRIBE</a>  
     </div>  
-</div>  <section id="discipline-section" style="max-width:1100px; margin:80px auto; padding:0 20px; position: relative; min-height: 500px;">  
-    <h2 class="section-title">Trading Discipline Hub</h2>  <div id="hub-lock-overlay">  
-    <i class="fas fa-fingerprint text-yellow-500 text-5xl mb-6"></i>  
-    <input type="text" id="h-u" placeholder="Username" class="bg-zinc-900 border border-zinc-700 p-3 mb-3 rounded-lg w-72 text-white outline-none focus:border-yellow-500">  
-    <input type="password" id="h-p" placeholder="Password" class="bg-zinc-900 border border-zinc-700 p-3 mb-5 rounded-lg w-72 text-white outline-none focus:border-yellow-500">  
-    <button onclick="unlockHub()" class="bg-yellow-500 text-black px-16 py-3 rounded-lg font-bold">UNLOCK HUB</button>  
-    <p id="login-msg" style="color:#ff4444; margin-top:15px; font-size:12px; display:none;">WRONG CREDENTIALS</p>  
 </div>  
 
-<div id="hub-content" class="locked-content">  
-    <div class="mb-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl text-center">  
-        <span class="text-yellow-500 font-bold">SESSION DATE: </span> <span id="hub-date-display">--/--/----</span>  
+<section id="discipline-section" style="max-width:1100px; margin:80px auto; padding:0 20px; position: relative; min-height: 500px;">  
+    <h2 class="section-title">Trading Discipline Hub</h2>  
+    <div id="hub-lock-overlay">  
+        <i class="fas fa-fingerprint text-yellow-500 text-5xl mb-6"></i>  
+        <input type="text" id="h-u" placeholder="Username" class="bg-zinc-900 border border-zinc-700 p-3 mb-3 rounded-lg w-72 text-white outline-none focus:border-yellow-500">  
+        <input type="password" id="h-p" placeholder="Password" class="bg-zinc-900 border border-zinc-700 p-3 mb-5 rounded-lg w-72 text-white outline-none focus:border-yellow-500">  
+        <button onclick="unlockHub()" class="bg-yellow-500 text-black px-16 py-3 rounded-lg font-bold">UNLOCK HUB</button>  
+        <p id="login-msg" style="color:#ff4444; margin-top:15px; font-size:12px; display:none;">WRONG CREDENTIALS</p>  
     </div>  
-      
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">  
-        <div class="lg:col-span-2 bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl">  
-            <h3 class="text-yellow-500 font-bold mb-6 text-xl">Daily Execution Models</h3>  
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">  
-                <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">  
-                    <span>CME ⚡</span> <input type="checkbox" id="chk-cme">  
-                </div>  
-                <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">  
-                    <span>London Silver Bullet</span> <input type="checkbox" id="chk-london">  
-                </div>  
-                <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">  
-                    <span>NY AM Silver Bullet</span> <input type="checkbox" id="chk-nyam">  
-                </div>  
-                <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">  
-                    <span>NY PM Silver Bullet</span> <input type="checkbox" id="chk-nypm">  
+
+    <div id="hub-content" class="locked-content">  
+        <div class="mb-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl text-center">  
+            <span class="text-yellow-500 font-bold">SESSION DATE: </span> <span id="hub-date-display">--/--/----</span>  
+        </div>  
+          
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">  
+            <div class="lg:col-span-2 bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl">  
+                <h3 class="text-yellow-500 font-bold mb-6 text-xl">Daily Execution Models</h3>  
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">  
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">  
+                        <span>CME ⚡</span> <input type="checkbox" id="chk-cme">  
+                    </div>  
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">  
+                        <span>London Silver Bullet</span> <input type="checkbox" id="chk-london">  
+                    </div>  
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">  
+                        <span>NY AM Silver Bullet</span> <input type="checkbox" id="chk-nyam">  
+                    </div>  
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">  
+                        <span>NY PM Silver Bullet</span> <input type="checkbox" id="chk-nypm">  
+                    </div>  
                 </div>  
             </div>  
-        </div>  
 
-        <div class="bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl text-center flex flex-col justify-between">  
-            <div>  
-                <h3 class="text-yellow-500 font-bold mb-4">Core Discipline</h3>  
-                <div class="space-y-3 text-left">  
-                    <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-equity"> <span>Equity Open Focus</span></div>  
-                    <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-tp"> <span>TP Objective Hit</span></div>  
-                    <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-sl"> <span>SL/Risk Respected</span></div>  
-                    <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-rules"> <span>Setup Rules Met</span></div>  
-                    <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-execution"> <span>Clean Execution</span></div>  
+            <div class="bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl text-center flex flex-col justify-between">  
+                <div>  
+                    <h3 class="text-yellow-500 font-bold mb-4">Core Discipline</h3>  
+                    <div class="space-y-3 text-left">  
+                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-equity"> <span>Equity Open Focus</span></div>  
+                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-tp"> <span>TP Objective Hit</span></div>  
+                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-sl"> <span>SL/Risk Respected</span></div>  
+                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-rules"> <span>Setup Rules Met</span></div>  
+                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-execution"> <span>Clean Execution</span></div>  
+                    </div>  
                 </div>  
+                <p id="save-msg" class="text-green-500 font-bold hidden my-2">✓ VAULT UPDATED</p>  
+                <button id="save-discipline" class="w-full bg-yellow-500 text-black font-bold py-4 rounded-xl mt-6">SAVE LOG</button>  
             </div>  
-            <p id="save-msg" class="text-green-500 font-bold hidden my-2">✓ VAULT UPDATED</p>  
-            <button id="save-discipline" class="w-full bg-yellow-500 text-black font-bold py-4 rounded-xl mt-6">SAVE LOG</button>  
         </div>  
-    </div>  
-</div>
+    </div>
+</section>  
 
-</section>  <h2 class="section-title">Institutional Windows</h2>  
+<h2 class="section-title">Institutional Windows</h2>  
 <div class="session-grid">  
-    <div class="session-card">  
-        <div class="analog-clock"><div class="n n12">12</div><div class="n n3">3</div><div class="n n6">6</div><div class="n n9">9</div></div>  
-        <h4 style="color:var(--gold);">LONDON</h4><p style="font-size:11px; color:#666;">12:00 AM - 06:00 AM </p>  
+    <div class="session-card" id="asiaBox">  
+        <canvas id="asiaClock" class="analog-clock" width="100" height="100"></canvas>  
+        <h4 style="color:var(--gold);">ASIA</h4><p style="font-size:11px; color:#666;">06:00 PM - 12:00 AM</p>  
     </div>  
-    <div class="session-card">  
-        <div class="analog-clock"><div class="n n12">12</div><div class="n n3">3</div><div class="n n6">6</div><div class="n n9">9</div></div>  
-        <h4 style="color:var(--gold);">NEW YORK AM</h4><p style="font-size:11px; color:#666;">06:00 AM - 12:00 PM </p>  
+    <div class="session-card" id="londonBox">  
+        <canvas id="londonClock" class="analog-clock" width="100" height="100"></canvas>  
+        <h4 style="color:var(--gold);">LONDON</h4><p style="font-size:11px; color:#666;">12:00 AM - 06:00 AM</p>  
     </div>  
-    <div class="session-card">  
-        <div class="analog-clock"><div class="n n12">12</div><div class="n n3">3</div><div class="n n6">6</div><div class="n n9">9</div></div>  
+    <div class="session-card" id="nyamBox">  
+        <canvas id="nyamClock" class="analog-clock" width="100" height="100"></canvas>  
+        <h4 style="color:var(--gold);">NEW YORK AM</h4><p style="font-size:11px; color:#666;">06:00 AM - 12:00 PM</p>  
+    </div>  
+    <div class="session-card" id="nypmBox">  
+        <canvas id="nypmClock" class="analog-clock" width="100" height="100"></canvas>  
         <h4 style="color:var(--gold);">NEW YORK PM</h4><p style="font-size:11px; color:#666;">12:00 PM - 06:00 PM</p>  
     </div>  
-</div>  <h2 class="section-title">Command Center</h2>  
+</div>  
+
+<h2 class="section-title">Command Center</h2>  
 <div class="flex flex-wrap justify-center gap-6 pb-20 px-5">  
     <a href="https://wa.me/923235957001" class="contact-card"><i class="fab fa-whatsapp text-2xl mb-2" style="color:var(--wa-green)"></i><h3>WhatsApp</h3></a>  
     <a href="mailto:hamzafayazfx@gmail.com" class="contact-card"><i class="fas fa-envelope text-2xl mb-2" style="color:var(--gold)"></i><h3>Email</h3></a>  
-</div>  <footer style="text-align:center; padding:40px; color:#444; font-size:12px;">© 2026 THE VAULT HDE FX ACADEMY</footer>  <script>  
+</div>  
+
+<footer style="text-align:center; padding:40px; color:#444; font-size:12px;">© 2026 THE VAULT HDE FX ACADEMY</footer>  
+
+<script>  
 // Time Logic  
 function updateTime() {  
     const now = new Date();  
@@ -145,6 +170,75 @@ function updateTime() {
     document.getElementById('hub-date-display').innerText = dStr;  
 }  
 setInterval(updateTime, 1000); updateTime();  
+
+// Analog Clocks Logic
+function createClock(id){
+    const canvas=document.getElementById(id);
+    const ctx=canvas.getContext("2d");
+    const radius=canvas.height/2;
+    ctx.translate(radius,radius);
+
+    function draw(){
+        ctx.clearRect(-radius,-radius,canvas.width,canvas.height);
+        const now=new Date();
+        let hour=now.getHours();
+        let minute=now.getMinutes();
+        let second=now.getSeconds();
+
+        // Draw Clock Numbers (Simplified for aesthetic)
+        ctx.font = "bold 10px Arial";
+        ctx.fillStyle = "#ffd700";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("12", 0, -radius+12);
+        ctx.fillText("6", 0, radius-12);
+        ctx.fillText("3", radius-12, 0);
+        ctx.fillText("9", -radius+12, 0);
+
+        hour=hour%12;
+        hour=(hour*Math.PI/6)+(minute*Math.PI/(6*60))+(second*Math.PI/(360*60));
+        drawHand(ctx, hour, radius*0.5, 4, "#ffd700"); // Hour Hand
+
+        minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+        drawHand(ctx, minute, radius*0.7, 3, "#ffffff"); // Minute Hand
+
+        second=(second*Math.PI/30);
+        drawHand(ctx, second, radius*0.8, 1, "#ff4444"); // Second Hand
+    }
+
+    function drawHand(ctx, pos, length, width, color){
+        ctx.beginPath();
+        ctx.lineWidth=width;
+        ctx.lineCap="round";
+        ctx.moveTo(0,0);
+        ctx.rotate(pos);
+        ctx.lineTo(0,-length);
+        ctx.strokeStyle=color;
+        ctx.stroke();
+        ctx.rotate(-pos);
+    }
+    setInterval(draw, 1000);
+    draw();
+}
+
+// Initializing Clocks
+createClock("asiaClock");
+createClock("londonClock");
+createClock("nyamClock");
+createClock("nypmClock");
+
+// Highlight Current Active Session
+function highlightSession(){
+    const hour = new Date().getHours();
+    document.querySelectorAll(".session-card").forEach(box => box.classList.remove("active"));
+
+    if(hour >= 18 || hour < 0) { document.getElementById("asiaBox").classList.add("active"); }
+    else if(hour >= 0 && hour < 6) { document.getElementById("londonBox").classList.add("active"); }
+    else if(hour >= 6 && hour < 12) { document.getElementById("nyamBox").classList.add("active"); }
+    else { document.getElementById("nypmBox").classList.add("active"); }
+}
+setInterval(highlightSession, 60000);
+highlightSession();
   
 // Hub Authentication  
 function unlockHub() {  
@@ -182,7 +276,6 @@ document.getElementById('save-discipline').onclick = function() {
     btn.innerText = "SENDING...";  
     btn.disabled = true;  
   
-    // YOUR NEW ACTIVE URL FIX  
     const webAppUrl = 'https://script.google.com/macros/s/AKfycbzJq8SpxfzDpqgXIkz068S_WHwGiyQlPDBQKjAEFc_eeTNsCkMEI0tUizD4avD3V_F6/exec';  
   
     fetch(webAppUrl, {  
@@ -212,6 +305,6 @@ window.onload = () => {
         document.getElementById('hub-content').style.opacity = "1";  
     }  
 };  
-</script>  </body>  
-</html>  
-maiary code mai ya website mai kisi bhe qesm ka editing nhi krne 0%bhe
+</script>  
+</body>  
+</html>
