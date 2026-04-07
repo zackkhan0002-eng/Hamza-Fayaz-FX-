@@ -118,7 +118,6 @@
         <div class="mb-8 p-5 bg-zinc-900/40 border border-zinc-800 rounded-2xl text-center">  
             <span class="text-yellow-500 font-bold tracking-widest">ENCRYPTED SESSION DATE: </span> <span id="hub-date-display" class="font-mono">--/--/----</span>  
         </div>  
-          
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">  
             <div class="lg:col-span-2 bg-zinc-900/60 border border-zinc-800 p-10 rounded-3xl backdrop-filter blur-sm">  
                 <h3 class="text-yellow-500 font-black mb-8 text-2xl tracking-tighter">DAILY EXECUTION MODELS</h3>  
@@ -137,7 +136,6 @@
                     </div>  
                 </div>  
             </div>  
-
             <div class="bg-zinc-900/60 border border-zinc-800 p-10 rounded-3xl text-center flex flex-col justify-between backdrop-filter blur-sm">  
                 <div>  
                     <h3 class="text-yellow-500 font-black mb-6 text-xl tracking-tighter">CORE DISCIPLINE</h3>  
@@ -191,49 +189,34 @@
 <footer style="text-align:center; padding:50px; color:#555; font-size:12px; border-top: 1px solid rgba(255,215,0,0.05);">© 2026 THE VAULT HDE FX ACADEMY</footer>  
 
 <script>  
-// --- SCROLL REVEAL LOGIC ---
 function reveal() {
     var reveals = document.querySelectorAll(".reveal");
     for (var i = 0; i < reveals.length; i++) {
         var windowHeight = window.innerHeight;
         var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 150;
-        if (elementTop < windowHeight - elementVisible) {
-            reveals[i].classList.add("active");
-        }
+        if (elementTop < windowHeight - 150) reveals[i].classList.add("active");
     }
 }
 window.addEventListener("scroll", reveal);
-window.onload = reveal;
 
-// --- TIME LOGIC ---
 function updateTime() {  
     const now = new Date();  
-    const dStr = now.toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });  
     document.getElementById('watch-time').innerText = now.toLocaleTimeString('en-US', { hour12: true, hour:'2-digit', minute:'2-digit', second:'2-digit' });  
-    document.getElementById('watch-date').innerText = dStr;  
-    document.getElementById('hub-date-display').innerText = dStr;  
+    document.getElementById('watch-date').innerText = now.toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });  
+    document.getElementById('hub-date-display').innerText = now.toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });  
 }  
 setInterval(updateTime, 1000); updateTime();  
 
-// --- ANALOG CLOCKS ---
 function createClock(id){
-    const canvas=document.getElementById(id);
-    const ctx=canvas.getContext("2d");
-    const radius=canvas.height/2;
-    ctx.translate(radius,radius);
+    const canvas=document.getElementById(id); const ctx=canvas.getContext("2d"); const radius=canvas.height/2; ctx.translate(radius,radius);
     function draw(){
         ctx.clearRect(-radius,-radius,canvas.width,canvas.height);
-        const now=new Date();
-        let hour=now.getHours()%12; let minute=now.getMinutes(); let second=now.getSeconds();
+        const now=new Date(); let h=now.getHours()%12; let m=now.getMinutes(); let s=now.getSeconds();
         ctx.font = "bold 12px Arial"; ctx.fillStyle = "#ffd700"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
         ctx.fillText("12", 0, -radius+15); ctx.fillText("6", 0, radius-15);
-        hour=(hour*Math.PI/6)+(minute*Math.PI/(6*60));
-        drawHand(ctx, hour, radius*0.5, 5, "#ffd700");
-        minute=(minute*Math.PI/30);
-        drawHand(ctx, minute, radius*0.75, 3, "#ffffff");
-        second=(second*Math.PI/30);
-        drawHand(ctx, second, radius*0.85, 1, "#ff4444");
+        h=(h*Math.PI/6)+(m*Math.PI/(6*60)); drawHand(ctx, h, radius*0.5, 5, "#ffd700");
+        m=(m*Math.PI/30); drawHand(ctx, m, radius*0.75, 3, "#ffffff");
+        s=(s*Math.PI/30); drawHand(ctx, s, radius*0.85, 1, "#ff4444");
     }
     function drawHand(ctx, pos, length, width, color){
         ctx.beginPath(); ctx.lineWidth=width; ctx.lineCap="round"; ctx.moveTo(0,0); ctx.rotate(pos); ctx.lineTo(0,-length); ctx.strokeStyle=color; ctx.stroke(); ctx.rotate(-pos);
@@ -252,34 +235,33 @@ function highlightSession(){
 }
 setInterval(highlightSession, 60000); highlightSession();
   
-// --- HUB AUTH & AUTO-LOGOUT ---
 function unlockHub() {  
-    const u = document.getElementById('h-u').value;  
-    const p = document.getElementById('h-p').value;  
+    const u = document.getElementById('h-u').value; const p = document.getElementById('h-p').value;  
     if(u === "Hamzafayazfx" && p === "H@mza443322") {  
-        localStorage.setItem('hde_auth', 'true');  
-        localStorage.setItem('hde_login_time', new Date().getTime());
-        showHub();
-        setTimeout(logout, 300000); 
-    } else {   
-        document.getElementById('login-msg').style.display = 'block';   
-    }  
+        localStorage.setItem('hde_auth', 'true'); localStorage.setItem('hde_login_time', new Date().getTime());
+        showHub(); setTimeout(logout, 300000); 
+    } else { document.getElementById('login-msg').style.display = 'block'; }  
 }  
 function showHub() {
-    document.getElementById('hub-lock-overlay').style.display='none';  
-    document.getElementById('hub-content').classList.remove('locked-content');  
-    document.getElementById('hub-content').style.filter = "none";  
-    document.getElementById('hub-content').style.opacity = "1";
+    document.getElementById('hub-lock-overlay').style.display='none'; document.getElementById('hub-content').classList.remove('locked-content');  
+    document.getElementById('hub-content').style.filter = "none"; document.getElementById('hub-content').style.opacity = "1";
 }
-function logout() {
-    localStorage.removeItem('hde_auth');
-    localStorage.removeItem('hde_login_time');
-    location.reload();
-}
+function logout() { localStorage.removeItem('hde_auth'); localStorage.removeItem('hde_login_time'); location.reload(); }
   
 document.getElementById('save-discipline').onclick = function() {  
     const btn = this; const msg = document.getElementById('save-msg');  
     btn.innerText = "ENCRYPTING..."; btn.disabled = true;  
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbzJq8SpxfzDpqgXIkz068S_WHwGiyQlPDBQKjAEFc_eeTNsCkMEI0tUizD4avD3V_F6/exec';  
-    setTimeout(() => { // Simulated delay for animation
-        btn.innerText = "SAVE LOG"; btn.disabled = false; msg.cl
+    setTimeout(() => { btn.innerText = "SAVE LOG"; btn.disabled = false; msg.classList.remove('hidden'); setTimeout(() => msg.classList.add('hidden'), 4000); }, 1500);
+};  
+  
+window.addEventListener('load', () => {  
+    reveal();
+    const isAuth = localStorage.getItem('hde_auth'); const loginTime = localStorage.getItem('hde_login_time');
+    if(isAuth === 'true' && (new Date().getTime() - loginTime < 300000)) {  
+        showHub(); setTimeout(logout, 300000 - (new Date().getTime() - loginTime));
+    }  
+});  
+</script>  
+</body>  
+</html>
+
