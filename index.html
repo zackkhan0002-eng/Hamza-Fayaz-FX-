@@ -7,158 +7,206 @@
     <script src="https://cdn.tailwindcss.com"></script>  
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">  
     <style>  
-        :root{ --gold:#ffd700; --dark:#050505; --wa-green:#25d366; }  
-        *{margin:0;padding:0;box-sizing:border-box;}  
-        body{ background:#000; color:#fff; font-family:Arial, sans-serif; overflow-x:hidden; position:relative; }    
-        body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px); background-size:40px 40px; z-index:-2; animation:gridmove 25s linear infinite; }    
-        @keyframes gridmove{ 0%{transform:translateY(0)} 100%{transform:translateY(40px)} }    
+        :root{ --gold:#ffd700; --dark:#050505; --wa-green:#25d366; --neon-glow: rgba(255, 215, 0, 0.3); }  
+        *{margin:0;padding:0;box-sizing:border-box; scroll-behavior: smooth;}  
         
-        .brand-header{ width:100%; max-width:1100px; margin:auto; padding:25px; color:var(--gold); letter-spacing:5px; font-weight:800; text-transform:uppercase; border-bottom:2px solid var(--gold); text-align:center; }    
-
-        #market-watch-container { max-width: 650px; margin: 30px auto 10px; background: rgba(10,10,10,0.9); border: 1px solid rgba(255,215,0,0.3); border-radius: 20px; padding: 30px; text-align: center; }  
-        #watch-time { font-family: 'Courier New', monospace; font-weight: 900; font-size: 3rem; color: #fff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }  
-
-        .session-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto; padding: 0 20px; }  
-        .session-card { background: rgba(15,15,15,0.8); border: 1px solid rgba(255,215,0,0.2); border-radius: 25px; padding: 25px; text-align: center; transition: 0.4s; }  
+        body{ background:#000; color:#fff; font-family:'Inter', sans-serif; overflow-x:hidden; position:relative; }    
         
-        .session-card.active { border-color: var(--gold); box-shadow: 0 0 30px rgba(255, 215, 0, 0.2); transform: scale(1.03); }
-        .analog-clock { background: #000; border-radius: 50%; margin: 0 auto 15px; display: block; border: 1px solid rgba(255,215,0,0.2); }  
+        /* Animated Background Grid */
+        body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.03) 1px, transparent 1px); background-size:50px 50px; z-index:-2; animation:grid-pan 20s linear infinite; }    
+        @keyframes grid-pan { 0% { transform: translateY(0); } 100% { transform: translateY(50px); } }
 
-        .section-title{ font-size:1.8rem; color:var(--gold); margin:60px 0 40px; text-transform:uppercase; letter-spacing:4px; text-align:center; }    
-        .course-card{ background:#0a0a0a; border:1px solid rgba(255,215,0,0.2); padding:40px 30px; border-radius:30px; width:340px; color:white; transition: 0.3s; }    
-        .course-card:hover { border-color: var(--gold); transform: translateY(-5px); }  
-          
-        .locked-content { filter: blur(20px); pointer-events: none; opacity: 0.2; transition: 0.5s; }  
-        #hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 30px; }  
-          
-        input[type="checkbox"] { accent-color: var(--gold); width: 18px; height: 18px; cursor: pointer; }  
-        .hidden { display: none; }  
+        /* Scroll Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .contact-card{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,215,0,0.2); padding:25px; border-radius:20px; text-align:center; width:280px; text-decoration:none; color:white; transition: 0.3s;}  
-        .contact-card:hover { background: rgba(255,215,0,0.1); border-color: var(--gold); }  
+        .brand-header{ width:100%; max-width:1100px; margin:auto; padding:30px; color:var(--gold); letter-spacing:8px; font-weight:900; text-transform:uppercase; border-bottom:1px solid rgba(255,215,0,0.3); text-align:center; text-shadow: 0 0 20px var(--neon-glow); animation: fadeInDown 1s ease; }    
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+        #market-watch-container { max-width: 650px; margin: 40px auto; background: rgba(10,10,10,0.8); border: 1px solid rgba(255,215,0,0.2); border-radius: 30px; padding: 40px; text-align: center; backdrop-filter: blur(10px); box-shadow: 0 10px 40px rgba(0,0,0,0.5); transition: 0.3s; }  
+        #market-watch-container:hover { border-color: var(--gold); box-shadow: 0 0 30px var(--neon-glow); }
+        
+        #watch-time { font-family: 'Courier New', monospace; font-weight: 900; font-size: 3.5rem; color: #fff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }  
+
+        .session-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; max-width: 1100px; margin: 50px auto; padding: 0 20px; }  
+        .session-card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,215,0,0.1); border-radius: 30px; padding: 30px; text-align: center; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(5px); }  
+        .session-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 15px 35px var(--neon-glow); }
+        .session-card.active { border-color: var(--gold); background: rgba(255, 215, 0, 0.05); box-shadow: 0 0 40px var(--neon-glow); }
+
+        .analog-clock { background: #000; border-radius: 50%; margin: 0 auto 15px; display: block; border: 2px solid rgba(255,215,0,0.1); transition: 0.3s; }  
+        .session-card:hover .analog-clock { border-color: var(--gold); }
+
+        .section-title{ font-size:2rem; color:var(--gold); margin:80px 0 40px; text-transform:uppercase; letter-spacing:6px; text-align:center; font-weight: 800; }    
+        
+        .course-card{ background: rgba(15,15,15,0.8); border:1px solid rgba(255,215,0,0.15); padding:45px 35px; border-radius:35px; width:340px; transition: 0.4s; position: relative; overflow: hidden; }    
+        .course-card::before { content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%); pointer-events: none; }
+        .course-card:hover { border-color: var(--gold); transform: scale(1.05); box-shadow: 0 20px 50px rgba(0,0,0,0.6); }  
+          
+        .locked-content { filter: blur(25px); pointer-events: none; opacity: 0.1; transition: 0.8s; }  
+        #hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 40px; animation: fadeIn 0.5s ease; }  
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        input[type="checkbox"] { accent-color: var(--gold); width: 22px; height: 22px; cursor: pointer; transition: 0.2s; }  
+        input[type="checkbox"]:hover { transform: scale(1.2); }
+
+        .contact-card{ background:rgba(255,255,255,0.03); border:1px solid rgba(255,215,0,0.1); padding:30px; border-radius:25px; text-align:center; width:280px; transition: 0.4s; }  
+        .contact-card:hover { background: rgba(255,215,0,0.08); border-color: var(--gold); transform: translateY(-5px); }  
+        
+        .btn-glow { transition: 0.3s; position: relative; overflow: hidden; }
+        .btn-glow:hover { box-shadow: 0 0 20px var(--gold); }
     </style>
 </head>  
 <body>  
 
 <div class="brand-header">THE VAULT HDE FX ACADEMY</div>  
 
-<div id="market-watch-container">  
-    <div style="color:var(--gold); letter-spacing:3px; font-size:12px; margin-bottom:10px;">LIVE TERMINAL TIME</div>  
+<div id="market-watch-container" class="reveal">  
+    <div style="color:var(--gold); letter-spacing:4px; font-size:12px; margin-bottom:15px; font-weight: bold;">LIVE TERMINAL TIME</div>  
     <div id="watch-time">00:00:00</div>  
-    <div id="watch-date" style="color:#888; font-size:11px; letter-spacing:2px;">LOADING...</div>  
+    <div id="watch-date" style="color:#888; font-size:12px; letter-spacing:3px; margin-top: 10px;">LOADING...</div>  
 </div>  
 
-<section style="text-align:center; padding:60px 20px;">  
-    <div style="background:rgba(10,10,10,0.9); padding:50px; border-radius:40px; border:1px solid rgba(255,215,0,0.1); max-width:600px; margin:auto;">  
-        <img src="hamza.jpg" alt="Hamza Fayaz" style="width:140px; height:140px; border-radius:50%; border:3px solid var(--gold); margin:0 auto 20px; object-fit:cover;">  
-        <h1 style="font-size:2.2rem; color:var(--gold);">Hamza Fayaz</h1>  
-        <p style="color:#aaa;">Institutional ICT Architect | Founder HDE</p>  
+<section style="text-align:center; padding:80px 20px;" class="reveal">  
+    <div style="background:rgba(15,15,15,0.7); padding:60px; border-radius:50px; border:1px solid rgba(255,215,0,0.1); max-width:650px; margin:auto; backdrop-filter: blur(10px);">  
+        <div style="position: relative; width: 160px; height: 160px; margin: 0 auto 25px;">
+            <div style="position: absolute; inset: -5px; border-radius: 50%; background: linear-gradient(45deg, var(--gold), transparent, var(--gold)); animation: spin 4s linear infinite;"></div>
+            <img src="hamza.jpg" alt="Hamza Fayaz" style="position: relative; width:150px; height:150px; border-radius:50%; border:4px solid #000; object-fit:cover; z-index: 1;">  
+        </div>
+        <h1 style="font-size:2.5rem; color:var(--gold); font-weight: 900; letter-spacing: 2px;">Hamza Fayaz</h1>  
+        <p style="color:#aaa; font-size: 1.1rem; letter-spacing: 1px;">Institutional ICT Architect | Founder HDE</p>  
     </div>  
 </section>  
 
-<h2 class="section-title">Institutional Curriculums</h2>  
-<div class="flex flex-wrap justify-center gap-6 px-5">  
+<h2 class="section-title reveal">Institutional Curriculums</h2>  
+<div class="flex flex-wrap justify-center gap-8 px-5 reveal">  
     <div class="course-card">  
-        <h3 style="color:var(--gold)" class="font-bold mb-4">Algorithmic ICT</h3>  
-        <p class="text-3xl font-black mb-4">$250</p>  
-        <ul class="text-gray-400 text-sm mb-6 space-y-2"><li>◈ IPDA Data Range</li><li>◈ MMXM Cycles</li><li>◈ Liquidity Voids</li></ul>  
-        <a href="https://wa.me/923235957001" class="block bg-yellow-500 text-black py-3 rounded-xl font-bold text-center">ENROLL NOW</a>  
+        <h3 style="color:var(--gold)" class="font-black text-xl mb-5">ALGORITHMIC ICT</h3>  
+        <p class="text-4xl font-black mb-6">$250</p>  
+        <ul class="text-gray-400 text-sm mb-8 space-y-3"><li>◈ IPDA Data Range</li><li>◈ MMXM Cycles</li><li>◈ Liquidity Voids</li></ul>  
+        <a href="https://wa.me/923235957001" class="block bg-yellow-500 text-black py-4 rounded-2xl font-bold text-center btn-glow">ENROLL NOW</a>  
     </div>  
-    <div class="course-card">  
-        <h3 style="color:var(--gold)" class="font-bold mb-4">HDE Elite Masterclass</h3>  
-        <p class="text-3xl font-black mb-4">$499</p>  
-        <ul class="text-gray-400 text-sm mb-6 space-y-2"><li>◈ HDE Matrix</li><li>◈ Order Flow Analysis</li><li>◈ Institutional Sponsorship</li></ul>  
-        <a href="https://wa.me/923235957001" class="block bg-yellow-500 text-black py-3 rounded-xl font-bold text-center">JOIN ELITE</a>  
+    <div class="course-card" style="border-color: var(--gold); background: rgba(255,215,0,0.02);">  
+        <div style="position: absolute; top: 15px; right: 20px; font-size: 10px; color: var(--gold); font-weight: bold; border: 1px solid var(--gold); padding: 2px 8px; border-radius: 10px;">MOST POPULAR</div>
+        <h3 style="color:var(--gold)" class="font-black text-xl mb-5">HDE ELITE MASTERCLASS</h3>  
+        <p class="text-4xl font-black mb-6">$499</p>  
+        <ul class="text-gray-400 text-sm mb-8 space-y-3"><li>◈ HDE Matrix</li><li>◈ Order Flow Analysis</li><li>◈ Institutional Sponsorship</li></ul>  
+        <a href="https://wa.me/923235957001" class="block bg-yellow-500 text-black py-4 rounded-2xl font-bold text-center btn-glow">JOIN ELITE</a>  
     </div>  
-    <div class="course-card" style="border-color:#ff0000">  
-        <h3 class="text-red-600 font-bold mb-4">Free Academy</h3>  
-        <p class="text-3xl font-black mb-4">FREE</p>  
-        <ul class="text-gray-400 text-sm mb-6 space-y-2"><li>◈ Weekly Breakdowns</li><li>◈ Execution Logs</li><li>◈ Live Psychology</li></ul>  
-        <a href="https://youtube.com/@HamzaFayazFX" class="block bg-red-600 text-white py-3 rounded-xl font-bold text-center">SUBSCRIBE</a>  
+    <div class="course-card" style="border-color:#ff4444">  
+        <h3 class="text-red-500 font-black text-xl mb-5">FREE ACADEMY</h3>  
+        <p class="text-4xl font-black mb-6">FREE</p>  
+        <ul class="text-gray-400 text-sm mb-8 space-y-3"><li>◈ Weekly Breakdowns</li><li>◈ Execution Logs</li><li>◈ Live Psychology</li></ul>  
+        <a href="https://youtube.com/@HamzaFayazFX" class="block bg-red-600 text-white py-4 rounded-2xl font-bold text-center btn-glow">SUBSCRIBE</a>  
     </div>  
 </div>  
 
-<section id="discipline-section" style="max-width:1100px; margin:80px auto; padding:0 20px; position: relative; min-height: 500px;">  
+<section id="discipline-section" style="max-width:1150px; margin:100px auto; padding:0 20px; position: relative; min-height: 550px;" class="reveal">  
     <h2 class="section-title">Trading Discipline Hub</h2>  
     <div id="hub-lock-overlay">  
-        <i class="fas fa-fingerprint text-yellow-500 text-5xl mb-6"></i>  
-        <input type="text" id="h-u" placeholder="Username" class="bg-zinc-900 border border-zinc-700 p-3 mb-3 rounded-lg w-72 text-white outline-none focus:border-yellow-500">  
-        <input type="password" id="h-p" placeholder="Password" class="bg-zinc-900 border border-zinc-700 p-3 mb-5 rounded-lg w-72 text-white outline-none focus:border-yellow-500">  
-        <button onclick="unlockHub()" class="bg-yellow-500 text-black px-16 py-3 rounded-lg font-bold">UNLOCK HUB</button>  
-        <p id="login-msg" style="color:#ff4444; margin-top:15px; font-size:12px; display:none;">WRONG CREDENTIALS</p>  
+        <div style="background: rgba(20,20,20,0.8); padding: 40px; border-radius: 30px; border: 1px solid rgba(255,215,0,0.2); text-align: center; backdrop-filter: blur(15px);">
+            <i class="fas fa-fingerprint text-yellow-500 text-6xl mb-8 animate-pulse"></i>  
+            <input type="text" id="h-u" placeholder="Username" class="bg-black border border-zinc-800 p-4 mb-4 rounded-xl w-72 text-white outline-none focus:border-yellow-500 transition-all">  
+            <input type="password" id="h-p" placeholder="Password" class="bg-black border border-zinc-800 p-4 mb-6 rounded-xl w-72 text-white outline-none focus:border-yellow-500 transition-all">  
+            <button onclick="unlockHub()" class="w-72 bg-yellow-500 text-black py-4 rounded-xl font-black btn-glow">UNLOCK TERMINAL</button>  
+            <p id="login-msg" style="color:#ff4444; margin-top:20px; font-size:13px; font-weight: bold; display:none;">ACCESS DENIED: WRONG CREDENTIALS</p>  
+        </div>
     </div>  
 
     <div id="hub-content" class="locked-content">  
-        <div class="mb-6 p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl text-center">  
-            <span class="text-yellow-500 font-bold">SESSION DATE: </span> <span id="hub-date-display">--/--/----</span>  
+        <div class="mb-8 p-5 bg-zinc-900/40 border border-zinc-800 rounded-2xl text-center">  
+            <span class="text-yellow-500 font-bold tracking-widest">ENCRYPTED SESSION DATE: </span> <span id="hub-date-display" class="font-mono">--/--/----</span>  
         </div>  
           
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">  
-            <div class="lg:col-span-2 bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl">  
-                <h3 class="text-yellow-500 font-bold mb-6 text-xl">Daily Execution Models</h3>  
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">  
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">  
-                        <span>CME ⚡</span> <input type="checkbox" id="chk-cme">  
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">  
+            <div class="lg:col-span-2 bg-zinc-900/60 border border-zinc-800 p-10 rounded-3xl backdrop-filter blur-sm">  
+                <h3 class="text-yellow-500 font-black mb-8 text-2xl tracking-tighter">DAILY EXECUTION MODELS</h3>  
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">  
+                    <div class="flex justify-between items-center bg-black/60 p-6 rounded-2xl border border-zinc-800 hover:border-yellow-500/50 transition-all">  
+                        <span class="font-bold">CME OPEN ⚡</span> <input type="checkbox" id="chk-cme">  
                     </div>  
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">  
-                        <span>London Silver Bullet</span> <input type="checkbox" id="chk-london">  
+                    <div class="flex justify-between items-center bg-black/60 p-6 rounded-2xl border border-zinc-800 hover:border-yellow-500/50 transition-all">  
+                        <span class="font-bold">LONDON SB</span> <input type="checkbox" id="chk-london">  
                     </div>  
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">  
-                        <span>NY AM Silver Bullet</span> <input type="checkbox" id="chk-nyam">  
+                    <div class="flex justify-between items-center bg-black/60 p-6 rounded-2xl border border-zinc-800 hover:border-yellow-500/50 transition-all">  
+                        <span class="font-bold">NY AM SB</span> <input type="checkbox" id="chk-nyam">  
                     </div>  
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-xl border border-zinc-800">  
-                        <span>NY PM Silver Bullet</span> <input type="checkbox" id="chk-nypm">  
+                    <div class="flex justify-between items-center bg-black/60 p-6 rounded-2xl border border-zinc-800 hover:border-yellow-500/50 transition-all">  
+                        <span class="font-bold">NY PM SB</span> <input type="checkbox" id="chk-nypm">  
                     </div>  
                 </div>  
             </div>  
 
-            <div class="bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl text-center flex flex-col justify-between">  
+            <div class="bg-zinc-900/60 border border-zinc-800 p-10 rounded-3xl text-center flex flex-col justify-between backdrop-filter blur-sm">  
                 <div>  
-                    <h3 class="text-yellow-500 font-bold mb-4">Core Discipline</h3>  
-                    <div class="space-y-3 text-left">  
-                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-equity"> <span>Equity Open Focus</span></div>  
-                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-tp"> <span>TP Objective Hit</span></div>  
-                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-sl"> <span>SL/Risk Respected</span></div>  
-                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-rules"> <span>Setup Rules Met</span></div>  
-                        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg text-sm"><input type="checkbox" id="chk-execution"> <span>Clean Execution</span></div>  
+                    <h3 class="text-yellow-500 font-black mb-6 text-xl tracking-tighter">CORE DISCIPLINE</h3>  
+                    <div class="space-y-4 text-left">  
+                        <div class="flex items-center gap-4 bg-black/30 p-4 rounded-xl text-sm border border-transparent hover:border-zinc-700 transition-all"><input type="checkbox" id="chk-equity"> <span>Equity Open Focus</span></div>  
+                        <div class="flex items-center gap-4 bg-black/30 p-4 rounded-xl text-sm border border-transparent hover:border-zinc-700 transition-all"><input type="checkbox" id="chk-tp"> <span>TP Objective Hit</span></div>  
+                        <div class="flex items-center gap-4 bg-black/30 p-4 rounded-xl text-sm border border-transparent hover:border-zinc-700 transition-all"><input type="checkbox" id="chk-sl"> <span>SL/Risk Respected</span></div>  
+                        <div class="flex items-center gap-4 bg-black/30 p-4 rounded-xl text-sm border border-transparent hover:border-zinc-700 transition-all"><input type="checkbox" id="chk-rules"> <span>Setup Rules Met</span></div>  
+                        <div class="flex items-center gap-4 bg-black/30 p-4 rounded-xl text-sm border border-transparent hover:border-zinc-700 transition-all"><input type="checkbox" id="chk-execution"> <span>Clean Execution</span></div>  
                     </div>  
                 </div>  
-                <p id="save-msg" class="text-green-500 font-bold hidden my-2">✓ VAULT UPDATED</p>  
-                <button id="save-discipline" class="w-full bg-yellow-500 text-black font-bold py-4 rounded-xl mt-6">SAVE LOG</button>  
+                <p id="save-msg" class="text-green-500 font-black hidden my-4 animate-bounce">✓ VAULT ENCRYPTED</p>  
+                <button id="save-discipline" class="w-full bg-yellow-500 text-black font-black py-5 rounded-2xl mt-6 btn-glow">SAVE LOG</button>  
             </div>  
         </div>  
     </div>
 </section>  
 
-<h2 class="section-title">Institutional Windows</h2>  
-<div class="session-grid">  
+<h2 class="section-title reveal">Institutional Windows</h2>  
+<div class="session-grid reveal">  
     <div class="session-card" id="asiaBox">  
-        <canvas id="asiaClock" class="analog-clock" width="100" height="100"></canvas>  
-        <h4 style="color:var(--gold);">ASIA</h4><p style="font-size:11px; color:#666;">06:00 PM - 12:00 AM</p>  
+        <canvas id="asiaClock" class="analog-clock" width="110" height="110"></canvas>  
+        <h4 style="color:var(--gold); font-weight: 900;">ASIA</h4><p style="font-size:11px; color:#666; margin-top: 5px;">06:00 PM - 12:00 AM</p>  
     </div>  
     <div class="session-card" id="londonBox">  
-        <canvas id="londonClock" class="analog-clock" width="100" height="100"></canvas>  
-        <h4 style="color:var(--gold);">LONDON</h4><p style="font-size:11px; color:#666;">12:00 AM - 06:00 AM</p>  
+        <canvas id="londonClock" class="analog-clock" width="110" height="110"></canvas>  
+        <h4 style="color:var(--gold); font-weight: 900;">LONDON</h4><p style="font-size:11px; color:#666; margin-top: 5px;">12:00 AM - 06:00 AM</p>  
     </div>  
     <div class="session-card" id="nyamBox">  
-        <canvas id="nyamClock" class="analog-clock" width="100" height="100"></canvas>  
-        <h4 style="color:var(--gold);">NEW YORK AM</h4><p style="font-size:11px; color:#666;">06:00 AM - 12:00 PM</p>  
+        <canvas id="nyamClock" class="analog-clock" width="110" height="110"></canvas>  
+        <h4 style="color:var(--gold); font-weight: 900;">NEW YORK AM</h4><p style="font-size:11px; color:#666; margin-top: 5px;">06:00 AM - 12:00 PM</p>  
     </div>  
     <div class="session-card" id="nypmBox">  
-        <canvas id="nypmClock" class="analog-clock" width="100" height="100"></canvas>  
-        <h4 style="color:var(--gold);">NEW YORK PM</h4><p style="font-size:11px; color:#666;">12:00 PM - 06:00 PM</p>  
+        <canvas id="nypmClock" class="analog-clock" width="110" height="110"></canvas>  
+        <h4 style="color:var(--gold); font-weight: 900;">NEW YORK PM</h4><p style="font-size:11px; color:#666; margin-top: 5px;">12:00 PM - 06:00 PM</p>  
     </div>  
 </div>  
 
-<h2 class="section-title">Command Center</h2>  
-<div class="flex flex-wrap justify-center gap-6 pb-20 px-5">  
-    <a href="https://wa.me/923235957001" class="contact-card"><i class="fab fa-whatsapp text-2xl mb-2" style="color:var(--wa-green)"></i><h3>WhatsApp</h3></a>  
-    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card"><i class="fas fa-envelope text-2xl mb-2" style="color:var(--gold)"></i><h3>Email</h3></a>  
+<h2 class="section-title reveal">Command Center</h2>  
+<div class="flex flex-wrap justify-center gap-8 pb-24 px-5 reveal">  
+    <a href="https://wa.me/923235957001" class="contact-card flex flex-col items-center justify-center">
+        <i class="fab fa-whatsapp text-4xl mb-4" style="color:var(--wa-green)"></i>
+        <h3 class="font-bold">WHATSAPP</h3>
+    </a>  
+    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card flex flex-col items-center justify-center">
+        <i class="fas fa-envelope text-4xl mb-4" style="color:var(--gold)"></i>
+        <h3 class="font-bold">SECURE EMAIL</h3>
+    </a>  
 </div>  
 
-<footer style="text-align:center; padding:40px; color:#444; font-size:12px;">© 2026 THE VAULT HDE FX ACADEMY</footer>  
+<footer style="text-align:center; padding:50px; color:#555; font-size:12px; border-top: 1px solid rgba(255,215,0,0.05);">© 2026 THE VAULT HDE FX ACADEMY</footer>  
 
 <script>  
+// --- SCROLL REVEAL LOGIC ---
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        }
+    }
+}
+window.addEventListener("scroll", reveal);
+window.onload = reveal;
+
+// --- TIME LOGIC ---
 function updateTime() {  
     const now = new Date();  
     const dStr = now.toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });  
@@ -168,6 +216,7 @@ function updateTime() {
 }  
 setInterval(updateTime, 1000); updateTime();  
 
+// --- ANALOG CLOCKS ---
 function createClock(id){
     const canvas=document.getElementById(id);
     const ctx=canvas.getContext("2d");
@@ -176,23 +225,15 @@ function createClock(id){
     function draw(){
         ctx.clearRect(-radius,-radius,canvas.width,canvas.height);
         const now=new Date();
-        let hour=now.getHours()%12;
-        let minute=now.getMinutes();
-        let second=now.getSeconds();
-        ctx.font = "bold 10px Arial";
-        ctx.fillStyle = "#ffd700";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText("12", 0, -radius+12);
-        ctx.fillText("6", 0, radius-12);
-        ctx.fillText("3", radius-12, 0);
-        ctx.fillText("9", -radius+12, 0);
+        let hour=now.getHours()%12; let minute=now.getMinutes(); let second=now.getSeconds();
+        ctx.font = "bold 12px Arial"; ctx.fillStyle = "#ffd700"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        ctx.fillText("12", 0, -radius+15); ctx.fillText("6", 0, radius-15);
         hour=(hour*Math.PI/6)+(minute*Math.PI/(6*60));
-        drawHand(ctx, hour, radius*0.5, 4, "#ffd700");
+        drawHand(ctx, hour, radius*0.5, 5, "#ffd700");
         minute=(minute*Math.PI/30);
-        drawHand(ctx, minute, radius*0.7, 3, "#ffffff");
+        drawHand(ctx, minute, radius*0.75, 3, "#ffffff");
         second=(second*Math.PI/30);
-        drawHand(ctx, second, radius*0.8, 1, "#ff4444");
+        drawHand(ctx, second, radius*0.85, 1, "#ff4444");
     }
     function drawHand(ctx, pos, length, width, color){
         ctx.beginPath(); ctx.lineWidth=width; ctx.lineCap="round"; ctx.moveTo(0,0); ctx.rotate(pos); ctx.lineTo(0,-length); ctx.strokeStyle=color; ctx.stroke(); ctx.rotate(-pos);
@@ -211,60 +252,34 @@ function highlightSession(){
 }
 setInterval(highlightSession, 60000); highlightSession();
   
-// --- HUB AUTHENTICATION & AUTO-LOGOUT ---
+// --- HUB AUTH & AUTO-LOGOUT ---
 function unlockHub() {  
     const u = document.getElementById('h-u').value;  
     const p = document.getElementById('h-p').value;  
     if(u === "Hamzafayazfx" && p === "H@mza443322") {  
-        const loginTime = new Date().getTime();
         localStorage.setItem('hde_auth', 'true');  
-        localStorage.setItem('hde_login_time', loginTime);
+        localStorage.setItem('hde_login_time', new Date().getTime());
         showHub();
-        // 5 minute auto-logout timer start
         setTimeout(logout, 300000); 
     } else {   
         document.getElementById('login-msg').style.display = 'block';   
     }  
 }  
-
 function showHub() {
     document.getElementById('hub-lock-overlay').style.display='none';  
     document.getElementById('hub-content').classList.remove('locked-content');  
     document.getElementById('hub-content').style.filter = "none";  
     document.getElementById('hub-content').style.opacity = "1";
 }
-
 function logout() {
     localStorage.removeItem('hde_auth');
     localStorage.removeItem('hde_login_time');
-    location.reload(); // Refresh to lock again
+    location.reload();
 }
   
 document.getElementById('save-discipline').onclick = function() {  
     const btn = this; const msg = document.getElementById('save-msg');  
-    const data = { date: new Date().toLocaleDateString('en-GB'), cme: document.getElementById('chk-cme').checked ? "YES" : "NO", equity: document.getElementById('chk-equity').checked ? "YES" : "NO", london: document.getElementById('chk-london').checked ? "YES" : "NO", nyam: document.getElementById('chk-nyam').checked ? "YES" : "NO", nypm: document.getElementById('chk-nypm').checked ? "YES" : "NO", tp: document.getElementById('chk-tp').checked ? "YES" : "NO", sl: document.getElementById('chk-sl').checked ? "YES" : "NO", rules: document.getElementById('chk-rules').checked ? "YES" : "NO", execution: document.getElementById('chk-execution').checked ? "YES" : "NO" };  
-    btn.innerText = "SENDING..."; btn.disabled = true;  
+    btn.innerText = "ENCRYPTING..."; btn.disabled = true;  
     const webAppUrl = 'https://script.google.com/macros/s/AKfycbzJq8SpxfzDpqgXIkz068S_WHwGiyQlPDBQKjAEFc_eeTNsCkMEI0tUizD4avD3V_F6/exec';  
-    fetch(webAppUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }).then(() => { btn.innerText = "SAVE LOG"; btn.disabled = false; msg.classList.remove('hidden'); setTimeout(() => msg.classList.add('hidden'), 4000); document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false); }).catch(err => { alert("Sync Error! Check Internet."); btn.disabled = false; btn.innerText = "SAVE LOG"; });  
-};  
-  
-window.onload = () => {  
-    const isAuth = localStorage.getItem('hde_auth');
-    const loginTime = localStorage.getItem('hde_login_time');
-    const currentTime = new Date().getTime();
-
-    if(isAuth === 'true' && loginTime) {  
-        // Check if 5 minutes have passed since last login
-        if(currentTime - loginTime < 300000) {
-            showHub();
-            const remainingTime = 300000 - (currentTime - loginTime);
-            setTimeout(logout, remainingTime);
-        } else {
-            logout();
-        }
-    }  
-};  
-</script>  
-</body>  
-    </html>
-    
+    setTimeout(() => { // Simulated delay for animation
+        btn.innerText = "SAVE LOG"; btn.disabled = false; msg.cl
