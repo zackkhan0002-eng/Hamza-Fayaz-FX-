@@ -1,0 +1,38 @@
+:root{ --gold:#ffd700; --dark:#050505; --wa-green:#25d366; --neon-glow: rgba(255, 215, 0, 0.3); }  
+*{margin:0;padding:0;box-sizing:border-box; scroll-behavior: smooth;}  
+
+body{ background:#000; color:#fff; font-family:'Inter', sans-serif; overflow-x:hidden; position:relative; }    
+
+body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.03) 1px, transparent 1px); background-size:50px 50px; z-index:-2; animation:grid-pan 20s linear infinite; }    
+
+@keyframes grid-pan { 0% { transform: translateY(0); } 100% { transform: translateY(50px); } }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+.brand-header{ width:100%; max-width:1100px; margin:auto; padding:30px; color:var(--gold); letter-spacing:8px; font-weight:900; text-transform:uppercase; border-bottom:1px solid rgba(255,215,0,0.3); text-align:center; text-shadow: 0 0 20px var(--neon-glow); animation: fadeInDown 1s ease; }    
+
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+#market-watch-container { max-width: 650px; margin: 40px auto; background: rgba(10,10,10,0.8); border: 1px solid rgba(255,215,0,0.2); border-radius: 30px; padding: 40px; text-align: center; backdrop-filter: blur(10px); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }  
+#watch-time { font-family: 'Courier New', monospace; font-weight: 900; font-size: 3.5rem; color: #fff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }  
+
+.session-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; max-width: 1100px; margin: 50px auto; padding: 0 20px; }  
+.session-card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,215,0,0.1); border-radius: 30px; padding: 30px; text-align: center; transition: all 0.4s; backdrop-filter: blur(5px); }  
+.session-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 15px 35px var(--neon-glow); }
+.session-card.active { border-color: var(--gold); background: rgba(255, 215, 0, 0.05); box-shadow: 0 0 40px var(--neon-glow); }
+
+.analog-clock { background: #000; border-radius: 50%; margin: 0 auto 15px; display: block; border: 2px solid rgba(255,215,0,0.1); }  
+
+.section-title{ font-size:2rem; color:var(--gold); margin:80px 0 40px; text-transform:uppercase; letter-spacing:6px; text-align:center; font-weight: 800; }    
+
+.course-card{ background: rgba(15,15,15,0.8); border:1px solid rgba(255,215,0,0.15); padding:45px 35px; border-radius:35px; width:340px; transition: 0.4s; position: relative; }    
+.course-card:hover { border-color: var(--gold); transform: scale(1.05); }  
+
+.locked-content { filter: blur(25px) !important; pointer-events: none !important; opacity: 0.1 !important; transition: 0.8s; }  
+#hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 40px; }  
+
+input[type="checkbox"] { accent-color: var(--gold); width: 22px; height: 22px; cursor: pointer; }  
+.contact-card{ background:rgba(255,255,255,0.03); border:1px solid rgba(255,215,0,0.1); padding:30px; border-radius:25px; text-align:center; width:280px; transition: 0.4s; }  
+.contact-card:hover { background: rgba(255,215,0,0.08); border-color: var(--gold); transform: translateY(-5px); }  
+.btn-glow:hover { box-shadow: 0 0 20px var(--gold); }
