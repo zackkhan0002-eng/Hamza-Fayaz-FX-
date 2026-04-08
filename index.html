@@ -6,46 +6,7 @@
     <title>Hamza Fayaz FX | Institutional ICT Architect</title>  
     <script src="https://cdn.tailwindcss.com"></script>  
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">  
-    <style>  
-        :root{ --gold:#ffd700; --dark:#050505; --wa-green:#25d366; --neon-glow: rgba(255, 215, 0, 0.3); }  
-        *{margin:0;padding:0;box-sizing:border-box; scroll-behavior: smooth;}  
-        
-        body{ background:#000; color:#fff; font-family:'Inter', sans-serif; overflow-x:hidden; position:relative; }    
-        
-        body::before{ content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(255,215,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.03) 1px, transparent 1px); background-size:50px 50px; z-index:-2; animation:grid-pan 20s linear infinite; }    
-        @keyframes grid-pan { 0% { transform: translateY(0); } 100% { transform: translateY(50px); } }
-
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        .brand-header{ width:100%; max-width:1100px; margin:auto; padding:30px; color:var(--gold); letter-spacing:8px; font-weight:900; text-transform:uppercase; border-bottom:1px solid rgba(255,215,0,0.3); text-align:center; text-shadow: 0 0 20px var(--neon-glow); animation: fadeInDown 1s ease; }    
-
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-
-        #market-watch-container { max-width: 650px; margin: 40px auto; background: rgba(10,10,10,0.8); border: 1px solid rgba(255,215,0,0.2); border-radius: 30px; padding: 40px; text-align: center; backdrop-filter: blur(10px); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }  
-        #watch-time { font-family: 'Courier New', monospace; font-weight: 900; font-size: 3.5rem; color: #fff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }  
-
-        .session-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; max-width: 1100px; margin: 50px auto; padding: 0 20px; }  
-        .session-card { background: rgba(20,20,20,0.6); border: 1px solid rgba(255,215,0,0.1); border-radius: 30px; padding: 30px; text-align: center; transition: all 0.4s; backdrop-filter: blur(5px); }  
-        .session-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 15px 35px var(--neon-glow); }
-        .session-card.active { border-color: var(--gold); background: rgba(255, 215, 0, 0.05); box-shadow: 0 0 40px var(--neon-glow); }
-
-        .analog-clock { background: #000; border-radius: 50%; margin: 0 auto 15px; display: block; border: 2px solid rgba(255,215,0,0.1); }  
-
-        .section-title{ font-size:2rem; color:var(--gold); margin:80px 0 40px; text-transform:uppercase; letter-spacing:6px; text-align:center; font-weight: 800; }    
-        
-        .course-card{ background: rgba(15,15,15,0.8); border:1px solid rgba(255,215,0,0.15); padding:45px 35px; border-radius:35px; width:340px; transition: 0.4s; position: relative; }    
-        .course-card:hover { border-color: var(--gold); transform: scale(1.05); }  
-          
-        /* FIXED BLUR LOGIC */
-        .locked-content { filter: blur(25px) !important; pointer-events: none !important; opacity: 0.1 !important; transition: 0.8s; }  
-        #hub-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 40px; }  
-        
-        input[type="checkbox"] { accent-color: var(--gold); width: 22px; height: 22px; cursor: pointer; }  
-        .contact-card{ background:rgba(255,255,255,0.03); border:1px solid rgba(255,215,0,0.1); padding:30px; border-radius:25px; text-align:center; width:280px; transition: 0.4s; }  
-        .contact-card:hover { background: rgba(255,215,0,0.08); border-color: var(--gold); transform: translateY(-5px); }  
-        .btn-glow:hover { box-shadow: 0 0 20px var(--gold); }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>  
 <body>  
 
@@ -165,84 +126,7 @@
 
 <footer style="text-align:center; padding:50px; color:#555; font-size:12px; border-top: 1px solid rgba(255,215,0,0.05);">© 2026 THE VAULT HDE FX ACADEMY</footer>  
 
-<script>  
-function reveal() {
-    var reveals = document.querySelectorAll(".reveal");
-    for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        if (elementTop < windowHeight - 150) reveals[i].classList.add("active");
-    }
-}
-window.addEventListener("scroll", reveal);
-
-function updateTime() {  
-    const now = new Date();  
-    document.getElementById('watch-time').innerText = now.toLocaleTimeString('en-US', { hour12: true, hour:'2-digit', minute:'2-digit', second:'2-digit' });  
-    document.getElementById('watch-date').innerText = now.toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });  
-    document.getElementById('hub-date-display').innerText = now.toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });  
-}  
-setInterval(updateTime, 1000); updateTime();  
-
-function createClock(id){
-    const canvas=document.getElementById(id); const ctx=canvas.getContext("2d"); const radius=canvas.height/2; ctx.translate(radius,radius);
-    function draw(){
-        ctx.clearRect(-radius,-radius,canvas.width,canvas.height);
-        const now=new Date(); let h=now.getHours()%12; let m=now.getMinutes(); let s=now.getSeconds();
-        ctx.font = "bold 12px Arial"; ctx.fillStyle = "#ffd700"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-        ctx.fillText("12", 0, -radius+15); ctx.fillText("6", 0, radius-15);
-        h=(h*Math.PI/6)+(m*Math.PI/(6*60)); drawHand(ctx, h, radius*0.5, 5, "#ffd700");
-        m=(m*Math.PI/30); drawHand(ctx, m, radius*0.75, 3, "#ffffff");
-        s=(s*Math.PI/30); drawHand(ctx, s, radius*0.85, 1, "#ff4444");
-    }
-    function drawHand(ctx, pos, length, width, color){
-        ctx.beginPath(); ctx.lineWidth=width; ctx.lineCap="round"; ctx.moveTo(0,0); ctx.rotate(pos); ctx.lineTo(0,-length); ctx.strokeStyle=color; ctx.stroke(); ctx.rotate(-pos);
-    }
-    setInterval(draw, 1000); draw();
-}
-createClock("asiaClock"); createClock("londonClock"); createClock("nyamClock"); createClock("nypmClock");
-
-function highlightSession(){
-    const hour = new Date().getHours();
-    document.querySelectorAll(".session-card").forEach(box => box.classList.remove("active"));
-    if(hour >= 18 || hour < 0) document.getElementById("asiaBox").classList.add("active");
-    else if(hour >= 0 && hour < 6) document.getElementById("londonBox").classList.add("active");
-    else if(hour >= 6 && hour < 12) document.getElementById("nyamBox").classList.add("active");
-    else document.getElementById("nypmBox").classList.add("active");
-}
-setInterval(highlightSession, 60000); highlightSession();
-  
-function unlockHub() {  
-    const u = document.getElementById('h-u').value; const p = document.getElementById('h-p').value;  
-    if(u === "Hamzafayazfx" && p === "H@mza443322") {  
-        localStorage.setItem('hde_auth', 'true'); localStorage.setItem('hde_login_time', new Date().getTime());
-        showHub(); setTimeout(logout, 300000); 
-    } else { document.getElementById('login-msg').style.display = 'block'; }  
-}  
-function showHub() {
-    document.getElementById('hub-lock-overlay').style.display='none'; 
-    document.getElementById('hub-content').classList.remove('locked-content');  
-    document.getElementById('hub-content').style.setProperty('filter', 'none', 'important');
-    document.getElementById('hub-content').style.setProperty('opacity', '1', 'important');
-    document.getElementById('hub-content').style.setProperty('pointer-events', 'auto', 'important');
-}
-function logout() { localStorage.removeItem('hde_auth'); localStorage.removeItem('hde_login_time'); location.reload(); }
-  
-document.getElementById('save-discipline').onclick = function() {  
-    const btn = this; const msg = document.getElementById('save-msg');  
-    const data = { date: new Date().toLocaleDateString('en-GB'), cme: document.getElementById('chk-cme').checked ? "YES" : "NO", equity: document.getElementById('chk-equity').checked ? "YES" : "NO", london: document.getElementById('chk-london').checked ? "YES" : "NO", nyam: document.getElementById('chk-nyam').checked ? "YES" : "NO", nypm: document.getElementById('chk-nypm').checked ? "YES" : "NO", tp: document.getElementById('chk-tp').checked ? "YES" : "NO", sl: document.getElementById('chk-sl').checked ? "YES" : "NO", rules: document.getElementById('chk-rules').checked ? "YES" : "NO", execution: document.getElementById('chk-execution').checked ? "YES" : "NO" };  
-    btn.innerText = "SENDING..."; btn.disabled = true;  
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbzJq8SpxfzDpqgXIkz068S_WHwGiyQlPDBQKjAEFc_eeTNsCkMEI0tUizD4avD3V_F6/exec';  
-    fetch(webAppUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }).then(() => { btn.innerText = "SAVE LOG"; btn.disabled = false; msg.classList.remove('hidden'); setTimeout(() => msg.classList.add('hidden'), 4000); document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false); }).catch(err => { alert("Sync Error!"); btn.disabled = false; btn.innerText = "SAVE LOG"; });  
-};  
-  
-window.addEventListener('load', () => {  
-    reveal();
-    const isAuth = localStorage.getItem('hde_auth'); const loginTime = localStorage.getItem('hde_login_time');
-    if(isAuth === 'true' && (new Date().getTime() - loginTime < 300000)) {  
-        showHub(); setTimeout(logout, 300000 - (new Date().getTime() - loginTime));
-    }  
-});  
-</script>  
+<script src="script.js"></script>
 </body>  
-</html>
+                        </html>
+        
