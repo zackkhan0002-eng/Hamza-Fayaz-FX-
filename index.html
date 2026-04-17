@@ -1,132 +1,236 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Hamza Fayaz FX | Institutional ICT Architect</title>  
-    <script src="https://cdn.tailwindcss.com"></script>  
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">  
-    <link rel="stylesheet" href="style.css">
-</head>  
-<body>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kameti Pro - Digital Ledger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1b5e20;
+            --accent: #4caf50;
+            --dark: #121212;
+            --surface: #1e1e1e;
+            --text-main: #ffffff;
+            --text-dim: #b0b0b0;
+        }
 
-<div class="brand-header">THE VAULT HDE FX ACADEMY 📈</div>  
+        * { box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        body { background: var(--dark); color: var(--text-main); margin: 0; padding-bottom: 80px; }
 
-<div id="market-watch-container" class="reveal">  
-    <div style="color:var(--gold); letter-spacing:4px; font-size:12px; margin-bottom:15px; font-weight: bold;">LIVE TERMINAL TIME</div>  
-    <div id="watch-time">00:00:00</div>  
-    <div id="watch-date" style="color:#888; font-size:12px; letter-spacing:3px; margin-top: 10px;">LOADING...</div>  
-</div>  
+        /* UI Components */
+        .app-bar {
+            background: var(--primary); padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
 
-<section style="text-align:center; padding:80px 20px;" class="reveal">  
-    <div style="background:rgba(15,15,15,0.7); padding:60px; border-radius:50px; border:1px solid rgba(255,215,0,0.1); max-width:650px; margin:auto; backdrop-filter: blur(10px);">  
-        <img src="hamza.jpg" alt="Hamza Fayaz X MR.BB "  style="width:150px; height:150px; border-radius:50%; border:4px solid var(--gold); margin:0 auto 25px; object-fit:cover;">  
-        <h1 style="font-size:2.5rem; color:var(--gold); font-weight: 900;">Hamza Fayaz X MR.BB</h1>  
-        <p style="color:#aaa;">Institutional ICT Architect | Founder HDE</p>  
-    </div>  
-</section>  
+        .container { padding: 15px; max-width: 600px; margin: auto; }
 
-<h2 class="section-title reveal">Institutional Curriculums</h2>  
-<div class="flex flex-wrap justify-center gap-8 px-5 reveal">  
-    <div class="course-card">  
-        <h3 style="color:var(--gold)" class="font-black text-xl mb-5">ALGORITHMIC ICT</h3>  
-        <p class="text-4xl font-black mb-6">$250</p>  
-        <ul class="text-gray-400 text-sm mb-8 space-y-3"><li>◈ IPDA Data Range</li><li>◈ MMXM Cycles</li><li>◈ Liquidity Voids</li></ul>  
-        <a href="https://wa.me/923235957001" class="block bg-yellow-500 text-black py-4 rounded-2xl font-bold text-center btn-glow">ENROLL NOW</a>  
-    </div>  
-    <div class="course-card" style="border-color: var(--gold);">  
-        <h3 style="color:var(--gold)" class="font-black text-xl mb-5">HDE ELITE MASTERCLASS</h3>  
-        <p class="text-4xl font-black mb-6">$499</p>  
-        <ul class="text-gray-400 text-sm mb-8 space-y-3"><li>◈ HDE Matrix</li><li>◈ Order Flow Analysis</li><li>◈ Institutional Sponsorship</li></ul>  
-        <a href="https://wa.me/923235957001" class="block bg-yellow-500 text-black py-4 rounded-2xl font-bold text-center btn-glow">JOIN ELITE</a>  
-    </div>  
-    <div class="course-card" style="border-color:#ff4444">  
-        <h3 class="text-red-500 font-black text-xl mb-5">FREE ACADEMY</h3>  
-        <p class="text-4xl font-black mb-6">FREE</p>  
-        <ul class="text-gray-400 text-sm mb-8 space-y-3"><li>◈ Weekly Breakdowns</li><li>◈ Execution Logs</li><li>◈ Live Psychology</li></ul>  
-        <a href="https://youtube.com/@HamzaFayazFX" class="block bg-red-600 text-white py-4 rounded-2xl font-bold text-center btn-glow">SUBSCRIBE</a>  
-    </div>  
-</div>  
+        .dashboard {
+            background: linear-gradient(145deg, #252525, #1a1a1a);
+            border-radius: 15px; padding: 20px; margin-bottom: 20px;
+            display: flex; justify-content: space-around; border: 1px solid #333;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
 
-<section id="discipline-section" style="max-width:1150px; margin:100px auto; padding:0 20px; position: relative; min-height: 550px;" class="reveal">  
-    <h2 class="section-title">Trading Discipline Hub</h2>  
-    <div id="hub-lock-overlay">  
-        <i class="fas fa-fingerprint text-yellow-500 text-6xl mb-8 animate-pulse"></i>  
-        <input type="text" id="h-u" placeholder="Username" class="bg-black border border-zinc-800 p-4 mb-4 rounded-xl w-72 text-white outline-none focus:border-yellow-500">  
-        <input type="password" id="h-p" placeholder="Password" class="bg-black border border-zinc-800 p-4 mb-6 rounded-xl w-72 text-white outline-none focus:border-yellow-500">  
-        <button onclick="unlockHub()" class="w-72 bg-yellow-500 text-black py-4 rounded-xl font-black btn-glow">UNLOCK HUB</button>  
-        <p id="login-msg" style="color:#ff4444; margin-top:20px; display:none;">WRONG CREDENTIALS</p>  
-    </div>  
+        .stat-box { text-align: center; }
+        .stat-box h2 { margin: 0; color: var(--accent); font-size: 24px; }
+        .stat-box p { margin: 5px 0 0; font-size: 11px; color: var(--text-dim); text-transform: uppercase; }
 
-    <div id="hub-content" class="locked-content">  
-        <div class="mb-8 p-5 bg-zinc-900/40 border border-zinc-800 rounded-2xl text-center">  
-            <span class="text-yellow-500 font-bold">SESSION DATE: </span> <span id="hub-date-display">--/--/----</span>  
-        </div>  
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">  
-            <div class="lg:col-span-2 bg-zinc-900/60 border border-zinc-800 p-10 rounded-3xl">  
-                <h3 class="text-yellow-500 font-black mb-8 text-2xl">DAILY EXECUTION MODELS</h3>  
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">  
-                    <div class="flex justify-between items-center bg-black/60 p-6 rounded-2xl border border-zinc-800">  
-                        <span>CME OPEN ⚡</span> <input type="checkbox" id="chk-cme">  
-                    </div>  
-                    <div class="flex justify-between items-center bg-black/60 p-6 rounded-2xl border border-zinc-800">  
-                        <span>LONDON SB</span> <input type="checkbox" id="chk-london">  
-                    </div>  
-                    <div class="flex justify-between items-center bg-black/60 p-6 rounded-2xl border border-zinc-800">  
-                        <span>NY AM SB</span> <input type="checkbox" id="chk-nyam">  
-                    </div>  
-                    <div class="flex justify-between items-center bg-black/60 p-6 rounded-2xl border border-zinc-800">  
-                        <span>NY PM SB</span> <input type="checkbox" id="chk-nypm">  
-                    </div>  
-                </div>  
-            </div>  
-            <div class="bg-zinc-900/60 border border-zinc-800 p-10 rounded-3xl text-center flex flex-col justify-between">  
-                <div>  
-                    <h3 class="text-yellow-500 font-black mb-6 text-xl">CORE DISCIPLINE</h3>  
-                    <div class="space-y-4 text-left">  
-                        <div class="flex items-center gap-4 bg-black/30 p-4 rounded-xl text-sm"><input type="checkbox" id="chk-equity"> <span>Equity Open Focus</span></div>  
-                        <div class="flex items-center gap-4 bg-black/30 p-4 rounded-xl text-sm"><input type="checkbox" id="chk-tp"> <span>TP Objective Hit</span></div>  
-                        <div class="flex items-center gap-4 bg-black/30 p-4 rounded-xl text-sm"><input type="checkbox" id="chk-sl"> <span>SL/Risk Respected</span></div>  
-                        <div class="flex items-center gap-4 bg-black/30 p-4 rounded-xl text-sm"><input type="checkbox" id="chk-rules"> <span>Setup Rules Met</span></div>  
-                        <div class="flex items-center gap-4 bg-black/30 p-4 rounded-xl text-sm"><input type="checkbox" id="chk-execution"> <span>Clean Execution</span></div>  
-                    </div>  
-                </div>  
-                <p id="save-msg" class="text-green-500 font-black hidden my-4 animate-bounce">✓ VAULT UPDATED</p>  
-                <button id="save-discipline" class="w-full bg-yellow-500 text-black font-black py-5 rounded-2xl mt-6 btn-glow">SAVE LOG</button>  
-            </div>  
-        </div>  
-    </div>
-</section>  
+        /* Member Card Design - 100% Like App */
+        .member-card {
+            background: var(--surface); padding: 16px; border-radius: 12px;
+            margin-bottom: 12px; display: flex; justify-content: space-between;
+            align-items: center; border-left: 4px solid #444; transition: 0.3s;
+        }
+        .member-card.paid { border-left-color: var(--accent); background: #1b2e1d; }
 
-<h2 class="section-title reveal">Institutional Windows</h2>  
-<div class="session-grid reveal">  
-    <div class="session-card" id="asiaBox">  
-        <canvas id="asiaClock" class="analog-clock" width="110" height="110"></canvas>  
-        <h4 style="color:var(--gold); font-weight: 900;">ASIA</h4><p style="font-size:11px; color:#666; margin-top: 5px;">06:00 PM - 12:00 AM</p>  
-    </div>  
-    <div class="session-card" id="londonBox">  
-        <canvas id="londonClock" class="analog-clock" width="110" height="110"></canvas>  
-        <h4 style="color:var(--gold); font-weight: 900;">LONDON</h4><p style="font-size:11px; color:#666; margin-top: 5px;">12:00 AM - 06:00 AM</p>  
-    </div>  
-    <div class="session-card" id="nyamBox">  
-        <canvas id="nyamClock" class="analog-clock" width="110" height="110"></canvas>  
-        <h4 style="color:var(--gold); font-weight: 900;">NEW YORK AM</h4><p style="font-size:11px; color:#666; margin-top: 5px;">06:00 AM - 12:00 PM</p>  
-    </div>  
-    <div class="session-card" id="nypmBox">  
-        <canvas id="nypmClock" class="analog-clock" width="110" height="110"></canvas>  
-        <h4 style="color:var(--gold); font-weight: 900;">NEW YORK PM</h4><p style="font-size:11px; color:#666; margin-top: 5px;">12:00 PM - 06:00 PM</p>  
-    </div>  
-</div>  
+        .m-details h4 { margin: 0; font-size: 17px; letter-spacing: 0.5px; }
+        .m-details p { margin: 4px 0 0; font-size: 13px; color: var(--text-dim); }
 
-<h2 class="section-title reveal">Command Center</h2>  
-<div class="flex flex-wrap justify-center gap-8 pb-24 px-5 reveal">  
-    <a href="https://wa.me/923235957001" class="contact-card"><i class="fab fa-whatsapp text-4xl mb-4" style="color:var(--wa-green)"></i><h3 class="font-bold">WHATSAPP</h3></a>  
-    <a href="mailto:hamzafayazfx@gmail.com" class="contact-card"><i class="fas fa-envelope text-4xl mb-4" style="color:var(--gold)"></i><h3 class="font-bold">EMAIL</h3></a>  
-</div>  
-
-<footer style="text-align:center; padding:50px; color:#555; font-size:12px; border-top: 1px solid rgba(255,215,0,0.05);">© 2026 THE VAULT HDE FX ACADEMY</footer>  
-
-<script src="script.js"></script>
-</body>  
-                        </html>
+        .m-actions { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
         
+        .status-badge {
+            padding: 6px 12px; border-radius: 20px; font-size: 11px;
+            font-weight: bold; cursor: pointer; border: 1px solid #444;
+        }
+        .status-badge.unpaid { color: #ff5252; border-color: #ff5252; }
+        .status-badge.paid { background: var(--accent); color: white; border-color: var(--accent); }
+
+        .small-btns { display: flex; gap: 10px; margin-top: 5px; }
+        .icon-btn { cursor: pointer; opacity: 0.6; font-size: 14px; }
+        .icon-btn:hover { opacity: 1; }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed; bottom: 25px; right: 25px;
+            width: 60px; height: 60px; background: var(--accent);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4); cursor: pointer; border: none; color: white; font-size: 30px;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+            z-index: 1000; align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-content { background: var(--surface); padding: 25px; border-radius: 20px; width: 100%; max-width: 400px; }
+        input {
+            width: 100%; padding: 14px; margin: 10px 0; border-radius: 10px;
+            border: 1px solid #333; background: #000; color: white; outline: none;
+        }
+        input:focus { border-color: var(--accent); }
+        .btn-block { width: 100%; padding: 14px; border-radius: 10px; border: none; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .btn-primary { background: var(--accent); color: white; }
+
+    </style>
+</head>
+<body>
+
+<div class="app-bar">
+    <div style="font-weight: 700; font-size: 20px;">Kameti Pro Ledger</div>
+    <div style="font-size: 12px; opacity: 0.7;">v2.1 Stable</div>
+</div>
+
+<div class="container">
+    <div class="dashboard">
+        <div class="stat-box">
+            <h2 id="pCount">0</h2>
+            <p>Paid Persons</p>
+        </div>
+        <div class="stat-box">
+            <h2 id="tCash">0</h2>
+            <p>Total (PKR)</p>
+        </div>
+    </div>
+
+    <div id="memberList">
+        </div>
+</div>
+
+<button class="fab" onclick="showAddModal()">+</button>
+
+<div class="modal" id="formModal">
+    <div class="modal-content">
+        <h2 id="modalTitle" style="margin-top:0">Add New Member</h2>
+        <input type="hidden" id="editId">
+        <input type="text" id="mName" placeholder="Full Name">
+        <input type="number" id="mAmt" placeholder="Amount (e.g. 5000)">
+        <button class="btn-block btn-primary" onclick="saveData()">SAVE RECORD</button>
+        <button onclick="closeModal()" style="background:none; color:gray; width:100%; border:none; margin-top:10px;">Cancel</button>
+    </div>
+</div>
+
+<script>
+    let members = JSON.parse(localStorage.getItem('kameti_ledger_final')) || [];
+
+    function showAddModal() {
+        document.getElementById('modalTitle').innerText = "Add New Member";
+        document.getElementById('editId').value = '';
+        document.getElementById('mName').value = '';
+        document.getElementById('mAmt').value = '';
+        document.getElementById('formModal').style.display = 'flex';
+    }
+
+    function closeModal() { document.getElementById('formModal').style.display = 'none'; }
+
+    function saveData() {
+        const id = document.getElementById('editId').value;
+        const name = document.getElementById('mName').value;
+        const amt = document.getElementById('mAmt').value;
+
+        if(!name || !amt) return alert("Please fill all fields!");
+
+        if(id) {
+            // Update existing
+            const idx = members.findIndex(m => m.id == id);
+            members[idx].name = name;
+            members[idx].amt = parseFloat(amt);
+        } else {
+            // Add new
+            members.push({
+                id: Date.now(),
+                name: name,
+                amt: parseFloat(amt),
+                paid: false,
+                date: new Date().toLocaleDateString('en-GB')
+            });
+        }
+        
+        sync();
+        closeModal();
+    }
+
+    function togglePay(id) {
+        const idx = members.findIndex(m => m.id === id);
+        members[idx].paid = !members[idx].paid;
+        sync();
+    }
+
+    function editMember(id) {
+        const m = members.find(m => m.id === id);
+        document.getElementById('modalTitle').innerText = "Edit Member";
+        document.getElementById('editId').value = m.id;
+        document.getElementById('mName').value = m.name;
+        document.getElementById('mAmt').value = m.amt;
+        document.getElementById('formModal').style.display = 'flex';
+    }
+
+    function deleteMember(id) {
+        if(confirm("Delete this record permanently?")) {
+            members = members.filter(m => m.id !== id);
+            sync();
+        }
+    }
+
+    function shareToWhatsApp(name, amt, status) {
+        const msg = `*Kameti Record*%0A*Name:* ${name}%0A*Amount:* Rs. ${amt}%0A*Status:* ${status === true ? '✅ PAID' : '❌ UNPAID'}`;
+        window.open(`https://wa.me/?text=${msg}`, '_blank');
+    }
+
+    function sync() {
+        localStorage.setItem('kameti_ledger_final', JSON.stringify(members));
+        render();
+    }
+
+    function render() {
+        const listDiv = document.getElementById('memberList');
+        const pCount = document.getElementById('pCount');
+        const tCash = document.getElementById('tCash');
+        
+        listDiv.innerHTML = '';
+        let cash = 0, count = 0;
+
+        members.forEach(m => {
+            if(m.paid) { cash += m.amt; count++; }
+            
+            listDiv.innerHTML += `
+                <div class="member-card ${m.paid ? 'paid' : ''}">
+                    <div class="m-details">
+                        <h4>${m.name}</h4>
+                        <p>Rs. ${m.amt.toLocaleString()} • ${m.date}</p>
+                    </div>
+                    <div class="m-actions">
+                        <div class="status-badge ${m.paid ? 'paid' : 'unpaid'}" onclick="togglePay(${m.id})">
+                            ${m.paid ? 'PAID' : 'MARK PAID'}
+                        </div>
+                        <div class="small-btns">
+                            <span class="icon-btn" onclick="shareToWhatsApp('${m.name}', ${m.amt}, ${m.paid})">📲 Share</span>
+                            <span class="icon-btn" onclick="editMember(${m.id})">✏️ Edit</span>
+                            <span class="icon-btn" onclick="deleteMember(${m.id})" style="color:#ff5252">🗑️</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        pCount.innerText = count;
+        tCash.innerText = cash.toLocaleString();
+    }
+
+    render();
+</script>
+
+</body>
+</html>
